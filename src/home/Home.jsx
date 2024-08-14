@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 
 const Home = () => {
   const [medicines, setMedicines] = useState();
-console.log(medicines.data)
+
   useEffect(() => {
     fetch('http://localhost:3000/api/v1/medicines')
       .then(response => response.json())
@@ -11,12 +11,28 @@ console.log(medicines.data)
 if(!medicines){
       return <h1>Loading...</h1>
 }
+console.log(medicines.data)
   return (
     <div>
-      <h1>This is Home page</h1>
       <ul>
         {medicines && medicines.data.map((medicine, index) => (
-          <li key={index}>{medicine.company_name}</li>
+          <div className="bg-slate-400 rounded-md my-4" key={index}>
+            <li className="text-2xl" >{index+1}. {medicine.medicine_name}</li>
+            <li className="text-sm" ><span className="text-fuchsia-800 font-semibold">Genric:</span> {medicine.generic_name}</li>
+            <p className="text-sm" ><span className="text-fuchsia-800 font-semibold">Descriptions:</span> {medicine.description}</p>
+            <p className="text-sm" ><span className="text-fuchsia-800 font-semibold">Actions:</span> {medicine.actions}</p>
+            <div className="flex gap-4">
+            <h1>Alternative Medicines</h1>
+           <div>
+           {
+                 
+                 medicine.alt_medicines.map((m,i)=>(
+                       <li className="text-lg" key={i}>{i+1}. {m}</li>
+                 ))
+           }
+           </div>
+            </div>
+          </div>
         ))}
       </ul>
     </div>
