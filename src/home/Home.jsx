@@ -16,7 +16,7 @@ console.log(medicines.data)
     <div>
       <ul>
         {medicines && medicines.data.map((medicine, index) => (
-          <div className="bg-slate-400 rounded-md my-4" key={index}>
+          <div className="bg-slate-400/30 rounded-md my-4" key={index}>
             <li className="text-2xl" >{index+1}. {medicine.medicine_name}</li>
             <li className="text-sm" ><span className="text-fuchsia-800 font-semibold">Genric:</span> {medicine.generic_name}</li>
             <p className="text-sm" ><span className="text-fuchsia-800 font-semibold">Descriptions:</span> {medicine.description}</p>
