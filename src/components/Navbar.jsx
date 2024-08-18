@@ -5,9 +5,9 @@ const Navbar = () => {
   return (
     <div className="bg-emerald-300 mx-auto">
       <div className="flex justify-around items-center ">
-        <NavLink>Home</NavLink>
-        <NavLink>Contact</NavLink>
-        <NavLink>About</NavLink>
+        <NavLink to={"/"}>Home</NavLink>
+        <NavLink to={"/contact"}>Contact</NavLink>
+        <NavLink to={"/about"}>About</NavLink>
       </div>
     </div>
   )
