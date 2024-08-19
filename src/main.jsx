@@ -16,6 +16,7 @@ import DashboardLayout from './layouts/DashboardLayout.jsx';
 import Dashboard from './Dashboard/Dashboard.jsx';
 import Alluser from './Alluser/Alluser.jsx';
 import Admin from './Admin/Admin.jsx';
+import Search from './search/Search.jsx';
 // import Dashboard from './layouts/Dashboard.jsx';
 const router = createBrowserRouter([
   {
@@ -34,6 +35,10 @@ const router = createBrowserRouter([
         {
           path:"/contact",
           element:<Contact/>
+        },
+        {
+          path:'/search',
+          element:<Search></Search>
         }
       
     ]
