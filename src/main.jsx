@@ -18,6 +18,7 @@ import Alluser from './Alluser/Alluser.jsx';
 import Admin from './Admin/Admin.jsx';
 import Search from './search/Search.jsx';
 import MedicineDetails from './medicineDetails/MedicineDetails.jsx';
+import AddMedicine from './addMedicine/addMedicine.jsx';
 // import Dashboard from './layouts/Dashboard.jsx';
 const router = createBrowserRouter([
   {
@@ -63,6 +64,10 @@ const router = createBrowserRouter([
       {
         path:"admin",
         element:<Admin></Admin>
+      },
+      {
+        path:"addMedicine",
+        element:<AddMedicine></AddMedicine>
       }
     ]
   }

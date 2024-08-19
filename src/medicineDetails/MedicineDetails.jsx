@@ -1,5 +1,6 @@
 import { useParams } from "react-router";
 import { useSingleMedicineQuery } from "../redux/medicine/medicinesApi";
+import { NavLink } from "react-router-dom";
 
 const MedicineDetails = () => {
   const { id } = useParams();
@@ -12,7 +13,7 @@ const MedicineDetails = () => {
   if (error) {
     return <div>Something went wrong...</div>;
   }
-  // console.log(data);
+  console.log(data);
   return (
     <div className="min-h-screen">
       <h1>This is medicine details</h1>
@@ -72,7 +73,16 @@ const MedicineDetails = () => {
           ))}
         </ul>
       </div>
-
+      <NavLink
+        className="border-2 rounded-md border-red-300 bg-orange-300"
+        to={`/medicine/${id}`}
+      >
+        Buy Now
+      </NavLink>
+      <hr />
+      <span>{id}</span>
+      <hr />
+      <span>{data?.data?._id}</span>
     </div>
   );
 };

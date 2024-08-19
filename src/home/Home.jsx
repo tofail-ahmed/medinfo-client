@@ -1,6 +1,7 @@
 
 import { useNavigate } from "react-router";
 import { useAllMedicinesQuery } from "../redux/medicine/medicinesApi";
+import { NavLink } from "react-router-dom";
 
 const Home = () => {
   const navigate = useNavigate();
@@ -42,9 +43,19 @@ const Home = () => {
                   ))}
                 </div>
               </div>
-              <button className="border-2 rounded-md border-red-300" onClick={() => navigate(`/medicine/${medicine._id}`)}>
-                Details: {medicine._id}
+              <button
+                className="border-2 rounded-md border-red-300"
+                onClick={() => navigate(`/medicine/${medicine._id}`)}
+              >
+                Details
               </button>
+
+              <NavLink
+                className="border-2 rounded-md border-red-300 bg-orange-300"
+                to={`/medicine/${medicine._id}`}
+              >
+                Buy Now
+              </NavLink>
               <p>{medicine._id}</p>
             </div>
           ))}
