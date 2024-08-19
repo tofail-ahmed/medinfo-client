@@ -2,6 +2,9 @@ import { useState } from 'react';
 import { FaSearchPlus } from "react-icons/fa";
 import { useSelector } from 'react-redux';
 import { useSearchMedicineQuery } from '../redux/medicine/medicinesApi';
+import { GiHealingShield } from "react-icons/gi";
+
+
 
 const Search = () => {
   const darkMode = useSelector((store) => store.theme.darkMode);
@@ -49,7 +52,7 @@ const Search = () => {
       {error && <p>Error fetching data</p>}
       <div className="mx-10">
       <ul>
-        {data.data.map((medicine, index) => (
+        {data? (data.data.map((medicine, index) => (
           <div className="bg-slate-400/30 rounded-md my-4 px-10" key={index}>
             <li className="text-2xl" >{index+1}. {medicine.medicine_name}</li>
             <li className="text-sm" ><span className="text-fuchsia-800 font-semibold">Genric:</span> {medicine.generic_name}</li>
@@ -67,7 +70,11 @@ const Search = () => {
            </div>
             </div>
           </div>
-        ))}
+        ))):<div className='flex justify-center items-center'>
+            <h1 className='text-2xl text-red-500 font-semibold text-center my-6 flex items-center gap-2'><GiHealingShield />
+            Search your Medicine by name, company or group<GiHealingShield />
+            </h1>
+            </div>}
       </ul>
     </div>
     </div>

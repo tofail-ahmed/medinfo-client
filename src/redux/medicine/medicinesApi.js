@@ -9,6 +9,13 @@ const medicinesApi=baseApi.injectEndpoints({
                   }),
                   providesTags:["medicines"]
             }),
+            singleMedicine:builder.query({
+                  query:(id)=>({
+                        url:`/singleMedicine/${id}`,
+                        method:"GET"
+                  }),
+            
+            }),
             searchMedicine: builder.query({
                   query: (term) => ({
                     url: `/medicines/search/${term}`,
@@ -21,4 +28,4 @@ const medicinesApi=baseApi.injectEndpoints({
       
       })
 
-export const {useAllMedicinesQuery,useSearchMedicineQuery}=medicinesApi
+export const {useAllMedicinesQuery,useSearchMedicineQuery,useSingleMedicineQuery}=medicinesApi

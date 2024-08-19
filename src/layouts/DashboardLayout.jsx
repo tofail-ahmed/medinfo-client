@@ -9,7 +9,7 @@ const DashboardLayout = () => {
     <div  className={`${darkMode?"bg-black text-white":""}`}>
 
   
-    <div className='flex  '>
+    <div className='flex  min-h-screen'>
      
       <Sidebar></Sidebar>
       <Outlet></Outlet>

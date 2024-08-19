@@ -17,6 +17,7 @@ import Dashboard from './Dashboard/Dashboard.jsx';
 import Alluser from './Alluser/Alluser.jsx';
 import Admin from './Admin/Admin.jsx';
 import Search from './search/Search.jsx';
+import MedicineDetails from './medicineDetails/MedicineDetails.jsx';
 // import Dashboard from './layouts/Dashboard.jsx';
 const router = createBrowserRouter([
   {
@@ -39,6 +40,10 @@ const router = createBrowserRouter([
         {
           path:'/search',
           element:<Search></Search>
+        },
+        {
+          path:'/medicine/:id',
+          element:<MedicineDetails></MedicineDetails>
         }
       
     ]
