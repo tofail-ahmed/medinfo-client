@@ -8,7 +8,17 @@ const medicinesApi=baseApi.injectEndpoints({
                         method:"GET"
                   }),
                   providesTags:["medicines"]
-            })
+            }),
+            searchMedicine: builder.query({
+                  query: (term) => ({
+                    url: `/medicines/search/${term}`,
+                    method: "GET",
+                  }),
+                  // providesTags: (result, error, term) => [{ type: 'Medicines', id: term }],
+                }),
+      }),
+    
+      
       })
-})
-export const {useAllMedicinesQuery}=medicinesApi
+
+export const {useAllMedicinesQuery,useSearchMedicineQuery}=medicinesApi
