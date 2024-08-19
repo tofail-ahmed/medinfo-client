@@ -10,7 +10,7 @@ const Navbar = () => {
     dispatch(toggleDarkMode());
   };
   return (
-    <div className="bg-red-300 mx-auto">
+    <div className="bg-red-300/30 mx-auto">
       <div className="flex justify-around items-center ">
         <NavLink className={"bg-green-400 rounded-md font-bold m-4 text-center p-2"} to={"/"}>Home</NavLink>
         <NavLink className={"bg-green-400 rounded-md font-bold m-4 text-center p-2"} to={"/contact"}>Contact</NavLink>

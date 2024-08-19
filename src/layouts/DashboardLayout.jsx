@@ -1,4 +1,4 @@
-import React from 'react'
+
 import Sidebar from '../components/Sidebar'
 import { Outlet } from 'react-router'
 import { useSelector } from 'react-redux'
@@ -9,7 +9,7 @@ const DashboardLayout = () => {
     <div  className={`${darkMode?"bg-black text-white":""}`}>
 
   
-    <div className='flex '>
+    <div className='flex  '>
      
       <Sidebar></Sidebar>
       <Outlet></Outlet>

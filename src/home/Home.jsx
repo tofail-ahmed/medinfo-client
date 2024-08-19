@@ -1,22 +1,18 @@
-import { useEffect, useState } from "react";
+
+import { useAllMedicinesQuery } from "../redux/medicine/medicinesApi";
 
 const Home = () => {
-  const [medicines, setMedicines] = useState();
-
-  useEffect(() => {
-    fetch('http://localhost:3000/api/v1/medicines')
-      .then(response => response.json())
-      .then(data => setMedicines(data));
-  }, []);
-if(!medicines){
+ 
+  const {data,isLoading}=useAllMedicinesQuery("")
+if(isLoading){
       return <h1>Loading...</h1>
 }
-console.log(medicines.data)
+console.log(data.data)
   return (
-    <div>
+    <div className="mx-10">
       <ul>
-        {medicines && medicines.data.map((medicine, index) => (
-          <div className="bg-slate-400/30 rounded-md my-4" key={index}>
+        {data.data.map((medicine, index) => (
+          <div className="bg-slate-400/30 rounded-md my-4 px-10" key={index}>
             <li className="text-2xl" >{index+1}. {medicine.medicine_name}</li>
             <li className="text-sm" ><span className="text-fuchsia-800 font-semibold">Genric:</span> {medicine.generic_name}</li>
             <p className="text-sm" ><span className="text-fuchsia-800 font-semibold">Descriptions:</span> {medicine.description}</p>
