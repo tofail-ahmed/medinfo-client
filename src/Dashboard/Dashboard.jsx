@@ -42,11 +42,11 @@ const Dashboard = () => {
                 </div>
               </div>
               <NavLink
-        className="border-2 rounded-md border-red-300 bg-orange-300"
-        to={`/medicine/${medicine._id}`}
-      >
-        Buy Now
-      </NavLink>
+                className="border-2 rounded-md border-red-300 bg-orange-300"
+                to={`/buyMedicine/${medicine._id}`}
+              >
+                Buy Now
+              </NavLink>
             </div>
           ))}
            

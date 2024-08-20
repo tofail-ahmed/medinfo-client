@@ -74,11 +74,11 @@ const MedicineDetails = () => {
         </ul>
       </div>
       <NavLink
-        className="border-2 rounded-md border-red-300 bg-orange-300"
-        to={`/medicine/${id}`}
-      >
-        Buy Now
-      </NavLink>
+                className="border-2 rounded-md border-red-300 bg-orange-300"
+                to={`/buyMedicine/${data?.data?._id}`}
+              >
+                Buy Now
+              </NavLink>
       <hr />
       <span>{id}</span>
       <hr />
