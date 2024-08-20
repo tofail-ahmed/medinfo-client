@@ -34,7 +34,7 @@ const BuyMedicine = () => {
         alert("Error updating medicine: " + error.message);
       }
     } else {
-      alert("Invalid amount. Please enter a valid number.");
+      alert("Invalid amount. Please enter a valid number."); //! if asking amount to buy is more than available amount
     }
   };
 
