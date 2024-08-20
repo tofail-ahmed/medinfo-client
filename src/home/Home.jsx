@@ -33,6 +33,14 @@ const Home = () => {
                 <span className="text-fuchsia-800 font-semibold">Actions:</span>{" "}
                 {medicine.actions}
               </p>
+              <p className="text-sm">
+                <span className="text-fuchsia-800 font-semibold">Total Sold:</span>{" "}
+                {medicine.sold}
+              </p>
+              <p className="text-sm">
+                <span className="text-fuchsia-800 font-semibold">Available:</span>{" "}
+                {medicine.available}
+              </p>
               <div className="flex gap-4">
                 <h1>Alternative Medicines</h1>
                 <div>
@@ -52,7 +60,7 @@ const Home = () => {
 
               <NavLink
                 className="border-2 rounded-md border-red-300 bg-orange-300"
-                to={`/medicine/${medicine._id}`}
+                to={`/buyMedicine/${medicine._id}`}
               >
                 Buy Now
               </NavLink>

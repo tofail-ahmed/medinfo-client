@@ -30,6 +30,14 @@ const medicinesApi = baseApi.injectEndpoints({
       }),
       invalidatesTags: ["medicines"],
     }),
+    sellAvailabity:builder.mutation({
+      query:({id,body})=>({
+        url:`/medicine/sell/${id}`,
+        method:"PUT",
+        body
+      }),
+      invalidatesTags:["medicines"]
+    })
   }),
 });
 
@@ -38,4 +46,5 @@ export const {
   useSearchMedicineQuery,
   useSingleMedicineQuery,
   useCreateMedicineMutation,
+  useSellAvailabityMutation
 } = medicinesApi;

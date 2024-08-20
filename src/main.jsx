@@ -19,6 +19,7 @@ import Admin from './Admin/Admin.jsx';
 import Search from './search/Search.jsx';
 import MedicineDetails from './medicineDetails/MedicineDetails.jsx';
 import AddMedicine from './addMedicine/addMedicine.jsx';
+import BuyMedicine from './BuyMedicine/BuyMedicine.jsx';
 // import Dashboard from './layouts/Dashboard.jsx';
 const router = createBrowserRouter([
   {
@@ -45,7 +46,11 @@ const router = createBrowserRouter([
         {
           path:'/medicine/:id',
           element:<MedicineDetails></MedicineDetails>
-        }
+        },
+        {
+          path:"/buyMedicine/:id",
+          element:<BuyMedicine></BuyMedicine>
+        },
       
     ]
   },
