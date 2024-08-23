@@ -18,8 +18,9 @@ const Sidebar = () => {
                 {darkMode ? "Light" :"Dark"}
                 </div>
               </button>
-            <NavLink className={"bg-green-400 rounded-md font-bold m-4 text-center p-2"} to={'/'}>Home</NavLink>
-            <NavLink className={"bg-green-400 rounded-md font-bold m-4 text-center p-2"} to="/dashboard">Dashboard</NavLink>
+              <NavLink className={"mx-auto"} to={"/"}>
+        <img className="w-[50px]" src="/src/assets/medInfo.png" alt="" />
+        </NavLink>            <NavLink className={"bg-green-400 rounded-md font-bold m-4 text-center p-2"} to="/dashboard">Dashboard</NavLink>
             <NavLink className={"bg-green-400 rounded-md font-bold m-4 text-center p-2"} to={"/dashboard/alluser"}>All user</NavLink>
             <NavLink className={"bg-green-400 rounded-md font-bold m-4 text-center p-2"} to={"/dashboard/admin"}>Admin</NavLink>
             <NavLink className={"bg-green-400 rounded-md font-bold m-4 text-center p-2"} to={"/dashboard/addMedicine"}>Add Medicine</NavLink>
