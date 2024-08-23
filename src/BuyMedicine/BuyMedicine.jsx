@@ -11,7 +11,7 @@ const BuyMedicine = () => {
   
   // Local state to keep track of updated medicine data
   const [updatedData, setUpdatedData] = useState(null);
-
+console.log(updatedData)
   if (isLoading) {
     return <div>Loading...</div>;
   }
@@ -26,8 +26,11 @@ const BuyMedicine = () => {
 
   const handleSell = async () => {
     if (amountSold > 0 && amountSold <= (updatedData ? updatedData.available : data?.data?.available)) {
+      //! Checks if the amountSold is a positive number and less than or equal to the available stock.
+
       try {
         const result = await sellAvailabity({ id, body: { amountSold } }).unwrap();
+        console.log(result.data)
         setUpdatedData(result.data); // Update local state with the latest data
         alert("Medicine sold and availability updated successfully!");
       } catch (error) {

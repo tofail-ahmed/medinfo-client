@@ -20,6 +20,8 @@ import Search from './search/Search.jsx';
 import MedicineDetails from './medicineDetails/MedicineDetails.jsx';
 import AddMedicine from './addMedicine/addMedicine.jsx';
 import BuyMedicine from './BuyMedicine/BuyMedicine.jsx';
+import Register from './register/Register.jsx';
+import Login from './login/Login.jsx';
 // import Dashboard from './layouts/Dashboard.jsx';
 const router = createBrowserRouter([
   {
@@ -51,6 +53,14 @@ const router = createBrowserRouter([
           path:"/buyMedicine/:id",
           element:<BuyMedicine></BuyMedicine>
         },
+        {
+          path:"/register",
+          element:<Register></Register>
+        },
+        {
+          path:"/login",
+          element:<Login></Login>
+        }
       
     ]
   },
