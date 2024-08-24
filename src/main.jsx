@@ -22,6 +22,7 @@ import AddMedicine from './addMedicine/addMedicine.jsx';
 import BuyMedicine from './BuyMedicine/BuyMedicine.jsx';
 import Register from './register/Register.jsx';
 import Login from './login/Login.jsx';
+import News from './news/News.jsx';
 // import Dashboard from './layouts/Dashboard.jsx';
 const router = createBrowserRouter([
   {
@@ -60,6 +61,10 @@ const router = createBrowserRouter([
         {
           path:"/login",
           element:<Login></Login>
+        },
+        {
+          path:"/news",
+          element:<News></News>
         }
       
     ]
