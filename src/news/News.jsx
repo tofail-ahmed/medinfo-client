@@ -2,7 +2,8 @@ import { useEffect, useState } from "react";
 
 const News = () => {
   const [news, setNews] = useState(null);  // Initialize with null to avoid "undefined"
-  const [apiUrl, setApiUrl] = useState("");
+  const [apiUrl, setApiUrl] = useState( "https://newsapi.org/v2/everything?q=health&from=2024-07-24&sortBy=publishedAt&apiKey=a9c47f80419a4fd1a86e10ea2e6eeb98");
+//   const [img,setImg]=useState()
 
   // API URLs
   const apiOptions = {
@@ -13,11 +14,15 @@ const News = () => {
     technology: "https://newsapi.org/v2/everything?q=technology&from=2024-07-24&sortBy=publishedAt&apiKey=a9c47f80419a4fd1a86e10ea2e6eeb98",
     sports: "https://newsapi.org/v2/everything?q=sports&from=2024-07-24&sortBy=publishedAt&apiKey=a9c47f80419a4fd1a86e10ea2e6eeb98",
     health: "https://newsapi.org/v2/everything?q=health&from=2024-07-24&sortBy=publishedAt&apiKey=a9c47f80419a4fd1a86e10ea2e6eeb98",
-    country: "https://newsapi.org/v2/top-headlines?country=us&category=business&apiKey=a9c47f80419a4fd1a86e10ea2e6eeb98",
     tech: "https://newsapi.org/v2/top-headlines?sources=techcrunch&apiKey=a9c47f80419a4fd1a86e10ea2e6eeb98",
 
   };
-
+//   useEffect(()=>{
+//       fetch("https://picsum.photos/200")
+//       .then(res=>res.json())
+//       .then(data=>setImg(data))
+//   },[])
+// console.log(img)
   useEffect(() => {
     if (apiUrl) {
       fetch(apiUrl)
@@ -30,28 +35,34 @@ const News = () => {
   const handleApiChange = (event) => {
     setApiUrl(apiOptions[event.target.value]);
   };
-console.log(news)
+// console.log({news})
+if(news===null){
+      return <h1 className="text-2xl font-semibold text-center">Articles Loading...</h1>
+}
   return (
     <div>
-      <h1>Choose a News Category</h1>
-      <select onChange={handleApiChange}>
-        <option value="">Select a category</option>
+      <div className=" my-2 flex justify-center mx-auto">
+      <div>
+      
+      <select className="border-2 rounded-md border-green-600" onChange={handleApiChange}>
+        <option value="">Select a News Category</option>
         <option value="tesla">Tesla</option>
         <option value="apple">Apple</option>
         <option value="amazon">Amazon</option>
-        <option value="google">Google</option>
-        <option value="country">Country</option>
+        {/* <option value="google">Google</option> */}
         <option value="tech">Tech</option>
         <option value="technology">Technology</option>
         <option value="sports">Sports</option>
         <option value="health">Health</option>
       </select>
+      </div>
+      </div>
 
       <div>
-        <h2>News Articles</h2>
+        
         {news ? (
           news.map((article, index) => (
-            <div key={index} className="m-2  bg-slate-400 rounded-md flex justify-between items-start">
+            <div key={index} className="m-2  bg-slate-400/50 rounded-md flex justify-between items-start">
             <div className="flex-1 pr-4 p-2">
               <h3 className="text-xl font-semibold">{index + 1}. {article.title}</h3>
               <span>by- {article.author}</span>

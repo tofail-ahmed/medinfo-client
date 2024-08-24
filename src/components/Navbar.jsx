@@ -19,6 +19,8 @@ const Navbar = () => {
         <NavLink className={"bg-green-400 rounded-md font-bold m-4 text-center p-2"} to={"/about"}>About</NavLink>
         <NavLink className={"bg-green-400 rounded-md font-bold m-4 text-center p-2"} to={"/dashboard"}>Dashboard</NavLink>
         <NavLink className={"bg-green-400 rounded-md font-bold m-4 text-center p-2"} to={"/search"}>Search</NavLink>
+        <NavLink className={"bg-green-400 rounded-md font-bold m-4 text-center p-2"} to={"/news"}>News</NavLink>
+        <NavLink className={"bg-green-400 rounded-md font-bold m-4 text-center p-2"} to={"/login"}>Login</NavLink>
         <button  onClick={darkModeHnadler} >
                 <div className={"bg-green-400 rounded-md font-bold m-4 text-center p-2"}>
                 {darkMode ? "Light" :"Dark"}
