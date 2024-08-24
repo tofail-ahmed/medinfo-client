@@ -1,5 +1,6 @@
-import React, { useState } from 'react';
+import  { useState } from 'react';
 import { TextField, Button, Grid, Typography, Container } from '@mui/material';
+import { NavLink } from 'react-router-dom';
 
 const Login = () => {
   const [formData, setFormData] = useState({
@@ -50,12 +51,15 @@ const Login = () => {
               value={formData.password}
               onChange={handleChange}
               required
+            //   size="small"
             />
           </Grid>
           <Grid item xs={12}>
             <Button type="submit" variant="contained" color="primary" fullWidth>
               Login
             </Button>
+            <p className='text-center font-semibold'>Don&apos;t have an account? <NavLink className={"text-blue-600 text- font-bold"} to="/register">Register</NavLink></p>
+
           </Grid>
         </Grid>
       </form>

@@ -1,5 +1,6 @@
-import React, { useState } from 'react';
+import  { useState } from 'react';
 import { TextField, Button, Grid, Typography, Container } from '@mui/material';
+import { NavLink } from 'react-router-dom';
 
 const Register = () => {
   const [formData, setFormData] = useState({
@@ -68,6 +69,7 @@ console.log(formData)
             <Button type="submit" variant="contained" color="primary" fullWidth>
               Register
             </Button>
+            <p className='text-center font-semibold'>Already registered? <NavLink className={"text-blue-600 text- font-bold"} to="/login">Login</NavLink></p>
           </Grid>
         </Grid>
       </form>
