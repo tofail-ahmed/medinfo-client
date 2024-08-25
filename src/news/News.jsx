@@ -65,7 +65,7 @@ if(news===null){
             <div key={index} className="m-2  bg-slate-400/50 rounded-md flex justify-between items-start">
             <div className="flex-1 pr-4 p-2">
               <h3 className="text-xl font-semibold">{index + 1}. {article.title}</h3>
-              <span>by- {article.author}</span>
+              <span className="text-xs font-bold">- {article.author}</span>
               <p>{article.description}</p>
             </div>
             <img className="w-[400px] h-[200px] object-cover rounded-e-md" src={article.urlToImage} alt={article.title} />

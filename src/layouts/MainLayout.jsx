@@ -6,7 +6,7 @@ const MainLayout = () => {
   const darkMode=useSelector((store)=>store.theme.darkMode);
   // console.log("dark",darkMode)
   return (
-    <div className={`${darkMode?"bg-black text-white":""}`}>
+    <div className={`${darkMode?"bg-slate-700 text-white":""}`}>
       <Navbar></Navbar>
       <Outlet></Outlet>
     </div>

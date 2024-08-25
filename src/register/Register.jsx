@@ -1,8 +1,12 @@
-import  { useState } from 'react';
+import  { useEffect, useState } from 'react';
 import { TextField, Button, Grid, Typography, Container } from '@mui/material';
 import { NavLink } from 'react-router-dom';
+import { useUserRegisterMutation } from '../redux/user/usersApi';
 
 const Register = () => {
+
+  const [createUser,{data,isLoading,error}]=useUserRegisterMutation()
+
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -21,10 +25,24 @@ const Register = () => {
     e.preventDefault();
     console.log('Form submitted:', formData);
     // Here you can send formData to your backend or handle it as needed
+  createUser(formData)
+  
+  
   };
-console.log(formData)
+// console.log(formData)
+      useEffect(() => {
+        if (isLoading) {
+          alert("User registration in process, please wait...");
+        }
+        if (data && data.success) {
+          alert("User registered successfully");
+        }
+        if(error&&error.status===409){
+              alert(error.data.message)
+        }
+      }, [data, isLoading,error]);
   return (
-    <Container maxWidth="sm">
+    <Container maxWidth="sm" className="min-h-screen">
       <Typography variant="h4" gutterBottom align="center">
         Register
       </Typography>
@@ -67,9 +85,9 @@ console.log(formData)
           </Grid>
           <Grid item xs={12}>
             <Button type="submit" variant="contained" color="primary" fullWidth>
-              Register
+              {isLoading?"Registering":"Register"}
             </Button>
-            <p className='text-center font-semibold'>Already registered? <NavLink className={"text-blue-600 text- font-bold"} to="/login">Login</NavLink></p>
+            <p className='text-center text-sm font-semibold'>Already registered? <NavLink className={"text-blue-600 text- font-bold"} to="/login">Login</NavLink></p>
           </Grid>
         </Grid>
       </form>
