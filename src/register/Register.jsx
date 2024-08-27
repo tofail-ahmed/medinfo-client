@@ -27,7 +27,9 @@ const Register = () => {
     // Here you can send formData to your backend or handle it as needed
   createUser(formData)
   
-  
+  // console.log("data",data)
+  //     console.log("isLoading",isLoading)
+  //     console.log("error",error)
   };
 // console.log(formData)
       useEffect(() => {
@@ -42,9 +44,7 @@ const Register = () => {
         }
       }, [data, isLoading,error]);
 
-      console.log("data",data)
-      console.log("isLoading",isLoading)
-      console.log("error",error)
+      
   return (
     <Container maxWidth="sm" className="min-h-screen">
       <Typography variant="h4" gutterBottom align="center">
