@@ -1,10 +1,13 @@
-import  { useState } from 'react';
+import  { useEffect, useState } from 'react';
 import { TextField, Button, Grid, Typography, Container } from '@mui/material';
 import { NavLink } from 'react-router-dom';
-import { useSelector } from "react-redux";
+import { useUserLoginMutation } from '../redux/user/usersApi';
+// import { useSelector } from "react-redux";
 
 const Login = () => {
-  const darkMode = useSelector((state) => state.theme.darkMode);
+  const [loginUser,{data,isLoading,error}]=useUserLoginMutation();
+
+  // const darkMode = useSelector((state) => state.theme.darkMode);
   const [formData, setFormData] = useState({
     email: "",
     password: "",
@@ -20,10 +23,20 @@ const Login = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log("Form submitted:", formData);
-    // Here you can send formData to your backend or handle it as needed
+    // console.log("Form submitted:", formData);
+    loginUser(formData)
   };
-
+  useEffect(() => {
+    if (isLoading) {
+      alert("User login in process, please wait...");
+    }
+    if (data && data.success) {
+      alert("User login successfully");
+    }
+    if(error&&error.status===409){
+          alert(error.data.message)
+    }
+  }, [data, isLoading, error]);
   return (
     <Container maxWidth="sm" className="min-h-screen">
       <Typography variant="h4" gutterBottom align="center">

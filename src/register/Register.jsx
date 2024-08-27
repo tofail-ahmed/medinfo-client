@@ -5,7 +5,7 @@ import { useUserRegisterMutation } from '../redux/user/usersApi';
 
 const Register = () => {
 
-  const [createUser,{data,isLoading,error}]=useUserRegisterMutation()
+  const [createUser,{data,isLoading,error}]=useUserRegisterMutation();
 
   const [formData, setFormData] = useState({
     name: '',
@@ -41,6 +41,10 @@ const Register = () => {
               alert(error.data.message)
         }
       }, [data, isLoading,error]);
+
+      console.log("data",data)
+      console.log("isLoading",isLoading)
+      console.log("error",error)
   return (
     <Container maxWidth="sm" className="min-h-screen">
       <Typography variant="h4" gutterBottom align="center">

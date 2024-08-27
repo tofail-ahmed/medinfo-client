@@ -8,8 +8,15 @@ const usersApi=baseApi.injectEndpoints({
                         method:"POST",
                         body
                   })
+            }),
+            userLogin:builder.mutation({
+                  query:(body)=>({
+                        url:"/login",
+                        method:"POST",
+                        body
+                  })
             })
       })
 })
 
-export const {useUserRegisterMutation}=usersApi;
+export const {useUserRegisterMutation,useUserLoginMutation}=usersApi;
