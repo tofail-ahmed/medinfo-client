@@ -1,11 +1,12 @@
 import  { useEffect, useState } from 'react';
 import { TextField, Button, Grid, Typography, Container } from '@mui/material';
-import { NavLink } from 'react-router-dom';
-import { useUserLoginMutation } from '../redux/user/usersApi';
+import { NavLink, useNavigate } from "react-router-dom";
+import { useUserLoginMutation } from "../redux/user/usersApi";
 // import { useSelector } from "react-redux";
 
 const Login = () => {
-  const [loginUser,{data,isLoading,error}]=useUserLoginMutation();
+  const navigate = useNavigate();
+  const [loginUser, { data, isLoading, error }] = useUserLoginMutation();
 
   // const darkMode = useSelector((state) => state.theme.darkMode);
   const [formData, setFormData] = useState({
@@ -24,7 +25,7 @@ const Login = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     // console.log("Form submitted:", formData);
-    loginUser(formData)
+    loginUser(formData);
   };
   useEffect(() => {
     if (isLoading) {
@@ -32,13 +33,20 @@ const Login = () => {
     }
     if (data && data.success) {
       // console.log(data.data)
+      const userCred={
+        email:data?.data.email,
+        role:data?.data.role
+      }
       alert("User login successfully");
+      localStorage.setItem('user',JSON.stringify(userCred));
+
+      navigate("/");
     }
-    if(error&&error.status===409){
-          alert(error.data.message)
+    if (error && error.status === 409) {
+      alert(error.data.message);
     }
   }, [data, isLoading, error]);
-  // // console.log("data",data)
+  // console.log("data",data)
   //     console.log("isLoading",isLoading)
   //     console.log("error",error)
   return (
@@ -50,9 +58,7 @@ const Login = () => {
         <Grid container spacing={3}>
           <Grid item xs={12}>
             <TextField
-            sx={{
-                  
-            }}
+              sx={{}}
               label="Email"
               name="email"
               variant="outlined"
