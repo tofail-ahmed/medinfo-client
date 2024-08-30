@@ -34,6 +34,7 @@ const Login = () => {
     if (data && data.success) {
       // console.log(data.data)
       const userCred={
+        name:data?.data.name,
         email:data?.data.email,
         role:data?.data.role
       }

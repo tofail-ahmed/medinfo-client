@@ -7,6 +7,8 @@ const Dashboard = () => {
   if (isLoading) {
     return <div className="text-3xl text-center">Loading....</div>;
   }
+  // const user = JSON.parse(localStorage.getItem('user'));
+// console.log(user)
   return (
     <div className="mx-10">
       <h1>This is Dashboard Home</h1>

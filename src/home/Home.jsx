@@ -2,6 +2,7 @@
 import { useNavigate } from "react-router";
 import { useAllMedicinesQuery } from "../redux/medicine/medicinesApi";
 import { NavLink } from "react-router-dom";
+import { getUserCred } from "../utils/utils";
 
 const Home = () => {
   const navigate = useNavigate();
@@ -9,13 +10,15 @@ const Home = () => {
   if (isLoading) {
     return <h1 className="h-screen">Loading...</h1>;
   }
+  const userCred=getUserCred();
+  console.log(userCred)
   // console.log(data.data)
   return (
     <div className="">
       <div className="mx-10 ">
         <ul>
           {data.data.map((medicine, index) => (
-            <div className="bg-slate-400/30 rounded-md my-4 px-10" key={index}>
+            <div className="bg-slate-400/30 rounded-md my-4 px-10 py-2" key={index}>
               <li className="text-2xl">
                 {index + 1}. {medicine.medicine_name}
               </li>
@@ -64,7 +67,7 @@ const Home = () => {
               >
                 Buy Now
               </NavLink>
-              <p>{medicine._id}</p>
+             
             </div>
           ))}
         </ul>

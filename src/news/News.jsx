@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 const News = () => {
   const [news, setNews] = useState(null);  // Initialize with null to avoid "undefined"
   const [apiUrl, setApiUrl] = useState( "https://newsapi.org/v2/everything?q=health&from=2024-07-24&sortBy=publishedAt&apiKey=a9c47f80419a4fd1a86e10ea2e6eeb98");
-//   const [img,setImg]=useState()
+
 
   // API URLs
   const apiOptions = {
@@ -17,12 +17,7 @@ const News = () => {
     tech: "https://newsapi.org/v2/top-headlines?sources=techcrunch&apiKey=a9c47f80419a4fd1a86e10ea2e6eeb98",
 
   };
-//   useEffect(()=>{
-//       fetch("https://picsum.photos/200")
-//       .then(res=>res.json())
-//       .then(data=>setImg(data))
-//   },[])
-// console.log(img)
+
   useEffect(() => {
     if (apiUrl) {
       fetch(apiUrl)
@@ -35,7 +30,7 @@ const News = () => {
   const handleApiChange = (event) => {
     setApiUrl(apiOptions[event.target.value]);
   };
-// console.log({news})
+console.log({news})
 if(news===null){
       return <h1 className="text-2xl font-semibold text-center">Articles Loading...</h1>
 }
