@@ -7,7 +7,8 @@ const usersApi=baseApi.injectEndpoints({
                         url:"/register",
                         method:"POST",
                         body
-                  })
+                  }),
+                  invalidatesTags: ["users"],
             }),
             userLogin:builder.mutation({
                   query:(body)=>({
@@ -15,8 +16,15 @@ const usersApi=baseApi.injectEndpoints({
                         method:"POST",
                         body
                   })
+            }),
+            allUser:builder.query({
+                  query:()=>({
+                        url:"/alluser",
+                        method:"GET"
+                  }),
+                  providesTags: ["users"],
             })
       })
 })
 
-export const {useUserRegisterMutation,useUserLoginMutation}=usersApi;
+export const {useUserRegisterMutation,useUserLoginMutation,useAllUserQuery}=usersApi;

@@ -1,7 +1,5 @@
-import React from 'react'
-import { Link, NavLink } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import './all.css'
-import { getUserCred } from '../utils/utils';
 import { FaHome } from "react-icons/fa";
 
 
@@ -11,7 +9,7 @@ const AccessDenied = () => {
    
       <div className='flex justify-center items-center mx-auto text-center '>
 <div>
-<h1 className='text-2xl p-2 font-bold text-red-600/70'>You don't have permission to this page</h1>
+<h1 className='text-2xl p-2 font-bold text-red-600/70'>You don&apos;t have permission to this page</h1>
 <p className='text-xl p-2 font-bold flex justify-center items-center'>Back to <Link to={"/"} className='text-xl p-2 font-bold text-blue-600/70'><FaHome/></Link></p>
     
 

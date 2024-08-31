@@ -8,6 +8,7 @@ const medicinesApi = baseApi.injectEndpoints({
         method: "GET",
       }),
       providesTags: ["medicines"],
+      
     }),
     singleMedicine: builder.query({
       query: (id) => ({

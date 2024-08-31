@@ -1,42 +1,62 @@
-// import React, { useState, useEffect } from 'react';
-// import { getUserCred } from '../utils/utils';
-// import { Navigate, NavLink } from 'react-router-dom';
-// import AccessDenied from '../components/AccessDenied';
+import Table from '@mui/material/Table';
+import TableBody from '@mui/material/TableBody';
+import TableCell from '@mui/material/TableCell';
+import TableContainer from '@mui/material/TableContainer';
+import TableHead from '@mui/material/TableHead';
+import TableRow from '@mui/material/TableRow';
+import Paper from '@mui/material/Paper';
+import { useAllUserQuery } from '../redux/user/usersApi';
+import Loader from '../components/loader';
+import { useTheme } from '@mui/material/styles';
+import { useSelector } from 'react-redux';
 
-const Alluser = () => {
-  // const userCred = getUserCred();
-  // const [message, setMessage] = useState(null);
-  // const [countdown, setCountdown] = useState(3); // 3-second countdown
+export default function Alluser() {
+  const { data, isLoading } = useAllUserQuery("");
+  const rows = data && data.data;
+  const darkMode=useSelector(state=>state.theme.darkMode)
 
-  // useEffect(() => {
-  //   if (userCred && userCred.role !== "admin") {
-  //     setMessage("You do not have permission to access this page. Redirecting...");
-      
-  //     // Start countdown
-  //     const interval = setInterval(() => {
-  //       setCountdown(prevCount => prevCount - 1);
-  //     }, 1000);
+  const textColor =darkMode ? '#fff' : '#000';
 
-  //     // Redirect after countdown
-  //     setTimeout(() => {
-  //       clearInterval(interval); // Clear interval after countdown
-  //       setCountdown(0); // Ensure countdown stops at 0
-  //       window.location.replace('/'); // Redirect to the home page
-  //     }, 3000);
-
-  //     return () => clearInterval(interval); // Cleanup the interval on component unmount
-  //   }
-  // }, [userCred]);
-
- 
+  if (isLoading) {
+    return <Loader />;
+  }
 
   return (
-    
-        <div>
-          <h1>This is All user UI</h1>
-        </div>
-     
+    <div className="lg:w-[1200px] p-4 ">
+      <TableContainer component={Paper} sx={{ width: '80%', mx: 'auto', backgroundColor: 'transparent', boxShadow: 'none' }}>
+        <Table>
+          <TableHead sx={{  borderBottom: '2px solid #ddd' }}>
+            <TableRow>
+              <TableCell align="left" sx={{ fontSize: '16px', fontWeight: 'bold', border: '1px solid #ddd', color: textColor }}>
+                Name
+              </TableCell>
+              <TableCell align="left" sx={{ fontSize: '16px', fontWeight: 'bold', border: '1px solid #ddd', color: textColor }}>
+                Email
+              </TableCell>
+              <TableCell align="right" sx={{ fontSize: '16px', fontWeight: 'bold', border: '1px solid #ddd', color: textColor }}>
+                Role
+              </TableCell>
+              <TableCell align="right" sx={{ fontSize: '16px', fontWeight: 'bold', border: '1px solid #ddd', color: textColor }}>
+                Action
+              </TableCell>
+              <TableCell align="right" sx={{ fontSize: '16px', fontWeight: 'bold', border: '1px solid #ddd', color: textColor }}>
+                Change Role
+              </TableCell>
+            </TableRow>
+          </TableHead>
+          <TableBody>
+            {rows.map((row) => (
+              <TableRow key={row.name}>
+                <TableCell sx={{ fontSize: '15px', border: '1px solid #ddd', color: textColor }} align="left">{row.name}</TableCell>
+                <TableCell sx={{ fontSize: '15px', border: '1px solid #ddd', color: textColor }} align="left">{row.email}</TableCell>
+                <TableCell sx={{ fontSize: '15px', border: '1px solid #ddd', color: textColor }} align="right">{row.role}</TableCell>
+                <TableCell sx={{ fontSize: '15px', border: '1px solid #ddd', color: textColor }} align="right">Delete User</TableCell>
+                <TableCell sx={{ fontSize: '15px', border: '1px solid #ddd', color: textColor }} align="right">Make Admin/User</TableCell>
+              </TableRow>
+            ))}
+          </TableBody>
+        </Table>
+      </TableContainer>
+    </div>
   );
-};
-
-export default Alluser;
+}
