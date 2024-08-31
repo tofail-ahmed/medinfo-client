@@ -1,12 +1,12 @@
-import React, { useState, useEffect } from 'react';
-import { getUserCred } from '../utils/utils';
-import { Navigate, NavLink } from 'react-router-dom';
-import AccessDenied from '../components/AccessDenied';
+// import React, { useState, useEffect } from 'react';
+// import { getUserCred } from '../utils/utils';
+// import { Navigate, NavLink } from 'react-router-dom';
+// import AccessDenied from '../components/AccessDenied';
 
 const Alluser = () => {
-  const userCred = getUserCred();
-  const [message, setMessage] = useState(null);
-  const [countdown, setCountdown] = useState(3); // 3-second countdown
+  // const userCred = getUserCred();
+  // const [message, setMessage] = useState(null);
+  // const [countdown, setCountdown] = useState(3); // 3-second countdown
 
   // useEffect(() => {
   //   if (userCred && userCred.role !== "admin") {
@@ -28,10 +28,7 @@ const Alluser = () => {
   //   }
   // }, [userCred]);
 
- if(userCred&&userCred.role!=="admin"){
-  
-  return <AccessDenied></AccessDenied>
- }
+ 
 
   return (
     

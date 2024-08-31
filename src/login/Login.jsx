@@ -1,18 +1,20 @@
-import  { useEffect, useState } from 'react';
-import { TextField, Button, Grid, Typography, Container } from '@mui/material';
+import { useEffect, useState } from 'react';
+import { TextField, Button, Grid, Typography, Container, InputAdornment, IconButton } from '@mui/material';
+// import { Visibility, VisibilityOff } from '@mui/icons-material';
 import { NavLink, useNavigate } from "react-router-dom";
 import { useUserLoginMutation } from "../redux/user/usersApi";
-// import { useSelector } from "react-redux";
+import { MdVisibility } from "react-icons/md";
+import { BiSolidHide } from "react-icons/bi";
+
 
 const Login = () => {
   const navigate = useNavigate();
   const [loginUser, { data, isLoading, error }] = useUserLoginMutation();
-
-  // const darkMode = useSelector((state) => state.theme.darkMode);
   const [formData, setFormData] = useState({
     email: "",
     password: "",
   });
+  const [showPassword, setShowPassword] = useState(false); // Password visibility state
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -24,22 +26,21 @@ const Login = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // console.log("Form submitted:", formData);
     loginUser(formData);
   };
+
   useEffect(() => {
     if (isLoading) {
       alert("User login in process, please wait...");
     }
     if (data && data.success) {
-      // console.log(data.data)
-      const userCred={
-        name:data?.data.name,
-        email:data?.data.email,
-        role:data?.data.role
-      }
+      const userCred = {
+        name: data?.data.name,
+        email: data?.data.email,
+        role: data?.data.role
+      };
       alert("User login successfully");
-      localStorage.setItem('user',JSON.stringify(userCred));
+      localStorage.setItem('user', JSON.stringify(userCred));
 
       navigate("/");
     }
@@ -47,9 +48,7 @@ const Login = () => {
       alert(error.data.message);
     }
   }, [data, isLoading, error]);
-  // console.log("data",data)
-  //     console.log("isLoading",isLoading)
-  //     console.log("error",error)
+
   return (
     <Container maxWidth="sm" className="min-h-screen">
       <Typography variant="h4" gutterBottom align="center">
@@ -59,7 +58,6 @@ const Login = () => {
         <Grid container spacing={3}>
           <Grid item xs={12}>
             <TextField
-              sx={{}}
               label="Email"
               name="email"
               variant="outlined"
@@ -76,10 +74,22 @@ const Login = () => {
               name="password"
               variant="outlined"
               fullWidth
-              type="password"
+              type={showPassword ? "text" : "password"} // Toggle password visibility
               value={formData.password}
               onChange={handleChange}
               required
+              InputProps={{
+                endAdornment: (
+                  <InputAdornment position="end">
+                    <IconButton
+                      onClick={() => setShowPassword(!showPassword)}
+                      edge="end"
+                    >
+                      {showPassword ? <BiSolidHide /> : <MdVisibility />}
+                    </IconButton>
+                  </InputAdornment>
+                )
+              }}
             />
           </Grid>
           <Grid item xs={12}>

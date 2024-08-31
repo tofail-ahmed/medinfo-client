@@ -1,11 +1,14 @@
 import  { useEffect, useState } from 'react';
-import { TextField, Button, Grid, Typography, Container } from '@mui/material';
+import { TextField, Button, Grid, Typography, Container, InputAdornment, IconButton } from '@mui/material';
 import { NavLink } from 'react-router-dom';
 import { useUserRegisterMutation } from '../redux/user/usersApi';
+import { BiSolidHide } from 'react-icons/bi';
+import { MdVisibility } from 'react-icons/md';
 
 const Register = () => {
 
   const [createUser,{data,isLoading,error}]=useUserRegisterMutation();
+  const [showPassword, setShowPassword] = useState(false); // Password visibility state
 
   const [formData, setFormData] = useState({
     name: '',
@@ -81,10 +84,22 @@ const Register = () => {
               name="password"
               variant="outlined"
               fullWidth
-              type="password"
+              type={showPassword ? "text" : "password"} // Toggle password visibility
               value={formData.password}
               onChange={handleChange}
               required
+              InputProps={{
+                endAdornment: (
+                  <InputAdornment position="end">
+                    <IconButton
+                      onClick={() => setShowPassword(!showPassword)}
+                      edge="end"
+                    >
+                      {showPassword ? <BiSolidHide /> : <MdVisibility />}
+                    </IconButton>
+                  </InputAdornment>
+                )
+              }}
             />
           </Grid>
           <Grid item xs={12}>

@@ -23,6 +23,8 @@ import BuyMedicine from './BuyMedicine/BuyMedicine.jsx';
 import Register from './register/Register.jsx';
 import Login from './login/Login.jsx';
 import News from './news/News.jsx';
+import NotFound from './components/NotFound.jsx';
+import ProtectedRoute from './routes/ProtectedRoute.jsx';
 // import Dashboard from './layouts/Dashboard.jsx';
 const router = createBrowserRouter([
   {
@@ -79,18 +81,20 @@ const router = createBrowserRouter([
       },
       {
         path:"alluser",
-        element:<Alluser></Alluser>
+        element:<ProtectedRoute><Alluser></Alluser></ProtectedRoute>
       },
       {
         path:"admin",
-        element:<Admin></Admin>
+        element:<ProtectedRoute><Admin></Admin></ProtectedRoute>
       },
       {
         path:"addMedicine",
-        element:<AddMedicine></AddMedicine>
+        element:<ProtectedRoute><AddMedicine></AddMedicine></ProtectedRoute>
       }
     ]
-  }
+  },
+  { path: "*", element: <NotFound /> } // Catch-all 404 route for any other paths
+
 ]);
 
 
