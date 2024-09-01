@@ -26,7 +26,7 @@ const Register = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log('Form submitted:', formData);
+    // console.log('Form submitted:', formData);
     // Here you can send formData to your backend or handle it as needed
   createUser(formData)
   

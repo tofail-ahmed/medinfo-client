@@ -11,7 +11,7 @@ const BuyMedicine = () => {
   
   // Local state to keep track of updated medicine data
   const [updatedData, setUpdatedData] = useState(null);
-console.log(updatedData)
+// console.log(updatedData)
   if (isLoading) {
     return <div>Loading...</div>;
   }
@@ -30,7 +30,7 @@ console.log(updatedData)
 
       try {
         const result = await sellAvailabity({ id, body: { amountSold } }).unwrap();
-        console.log(result.data)
+        // console.log(result.data)
         setUpdatedData(result.data); // Update local state with the latest data
         alert("Medicine sold and availability updated successfully!");
       } catch (error) {

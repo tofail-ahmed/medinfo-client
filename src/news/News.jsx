@@ -30,7 +30,7 @@ const News = () => {
   const handleApiChange = (event) => {
     setApiUrl(apiOptions[event.target.value]);
   };
-console.log({news})
+// console.log({news})
 if(news===null){
       return <h1 className="text-2xl font-semibold text-center">Articles Loading...</h1>
 }

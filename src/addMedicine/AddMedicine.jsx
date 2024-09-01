@@ -61,7 +61,7 @@ const AddMedicine = () => {
       warnings: warningsArray,
     }
     createMedicine(newMedicine)
-    console.log(newMedicine)
+    // console.log(newMedicine)
     
   };
   useEffect(() => {

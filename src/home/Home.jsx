@@ -11,7 +11,7 @@ const Home = () => {
     return <h1 className="h-screen">Loading...</h1>;
   }
   const userCred=getUserCred();
-  console.log(userCred)
+  // console.log(userCred)
   // console.log(data.data)
   return (
     <div className="">

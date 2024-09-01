@@ -13,7 +13,7 @@ const MedicineDetails = () => {
   if (error) {
     return <div>Something went wrong...</div>;
   }
-  console.log(data);
+  // console.log(data);
   return (
     <div className="min-h-screen">
       <h1>This is medicine details</h1>
