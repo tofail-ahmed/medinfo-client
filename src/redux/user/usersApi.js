@@ -31,8 +31,16 @@ const usersApi=baseApi.injectEndpoints({
                         id
                   }),
                   invalidatesTags:['users']
+            }),
+            updateRole:builder.mutation({
+                  query:({id,role})=>({
+                        url:`/userRole/${id}`,
+                        method:"PUT",
+                        body: { role }, // Send the role in the body
+                  }),
+                  invalidatesTags:['users']
             })
       })
 })
 
-export const {useUserRegisterMutation,useUserLoginMutation,useAllUserQuery,useDeleteUserMutation}=usersApi;
+export const {useUserRegisterMutation,useUserLoginMutation,useAllUserQuery,useDeleteUserMutation,useUpdateRoleMutation}=usersApi;
