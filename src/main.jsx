@@ -10,7 +10,7 @@ import Home from './home/Home.jsx';
 import About from './about/About.jsx';
 import Contact from './contact/Contact.jsx';
 import { Provider } from 'react-redux';
-import { store } from './redux/store.js';
+import { persistor, store } from './redux/store.js';
 import MainLayout from './layouts/MainLayout.jsx';
 import DashboardLayout from './layouts/DashboardLayout.jsx';
 import Dashboard from './Dashboard/Dashboard.jsx';
@@ -25,6 +25,7 @@ import Login from './login/Login.jsx';
 import News from './news/News.jsx';
 import NotFound from './components/NotFound.jsx';
 import ProtectedRoute from './routes/ProtectedRoute.jsx';
+import { PersistGate } from 'redux-persist/integration/react';
 // import Dashboard from './layouts/Dashboard.jsx';
 const router = createBrowserRouter([
   {
@@ -101,7 +102,10 @@ const router = createBrowserRouter([
 createRoot(document.getElementById('root')).render(
   <StrictMode>
     <Provider store={store}>
+    <PersistGate loading={null} persistor={persistor}>
      <RouterProvider router={router} />
+     </PersistGate>
+
      </Provider>
   </StrictMode>,
 )
