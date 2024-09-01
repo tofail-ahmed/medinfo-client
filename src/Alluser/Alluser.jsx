@@ -60,7 +60,7 @@ export default function Alluser() {
    
   };
   // console.log(deleteData)
-  console.log(RoleData)
+  // console.log(RoleData)
 
 
   const handleUpdateRole = (id, currentRole) => {

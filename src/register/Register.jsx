@@ -1,11 +1,12 @@
 import  { useEffect, useState } from 'react';
 import { TextField, Button, Grid, Typography, Container, InputAdornment, IconButton } from '@mui/material';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useNavigate } from 'react-router-dom';
 import { useUserRegisterMutation } from '../redux/user/usersApi';
 import { BiSolidHide } from 'react-icons/bi';
 import { MdVisibility } from 'react-icons/md';
 
 const Register = () => {
+  const navigate = useNavigate();
 
   const [createUser,{data,isLoading,error}]=useUserRegisterMutation();
   const [showPassword, setShowPassword] = useState(false); // Password visibility state
@@ -40,13 +41,21 @@ const Register = () => {
           alert("User registration in process, please wait...");
         }
         if (data && data.success) {
-          alert("User registered successfully");
+          const userCred = {
+            name: data?.data.name,
+            email: data?.data.email,
+            role: data?.data.role
+          };
+          alert("User registeres successfully");
+          localStorage.setItem('user', JSON.stringify(userCred));
+    
+          navigate("/");
         }
         if(error&&error.status===409){
               alert(error.data.message)
         }
       }, [data, isLoading,error]);
-
+// console.log(data&&data.data)
       
   return (
     <Container maxWidth="sm" className="min-h-screen">

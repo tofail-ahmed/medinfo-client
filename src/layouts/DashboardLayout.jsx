@@ -2,9 +2,15 @@
 import Sidebar from '../components/Sidebar'
 import { Outlet } from 'react-router'
 import { useSelector } from 'react-redux'
+import { getUserCred } from '../utils/utils';
+import AccessDenied from '../components/AccessDenied';
 
 const DashboardLayout = () => {
-  const darkMode=useSelector((store)=>store.theme.darkMode)
+  const darkMode=useSelector((store)=>store.theme.darkMode);
+  const userCred=getUserCred()
+  if(userCred&&userCred.role!=="admin"){
+    return <AccessDenied/>
+  }
   return (
     <div  className={`${darkMode?"bg-black text-white":""}`}>
 

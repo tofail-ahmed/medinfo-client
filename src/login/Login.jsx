@@ -5,10 +5,13 @@ import { NavLink, useNavigate } from "react-router-dom";
 import { useUserLoginMutation } from "../redux/user/usersApi";
 import { MdVisibility } from "react-icons/md";
 import { BiSolidHide } from "react-icons/bi";
+import { useDispatch } from 'react-redux';
+import { setMedInfoUserCred } from '../redux/user/userSlice';
 
 
 const Login = () => {
   const navigate = useNavigate();
+  const dispatch=useDispatch()
   const [loginUser, { data, isLoading, error }] = useUserLoginMutation();
   const [formData, setFormData] = useState({
     email: "",
@@ -41,13 +44,15 @@ const Login = () => {
       };
       alert("User login successfully");
       localStorage.setItem('user', JSON.stringify(userCred));
+      dispatch(setMedInfoUserCred(userCred));  // Update the user state in Redux
 
       navigate("/");
+      
     }
     if (error && error.status === 409) {
       alert(error.data.message);
     }
-  }, [data, isLoading, error]);
+  }, [data, isLoading, error,dispatch,navigate]);
 
   return (
     <Container maxWidth="sm" className="min-h-screen">
