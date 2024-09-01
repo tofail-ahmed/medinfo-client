@@ -2,17 +2,17 @@
 import { useNavigate } from "react-router";
 import { useAllMedicinesQuery } from "../redux/medicine/medicinesApi";
 import { NavLink } from "react-router-dom";
-import { getUserCred } from "../utils/utils";
+import { useSelector } from "react-redux";
 
 const Home = () => {
+  const userCred=useSelector((state)=>state.medInfoUser.medInfoUserCred);
+
   const navigate = useNavigate();
   const { data, isLoading } = useAllMedicinesQuery("");
   if (isLoading) {
     return <h1 className="h-screen">Loading...</h1>;
   }
-  const userCred=getUserCred();
-  // console.log(userCred)
-  // console.log(data.data)
+  console.log(userCred)
   return (
     <div className="">
       <div className="mx-10 ">

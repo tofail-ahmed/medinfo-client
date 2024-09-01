@@ -5,11 +5,13 @@ import { NavLink, useNavigate } from "react-router-dom";
 import { useUserLoginMutation } from "../redux/user/usersApi";
 import { MdVisibility } from "react-icons/md";
 import { BiSolidHide } from "react-icons/bi";
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { setMedInfoUserCred } from '../redux/user/userSlice';
 
 
 const Login = () => {
+  const userData=useSelector((state)=>state.medInfoUser.medInfoUserCred);
+  console.log(userData)
   const navigate = useNavigate();
   const dispatch=useDispatch()
   const [loginUser, { data, isLoading, error }] = useUserLoginMutation();
@@ -43,7 +45,7 @@ const Login = () => {
         role: data?.data.role
       };
       alert("User login successfully");
-      localStorage.setItem('user', JSON.stringify(userCred));
+      // localStorage.setItem('user', JSON.stringify(userCred));
       dispatch(setMedInfoUserCred(userCred));  // Update the user state in Redux
 
       navigate("/");

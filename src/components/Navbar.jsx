@@ -1,16 +1,16 @@
 import { useDispatch, useSelector } from "react-redux";
 import { NavLink } from "react-router-dom";
 import { toggleDarkMode } from "../redux/theme/themeslice";
-import { useState, useEffect } from "react";
-import { getUserCred } from "../utils/utils";
+// import { useState, useEffect } from "react";
+// import { getUserCred } from "../utils/utils";
 import {clearMedInfoUserCred} from "../redux/user/userSlice"
 
 
 
 const Navbar = () => {
-  const [userCred, setUserCred] = useState(getUserCred());
-  const medInfoUserData=useSelector((state)=>state)
-  console.log(medInfoUserData)
+ 
+  const userData=useSelector((state)=>state.medInfoUser.medInfoUserCred)
+  // console.log(userData)
   const dispatch = useDispatch();
   const darkMode = useSelector((state) => state.theme.darkMode);
 
@@ -19,23 +19,14 @@ const Navbar = () => {
   };
 
   const handleLogout = () => {
-    localStorage.removeItem("user");
-    dispatch(clearMedInfoUserCred());  // Clear user credentials in Redux
-
+   
+    dispatch(clearMedInfoUserCred());  
   };
 
-  useEffect(() => {
-    // Listen to login changes
-    // const handleStorageChange = () => {
-      setUserCred(getUserCred());
-    // };
+ 
 
-    // window.addEventListener("storage", handleStorageChange);
-
-    // return () => {
-    //   window.removeEventListener("storage", handleStorageChange);
-    // };
-  }, []);
+  
+  
 
   return (
     <div className="bg-red-300/30 mx-auto">
@@ -49,7 +40,7 @@ const Navbar = () => {
         <NavLink className="bg-green-400 rounded-md font-bold m-4 p-2" to={"/about"}>
           About
         </NavLink>
-        {userCred && userCred.role === "admin" && (
+        {userData && userData.role === "admin" && (
           <NavLink className="bg-green-400 rounded-md font-bold m-4 p-2" to={"/dashboard"}>
             Dashboard
           </NavLink>
@@ -57,7 +48,7 @@ const Navbar = () => {
         <NavLink className="bg-green-400 rounded-md font-bold m-4 p-2" to={"/search"}>
           Search
         </NavLink>
-        {userCred && userCred.email ? (
+        {userData && userData.email ? (
           <NavLink
             className="bg-green-400 rounded-md font-bold m-4 p-2"
             onClick={handleLogout}

@@ -9,10 +9,10 @@ const userSlice = createSlice({
   },
   reducers: {
    setMedInfoUserCred : (state, action) => {
-      state.userCred = action.payload;
+      state.medInfoUserCred = action.payload;
     },
     clearMedInfoUserCred: (state) => {
-      state.userCred = null;
+      state.medInfoUserCred = null;
     },
   },
 });

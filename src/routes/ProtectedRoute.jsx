@@ -1,10 +1,12 @@
-import React from 'react'
-import { getUserCred } from '../utils/utils'
+// import { getUserCred } from '../utils/utils'
 import AccessDenied from '../components/AccessDenied';
+import { useSelector } from 'react-redux';
 
 const ProtectedRoute = ({children}) => {
-      const userCred=getUserCred();
-      if(userCred&&userCred.role!=="admin"){
+  
+  const userCred=useSelector((state)=>state.medInfoUser.medInfoUserCred);
+  console.log(userCred)
+      if(userCred===null||userCred.role!=="admin"){
   
             return <AccessDenied></AccessDenied>
            }

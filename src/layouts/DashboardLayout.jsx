@@ -2,13 +2,15 @@
 import Sidebar from '../components/Sidebar'
 import { Outlet } from 'react-router'
 import { useSelector } from 'react-redux'
-import { getUserCred } from '../utils/utils';
+// import { getUserCred } from '../utils/utils';
 import AccessDenied from '../components/AccessDenied';
 
 const DashboardLayout = () => {
+  const userCred=useSelector((state)=>state.medInfoUser.medInfoUserCred);
+  console.log(userCred)
   const darkMode=useSelector((store)=>store.theme.darkMode);
-  const userCred=getUserCred()
-  if(userCred&&userCred.role!=="admin"){
+ 
+  if(userCred===null||userCred.role!=="admin"){
     return <AccessDenied/>
   }
   return (

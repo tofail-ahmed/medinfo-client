@@ -4,10 +4,14 @@ import { NavLink, useNavigate } from 'react-router-dom';
 import { useUserRegisterMutation } from '../redux/user/usersApi';
 import { BiSolidHide } from 'react-icons/bi';
 import { MdVisibility } from 'react-icons/md';
+import { useDispatch, useSelector } from 'react-redux';
+import { setMedInfoUserCred } from '../redux/user/userSlice';
 
 const Register = () => {
+  const userData=useSelector((state)=>state.medInfoUser.medInfoUserCred);
+  console.log(userData)
   const navigate = useNavigate();
-
+const dispatch=useDispatch();
   const [createUser,{data,isLoading,error}]=useUserRegisterMutation();
   const [showPassword, setShowPassword] = useState(false); // Password visibility state
 
@@ -47,8 +51,8 @@ const Register = () => {
             role: data?.data.role
           };
           alert("User registeres successfully");
-          localStorage.setItem('user', JSON.stringify(userCred));
-    
+          // localStorage.setItem('user', JSON.stringify(userCred));
+          dispatch(setMedInfoUserCred(userCred));
           navigate("/");
         }
         if(error&&error.status===409){
