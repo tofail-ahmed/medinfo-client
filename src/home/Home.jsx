@@ -2,22 +2,23 @@
 import { useNavigate } from "react-router";
 import { useAllMedicinesQuery } from "../redux/medicine/medicinesApi";
 import { NavLink } from "react-router-dom";
-import { useSelector } from "react-redux";
+// import { useSelector } from "react-redux";
+import Loader from "../components/Loader";
 
 const Home = () => {
-  const userCred=useSelector((state)=>state.medInfoUser.medInfoUserCred);
+  // const userCred=useSelector((state)=>state.medInfoUser.medInfoUserCred);
 
   const navigate = useNavigate();
   const { data, isLoading } = useAllMedicinesQuery("");
   if (isLoading) {
-    return <h1 className="h-screen">Loading...</h1>;
+    return <Loader/>;
   }
-  console.log(userCred)
+  // console.log(userCred)
   return (
     <div className="">
       <div className="mx-10 ">
         <ul>
-          {data.data.map((medicine, index) => (
+          {data?.data.map((medicine, index) => (
             <div className="bg-slate-400/30 rounded-md my-4 px-10 py-2" key={index}>
               <li className="text-2xl">
                 {index + 1}. {medicine.medicine_name}

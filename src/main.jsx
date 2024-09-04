@@ -26,6 +26,7 @@ import News from './news/News.jsx';
 import NotFound from './components/NotFound.jsx';
 import ProtectedRoute from './routes/ProtectedRoute.jsx';
 import { PersistGate } from 'redux-persist/integration/react';
+import PurchaseMedicine from './purchaseMedicine/PurchaseMedicine.jsx';
 // import Dashboard from './layouts/Dashboard.jsx';
 const router = createBrowserRouter([
   {
@@ -56,6 +57,10 @@ const router = createBrowserRouter([
         {
           path:"/buyMedicine/:id",
           element:<BuyMedicine></BuyMedicine>
+        },
+        {
+          path:"/purchaseMedicine/:id",
+          element:<PurchaseMedicine></PurchaseMedicine>
         },
         {
           path:"/register",

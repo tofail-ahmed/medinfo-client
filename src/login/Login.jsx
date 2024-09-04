@@ -40,6 +40,7 @@ const Login = () => {
     }
     if (data && data.success) {
       const userCred = {
+        id:data?.data._id,
         name: data?.data.name,
         email: data?.data.email,
         role: data?.data.role
