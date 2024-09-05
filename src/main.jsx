@@ -28,6 +28,7 @@ import ProtectedRoute from './routes/ProtectedRoute.jsx';
 import { PersistGate } from 'redux-persist/integration/react';
 // import PurchaseMedicine from './purchaseMedicine/PurchaseMedicine.jsx';
 import RestrictedRoute from './routes/RestrictedRoute.jsx';
+import { Toaster } from 'sonner';
 // import Dashboard from './layouts/Dashboard.jsx';
 const router = createBrowserRouter([
   {
@@ -106,12 +107,14 @@ const router = createBrowserRouter([
 
 
 createRoot(document.getElementById('root')).render(
-  <StrictMode>
+  
     <Provider store={store}>
     <PersistGate loading={null} persistor={persistor}>
+    <Toaster 
+    position="top-right"    />
      <RouterProvider router={router} />
      </PersistGate>
 
      </Provider>
-  </StrictMode>,
+ 
 )
