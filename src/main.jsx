@@ -1,4 +1,4 @@
-import { StrictMode } from 'react'
+// import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
 // import App from './App.jsx'
 import './index.css';
@@ -29,6 +29,7 @@ import { PersistGate } from 'redux-persist/integration/react';
 // import PurchaseMedicine from './purchaseMedicine/PurchaseMedicine.jsx';
 import RestrictedRoute from './routes/RestrictedRoute.jsx';
 import { Toaster } from 'sonner';
+import Profile from './Profile/Profile.jsx';
 // import Dashboard from './layouts/Dashboard.jsx';
 const router = createBrowserRouter([
   {
@@ -75,6 +76,10 @@ const router = createBrowserRouter([
         {
           path:"/news",
           element:<News></News>
+        },
+        {
+          path:"/profile",
+          element:<RestrictedRoute><Profile></Profile></RestrictedRoute>
         }
       
     ]

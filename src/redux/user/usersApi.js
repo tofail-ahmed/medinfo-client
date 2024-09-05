@@ -48,12 +48,13 @@ const usersApi = baseApi.injectEndpoints({
       }),
       invalidatesTags: ["users"],
     }),
-    singleUser:builder.query({
-      query:({id})=>({
-        url:`/singleUser/${id}`,
-        method:"GET"
-      })
-    })
+    singleUser: builder.query({
+      query: (id) => ({
+        url: `/singleUser/${id}`,  // Send the id directly
+        method: "GET"
+      }),
+      providesTags: ["users"],
+    }),
   }),
 });
 

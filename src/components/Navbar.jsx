@@ -49,12 +49,15 @@ const Navbar = () => {
           Search
         </NavLink>
         {userData && userData.email ? (
+         
           <NavLink
             className="bg-green-400 rounded-md font-bold m-4 p-2"
             onClick={handleLogout}
           >
             Logout
           </NavLink>
+           
+         
         ) : (
           <NavLink className="bg-green-400 rounded-md font-bold m-4 p-2" to={"/login"}>
             Login
@@ -65,6 +68,12 @@ const Navbar = () => {
             {darkMode ? "Light" : "Dark"}
           </div>
         </button>
+        <NavLink
+            className="bg-green-400 rounded-md font-bold m-4 p-2"
+            to={"/profile"}
+          >
+            {userData?.name}
+          </NavLink>
       </div>
     </div>
   );

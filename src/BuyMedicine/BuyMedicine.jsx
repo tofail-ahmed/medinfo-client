@@ -4,6 +4,7 @@ import { useSingleMedicineQuery, useSellAvailabityMutation } from "../redux/medi
 import { Grid, TextField, Button } from "@mui/material";
 import { usePurchaseMedicineMutation } from "../redux/user/usersApi";
 import { useSelector } from "react-redux";
+import { toast } from "sonner";
 
 const BuyMedicine = () => {
   const userCred = useSelector((state) => state.medInfoUser.medInfoUserCred);
@@ -24,11 +25,11 @@ const BuyMedicine = () => {
 
   useEffect(() => {
     if (purchaseLoading) {
-      alert("Medicine purchasing in process, please wait...");
+      toast.info("Medicine purchasing in process, please wait...");
     } else if (purchaseData?.success) {
-      alert("Medicine purchased successfully");
+      toast.success("Medicine purchased successfully");
     } else if (purchaseError?.status === 409) {
-      alert(purchaseError.data.message);
+      toast.error(purchaseError.data.message);
     }
   }, [purchaseData, purchaseLoading, purchaseError]);
 
