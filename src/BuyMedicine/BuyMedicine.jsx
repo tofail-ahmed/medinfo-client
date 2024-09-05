@@ -1,4 +1,4 @@
-import { useParams } from "react-router";
+import { useNavigate, useParams } from "react-router";
 import { useEffect, useState } from "react";
 import { useSingleMedicineQuery, useSellAvailabityMutation } from "../redux/medicine/medicinesApi";
 import { Grid, TextField, Button } from "@mui/material";
@@ -10,6 +10,11 @@ const BuyMedicine = () => {
   console.log(userCred)
   const { id } = useParams();
 
+// const navigate=useNavigate()
+// if(userCred===null){
+//   alert("Login first ⚠")
+//   navigate("/login")
+// } 
   const { data, isLoading, error } = useSingleMedicineQuery(id);
   const [amountSold, setAmountSold] = useState(0);
   const [updatedData, setUpdatedData] = useState(null);
