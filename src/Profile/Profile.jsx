@@ -34,14 +34,14 @@ const Profile = () => {
             
             <div key={idx}>
                   console.log(med)
-              <p>{idx+1}. {med.medicineName}</p>
-              <p>Quantiy: {med.medicineAmount}</p>
-              <button
-                className="border-2 rounded-md border-red-300"
+              <p>{idx+1}. <button
+                className="text-xl font-bold text-blue-400 hover:text-blue-800 duration-200"
                 onClick={() => navigate(`/medicine/${med.medicineId}`)}
               >
-                Details
-              </button>
+                 {med.medicineName}
+              </button></p>
+              <p>Quantiy: {med.medicineAmount}</p>
+              
             </div>
           ))}
         </div>
