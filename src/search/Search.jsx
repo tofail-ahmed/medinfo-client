@@ -4,10 +4,12 @@ import { useSelector } from 'react-redux';
 import { useSearchMedicineQuery } from '../redux/medicine/medicinesApi';
 import { GiHealingShield } from "react-icons/gi";
 import Loader from '../components/Loader';
+import { NavLink, useNavigate } from 'react-router-dom';
 
 
 
 const Search = () => {
+  const navigate=useNavigate()
   const darkMode = useSelector((store) => store.theme.darkMode);
   const [query, setQuery] = useState('');
   const [searchTerm, setSearchTerm] = useState(null);
@@ -70,6 +72,19 @@ const Search = () => {
            }
            </div>
             </div>
+            <button
+                className="border-2 rounded-md border-red-300"
+                onClick={() => navigate(`/medicine/${medicine._id}`)}
+              >
+                Details
+              </button>
+
+              <NavLink
+                className="border-2 rounded-md border-red-300 bg-orange-300"
+                to={`/buyMedicine/${medicine._id}`}
+              >
+                Buy Now
+              </NavLink>
           </div>
         ))):<div className='flex justify-center items-center'>
             <h1 className='text-2xl text-red-500 font-semibold text-center my-6 flex items-center gap-2'><GiHealingShield />
