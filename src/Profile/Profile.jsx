@@ -21,7 +21,7 @@ const Profile = () => {
   if (error) return <div>Error loading user data...</div>;
 
   const userData = data?.data;
-
+console.log(data?.data?.purchaseList)
   return (
     <div className="flex justify-center items-center my-10 bg-lime-500/50">
       <div className="min-h-screen ">
@@ -32,10 +32,10 @@ const Profile = () => {
       {userData?.purchaseList && userData.purchaseList.length > 0 ? (
         <div>
           <h3>Purchased Medicines:</h3>
-          {userData.purchaseList.map((med, idx) => (
+          {[...userData.purchaseList].reverse().map((med, idx) => (
             
             <div key={idx}>
-                  console.log(med)
+               
               <p>{idx+1}. <button
                 className="text-xl font-bold text-blue-400 hover:text-blue-800 duration-200"
                 onClick={() => navigate(`/medicine/${med.medicineId}`)}
@@ -43,6 +43,7 @@ const Profile = () => {
                  {med.medicineName}
               </button></p>
               <p>Quantiy: {med.medicineAmount}</p>
+              <p>purchased At: {med.purchasedAt}</p>
               
             </div>
           ))}
