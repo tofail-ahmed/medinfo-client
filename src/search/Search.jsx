@@ -3,6 +3,7 @@ import { FaSearchPlus } from "react-icons/fa";
 import { useSelector } from 'react-redux';
 import { useSearchMedicineQuery } from '../redux/medicine/medicinesApi';
 import { GiHealingShield } from "react-icons/gi";
+import Loader from '../components/Loader';
 
 
 
@@ -48,7 +49,7 @@ const Search = () => {
         </div>
       </div>
 
-      {isLoading && <p>Loading...</p>}
+      {isLoading && <Loader/>}
       {error && <p>Error fetching data</p>}
       <div className="mx-10">
       <ul>
