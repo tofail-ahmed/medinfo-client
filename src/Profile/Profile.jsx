@@ -1,6 +1,7 @@
 import { useSelector } from "react-redux";
 import { useSingleUserQuery } from "../redux/user/usersApi";
 import { useNavigate } from "react-router";
+import Loader from "../components/Loader";
 
 const Profile = () => {
       const navigate=useNavigate()
@@ -16,13 +17,14 @@ const Profile = () => {
   // Fetch user data with the id
   const { data, isLoading, error } = useSingleUserQuery(id);
 
-  if (isLoading) return <div>Loading...</div>;
+  if (isLoading) return <Loader/>;
   if (error) return <div>Error loading user data...</div>;
 
   const userData = data?.data;
 
   return (
-    <div className="min-h-screen">
+    <div className="flex justify-center items-center my-10 bg-lime-500/50">
+      <div className="min-h-screen ">
       <h1 className="text-center text-xl font-semibold">{userData?.name}</h1>
       <p>Email: {userData?.email}</p>
       <p>Role: {userData?.role}</p>
@@ -48,6 +50,7 @@ const Profile = () => {
       ) : (
         <p>No medicines purchased yet.</p>
       )}
+    </div>
     </div>
   );
 };
