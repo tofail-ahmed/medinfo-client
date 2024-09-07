@@ -1,6 +1,7 @@
 import { useParams } from "react-router";
 import { useSingleMedicineQuery } from "../redux/medicine/medicinesApi";
 import { NavLink } from "react-router-dom";
+import Loader from "../components/Loader";
 
 const MedicineDetails = () => {
   const { id } = useParams();
@@ -8,7 +9,7 @@ const MedicineDetails = () => {
   const { data, isLoading, error } = useSingleMedicineQuery(id);
 
   if (isLoading) {
-    return <div>Loading...</div>;
+    return <Loader></Loader>;
   }
   if (error) {
     return <div>Something went wrong...</div>;
