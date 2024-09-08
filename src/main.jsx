@@ -30,6 +30,7 @@ import { PersistGate } from 'redux-persist/integration/react';
 import RestrictedRoute from './routes/RestrictedRoute.jsx';
 import { Toaster } from 'sonner';
 import Profile from './Profile/Profile.jsx';
+import AllMed from './allMed/AllMed.jsx';
 // import Dashboard from './layouts/Dashboard.jsx';
 const router = createBrowserRouter([
   {
@@ -103,7 +104,12 @@ const router = createBrowserRouter([
       {
         path:"addMedicine",
         element:<ProtectedRoute><AddMedicine></AddMedicine></ProtectedRoute>
-      }
+      },
+      {
+        path:"allMedicine",
+        element:<ProtectedRoute><AllMed></AllMed></ProtectedRoute>
+      },
+
     ]
   },
   { path: "*", element: <NotFound /> } // Catch-all 404 route for any other paths

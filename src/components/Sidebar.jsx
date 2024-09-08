@@ -53,6 +53,12 @@ const Sidebar = () => {
           </NavLink>
           <NavLink
             className={"bg-green-400 rounded-md font-bold m-4 text-center p-2"}
+            to={"/dashboard/allMedicine"}
+          >
+            All Medicine
+          </NavLink>
+          <NavLink
+            className={"bg-green-400 rounded-md font-bold m-4 text-center p-2"}
             to={"/dashboard/admin"}
           >
             Admin
