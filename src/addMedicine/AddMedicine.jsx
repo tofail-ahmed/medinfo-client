@@ -16,7 +16,7 @@ const AddMedicine = () => {
     actions: "",
     interactions: [],
     uses: [],
-    sold: 0,
+    available:0,
     warnings: [],
   });
 
@@ -54,6 +54,7 @@ const AddMedicine = () => {
 //     });
     const newMedicine={
       ...medicineData,
+      available: Number(medicineData.available), 
       alt_medicines: altMedicinesArray,
       side_effects: sideEffectsArray,
       interactions: interactionsArray,
@@ -139,12 +140,12 @@ const AddMedicine = () => {
                 display: "block",
               }}
               fullWidth
-              label="Sold Count"
+              label="Available Quantity"
               variant="outlined"
               size="small"
-              name="sold"
+              name="available"
               type="number"
-              value={medicineData.sold}
+              value={medicineData.available}
               onChange={handleChange}
             />
           </Grid>

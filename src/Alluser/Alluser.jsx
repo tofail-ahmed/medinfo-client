@@ -11,6 +11,8 @@ import Loader from "../components/loader";
 import { useSelector } from "react-redux";
 import { Button } from "@mui/material";
 import { useEffect } from "react";
+import { FaUser, FaUserShield } from 'react-icons/fa';
+import { MdAdminPanelSettings } from 'react-icons/md';
 // import { getUserCred } from '../utils/utils';
 
 export default function Alluser() {
@@ -162,15 +164,31 @@ export default function Alluser() {
                   {row.email}
                 </TableCell>
                 <TableCell
-                  sx={{
-                    fontSize: "15px",
-                    border: "1px solid #ddd",
-                    color: textColor,
-                  }}
-                  align="right"
-                >
-                  {row.role}
-                </TableCell>
+  sx={{
+    fontSize: "15px",
+    border: "1px solid #ddd",
+    color: textColor, // Adjust the text color based on the mode (if necessary)
+    // background: row.role === "admin" ? "#11d875" : "#11a5d8", // Conditionally set background color
+    fontWeight: row.role === "admin" ? "bold" : "300", // "bold" for admin, "semibold" (600) for user
+    textTransform: "uppercase", // Always uppercase
+  }}
+  align="right"
+>
+ <div className='flex justify-end items-center gap-[5px]'>
+ <div> {row.role}</div>
+  <div >
+  {row.role === "admin" ? (
+    <span className="text-2xl"><FaUserShield />
+
+</span> // Checkmark for admin
+  ) : (
+    <span className="text-xl"><FaUser />
+</span> // Cross mark for user
+  )}
+  </div>
+ </div>
+</TableCell>
+
                 <TableCell
                   sx={{
                     fontSize: "15px",
@@ -211,7 +229,7 @@ export default function Alluser() {
                       color: "green",
                       borderColor: "green",
                       "&:hover": {
-                        backgroundColor: "#508D4E",
+                        backgroundColor: "lightgreen",
                         borderColor: "#387F39",
                       },
                     }}
