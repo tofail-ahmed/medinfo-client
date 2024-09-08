@@ -10,7 +10,7 @@ import { setMedInfoUserCred } from '../redux/user/userSlice';
 
 
 const Login = () => {
-  const userData=useSelector((state)=>state.medInfoUser.medInfoUserCred);
+  // const userData=useSelector((state)=>state.medInfoUser.medInfoUserCred);
   // console.log(userData)
   const navigate = useNavigate();
   const dispatch=useDispatch()
