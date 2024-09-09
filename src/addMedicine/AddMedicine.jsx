@@ -78,7 +78,7 @@ const AddMedicine = () => {
     }, [data, isLoading,error]);
   
   return (
-    <div>
+    <div className="my-10">
       <h1>Add New Medicine</h1>
       <form onSubmit={handleSubmit}>
         {/* <Grid item xs={12} sm={4} md={6} > */}

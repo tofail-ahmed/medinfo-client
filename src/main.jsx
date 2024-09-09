@@ -31,6 +31,7 @@ import RestrictedRoute from './routes/RestrictedRoute.jsx';
 import { Toaster } from 'sonner';
 import Profile from './Profile/Profile.jsx';
 import AllMed from './allMed/AllMed.jsx';
+import UpdateMed from './UpdateMed/UpdateMed.jsx';
 // import Dashboard from './layouts/Dashboard.jsx';
 const router = createBrowserRouter([
   {
@@ -108,6 +109,10 @@ const router = createBrowserRouter([
       {
         path:"allMedicine",
         element:<ProtectedRoute><AllMed></AllMed></ProtectedRoute>
+      },
+      {
+        path:"updateMed/:id",
+        element:<ProtectedRoute><UpdateMed></UpdateMed></ProtectedRoute>
       },
 
     ]

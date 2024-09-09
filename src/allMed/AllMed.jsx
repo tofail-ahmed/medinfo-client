@@ -5,6 +5,7 @@ import { useSelector } from 'react-redux';
 import { useAllMedicinesQuery } from '../redux/medicine/medicinesApi';
 import Loader from '../components/loader';
 import { useNavigate } from "react-router";
+import { NavLink } from 'react-router-dom';
 
 const AllMed = () => {
   const navigate = useNavigate();
@@ -19,6 +20,9 @@ const AllMed = () => {
   const rows = medData?.data;
   if (medLoading) {
     return <Loader />;
+  }
+  const handleUpdate=(id)=>{
+    navigate(`/dashboard/updateMed/${id}`)
   }
   return (
     <div className="lg:w-[1200px] w-full p-4 ">
@@ -109,7 +113,18 @@ const AllMed = () => {
                   color: textColor,
                 }}
               >
-                Change Role
+                Update
+              </TableCell>
+              <TableCell
+                align="right"
+                sx={{
+                  fontSize: "16px",
+                  fontWeight: "bold",
+                  border: "1px solid #ddd",
+                  color: textColor,
+                }}
+              >
+                Details
               </TableCell>
             </TableRow>
           </TableHead>
@@ -215,7 +230,7 @@ const AllMed = () => {
                   align="right"
                 >
                   <Button
-                    //    onClick={() => handleUpdateRole(row._id, row.role)}
+                       onClick={() => handleUpdate(row._id)}
                     variant="outlined"
                     size="small"
                     sx={{
@@ -227,7 +242,7 @@ const AllMed = () => {
                       },
                     }}
                   >
-                    Update
+             <NavLink>       Update</NavLink>
                   </Button>
                 </TableCell>
                 <TableCell
