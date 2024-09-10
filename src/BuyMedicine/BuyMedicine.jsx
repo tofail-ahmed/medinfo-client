@@ -5,7 +5,10 @@ import { Grid, TextField, Button } from "@mui/material";
 import { usePurchaseMedicineMutation } from "../redux/user/usersApi";
 import { useSelector } from "react-redux";
 import { toast } from "sonner";
-import Loader from "../components/Loader";
+import Loader from "../components/loader";
+
+
+
 
 const BuyMedicine = () => {
   const userCred = useSelector((state) => state.medInfoUser.medInfoUserCred);
