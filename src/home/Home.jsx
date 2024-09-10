@@ -14,6 +14,7 @@ const Home = () => {
     return <Loader/>;
   }
   // console.log(userCred)
+  console.log(data?.data)
   return (
     <div className="">
       <div className="mx-10 ">

@@ -10,8 +10,9 @@ const Sidebar = () => {
   const darkModeHnadler = () => {
     dispatch(toggleDarkMode());
   };
-  const userCred =useSelector((state)=>state.medInfoUser.medInforUserCred);
-  console.log(userCred)
+  const userCred=useSelector((state)=>state.medInfoUser.medInfoUserCred);
+
+  // console.log(userCred)
   return (
     <div className="bg-red-300/30   ">
       <div className="flex flex-col gap-10 justify-around">

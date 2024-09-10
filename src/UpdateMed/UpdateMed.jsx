@@ -1,11 +1,21 @@
 import  { useState, useEffect } from 'react';
 import { useParams } from 'react-router';
-import { useSingleMedicineQuery } from '../redux/medicine/medicinesApi';
+import { useSingleMedicineQuery, useUpdateMedMutation } from '../redux/medicine/medicinesApi';
 import Loader from '../components/loader';
 import { TextField, Grid, Button } from '@mui/material';
+import { toast } from 'sonner';
+// import { useSelector } from 'react-redux';
 
 const UpdateMed = () => {
-  const { id } = useParams();
+      // const darkMode = useSelector((state) => state.theme.darkMode);
+      // const textColor = darkMode ? "#fff" : "#000";
+const [medicineDetails,{isLoading:updateMedLoading}]=useUpdateMedMutation()
+
+if(updateMedLoading){
+      toast.info("Medicine update in progress, please wait...")
+}
+
+      const { id } = useParams();
   const { data: medData, isLoading: medLoading, error: medError } = useSingleMedicineQuery(id);
   const [medicineData, setMedicineData] = useState({
     medicine_name: '',
@@ -23,24 +33,78 @@ const UpdateMed = () => {
   });
 
   useEffect(() => {
-    if (medData) {
-      setMedicineData(medData?.data); // Prepopulate form with existing data
-    }
-  }, [medData]);
+      if (medData) {
+        setMedicineData({
+          ...medData?.data,
+          alt_medicines: Array.isArray(medData?.data?.alt_medicines) ? medData?.data?.alt_medicines.join(', ') : '', // Convert array to string
+          side_effects: Array.isArray(medData?.data?.side_effects) ? medData?.data?.side_effects.join(', ') : '',
+          interactions: Array.isArray(medData?.data?.interactions) ? medData?.data?.interactions.join(', ') : '',
+          uses: Array.isArray(medData?.data?.uses) ? medData?.data?.uses.join(', ') : '',
+          warnings: Array.isArray(medData?.data?.warnings) ? medData?.data?.warnings.join(', ') : '',
+        });
+      }
+    }, [medData]);
+    
 
   const handleChange = (e) => {
-    const { name, value } = e.target;
-    setMedicineData((prevData) => ({
-      ...prevData,
-      [name]: value,
-    }));
-  };
+      const { name, value } = e.target;
+    
+      setMedicineData((prevData) => {
+        // If the field being updated is '_id', return the previous state unchanged
+        if (name === "_id") {
+          return prevData;
+        }
+        
+        // Otherwise, update the state with the new value
+        return {
+          ...prevData,     // Spread the previous data to keep the rest of the fields intact
+          [name]: value,   // Dynamically update the field based on the input name
+        };
+      });
+    };
+    console.log(medicineData)
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    // Add the logic to update the medicine data here
-    console.log('Updated Medicine Data: ', medicineData);
-  };
+    const handleSubmit = async (e) => {
+      e.preventDefault();
+    
+      // Convert comma-separated strings back to arrays if they are strings
+      const updatedDetails = {
+        medicine_name: medicineData.medicine_name,
+        company_name: medicineData.company_name,
+        generic_name: medicineData.generic_name,
+        available: Number(medicineData.available),
+        alt_medicines: typeof medicineData.alt_medicines === 'string' 
+          ? medicineData.alt_medicines.split(',').map(item => item.trim()) 
+          : medicineData.alt_medicines,  // Only split if it's a string
+        description: medicineData.description,
+        doses: medicineData.doses,
+        side_effects: typeof medicineData.side_effects === 'string' 
+          ? medicineData.side_effects.split(',').map(item => item.trim()) 
+          : medicineData.side_effects,
+        actions: medicineData.actions,
+        interactions: typeof medicineData.interactions === 'string' 
+          ? medicineData.interactions.split(',').map(item => item.trim()) 
+          : medicineData.interactions,
+        uses: typeof medicineData.uses === 'string' 
+          ? medicineData.uses.split(',').map(item => item.trim()) 
+          : medicineData.uses,
+        warnings: typeof medicineData.warnings === 'string' 
+          ? medicineData.warnings.split(',').map(item => item.trim()) 
+          : medicineData.warnings,
+      };
+    
+      const UpdateRes = await medicineDetails({ id, updatedMed: updatedDetails });
+    
+      if (UpdateRes?.data.success) {
+        toast.success(UpdateRes.data.message);
+      } else {
+        toast.error("Failed to update the medicine");
+      }
+    };
+    
+    
+    
+   
 
   if (medLoading) {
     return <Loader />;
@@ -82,6 +146,7 @@ const UpdateMed = () => {
                 multiline={field.multiline || false}
                 rows={field.rows || 1}
                 type={field.type || 'text'}
+               
               />
             </Grid>
           ))}

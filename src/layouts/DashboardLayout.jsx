@@ -7,7 +7,7 @@ import AccessDenied from '../components/AccessDenied';
 
 const DashboardLayout = () => {
   const userCred=useSelector((state)=>state.medInfoUser.medInfoUserCred);
-  console.log(userCred)
+  // console.log(userCred)
   const darkMode=useSelector((store)=>store.theme.darkMode);
  
   if(userCred===null||userCred.role!=="admin"){
