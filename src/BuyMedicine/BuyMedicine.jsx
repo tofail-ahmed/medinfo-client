@@ -9,9 +9,9 @@ import Loader from "../components/Loader";
 
 const BuyMedicine = () => {
   const userCred = useSelector((state) => state.medInfoUser.medInfoUserCred);
-  console.log(userCred)
+  // console.log(userCred)
   const { id } = useParams();
-
+const navigate=useNavigate()
 // const navigate=useNavigate()
 // if(userCred===null){
 //   alert("Login first ⚠")
@@ -29,6 +29,7 @@ const BuyMedicine = () => {
       toast.info("Medicine purchasing in process, please wait...");
     } else if (purchaseData?.success) {
       toast.success("Medicine purchased successfully");
+     
     } else if (purchaseError?.status === 409) {
       toast.error(purchaseError.data.message);
     }
@@ -57,6 +58,7 @@ const BuyMedicine = () => {
         const purchaseResponse = await purchaseData({ id: userCred.id, medicineDetails });
         if (purchaseResponse.data.success) {
           alert("Medicine purchased successfully and added to your list!");
+          navigate("/");
         }
       } catch (error) {
         alert("Error processing your request: " + error.message);

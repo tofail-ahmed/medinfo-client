@@ -1,5 +1,5 @@
 import  { useState, useEffect } from 'react';
-import { useParams } from 'react-router';
+import { useNavigate, useParams } from 'react-router';
 import { useSingleMedicineQuery, useUpdateMedMutation } from '../redux/medicine/medicinesApi';
 import Loader from '../components/loader';
 import { TextField, Grid, Button } from '@mui/material';
@@ -9,6 +9,7 @@ import { toast } from 'sonner';
 const UpdateMed = () => {
       // const darkMode = useSelector((state) => state.theme.darkMode);
       // const textColor = darkMode ? "#fff" : "#000";
+      const navigate=useNavigate()
 const [medicineDetails,{isLoading:updateMedLoading}]=useUpdateMedMutation()
 
 if(updateMedLoading){
@@ -97,6 +98,7 @@ if(updateMedLoading){
     
       if (UpdateRes?.data.success) {
         toast.success(UpdateRes.data.message);
+        navigate("/dashboard/allMedicine")
       } else {
         toast.error("Failed to update the medicine");
       }
