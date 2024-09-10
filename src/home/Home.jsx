@@ -5,6 +5,7 @@ import { NavLink } from "react-router-dom";
 // import { useSelector } from "react-redux";
 import Loader from "../components/Loader";
 import Search from "../search/Search";
+import { Button, Grid } from "@mui/material";
 
 const Home = () => {
   // const userCred=useSelector((state)=>state.medInfoUser.medInfoUserCred);
@@ -60,19 +61,47 @@ const Home = () => {
                   ))}
                 </div>
               </div>
-              <button
-                className="border-2 rounded-md border-red-300"
-                onClick={() => navigate(`/medicine/${medicine._id}`)}
-              >
-                Details
-              </button>
+             <div className="flex lg:flex-row flex-col gap-2 ">
+             <Grid item xs={12} sm={6}>
+       {/* Details button */}
+        <Button
+                     onClick={() => navigate(`/medicine/${medicine._id}`)} 
+                    variant="outlined"
+                    size="small"
+                    fullWidth
+                    sx={{
+                      color: "red",
+                      borderColor: "red",
+                      "&:hover": {
+                        backgroundColor: "rgba(255, 0, 0, 0.1)",
+                        borderColor: "darkred",
+                      },
+                    }}
+                  >
+                    Deatils
+                  </Button>
+      </Grid>
 
-              <NavLink
-                className="border-2 rounded-md border-red-300 bg-orange-300"
-                to={`/buyMedicine/${medicine._id}`}
-              >
-                Buy Now
-              </NavLink>
+      {/* Buy Now Button */}
+      <Grid item xs={12} sm={6}>
+      <Button
+                     onClick={() => navigate(`/buyMedicine/${medicine._id}`)} 
+                    variant="outlined"
+                    size="small"
+                    fullWidth
+                    sx={{
+                      color: "red",
+                      borderColor: "red",
+                      "&:hover": {
+                        backgroundColor: "rgba(255, 0, 0, 0.1)",
+                        borderColor: "darkred",
+                      },
+                    }}
+                  >
+                    Purchase Now
+                  </Button>
+      </Grid>
+             </div>
              
             </div>
           ))}

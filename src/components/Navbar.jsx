@@ -30,7 +30,7 @@ const Navbar = () => {
 
   return (
     <div className="bg-red-300/30 mx-auto">
-      <div className="flex justify-around items-center">
+      <div className="flex justify-between items-center mx-8">
         <NavLink to={"/"}>
           <img className="w-[50px]" src="/src/assets/medInfo.png" alt="Logo" />
         </NavLink>
@@ -40,14 +40,15 @@ const Navbar = () => {
         <NavLink className="bg-green-400 rounded-md font-bold m-4 p-2" to={"/about"}>
           About
         </NavLink> */}
+        <div className="flex items-center gap-2 justify-end">
         {userData && userData.role === "admin" && (
           <NavLink className="bg-green-400 rounded-md font-bold m-4 p-2" to={"/dashboard"}>
             Dashboard
           </NavLink>
         )}
-        <NavLink className="bg-green-400 rounded-md font-bold m-4 p-2" to={"/search"}>
+        {/* <NavLink className="bg-green-400 rounded-md font-bold m-4 p-2" to={"/search"}>
           Search
-        </NavLink>
+        </NavLink> */}
         {userData && userData.email ? (
          
          <div >
@@ -81,6 +82,7 @@ const Navbar = () => {
             {darkMode ? "Light" : "Dark"}
           </div>
         </button>
+        </div>
         
       </div>
     </div>

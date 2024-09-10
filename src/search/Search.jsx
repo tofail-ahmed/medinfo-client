@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { IconButton, TextField, InputAdornment } from '@mui/material';
+import { IconButton, TextField, InputAdornment, Button, Grid, Typography } from '@mui/material';
 import { FaSearch } from 'react-icons/fa';
 import { useSelector } from 'react-redux';
 import { useSearchMedicineQuery } from '../redux/medicine/medicinesApi';
@@ -28,12 +28,14 @@ const Search = () => {
   const highlightMatch = (text, query) => {
     if (!text || !query) return text; 
     const regex = new RegExp(`(${query})`, 'gi'); 
-    return text.replace(regex, '<span class="text-red-500">$1</span>');
+    return text.replace(regex, '<span class="text-red-500/70 font-bold">$1</span>');
   };
-
+// if(searchTerm&&data?.data.length===0){
+//   return <p>No medicine found</p>
+// }
   return (
     <div className="p-4">
-      <div className="flex justify-end mb-4 mx-6  ">
+      <div className="flex lg:justify-end justify-center m-4 mx-8   ">
         <TextField
         // color="textColor"
           label="Search by name/genric/company"
@@ -58,8 +60,14 @@ const Search = () => {
       {error && <p>Error fetching data</p>}
 
       <div className="mx-10">
+      {searchTerm && data?.data.length === 0 && (
+          <Typography variant="h6" color="error" align="center">
+            No medicine found. Provide valid medicine Name
+          </Typography>
+        )}
+
         {
-          data&&(
+          data?.data.length!=0 &&(
             <h1 className="text-2xl text-red-500 font-semibold text-center my-6 flex justify-center items-center gap-2">
             Search Results
           </h1>
@@ -69,7 +77,9 @@ const Search = () => {
           {data ? (
            
             data.data.map((medicine, index) => (
-              <div className="bg-slate-400/30 rounded-md my-4 px-10" key={index}>
+              <div className="bg-slate-400/30 rounded-md my-2 p-4 " key={index}>
+               <div className="flex items-center justify-between lg:flex-row flex-col gap-2">
+               <div className="">
                <span className="flex items-center text-2xl">
                {index+1}. <li
                   className=""
@@ -78,32 +88,75 @@ const Search = () => {
                   }}
                 ></li>
                </span>
-                <li
+              <span className="flex items-center gap-2">
+                <h1>Generic: </h1>
+              <li
                   className="text-sm"
                   dangerouslySetInnerHTML={{
-                    __html: `<span class="text-fuchsia-800 font-semibold">Generic:</span> ${highlightMatch(medicine?.generic_name, query)}`,
+                    // __html: `<span class="text-fuchsia-800 font-semibold">Generic:</span> ${highlightMatch(medicine?.generic_name, query)}`,
+                     __html: highlightMatch(medicine?.generic_name, query),
                   }}
                 ></li>
+              </span>
+                <span className="flex items-center gap-2">
+                  <h1>Compnay: </h1>
                 <p
                   className="text-sm"
                   dangerouslySetInnerHTML={{
-                    __html: `<span class="text-fuchsia-800 font-semibold">Company:</span> ${highlightMatch(medicine?.company_name, query)}`,
+                    // __html: `<span class="text-fuchsia-800 font-semibold">Company:</span> ${highlightMatch(medicine?.company_name, query)}`,
+                    __html: highlightMatch(medicine?.company_name, query),
+                    
                   }}
                 ></p>
+                </span>
+               </div>
 
-                <button
-                  className="border-2 rounded-md border-red-300"
-                  onClick={() => navigate(`/medicine/${medicine._id}`)}
-                >
-                  Details
-                </button>
+                <div className="flex flex-col  gap-2 w-full lg:w-2/12 ">
+             
 
-                <NavLink
-                  className="border-2 rounded-md border-red-300 bg-orange-300"
-                  to={`/buyMedicine/${medicine._id}`}
-                >
-                  Buy Now
-                </NavLink>
+      <Grid item xs={12} sm={6}>
+       {/* Details button */}
+        <Button
+                     onClick={() => navigate(`/medicine/${medicine._id}`)} 
+                    variant="outlined"
+                    size="small"
+                    fullWidth
+                    sx={{
+                      color: "red",
+                      borderColor: "red",
+                      "&:hover": {
+                        backgroundColor: "rgba(255, 0, 0, 0.1)",
+                        borderColor: "darkred",
+                      },
+                    }}
+                  >
+                    Deatils
+                  </Button>
+      </Grid>
+
+      {/* Buy Now Button */}
+      <Grid item xs={12} sm={6}>
+      <Button
+                     onClick={() => navigate(`/buyMedicine/${medicine._id}`)} 
+                    variant="outlined"
+                    size="small"
+                    fullWidth
+                    sx={{
+                      color: "red",
+                      borderColor: "red",
+                      "&:hover": {
+                        backgroundColor: "rgba(255, 0, 0, 0.1)",
+                        borderColor: "darkred",
+                      },
+                    }}
+                  >
+                    Purchase Now
+                  </Button>
+      </Grid>
+    {/* </Grid> */}
+  
+                </div>
+               </div>
               </div>
             ))
           ) : (
@@ -117,7 +170,7 @@ const Search = () => {
       </div>
       <span className="flex justify-center">
       {
-        data&&(<h1 className="text-2xl text-red-500 font-semibold  my-6 flex items-center gap-2 ">
+        data?.data.length!=0&&(<h1 className="text-2xl text-red-500 font-semibold  my-6 flex items-center gap-2 ">
           X------------End of search rtesult------------X
          </h1>)
       }
