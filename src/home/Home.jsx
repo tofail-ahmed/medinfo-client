@@ -4,6 +4,7 @@ import { useAllMedicinesQuery } from "../redux/medicine/medicinesApi";
 import { NavLink } from "react-router-dom";
 // import { useSelector } from "react-redux";
 import Loader from "../components/Loader";
+import Search from "../search/Search";
 
 const Home = () => {
   // const userCred=useSelector((state)=>state.medInfoUser.medInfoUserCred);
@@ -14,9 +15,12 @@ const Home = () => {
     return <Loader/>;
   }
   // console.log(userCred)
-  console.log(data?.data)
+  // console.log(data?.data)
   return (
     <div className="">
+      <div>
+        <Search></Search>
+      </div>
       <div className="mx-10 ">
         <ul>
           {data?.data.map((medicine, index) => (

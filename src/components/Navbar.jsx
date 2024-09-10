@@ -34,12 +34,12 @@ const Navbar = () => {
         <NavLink to={"/"}>
           <img className="w-[50px]" src="/src/assets/medInfo.png" alt="Logo" />
         </NavLink>
-        <NavLink className="bg-green-400 rounded-md font-bold m-4 p-2" to={"/contact"}>
+        {/* <NavLink className="bg-green-400 rounded-md font-bold m-4 p-2" to={"/contact"}>
           Contact
         </NavLink>
         <NavLink className="bg-green-400 rounded-md font-bold m-4 p-2" to={"/about"}>
           About
-        </NavLink>
+        </NavLink> */}
         {userData && userData.role === "admin" && (
           <NavLink className="bg-green-400 rounded-md font-bold m-4 p-2" to={"/dashboard"}>
             Dashboard
@@ -50,19 +50,14 @@ const Navbar = () => {
         </NavLink>
         {userData && userData.email ? (
          
-         <div>
+         <div >
            <NavLink
             className="bg-green-400 rounded-md font-bold m-4 p-2"
             onClick={handleLogout}
           >
             Logout
           </NavLink>
-          <NavLink
-          className="bg-green-400 rounded-md font-bold m-4 p-2"
-          to={"/profile"}
-        >
-          {userData?.name}
-        </NavLink>
+          
          </div>
            
          
@@ -71,6 +66,16 @@ const Navbar = () => {
             Login
           </NavLink>
         )}
+        {
+          userData && userData.email &&
+        
+        (<NavLink
+          className="bg-green-400 rounded-md font-bold m-4 p-2"
+          to={"/profile"}
+        >
+          {userData?.name.split(" ")[0]}
+        </NavLink>)
+        }
         <button onClick={darkModeHandler}>
           <div className="bg-green-400 rounded-md font-bold m-4 p-2">
             {darkMode ? "Light" : "Dark"}

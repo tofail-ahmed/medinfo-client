@@ -61,7 +61,7 @@ const navigate=useNavigate()
         const purchaseResponse = await purchaseData({ id: userCred.id, medicineDetails });
         if (purchaseResponse.data.success) {
           alert("Medicine purchased successfully and added to your list!");
-          navigate("/");
+          navigate("/profile");
         }
       } catch (error) {
         alert("Error processing your request: " + error.message);

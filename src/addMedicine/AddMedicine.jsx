@@ -1,8 +1,10 @@
 import { TextField, Button, Grid } from "@mui/material";
 import { useEffect, useState } from "react";
 import { useCreateMedicineMutation } from "../redux/medicine/medicinesApi";
+import { useNavigate } from "react-router";
 
 const AddMedicine = () => {
+  const navigate=useNavigate()
       const [createMedicine,{data,isLoading,error}]=useCreateMedicineMutation()
 
   const [medicineData, setMedicineData] = useState({
@@ -71,6 +73,7 @@ const AddMedicine = () => {
       }
       if (data && data.success) {
         alert("Medicine added successfully");
+        navigate("/dashboard/allMedicine")
       }
       if(error&&error.status===409){
             alert(error.data.message)
