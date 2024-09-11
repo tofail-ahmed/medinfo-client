@@ -4,6 +4,7 @@ import { toggleDarkMode } from "../redux/theme/themeslice";
 // import { useState, useEffect } from "react";
 // import { getUserCred } from "../utils/utils";
 import {clearMedInfoUserCred} from "../redux/user/userSlice"
+import Search from "../search/Search";
 
 
 
@@ -84,6 +85,11 @@ const Navbar = () => {
         </button>
         </div>
         
+      </div>
+      <div>
+      <div>
+     {/* <Search></Search> */}
+     </div>
       </div>
     </div>
   );

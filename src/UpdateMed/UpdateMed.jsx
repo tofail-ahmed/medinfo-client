@@ -73,6 +73,8 @@ if(updateMedLoading){
         medicine_name: medicineData.medicine_name,
         company_name: medicineData.company_name,
         generic_name: medicineData.generic_name,
+        type:medicineData.type,
+        category:medicineData.category,
         available: Number(medicineData.available),
         alt_medicines: typeof medicineData.alt_medicines === 'string' 
           ? medicineData.alt_medicines.split(',').map(item => item.trim()) 
@@ -123,6 +125,8 @@ if(updateMedLoading){
         <Grid container spacing={2} sx={{ my: 5 }}>
           {[
             { label: 'Medicine Name', name: 'medicine_name' },
+            { label: 'Medicine Type', name: 'type' },
+            { label: 'Madicine Category', name: 'category' },
             { label: 'Company Name', name: 'company_name' },
             { label: 'Generic Name', name: 'generic_name' },
             { label: 'Available Quantity', name: 'available', type: 'number' },

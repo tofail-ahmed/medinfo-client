@@ -22,7 +22,9 @@ const Search = () => {
   };
 
   const handleSearch = () => {
+    //  navigate('/search')
     setSearchTerm(query);
+   
   };
 
   const highlightMatch = (text, query) => {
@@ -35,7 +37,7 @@ const Search = () => {
 // }
   return (
     <div className="p-4">
-      <div className="flex lg:justify-end justify-center m-4 mx-8   ">
+      <div className="flex lg:justify-end justify-center  mx-6   ">
         <TextField
         // color="textColor"
           label="Search by name/genric/company"
@@ -52,7 +54,7 @@ const Search = () => {
               </InputAdornment>
             ),
           }}
-          // fullWidth
+          fullWidth
         />
       </div>
 
@@ -67,7 +69,7 @@ const Search = () => {
         )}
 
         {
-          data?.data.length!=0 &&(
+          data?.data.length!=0 && data&&(
             <h1 className="text-2xl text-red-500 font-semibold text-center my-6 flex justify-center items-center gap-2">
             Search Results
           </h1>
@@ -122,11 +124,12 @@ const Search = () => {
                     size="small"
                     fullWidth
                     sx={{
-                      color: "red",
-                      borderColor: "red",
+                      color: "#6366F1",
+                      borderColor: "#6366F1",
                       "&:hover": {
-                        backgroundColor: "rgba(255, 0, 0, 0.1)",
-                        borderColor: "darkred",
+                        backgroundColor: "#14919B",
+                        borderColor: "#6366F1",
+                        color:"#FFF"
                       },
                     }}
                   >
@@ -142,11 +145,12 @@ const Search = () => {
                     size="small"
                     fullWidth
                     sx={{
-                      color: "red",
-                      borderColor: "red",
+                      color: "#22C55E",
+                      borderColor: "#22C55E",
                       "&:hover": {
-                        backgroundColor: "rgba(255, 0, 0, 0.1)",
-                        borderColor: "darkred",
+                        backgroundColor: "#059669",
+                        borderColor: "#22C55E",
+                        color:"#fff"
                       },
                     }}
                   >
@@ -170,11 +174,12 @@ const Search = () => {
       </div>
       <span className="flex justify-center">
       {
-        data?.data.length!=0&&(<h1 className="text-2xl text-red-500 font-semibold  my-6 flex items-center gap-2 ">
+        data?.data.length!=0&& data&&(<h1 className="text-2xl text-red-500 font-semibold  my-6 flex items-center gap-2 ">
           X------------End of search rtesult------------X
          </h1>)
       }
       </span>
+     
     </div>
   );
 };

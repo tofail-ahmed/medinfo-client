@@ -20,6 +20,8 @@ const AddMedicine = () => {
     uses: [],
     available:0,
     warnings: [],
+    type:"",
+    category:""
   });
 
   const handleChange = (e) => {
@@ -99,6 +101,38 @@ const AddMedicine = () => {
               name="medicine_name"
               fullWidth
               value={medicineData.medicine_name}
+              onChange={handleChange}
+            />
+          </Grid>
+          <Grid item xs={12} sm={12} md={6}>
+            <TextField
+              sx={{
+                maxWidth: "80%",
+                mx: "auto",
+                display: "block",
+              }}
+              label="Medicine Type"
+              variant="outlined"
+              size="small"
+              name="type"
+              fullWidth
+              value={medicineData.type}
+              onChange={handleChange}
+            />
+          </Grid>
+          <Grid item xs={12} sm={12} md={6}>
+            <TextField
+              sx={{
+                maxWidth: "80%",
+                mx: "auto",
+                display: "block",
+              }}
+              label="Medicine Category"
+              variant="outlined"
+              size="small"
+              name="category"
+              fullWidth
+              value={medicineData.category}
               onChange={handleChange}
             />
           </Grid>

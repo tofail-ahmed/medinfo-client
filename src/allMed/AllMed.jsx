@@ -72,6 +72,31 @@ const AllMed = () => {
                 Generic
               </TableCell>
               <TableCell
+                align="left"
+                sx={{
+                  fontSize: "16px",
+                  fontWeight: "bold",
+                  border: "1px solid #ddd",
+                  color: textColor,
+                }}
+              >
+                Type
+              </TableCell>
+              <TableCell
+                align="left"
+                className="w-[200px]"
+                sx={{
+                  
+                  fontSize: "16px",
+                  fontWeight: "bold",
+                  border: "1px solid #ddd",
+                  color: textColor,
+                  
+                }}
+              >
+                Category
+              </TableCell>
+              <TableCell
                 align="right"
                 sx={{
                   fontSize: "16px",
@@ -160,6 +185,26 @@ const AllMed = () => {
                   align="left"
                 >
                   {row.generic_name}
+                </TableCell>
+                <TableCell
+                  sx={{
+                    fontSize: "15px",
+                    border: "1px solid #ddd",
+                    color: textColor,
+                  }}
+                  align="left"
+                >
+                  {row.type}
+                </TableCell>
+                <TableCell
+                  sx={{
+                    fontSize: "15px",
+                    border: "1px solid #ddd",
+                    color: textColor,
+                  }}
+                  align="left"
+                >
+                  {row.category}
                 </TableCell>
                 <TableCell
                   sx={{

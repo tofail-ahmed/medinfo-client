@@ -70,11 +70,12 @@ const Home = () => {
                     size="small"
                     fullWidth
                     sx={{
-                      color: "red",
-                      borderColor: "red",
+                      color: "#6366F1",
+                      borderColor: "#6366F1",
                       "&:hover": {
-                        backgroundColor: "rgba(255, 0, 0, 0.1)",
-                        borderColor: "darkred",
+                        backgroundColor: "#14919B",
+                        borderColor: "#6366F1",
+                        color:"#fff"
                       },
                     }}
                   >
@@ -90,11 +91,12 @@ const Home = () => {
                     size="small"
                     fullWidth
                     sx={{
-                      color: "red",
-                      borderColor: "red",
+                      color: "#22C55E",
+                      borderColor: "#22C55E",
                       "&:hover": {
-                        backgroundColor: "rgba(255, 0, 0, 0.1)",
-                        borderColor: "darkred",
+                        backgroundColor: "#059669",
+                        borderColor: "#22C55E",
+                        color:"#fff"
                       },
                     }}
                   >

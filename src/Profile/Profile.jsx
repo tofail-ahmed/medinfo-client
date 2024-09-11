@@ -21,10 +21,10 @@ const Profile = () => {
   if (error) return <div>Error loading user data...</div>;
 
   const userData = data?.data;
-console.log(data?.data?.purchaseList)
+// console.log(data?.data?.purchaseList)
   return (
-    <div className="flex justify-center items-center my-10 bg-lime-500/50">
-      <div className="min-h-screen ">
+    <div className="flex justify-center items-center  bg-lime-500/50  min-h-screen">
+      <div className=" my-10  ">
       <h1 className="text-center text-xl font-semibold">{userData?.name}</h1>
       <p>Email: {userData?.email}</p>
       <p>Role: {userData?.role}</p>
