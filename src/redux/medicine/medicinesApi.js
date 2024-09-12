@@ -11,21 +11,20 @@ const medicinesApi = baseApi.injectEndpoints({
       
     }),
     medCategory: builder.query({
-      query: ({ field, value }) => {
-        // Construct the params object dynamically
-        // const params = {
-        //   [field]: value,  // This will create an object like { type: 'syrup' }
-        // };
+      query: ({ category, type }) => {
+        const params = {};
+        if (category) params.category = category;
+        if (type) params.type = type;
     
         return {
           url: `/medByValueField`,
           method: "GET",
-          params: { [field]: value },
-          // params,  // Pass the dynamic params object
+          params,  // Passes both category and type when available
         };
       },
       providesTags: ["medicines"],
     }),
+    
     
     singleMedicine: builder.query({
       query: (id) => ({
