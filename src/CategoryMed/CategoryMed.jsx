@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import { useMedCategoryQuery } from "../redux/medicine/medicinesApi";
 import { useNavigate } from "react-router";
 import Loader from "../components/Loader";
+import Search from "../search/Search";
 
 const CategoryMed = () => {
   const navigate = useNavigate();
@@ -46,6 +47,9 @@ const CategoryMed = () => {
 
   return (
     <div>
+     <div>
+       <Search></Search>
+     </div>
       {/* Category and Type Selection */}
       <div className="grid lg:grid-cols-4 grid-cols-2 gap-2 p-4 mx-auto">
         {/* Type buttons */}
@@ -53,6 +57,7 @@ const CategoryMed = () => {
           variant="outlined"
           sx={getButtonStyle("type", "Syrup")}
           onClick={() => handleCategory("type", "Syrup")}
+          size="small"
         >
           Syrup
         </Button>
@@ -109,18 +114,7 @@ const CategoryMed = () => {
         </Button>
       </div>
 
-      {/* Display the selected filters */}
-      <div>
-        <p className="text-center text-xl font-semibold flex justify-center items-center">
-          Selected Filters:
-          <span className="font-bold uppercase text-[#6366F1] mx-2">
-            {filters.type ? `Type: ${filters.type}` : ""}
-          </span>
-          <span className="font-bold uppercase text-[#6366F1] mx-2">
-            {filters.category ? `Category: ${filters.category}` : ""}
-          </span>
-        </p>
-      </div>
+     
 
       {/* Display the search results */}
       <div className="mx-4">

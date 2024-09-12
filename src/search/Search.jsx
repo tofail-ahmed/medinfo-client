@@ -36,15 +36,15 @@ const Search = () => {
 //   return <p>No medicine found</p>
 // }
   return (
-    <div className="p-4">
-      <div className="flex lg:justify-end justify-center  mx-6   ">
+    <div className=" my-2">
+      <div className="flex lg:justify-end justify-center  mx-4   ">
         <TextField
         // color="textColor"
           label="Search by name/genric/company"
           value={query}
           onChange={handleInputChange}
           variant="outlined"
-          size="small"
+          // size="small"
           InputProps={{
             endAdornment: (
               <InputAdornment position="end">
@@ -61,7 +61,7 @@ const Search = () => {
       {isLoading && <Loader />}
       {error && <p>Error fetching data</p>}
 
-      <div className="mx-10">
+      <div className="mx-4">
       {searchTerm && data?.data.length === 0 && (
           <Typography variant="h6" color="error" align="center">
             No medicine found. Provide valid medicine Name
