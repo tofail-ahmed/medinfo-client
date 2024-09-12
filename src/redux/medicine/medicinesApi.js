@@ -10,6 +10,23 @@ const medicinesApi = baseApi.injectEndpoints({
       providesTags: ["medicines"],
       
     }),
+    medCategory: builder.query({
+      query: ({ field, value }) => {
+        // Construct the params object dynamically
+        // const params = {
+        //   [field]: value,  // This will create an object like { type: 'syrup' }
+        // };
+    
+        return {
+          url: `/medByValueField`,
+          method: "GET",
+          params: { [field]: value },
+          // params,  // Pass the dynamic params object
+        };
+      },
+      providesTags: ["medicines"],
+    }),
+    
     singleMedicine: builder.query({
       query: (id) => ({
         url: `/singleMedicine/${id}`,
@@ -56,5 +73,6 @@ export const {
   useSingleMedicineQuery,
   useCreateMedicineMutation,
   useSellAvailabityMutation,
-  useUpdateMedMutation
+  useUpdateMedMutation,
+  useMedCategoryQuery
 } = medicinesApi;

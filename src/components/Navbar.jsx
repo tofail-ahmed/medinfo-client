@@ -32,9 +32,14 @@ const Navbar = () => {
   return (
     <div className="bg-red-300/30 mx-auto">
       <div className="flex justify-between items-center mx-8">
+        <span className="flex items-center justify-around gap-2">
         <NavLink to={"/"}>
           <img className="w-[50px]" src="/src/assets/medInfo.png" alt="Logo" />
         </NavLink>
+        <NavLink className="bg-green-400 rounded-md font-bold m-4 p-2" to={"/medCat"}>
+          Category
+        </NavLink>
+        </span>
         {/* <NavLink className="bg-green-400 rounded-md font-bold m-4 p-2" to={"/contact"}>
           Contact
         </NavLink>

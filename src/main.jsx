@@ -32,6 +32,7 @@ import { Toaster } from 'sonner';
 import Profile from './Profile/Profile.jsx';
 import AllMed from './allMed/AllMed.jsx';
 import UpdateMed from './UpdateMed/UpdateMed.jsx';
+import CategoryMed from './CategoryMed/CategoryMed.jsx';
 // import Dashboard from './layouts/Dashboard.jsx';
 const router = createBrowserRouter([
   {
@@ -50,6 +51,10 @@ const router = createBrowserRouter([
         {
           path:"/contact",
           element:<Contact/>
+        },
+        {
+          path:"/medCat",
+          element:<CategoryMed/>
         },
         {
           path:'/search',
