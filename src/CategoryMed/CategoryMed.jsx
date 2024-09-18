@@ -1,5 +1,5 @@
 import { Button, Grid } from "@mui/material";
-import React, { useState } from "react";
+import { useState } from "react";
 import { useMedCategoryQuery } from "../redux/medicine/medicinesApi";
 import { useNavigate } from "react-router";
 import Loader from "../components/Loader";
@@ -9,12 +9,14 @@ const CategoryMed = () => {
   const navigate = useNavigate();
 
   // State to hold both category and type
-  const [filters, setFilters] = useState({ category: "category", type: "type" });
+  const [filters, setFilters] = useState({ category: "", type: "" });
 
   // Function to handle both category and type selection
+//   setFilters updates the filters state, which is an object containing category and type.
   const handleCategory = (field, value) => {
-    setFilters((prevFilters) => ({ ...prevFilters, [field]: value }));
-  };
+      setFilters({ ...filters, [field]: value });
+    };
+
 
   // Fetch data based on the selected category and/or type using Redux query
   const { data, error, isLoading } = useMedCategoryQuery({
@@ -26,13 +28,15 @@ const CategoryMed = () => {
     return <Loader />;
   }
 
-  if (error) {
-    return <p>Error loading data</p>;
-  }
+  // if (error) {
+  //   return <p>Error loading data</p>;
+  // }
 
   // Button styles: adjust styles for selected type and category
   const getButtonStyle = (field, value) => {
-    const isSelected = filters[field] === value;
+    const isSelected = filters[field] === value; 
+//     This checks whether the current filters state matches the button's field and value.
+// If the current filter for that field matches the button's value (filters[field] === value), isSelected becomes true, meaning the button is currently selected.
     return {
       color: isSelected ? "#fff" : "#6366F1",
       borderColor: isSelected ? "#6366F1" : "#6366F1",
