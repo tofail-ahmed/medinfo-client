@@ -1,31 +1,51 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
-import { Navigation, Thumbs } from 'swiper/modules';
+import { Autoplay, Navigation, Thumbs } from 'swiper/modules';
 import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/thumbs';
 import './banner.css';
+import { GrChapterNext, GrChapterPrevious } from 'react-icons/gr';
+import { useSelector } from 'react-redux';
 
 const Banner = () => {
   const [thumbsSwiper, setThumbsSwiper] = React.useState(null);
 
+  const darkMode = useSelector((state) => state.theme.darkMode);
+
+
+    // Function to detect background color based on theme
+    const updateBorderColor = () => {
+      const root = document.documentElement;
+  
+      // Set the border color based on the theme
+      root.style.setProperty(
+        '--thumb-active-border-color',
+        darkMode === true ? '#ffffff' : '#000000'
+      );
+    };
+  
+    useEffect(() => {
+      updateBorderColor();
+    }, [darkMode]); // Update the border color whenever the theme changes
+
   return (
     <div className="flex flex-col items-center relative">
-      <h1 className='text-5xl text-center mb-4'>Banner</h1>
+   
 
       {/* Main Swiper */}
       <div className="relative lg:w-[100%] w-[500px]">
         <Swiper
-          className="lg:w-full lg:h-[450px] w-full h-[200px] border-4 border-gray-300"
+          className="lg:w-full lg:h-[450px] w-full h-[200px]"
           spaceBetween={50}
           slidesPerView={1}
-          autoplay={{ delay: 1000 }}
+          autoplay={{ delay: 2000 }}
           navigation={{
             nextEl: '.custom-next-btn',
             prevEl: '.custom-prev-btn',
           }}
           thumbs={{ swiper: thumbsSwiper }}
-          modules={[Navigation, Thumbs]}
+          modules={[Navigation, Thumbs, Autoplay]}
         >
           <SwiperSlide><img className="w-full h-full" src="/src/assets/banner/banner1.png" alt="Banner 1" /></SwiperSlide>
           <SwiperSlide><img className="w-full h-full" src="/src/assets/banner/banner2.png" alt="Banner 2" /></SwiperSlide>
@@ -36,11 +56,12 @@ const Banner = () => {
         </Swiper>
 
         {/* Custom Navigation Buttons */}
-        <button className="custom-prev-btn absolute left-0 top-1/2 transform -translate-y-1/2 bg-gray-800 text-white p-2 rounded-full z-10 mx-4">
-          Prev
+        <button className="custom-prev-btn absolute left-0 top-1/2 transform -translate-y-1/2 bg-gray-600/50 text-green-300 font-bold p-2 rounded-full z-10 mx-4">
+        <GrChapterPrevious />
+
         </button>
-        <button className="custom-next-btn absolute right-0 top-1/2 transform -translate-y-1/2 bg-gray-800 text-white p-2 rounded-full z-10 mx-4">
-          Next
+        <button className="custom-next-btn absolute right-0 top-1/2 transform -translate-y-1/2 bg-gray-600/50 text-green-300 font-bold p-2 rounded-full z-10 mx-4">
+        <GrChapterNext />
         </button>
       </div>
 

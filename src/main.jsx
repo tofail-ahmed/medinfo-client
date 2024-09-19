@@ -33,6 +33,7 @@ import Profile from './Profile/Profile.jsx';
 import AllMed from './allMed/AllMed.jsx';
 import UpdateMed from './UpdateMed/UpdateMed.jsx';
 import CategoryMed from './CategoryMed/CategoryMed.jsx';
+import SuggestMed from './SuggestMed/SuggestMed.jsx';
 // import Dashboard from './layouts/Dashboard.jsx';
 const router = createBrowserRouter([
   {
@@ -87,6 +88,10 @@ const router = createBrowserRouter([
         {
           path:"/profile",
           element:<RestrictedRoute><Profile></Profile></RestrictedRoute>
+        },
+        {
+          path:"/suggestMed",
+          element:<SuggestMed/>
         }
       
     ]

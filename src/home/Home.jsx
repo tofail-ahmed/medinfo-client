@@ -6,6 +6,7 @@ import { NavLink } from "react-router-dom";
 import Loader from "../components/Loader";
 import Search from "../search/Search";
 import { Button, Grid } from "@mui/material";
+// import SearchResult from "../search/SearchResult";
 
 const Home = () => {
   // const userCred=useSelector((state)=>state.medInfoUser.medInfoUserCred);
@@ -20,7 +21,8 @@ const Home = () => {
   return (
     <div className="">
       <div>
-        <Search></Search>
+        {/* <Search></Search> */}
+        {/* <SearchResult/> */}
       </div>
       <div className="mx-10 ">
         <ul>

@@ -4,7 +4,7 @@ import { toggleDarkMode } from "../redux/theme/themeslice";
 // import { useState, useEffect } from "react";
 // import { getUserCred } from "../utils/utils";
 import {clearMedInfoUserCred} from "../redux/user/userSlice"
-import Search from "../search/Search";
+// import Search from "../search/Search";
 
 
 
@@ -30,7 +30,7 @@ const Navbar = () => {
   
 
   return (
-    <div className="bg-red-300/30 mx-auto">
+    <div className="bg-green-600/30 mx-auto">
       <div className="flex justify-between items-center mx-8">
         <span className="flex items-center justify-around gap-2">
         <NavLink to={"/"}>

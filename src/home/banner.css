@@ -8,8 +8,21 @@ width:100%
 
 /* Add border to the active thumbnail */
 .swiper-slide-thumb-active img {
-      border: 3px solid #f108ac; /* Orange border for active thumbnail */
+      border: 3px solid #ffffff; /* Orange border for active thumbnail */
       box-shadow: 0 4px 6px rgba(57, 99, 3, 0.1); /* Optional shadow for better visibility */
-      transition: border 0.3s ease; /* Smooth transition for active border */
+      transition: border 0.5s ease; /* Smooth transition for active border */
+    }
+    
+
+
+    :root {
+      --thumb-active-border-color: #ffffff; /* Default to white */
+    }
+    
+    /* Active thumbnail styling */
+    .swiper-slide-thumb-active img {
+      border: 3px solid var(--thumb-active-border-color); /* Use the variable for the border color */
+      box-shadow: 0 4px 6px rgba(57, 99, 3, 0.1); /* Optional shadow */
+      transition: border 0.3s ease; /* Smooth transition */
     }
     
