@@ -195,7 +195,7 @@ const AllMed = () => {
                     border: "1px solid #ddd",
                     // color: textColor,
                     fontWeight: row.status === "approved" ? "bold" : "300",
-                    color: row.status === "approved" ? "green" : "red",
+                    color: row.status === "approved" ? "green" : "#11a5d8",
                     textTransform: "uppercase",
                   }}
                   align="left"
