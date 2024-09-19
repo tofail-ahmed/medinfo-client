@@ -80,22 +80,20 @@ const AllMed = () => {
                   color: textColor,
                 }}
               >
-                Type
+                Status
               </TableCell>
-              <TableCell
+              {/* <TableCell
                 align="left"
                 className="w-[200px]"
                 sx={{
-                  
                   fontSize: "16px",
                   fontWeight: "bold",
                   border: "1px solid #ddd",
                   color: textColor,
-                  
                 }}
               >
                 Category
-              </TableCell>
+              </TableCell> */}
               <TableCell
                 align="right"
                 sx={{
@@ -107,7 +105,7 @@ const AllMed = () => {
               >
                 Available Qty
               </TableCell>
-              <TableCell
+              {/* <TableCell
                 align="right"
                 sx={{
                   fontSize: "16px",
@@ -117,7 +115,7 @@ const AllMed = () => {
                 }}
               >
                 Sold Qty
-              </TableCell>
+              </TableCell> */}
               <TableCell
                 align="right"
                 sx={{
@@ -149,7 +147,7 @@ const AllMed = () => {
                   color: textColor,
                 }}
               >
-                Details
+                Change Status
               </TableCell>
             </TableRow>
           </TableHead>
@@ -164,7 +162,12 @@ const AllMed = () => {
                   }}
                   align="left"
                 >
-                  {idx + 1}. {row.medicine_name}
+                  <button
+                    className="hover:font-bold flex justify-start items-start"
+                    onClick={() => handleDetails(row._id)}
+                  >
+                   <span> {idx + 1}.</span> <span>{row.medicine_name}</span>
+                  </button>
                 </TableCell>
                 <TableCell
                   sx={{
@@ -190,13 +193,16 @@ const AllMed = () => {
                   sx={{
                     fontSize: "15px",
                     border: "1px solid #ddd",
-                    color: textColor,
+                    // color: textColor,
+                    fontWeight: row.status === "approved" ? "bold" : "300",
+                    color: row.status === "approved" ? "green" : "red",
+                    textTransform: "uppercase",
                   }}
                   align="left"
                 >
-                  {row.type}
+                  {row.status}
                 </TableCell>
-                <TableCell
+                {/* <TableCell
                   sx={{
                     fontSize: "15px",
                     border: "1px solid #ddd",
@@ -205,7 +211,7 @@ const AllMed = () => {
                   align="left"
                 >
                   {row.category}
-                </TableCell>
+                </TableCell> */}
                 <TableCell
                   sx={{
                     fontSize: "15px",
@@ -231,7 +237,7 @@ const AllMed = () => {
           </div> */}
                   </div>
                 </TableCell>
-                <TableCell
+                {/* <TableCell
                   sx={{
                     fontSize: "15px",
                     border: "1px solid #ddd",
@@ -240,7 +246,7 @@ const AllMed = () => {
                   align="right"
                 >
                   {row.sold}
-                </TableCell>
+                </TableCell> */}
 
                 <TableCell
                   sx={{
@@ -275,7 +281,7 @@ const AllMed = () => {
                   align="right"
                 >
                   <Button
-                       onClick={() => handleUpdate(row._id)}
+                    onClick={() => handleUpdate(row._id)}
                     variant="outlined"
                     size="small"
                     sx={{
@@ -287,10 +293,39 @@ const AllMed = () => {
                       },
                     }}
                   >
-             <NavLink>       Update</NavLink>
+                    <NavLink> Update</NavLink>
                   </Button>
                 </TableCell>
                 <TableCell
+                  sx={{
+                    fontSize: "15px",
+                    border: "1px solid #ddd",
+                    color: textColor,
+                  }}
+                  align="right"
+                >
+                  <Button
+                    // onClick={() => handleUpdate(row._id)}
+                    variant="outlined"
+                    size="small"
+                    sx={{
+                      color: "white",
+                      borderColor: "green",
+                          background: row.status === "approved" ? "#11d875" : "#11a5c1", // Conditionally set background color
+    fontWeight: row.status === "approved" ? "bold" : "300", // "bold" for admin, "semibold" (600) for user
+                      "&:hover": {
+                        backgroundColor: "lightgreen",
+                        borderColor: "#387F39",
+                      },
+                    }}
+                  >
+                    {
+                      row.status==="approved"?"approved":"pending"
+                    }
+                     {/* Make {row.status==="pending"?"approve":"approved"} */}
+                  </Button>
+                </TableCell>
+                {/* <TableCell
                   sx={{
                     fontSize: "15px",
                     border: "1px solid #ddd",
@@ -313,7 +348,7 @@ const AllMed = () => {
                   >
                     Details
                   </Button>
-                </TableCell>
+                </TableCell> */}
               </TableRow>
             ))}
           </TableBody>

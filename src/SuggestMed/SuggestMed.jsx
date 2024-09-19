@@ -1,7 +1,10 @@
 import React, { useState } from 'react';
 import { TextField, Button, Box } from '@mui/material';
+import { useSuggestMedicineMutation } from '../redux/medicine/medicinesApi';
+import { toast } from 'sonner';
 
 const SuggestMed = () => {
+  const [suggestMedDetails,{data,isLoading,error}]=useSuggestMedicineMutation()
   const [formData, setFormData] = useState({
     medicine_name: '',
     generic_name: '',
@@ -14,11 +17,22 @@ const SuggestMed = () => {
       [e.target.name]: e.target.value,
     });
   };
-
+// console.log(data)
+if(isLoading){
+  toast.info("Request on process, please wait...")
+}
+if(error){
+  toast.info(`{error}`)
+}
+if(data){
+  toast.success(data.message)
+  console.log(data)
+}
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log('Form data submitted:', formData);
+    // console.log('Form data submitted:', formData);
     // Add your form submission logic here
+    suggestMedDetails(formData)
   };
 
   return (
