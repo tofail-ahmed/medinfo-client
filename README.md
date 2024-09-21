@@ -1,1 +1,1 @@
-# server: https://medinfo-server.vercel.app/api/v1/
+# live_server: https://medinfo-server.vercel.app/api/v1/
