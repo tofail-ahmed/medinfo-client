@@ -31,6 +31,8 @@ const medicinesApi = baseApi.injectEndpoints({
         url: `/singleMedicine/${id}`,
         method: "GET",
       }),
+      providesTags: ["medicines"],
+
     }),
     searchMedicine: builder.query({
       query: (term) => ({
