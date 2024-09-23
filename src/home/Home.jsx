@@ -7,6 +7,7 @@ import Loader from "../components/Loader";
 import Search from "../search/Search";
 import { Button, Grid } from "@mui/material";
 // import SearchResult from "../search/SearchResult";
+import Banner from "./Banner"
 
 const Home = () => {
   // const userCred=useSelector((state)=>state.medInfoUser.medInfoUserCred);
@@ -21,12 +22,13 @@ const Home = () => {
   return (
     <div className="">
       <div>
+        <Banner/>
         {/* <Search></Search> */}
         {/* <SearchResult/> */}
       </div>
       <div className="mx-10 ">
         <ul>
-          {data?.data.map((medicine, index) => (
+          {data?.data.filter(medicine=>medicine.status==="approved").map((medicine, index) => (
             <div className="bg-slate-400/30 rounded-md my-4 px-10 py-2" key={index}>
               <li className="text-2xl">
                 {index + 1}. {medicine.medicine_name}
@@ -52,6 +54,10 @@ const Home = () => {
               <p className="text-sm">
                 <span className="text-fuchsia-800 font-semibold">Available:</span>{" "}
                 {medicine.available}
+              </p>
+              <p className="text-sm">
+                <span className="text-fuchsia-800 font-semibold">Status:</span>{" "}
+                {medicine.status}
               </p>
               <div className="flex gap-4">
                 <h1>Alternative Medicines</h1>

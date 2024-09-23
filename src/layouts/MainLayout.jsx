@@ -21,10 +21,11 @@ const MainLayout = () => {
   return (
     <div className={`${darkMode ? "bg-slate-700 text-white" : ""}`}>
       <Navbar />
-      <Search />
-      <Banner />
-      {/* <SearchResult/> */}
+     
+      {/* <Banner />
+       <SearchResult/> */}
       <Container>
+      <Search />
         <Outlet />
       </Container>
     </div>

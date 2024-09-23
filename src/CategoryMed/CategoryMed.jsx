@@ -3,7 +3,6 @@ import { useState } from "react";
 import { useMedCategoryQuery } from "../redux/medicine/medicinesApi";
 import { useNavigate } from "react-router";
 import Loader from "../components/Loader";
-import Search from "../search/Search";
 
 const CategoryMed = () => {
   const navigate = useNavigate();
@@ -12,14 +11,12 @@ const CategoryMed = () => {
   const [filters, setFilters] = useState({ category: "", type: "" });
 
   // Function to handle both category and type selection
-//   setFilters updates the filters state, which is an object containing category and type.
   const handleCategory = (field, value) => {
-      setFilters({ ...filters, [field]: value });
-    };
-
+    setFilters({ ...filters, [field]: value });
+  };
 
   // Fetch data based on the selected category and/or type using Redux query
-  const { data, error, isLoading } = useMedCategoryQuery({
+  const { data, isLoading } = useMedCategoryQuery({
     category: filters.category,
     type: filters.type,
   });
@@ -28,21 +25,27 @@ const CategoryMed = () => {
     return <Loader />;
   }
 
-  // if (error) {
-  //   return <p>Error loading data</p>;
-  // }
-
   // Button styles: adjust styles for selected type and category
   const getButtonStyle = (field, value) => {
-    const isSelected = filters[field] === value; 
-//     This checks whether the current filters state matches the button's field and value.
-// If the current filter for that field matches the button's value (filters[field] === value), isSelected becomes true, meaning the button is currently selected.
+    const isSelected = filters[field] === value;
+    
+    let backgroundColor, hoverColor;
+
+    // Set different background colors and hover colors based on type or category
+    if (field === "type") {
+      backgroundColor = isSelected ? "#1A2E05" : "#84CC16"; // Orange for selected, light orange for unselected types
+      hoverColor =isSelected?" #1A2E05":  "#3F6212" ;      // Darker orange for hover on selected
+    } else if (field === "category") {
+      backgroundColor = isSelected ? "#052E16" : "#4ADE80"; // Darker orange for selected, lighter for unselected categories
+      hoverColor = isSelected?" #052E16": "#166534";      // Darker hover color for selected categories
+    }
+
     return {
       color: isSelected ? "#fff" : "#6366F1",
-      borderColor: isSelected ? "#6366F1" : "#6366F1",
-      backgroundColor: isSelected ? "#6366F1" : "#fff",
+      borderColor: "#6366F1",
+      backgroundColor: backgroundColor,
       "&:hover": {
-        backgroundColor: "#14919B",
+        backgroundColor: hoverColor,
         borderColor: "#6366F1",
         color: "#fff",
       },
@@ -51,11 +54,7 @@ const CategoryMed = () => {
 
   return (
     <div>
-     <div>
-       <Search></Search>
-     </div>
-      {/* Category and Type Selection */}
-      <div className="grid lg:grid-cols-4 grid-cols-2 gap-2 p-4 mx-auto">
+      <div className="grid lg:grid-cols-4 grid-cols-2 gap-2 py- lg:p-0 p-2 mx-auto">
         {/* Type buttons */}
         <Button
           variant="outlined"
@@ -118,10 +117,8 @@ const CategoryMed = () => {
         </Button>
       </div>
 
-     
-
       {/* Display the search results */}
-      <div className="mx-4">
+      <div className="lg:mx-0 mx-2">
         <ul>
           {data && data.length > 0 ? (
             data.map((medicine, index) => (

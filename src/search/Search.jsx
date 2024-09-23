@@ -36,9 +36,19 @@ const Search = () => {
 // if(searchTerm&&data?.data.length===0){
 //   return <p>No medicine found</p>
 // }
+
+
+// if (!results || results.length === 0) {
+//   return (
+//     <Typography variant="h6" color="error" align="center">
+//       No medicine found. Provide valid medicine Name.
+//     </Typography>
+//   );
+// }
+
   return (
     <div className=" my-2">
-      <div className="flex lg:justify-end justify-center  mx-4   ">
+      <div className="flex lg:justify-end justify-center  lg:mx-0 mx-2   ">
         <TextField
         // color="textColor"
           label="Search by name/genric/company"
@@ -75,7 +85,7 @@ const Search = () => {
             <p>No medicine found. Provide valid medicine Name</p>
             
           </Typography>
-          <Button className='w-2/12 flex justify-center items-center mx-auto'
+          <Button className='lg:w-2/12 w-3/12 flex justify-center items-center mx-auto'
           onClick={() => navigate(`/suggestMed`)} 
           variant="outlined"
           size="small"

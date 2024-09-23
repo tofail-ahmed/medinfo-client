@@ -205,8 +205,9 @@ export default function Alluser() {
                       color: "red",
                       borderColor: "red",
                       "&:hover": {
-                        backgroundColor: "rgba(255, 0, 0, 0.1)",
+                        backgroundColor: "#a93226",
                         borderColor: "darkred",
+                        color:"white"
                       },
                     }}
                   >
@@ -229,8 +230,9 @@ export default function Alluser() {
                       color: "green",
                       borderColor: "green",
                       "&:hover": {
-                        backgroundColor: "lightgreen",
+                        backgroundColor: "#1e8449 ",
                         borderColor: "#387F39",
+                        color:"white"
                       },
                     }}
                   >
