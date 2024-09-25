@@ -1,16 +1,23 @@
-import React from 'react'
-import ChildTest from './ChildTest'
-import TestMother from './TestMother'
+import React, { useState } from 'react';
+import TextDisplay from "./TextDisplay";
+import TextInput from "./TextInput";
+import TestComponent from './TestComponent';
 
 const Test = () => {
+  const [displayText, setDisplayText] = useState('');
+
+  const handleTextChange = (text) => {
+    setDisplayText(text);
+  };
+
   return (
     <div>
-        <TestMother/>
+      <TextInput onTextChange={handleTextChange} />
       <h1>This is Test</h1>
-    
-      <ChildTest/>
+      <TestComponent displayText={displayText} />
+      {/* <TextDisplay text={displayText} /> */}
     </div>
-  )
+  );
 }
 
-export default Test
+export default Test;
