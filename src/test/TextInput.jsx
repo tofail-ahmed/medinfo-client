@@ -16,7 +16,7 @@ const TextInput = ({ onTextChange }) => {
   };
 
   return (
-    <div>
+    <div className='bg-blue-400 p-2'>
       <form onSubmit={handleSubmit}>
         <input
           type="text"
