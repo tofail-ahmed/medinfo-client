@@ -9,7 +9,7 @@ import { NavLink, useNavigate } from 'react-router-dom';
 const Search = () => {
   const navigate = useNavigate();
   const darkMode = useSelector((store) => store.theme.darkMode);
-  const textColor=darkMode?"white":"black"
+  // const textColor=darkMode?"white":"black"
   const [query, setQuery] = useState('');
   const [searchTerm, setSearchTerm] = useState(null);
 
