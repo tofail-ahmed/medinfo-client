@@ -1,8 +1,13 @@
 import { useDispatch, useSelector } from "react-redux";
 import { NavLink } from "react-router-dom";
 import { useState } from "react";
+import { Button, IconButton, Menu, MenuItem } from "@mui/material";
+// import MenuIcon from "@mui/icons-material/Menu";
 import { toggleDarkMode } from "../redux/theme/themeslice";
 import { clearMedInfoUserCred } from "../redux/user/userSlice";
+import { CgMenuGridR } from "react-icons/cg";
+import { ImMenu3,ImMenu4  } from "react-icons/im";
+
 
 const Navbar = () => {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
@@ -29,92 +34,184 @@ const Navbar = () => {
           <NavLink to={"/"}>
             <img className="w-[50px]" src="/src/assets/medInfo.png" alt="Logo" />
           </NavLink>
-          {/* <NavLink className="bg-green-400 rounded-md font-bold m-4 p-2" to={"/medCat"}>
+          {/* <Button
+            variant="contained"
+            color="success"
+            component={NavLink}
+            to={"/medCat"}
+            sx={{ margin: "0 1rem" }}
+          >
             Category
-          </NavLink> */}
+          </Button> */}
         </span>
 
         {/* Mobile Toggle Button */}
-        <div className="md:hidden">
-          <button
-            onClick={toggleDropdown}
-            className="text-white bg-green-500 p-2 rounded-md"
-          >
-            Menu
-          </button>
+        <div className="md:hidden ">
+          <IconButton onClick={toggleDropdown} color="inherit" >
+           <div className="text-3xl text-red-600">
+           {
+              isDropdownOpen?<ImMenu4 />:<ImMenu3 />
+            }
+           </div>
+          
+          </IconButton>
         </div>
 
         {/* Desktop Links */}
-        <div className="hidden md:flex items-center gap-2 justify-end">
-          <NavLink className="bg-green-400 rounded-md font-bold m-4 p-2" to={"/medCat"}>
+        <div className="hidden md:flex items-center gap-2 justify-end py-2">
+          <Button
+            variant="contained"
+            color="success"
+            component={NavLink}
+            to={"/medCat"}
+            sx={{ margin: "0 1rem" }}
+          >
             Category
-          </NavLink>
+          </Button>
+      
           {userData && userData.role === "admin" && (
-            <NavLink className="bg-green-400 rounded-md font-bold m-4 p-2" to={"/dashboard"}>
+            <Button
+              variant="contained"
+              color="success"
+              component={NavLink}
+              to={"/dashboard"}
+              sx={{ margin: "0 1rem" }}
+            >
               Dashboard
-            </NavLink>
+            </Button>
           )}
           {userData && userData.email ? (
-            <div>
-              <NavLink
-                className="bg-green-400 rounded-md font-bold m-4 p-2"
-                onClick={handleLogout}
-              >
-                Logout
-              </NavLink>
-            </div>
+            <Button
+              variant="contained"
+              color="success"
+              onClick={handleLogout}
+              sx={{ margin: "0 1rem" }}
+            >
+              Logout
+            </Button>
           ) : (
-            <NavLink className="bg-green-400 rounded-md font-bold m-4 p-2" to={"/login"}>
+            <Button
+              variant="contained"
+              color="success"
+              component={NavLink}
+              to={"/login"}
+              sx={{ margin: "0 1rem" }}
+            >
               Login
-            </NavLink>
+            </Button>
           )}
           {userData && userData.email && (
-            <NavLink className="bg-green-400 rounded-md font-bold m-4 p-2" to={"/profile"}>
+            <Button
+              variant="contained"
+              color="success"
+              component={NavLink}
+              to={"/profile"}
+              sx={{ margin: "0 1rem" }}
+            >
               {userData?.name.split(" ")[0]}
-            </NavLink>
+            </Button>
           )}
-          <button onClick={darkModeHandler}>
-            <div className="bg-green-400 rounded-md font-bold m-4 p-2">
-              {darkMode ? "Light" : "Dark"}
-            </div>
-          </button>
+          <Button
+            variant="contained"
+            color="success"
+            onClick={darkModeHandler}
+            sx={{ margin: "0 1rem" }}
+          >
+            {darkMode ? "Light" : "Dark"}
+          </Button>
         </div>
       </div>
 
       {/* Dropdown Menu for Mobile */}
       {isDropdownOpen && (
-        <div className="md:hidden bg-green-500 text-white p-4 w-64 absolute left-0 top-16 z-50">
-          <NavLink className="block bg-green-400 rounded-md font-bold m-2 p-2" to={"/medCat"}>
-            Category
-          </NavLink>
+        <div className="md:hidden bg-green-500/10 backdrop-blur-sm  text-white p-4 w-[30%] absolute right-0 top-16 z-50 border-[1px] border-green-500 rounded-md" >
+  <Button
+  variant="contained"
+  color="success"
+  component={NavLink}
+  to={"/medCat"}
+  fullWidth
+  sx={{
+    margin: "0.5rem 0",
+    borderTop: "2px solid transparent", // Transparent border to reserve space
+    borderTopLeftRadius: "4px",
+    borderTopRightRadius: "4px",
+    "&:hover": {
+      borderTopColor: "red", // Changes the border color on hover
+      backdropFilter: "blur(5px)", // Adds blur effect on hover
+    },
+  }}
+>
+  Category
+</Button>
+
+
+
+          <Button
+            variant="contained"
+            color="success"
+            component={NavLink}
+            to={"/medCat"}
+            fullWidth
+            sx={{ margin: "0.5rem 0" }}
+          >
+            Test
+          </Button>
           {userData && userData.role === "admin" && (
-            <NavLink className="block bg-green-400 rounded-md font-bold m-2 p-2" to={"/dashboard"}>
+            <Button
+              variant="contained"
+              color="success"
+              component={NavLink}
+              to={"/dashboard"}
+              fullWidth
+              sx={{ margin: "0.5rem 0" }}
+            >
               Dashboard
-            </NavLink>
+            </Button>
           )}
           {userData && userData.email ? (
-            <NavLink
-              className="block bg-green-400 rounded-md font-bold m-2 p-2"
+            <Button
+              variant="contained"
+              color="success"
               onClick={handleLogout}
+              fullWidth
+              sx={{ margin: "0.5rem 0" }}
             >
               Logout
-            </NavLink>
+            </Button>
           ) : (
-            <NavLink className="block bg-green-400 rounded-md font-bold m-2 p-2" to={"/login"}>
+            <Button
+              variant="contained"
+              color="success"
+              component={NavLink}
+              to={"/login"}
+              fullWidth
+              sx={{ margin: "0.5rem 0" }}
+            >
               Login
-            </NavLink>
+            </Button>
           )}
           {userData && userData.email && (
-            <NavLink className="block bg-green-400 rounded-md font-bold m-2 p-2" to={"/profile"}>
+            <Button
+              variant="contained"
+              color="success"
+              component={NavLink}
+              to={"/profile"}
+              fullWidth
+              sx={{ margin: "0.5rem 0" }}
+            >
               {userData?.name.split(" ")[0]}
-            </NavLink>
+            </Button>
           )}
-          <button
+          <Button
+            variant="contained"
+            color="success"
             onClick={darkModeHandler}
-            className="block bg-green-400 rounded-md font-bold m-2 p-2"
+            fullWidth
+            sx={{ margin: "0.5rem 0" }}
           >
             {darkMode ? "Light" : "Dark"}
-          </button>
+          </Button>
         </div>
       )}
     </div>
