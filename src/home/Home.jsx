@@ -37,6 +37,12 @@ const Home = () => {
                 <span className="text-fuchsia-800 font-semibold">Genric:</span>{" "}
                 {medicine.generic_name}
               </li>
+              {
+                medicine.homeImg&& 
+                (
+                  <img src={medicine.homeImg} alt="img" />
+                )
+              }
               <p className="text-sm">
                 <span className="text-fuchsia-800 font-semibold">
                   Descriptions:

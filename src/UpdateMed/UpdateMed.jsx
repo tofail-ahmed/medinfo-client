@@ -63,7 +63,7 @@ if(updateMedLoading){
         };
       });
     };
-    console.log(medicineData)
+    // console.log(medicineData)
 
     const handleSubmit = async (e) => {
       e.preventDefault();
@@ -94,6 +94,8 @@ if(updateMedLoading){
         warnings: typeof medicineData.warnings === 'string' 
           ? medicineData.warnings.split(',').map(item => item.trim()) 
           : medicineData.warnings,
+          homeImg:medicineData.homeImg,
+          detailsImg:medicineData.detailsImg
       };
     
       const UpdateRes = await medicineDetails({ id, updatedMed: updatedDetails });
@@ -129,6 +131,8 @@ if(updateMedLoading){
             { label: 'Madicine Category', name: 'category' },
             { label: 'Company Name', name: 'company_name' },
             { label: 'Generic Name', name: 'generic_name' },
+            { label: 'Home Image', name: 'homeImg' },
+            { label: 'Details Image', name: 'detailsImg' },
             { label: 'Available Quantity', name: 'available', type: 'number' },
             { label: 'Alternative Medicines (comma-separated)', name: 'alt_medicines', multiline: true, rows: 4 },
             { label: 'Description', name: 'description', multiline: true, rows: 4 },
