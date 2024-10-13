@@ -16,7 +16,7 @@ const AllMed = () => {
 
   const textColor = darkMode ? "#fff" : "#000";
   const { data: medData, isLoading: medLoading } = useAllMedicinesQuery("");
-  console.log(medData?.data);
+  // console.log(medData?.data);
   const rows = medData?.data;
   if (medLoading) {
     return <Loader />;
@@ -48,6 +48,17 @@ const AllMed = () => {
                 }}
               >
                 Medicine Name
+              </TableCell>
+              <TableCell
+                align="left"
+                sx={{
+                  fontSize: "16px",
+                  fontWeight: "bold",
+                  border: "1px solid #ddd",
+                  color: textColor,
+                }}
+              >
+               Image
               </TableCell>
               <TableCell
                 align="left"
@@ -168,6 +179,17 @@ const AllMed = () => {
                   >
                    <span> {idx + 1}.</span> <span>{row.medicine_name}</span>
                   </button>
+                </TableCell>
+                <TableCell
+                  sx={{
+                    fontSize: "15px",
+                    border: "1px solid #ddd",
+                    color: textColor,
+                  }}
+                  align="center"
+                >
+                <img className="w-[100px] h-[50px] " src={row.homeImg} alt="img" />
+
                 </TableCell>
                 <TableCell
                   sx={{
