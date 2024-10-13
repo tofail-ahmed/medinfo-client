@@ -11,7 +11,9 @@ import Banner from "./Banner"
 
 const Home = () => {
   // const userCred=useSelector((state)=>state.medInfoUser.medInfoUserCred);
-
+  const handleUpdate=(id)=>{
+    navigate(`/dashboard/updateMed/${id}`)
+  }
   const navigate = useNavigate();
   const { data, isLoading } = useAllMedicinesQuery("");
   if (isLoading) {
@@ -40,7 +42,7 @@ const Home = () => {
               {
                 medicine.homeImg&& 
                 (
-                  <img src={medicine.homeImg} alt="img" />
+                  <img className="lg:w-[500px] lg:h-[200px] w-[200px] h-[100px] border-[2px] rounded-md border-green-600 hover:border-green-900 hover:border-[5px] duration-500" src={medicine.homeImg} alt="img" />
                 )
               }
               <p className="text-sm">
@@ -94,6 +96,21 @@ const Home = () => {
                     }}
                   >
                     Deatils
+                  </Button>
+                  <Button
+                    onClick={() => handleUpdate(medicine._id)}
+                    variant="outlined"
+                    size="small"
+                    sx={{
+                      color: "green",
+                      borderColor: "green",
+                      "&:hover": {
+                        backgroundColor: "lightgreen",
+                        borderColor: "#387F39",
+                      },
+                    }}
+                  >
+                    <NavLink> Update</NavLink>
                   </Button>
       </Grid>
 
