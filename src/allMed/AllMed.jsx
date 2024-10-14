@@ -3,7 +3,7 @@ import { Button, Paper, Table, TableCell, TableContainer, TableHead, TableRow,Ta
 import { FaUser, FaUserShield } from 'react-icons/fa';
 import { useSelector } from 'react-redux';
 import { useAllMedicinesQuery } from '../redux/medicine/medicinesApi';
-import Loader from '../components/loader';
+import Loader from '../components/Loader';
 import { useNavigate } from "react-router";
 import { NavLink } from 'react-router-dom';
 

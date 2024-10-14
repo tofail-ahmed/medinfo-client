@@ -2,89 +2,125 @@ import { useParams } from "react-router";
 import { useSingleMedicineQuery } from "../redux/medicine/medicinesApi";
 import { NavLink } from "react-router-dom";
 import Loader from "../components/Loader";
+import { Button, Container, Grid, Typography, Card, CardMedia, CardContent, Box } from '@mui/material';
 
 const MedicineDetails = () => {
   const { id } = useParams();
-  // console.log(id)
   const { data, isLoading, error } = useSingleMedicineQuery(id);
 
   if (isLoading) {
-    return <Loader></Loader>;
+    return <Loader />;
   }
+
   if (error) {
     return <div>Something went wrong...</div>;
   }
-  // console.log(data);
+
   return (
-    <div className="min-h-screen">
-      <h1>This is medicine details</h1>
-      <h1 className="text-2xl font-bold "> {data?.data?.medicine_name}</h1>
-      <h1>Company: {data?.data?.company_name}</h1>
-      <h1>Genric: {data?.data?.generic_name}</h1>
-      <h1>Description: {data?.data?.description}</h1>
-      <h1>Dose: {data?.data?.doses}</h1>
-      <h1>Actions: {data?.data?.actions}</h1>
-      <div className="flex ">
-        <h1>Alernatives: </h1>
-        <ul>
-          {data?.data?.alt_medicines.map((alt, idx) => (
-            <li key={idx}>
-              {idx + 1}. {alt}
-            </li>
-          ))}
-        </ul>
-      </div>
-      <div className="flex ">
-        <h1>Side Effects: </h1>
-        <ul>
-          {data?.data?.side_effects.map((alt, idx) => (
-            <li key={idx}>
-              {idx + 1}. {alt}
-            </li>
-          ))}
-        </ul>
-      </div>
-      <div className="flex ">
-        <h1>Interactions: </h1>
-        <ul>
-          {data?.data?.interactions.map((alt, idx) => (
-            <li key={idx}>
-              {idx + 1}. {alt}
-            </li>
-          ))}
-        </ul>
-      </div>
-      <div className="flex ">
-        <h1>Uses: </h1>
-        <ul>
-          {data?.data?.uses.map((alt, idx) => (
-            <li key={idx}>
-              {idx + 1}. {alt}
-            </li>
-          ))}
-        </ul>
-      </div>
-      <div className="flex ">
-        <h1>Warnings: </h1>
-        <ul>
-          {data?.data?.warnings.map((alt, idx) => (
-            <li key={idx}>
-              {idx + 1}. {alt}
-            </li>
-          ))}
-        </ul>
-      </div>
-      <NavLink
-                className="border-2 rounded-md border-red-300 bg-orange-300"
-                to={`/buyMedicine/${data?.data?._id}`}
-              >
-                Buy Now
-              </NavLink>
-      <hr />
-      <span>{id}</span>
-      <hr />
-      <span>{data?.data?._id}</span>
-    </div>
+    <Container maxWidth="lg" sx={{ minHeight: '100vh', py:2  }}>
+      <Card sx={{  boxShadow: '2px 2px 10px rgba(0, 0, 0, 0.1)', borderRadius: 1,backgroundColor:"lightGreen" }}>
+        <Grid container spacing={4} alignItems="center">
+          {/* Image Section */}
+          <Grid item xs={12} lg={6}>
+            <CardMedia
+              component="img"
+              image={data?.data?.detailsImg}
+              alt={data?.data?.medicine_name}
+              sx={{
+                // mx:2,
+                width: '100%',
+                height: { xs: 200, lg: 400 },
+                // backgroundColor:"lightGreen"
+                border:"2px solid lightGreen",
+                borderRadius: 2,
+                // boxShadow: '2px 2px 10px rgba(0, 0, 0, 0.1)',
+              }}
+            />
+          </Grid>
+
+          {/* Medicine Info Section */}
+          <Grid item xs={12} lg={6}>
+            <CardContent>
+              <Typography variant="h4" component="h1" gutterBottom>
+                {data?.data?.medicine_name}
+              </Typography>
+              <Typography variant="body1"><strong>Company:</strong> {data?.data?.company_name}</Typography>
+              <Typography variant="body1"><strong>Generic:</strong> {data?.data?.generic_name}</Typography>
+              <Typography variant="body1"><strong>Description:</strong> {data?.data?.description}</Typography>
+              <Typography variant="body1"><strong>Dose:</strong> {data?.data?.doses}</Typography>
+              <Typography variant="body1"><strong>Actions:</strong> {data?.data?.actions}</Typography>
+
+              <Box my={2}>
+                <Typography variant="body1" gutterBottom><strong>Alternatives:</strong></Typography>
+                <ul>
+                  {data?.data?.alt_medicines.map((alt, idx) => (
+                    <li key={idx}>{idx + 1}. {alt}</li>
+                  ))}
+                </ul>
+              </Box>
+
+              <Box my={2}>
+                <Typography variant="body1" gutterBottom><strong>Side Effects:</strong></Typography>
+                <ul>
+                  {data?.data?.side_effects.map((effect, idx) => (
+                    <li key={idx}>{idx + 1}. {effect}</li>
+                  ))}
+                </ul>
+              </Box>
+
+              <Box my={2}>
+                <Typography variant="body1" gutterBottom><strong>Interactions:</strong></Typography>
+                <ul>
+                  {data?.data?.interactions.map((interaction, idx) => (
+                    <li key={idx}>{idx + 1}. {interaction}</li>
+                  ))}
+                </ul>
+              </Box>
+
+              <Box my={2}>
+                <Typography variant="body1" gutterBottom><strong>Uses:</strong></Typography>
+                <ul>
+                  {data?.data?.uses.map((use, idx) => (
+                    <li key={idx}>{idx + 1}. {use}</li>
+                  ))}
+                </ul>
+              </Box>
+
+              <Box my={2}>
+                <Typography variant="body1" gutterBottom><strong>Warnings:</strong></Typography>
+                <ul>
+                  {data?.data?.warnings.map((warning, idx) => (
+                    <li key={idx}>{idx + 1}. {warning}</li>
+                  ))}
+                </ul>
+              </Box>
+            </CardContent>
+          </Grid>
+        </Grid>
+
+        {/* Buy Button */}
+        <Box mt={4}>
+          <Button
+            component={NavLink}
+            to={`/buyMedicine/${data?.data?._id}`}
+            variant="contained"
+            fullWidth
+            sx={{
+              my:2,
+              backgroundColor: 'green',
+              borderRadius: '4px',
+              boxShadow: '2px 2px 8px rgba(0, 0, 0, 0.2)',
+              '&:hover': {
+                backgroundColor: 'orange',
+                boxShadow: '4px 4px 12px rgba(0, 0, 0, 0.3)',
+              }
+            }}
+          >
+            Buy Now
+          </Button>
+        </Box>
+      </Card>
+    </Container>
   );
 };
 
