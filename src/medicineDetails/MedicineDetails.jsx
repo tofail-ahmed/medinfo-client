@@ -17,8 +17,8 @@ const MedicineDetails = () => {
   }
 
   return (
-    <Container maxWidth="lg" sx={{ minHeight: '100vh', py:2  }}>
-      <Card sx={{  boxShadow: '2px 2px 10px rgba(0, 0, 0, 0.1)', borderRadius: 1,backgroundColor:"lightGreen" }}>
+    <Container maxWidth="lg" sx={{ minHeight: '100vh', py:2  }} >
+      <Card sx={{  boxShadow: '2px 2px 10px rgba(0, 0, 0, 0.1)', borderRadius: 1,backgroundColor: 'rgba(144, 238, 144, 0.5)',    p:2 }}>
         <Grid container spacing={4} alignItems="center">
           {/* Image Section */}
           <Grid item xs={12} lg={6}>
@@ -33,7 +33,7 @@ const MedicineDetails = () => {
                 // backgroundColor:"lightGreen"
                 border:"2px solid lightGreen",
                 borderRadius: 2,
-                // boxShadow: '2px 2px 10px rgba(0, 0, 0, 0.1)',
+                boxShadow: '10px 10px 10px rgba(0, 0, 0, 0.1)',
               }}
             />
           </Grid>
@@ -99,7 +99,7 @@ const MedicineDetails = () => {
         </Grid>
 
         {/* Buy Button */}
-        <Box mt={4}>
+        <Box mt={4} >
           <Button
             component={NavLink}
             to={`/buyMedicine/${data?.data?._id}`}
@@ -109,10 +109,10 @@ const MedicineDetails = () => {
               my:2,
               backgroundColor: 'green',
               borderRadius: '4px',
-              boxShadow: '2px 2px 8px rgba(0, 0, 0, 0.2)',
+              boxShadow: '6px 6px 8px rgba(0, 0, 0, 0.2)',
               '&:hover': {
-                backgroundColor: 'orange',
-                boxShadow: '4px 4px 12px rgba(0, 0, 0, 0.3)',
+                backgroundColor: 'blue',
+                boxShadow: '10px 10px 10px rgba(0, 0, 0, 0.3)',
               }
             }}
           >
