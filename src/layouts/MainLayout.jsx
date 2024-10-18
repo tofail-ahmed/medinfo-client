@@ -25,7 +25,7 @@ const MainLayout = () => {
       {/* <Banner />
        <SearchResult/> */}
       <Container>
-      {/* <Search /> */}
+      <Search />
         <Outlet />
       </Container>
     </div>
