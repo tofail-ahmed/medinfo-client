@@ -35,6 +35,7 @@ import UpdateMed from './UpdateMed/UpdateMed.jsx';
 import CategoryMed from './CategoryMed/CategoryMed.jsx';
 import SuggestMed from './SuggestMed/SuggestMed.jsx';
 import Test from './test/Test.jsx';
+import UpdateProfile from './Profile/UpdateProfile.jsx';
 // import Dashboard from './layouts/Dashboard.jsx';
 const router = createBrowserRouter([
   {
@@ -97,6 +98,10 @@ const router = createBrowserRouter([
         {
           path:"/test",
           element:<Test/>
+        },
+        {
+          path:"/update_profile",
+          element:<UpdateProfile/>
         }
       
     ]
