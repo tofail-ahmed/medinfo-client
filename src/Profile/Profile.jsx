@@ -25,8 +25,8 @@ const Profile = () => {
 
   return (
     <div className="flex justify-center items-center bg-lime-500/50 min-h-screen">
-      
-      <div className="relative my-10 p-5  shadow-lg rounded-lg">
+            
+      <div className="relative my-10 p-5  shadow-lg rounded-3xl">
         {/* Edit button at top right */}
         <button
           className="absolute top-2 right-2 bg-blue-500 text-white px-3 py-1 rounded hover:bg-blue-700 duration-200"
