@@ -36,7 +36,7 @@ const Profile = () => {
         <button
           className="absolute top-2 right-2 bg-blue-500 text-white px-3 py-1 rounded hover:bg-blue-700 duration-200"
           // onClick={() => navigate(`/edit-profile/${id}`)}
-          onClick={() => navigate(`/update_profile/{id}`)}
+          onClick={() => navigate(`/update-profile/{id}`)}
         >
           Edit
         </button>

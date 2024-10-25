@@ -100,7 +100,7 @@ const router = createBrowserRouter([
           element:<Test/>
         },
         {
-          path:"/update_profile",
+          path:"/update-profile",
           element:<UpdateProfile/>
         }
       
