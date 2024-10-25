@@ -31,7 +31,7 @@ const Search = () => {
   };
 
   return (
-    <Box py={4} px={2}>
+    <Box py={4}>
       <Box display="flex" justifyContent="center" mb={4}>
         <TextField
           label="Search by Name / Generic / Company"
@@ -39,13 +39,34 @@ const Search = () => {
           onChange={handleInputChange}
           variant="outlined"
           InputProps={{
+            style: {
+              color: darkMode ? "white" : "black",
+              borderColor: darkMode ? "white" : "black",
+            },
             endAdornment: (
               <InputAdornment position="end">
                 <IconButton onClick={handleSearch}>
-                  <FaSearch />
+                <FaSearch style={{ color: darkMode ? "white" : "black", background: "transparent" }} />
+
                 </IconButton>
               </InputAdornment>
             ),
+          }}
+          InputLabelProps={{
+            style: { color: darkMode ? "red" : "black" },
+          }}
+          sx={{
+            "& .MuiOutlinedInput-root": {
+              "& fieldset": {
+                borderColor: darkMode ? "yellow" : "black",
+              },
+              "&:hover fieldset": {
+                borderColor: darkMode ? "green" : "black",
+              },
+              "&.Mui-focused fieldset": {
+                borderColor: darkMode ? "white" : "black",
+              },
+            },
           }}
           fullWidth
         />

@@ -14,7 +14,7 @@ const UpdateProfile = () => {
     name: '',
     email: '',
     phone: '',
-    address: '',
+    img: '',
     city: '',
     country: '',
     postalCode: '',
@@ -28,7 +28,7 @@ const UpdateProfile = () => {
         name: data.data.name || '',
         email: data.data.email || '',
         phone: data.data.phone || '',
-        address: data.data.address || '',
+        img: data.data.img || '',
         city: data.data.city || '',
         country: data.data.country || '',
         postalCode: data.data.postalCode || '',
@@ -59,58 +59,78 @@ const UpdateProfile = () => {
       flexDirection="column"
       alignItems="center"
       minHeight="100vh"
-      justifyContent="center"
-      p={3}
+      justifyContent="top"
+      p={2}
       sx={{
-        bgcolor: darkMode ? 'transparent' : 'rgba(255, 255, 255, 0.8)', // transparent for dark mode, white with slight opacity for light mode
-        color: darkMode ? 'white' : 'black',
+        bgcolor: darkMode ? "transparent" : "rgba(255, 255, 255, 0.8)", // transparent for dark mode, white with slight opacity for light mode
+        color: darkMode ? "white" : "black",
       }}
     >
-      <h2>Update Profile</h2>
+      <Box
+      display="flex"
+        m={4}
+        sx={{
+          fontWeight: "bold", // Options: 'bold', 'normal', 'light', or a numeric value like 700
+          fontSize: "1.5rem", // You can use 'px', 'rem', etc.
+          color: "#C026D3", // Use theme colors or specify hex values
+        }}
+      >
+        {" "}
+        Update Profile:  {"     "}
+        <Box
+          sx={{
+            fontWeight: "bold", // Options: 'bold', 'normal', 'light', or a numeric value like 700
+            fontSize: "1.5rem", // You can use 'px', 'rem', etc.
+            color: "#10B981", // Use theme colors or specify hex values
+          }}
+        >
+          {data?.data?.name}
+        </Box>{" "}
+      </Box>
       <Box
         component="form"
         onSubmit={handleSubmit}
-        sx={{ width: '100%', maxWidth: '600px' }}
+        sx={{ width: "100%", maxWidth: "600px" }}
       >
         <Grid container spacing={2}>
           {[
-            { label: 'Name', name: 'name' },
-            { label: 'Email', name: 'email', type: 'email' },
-            { label: 'Phone', name: 'phone', type: 'tel' },
-            { label: 'Address', name: 'address' },
-            { label: 'City', name: 'city' },
-            { label: 'Country', name: 'country' },
-            { label: 'Postal Code', name: 'postalCode' },
-            { label: 'Occupation', name: 'occupation' },
+            { label: "Name", name: "name" },
+            { label: "Email", name: "email", type: "email" },
+            { label: "Phone", name: "phone", type: "tel" },
+            { label: "Img URL", name: "img" },
+            { label: "City", name: "city" },
+            { label: "Country", name: "country" },
+            { label: "Postal Code", name: "postalCode" },
+            { label: "Occupation", name: "occupation" },
           ].map((field, index) => (
             <Grid item xs={12} sm={6} key={index}>
               <TextField
                 label={field.label}
                 name={field.name}
-                type={field.type || 'text'}
+                type={field.type || "text"}
                 value={formData[field.name]}
                 onChange={handleChange}
                 fullWidth
                 variant="outlined"
                 InputProps={{
                   style: {
-                    color: darkMode ? 'white' : 'black',
-                    borderColor: darkMode ? 'white' : 'black',
+                    color: darkMode ? "white" : "black",
+                    borderColor: darkMode ? "white" : "black",
                   },
                 }}
                 InputLabelProps={{
-                  style: { color: darkMode ? 'white' : 'black' },
+                  style: { color: darkMode ? "red" : "black" },
                 }}
                 sx={{
-                  '& .MuiOutlinedInput-root': {
-                    '& fieldset': {
-                      borderColor: darkMode ? 'white' : 'black',
+                  "& .MuiOutlinedInput-root": {
+                    "& fieldset": {
+                      borderColor: darkMode ? "yellow" : "black",
                     },
-                    '&:hover fieldset': {
-                      borderColor: darkMode ? 'white' : 'black',
+                    "&:hover fieldset": {
+                      borderColor: darkMode ? "green" : "black",
                     },
-                    '&.Mui-focused fieldset': {
-                      borderColor: darkMode ? 'white' : 'black',
+                    "&.Mui-focused fieldset": {
+                      borderColor: darkMode ? "white" : "black",
                     },
                   },
                 }}
@@ -124,10 +144,10 @@ const UpdateProfile = () => {
               color="primary"
               fullWidth
               sx={{
-                color: darkMode ? 'white' : 'black',
-                bgcolor:  'primary.main',
-                '&:hover': {
-                  bgcolor:  'primary.dark',
+                color: darkMode ? "white" : "black",
+                bgcolor: "primary.main",
+                "&:hover": {
+                  bgcolor: "primary.dark",
                 },
               }}
             >
