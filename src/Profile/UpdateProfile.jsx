@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useSingleUserQuery } from '../redux/user/usersApi';
 import { useSelector } from 'react-redux';
 import { TextField, Button, CircularProgress, Box, Grid } from '@mui/material';
+import CustomInput from '../components/CustomInput';
 
 const UpdateProfile = () => {
   const darkMode = useSelector((store) => store.theme.darkMode);
@@ -153,9 +154,11 @@ const UpdateProfile = () => {
             >
               Update Profile
             </Button>
+            {/* <CustomInput/> */}
           </Grid>
         </Grid>
       </Box>
+      
     </Box>
   );
 };

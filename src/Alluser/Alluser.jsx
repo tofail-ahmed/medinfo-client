@@ -13,9 +13,15 @@ import { Button } from "@mui/material";
 import { useEffect } from "react";
 import { FaUser, FaUserShield } from 'react-icons/fa';
 import { MdAdminPanelSettings } from 'react-icons/md';
+import { useNavigate } from 'react-router';
 // import { getUserCred } from '../utils/utils';
 
 export default function Alluser() {
+  const navigate = useNavigate();
+  const handleDetails=(id)=>{
+      navigate(`/medicine/${id}`)
+  }
+
   // const userCred=getUserCred();
   // console.log(userCred&&userCred.role)
   const { data, isLoading } = useAllUserQuery("");
@@ -151,7 +157,13 @@ export default function Alluser() {
                   }}
                   align="left"
                 >
-                {idx+1}.   {row.name}
+                  <button
+                    className="hover:font-bold flex justify-start items-start"
+                    onClick={() => handleDetails(row.email)}
+                  >
+                   <span>  {idx+1}.   </span> <span> {row.name}</span>
+                  </button>
+              
                 </TableCell>
                 <TableCell
                   sx={{
