@@ -36,6 +36,7 @@ import CategoryMed from './CategoryMed/CategoryMed.jsx';
 import SuggestMed from './SuggestMed/SuggestMed.jsx';
 import Test from './test/Test.jsx';
 import UpdateProfile from './Profile/UpdateProfile.jsx';
+import UserProfile from './Profile/UserProfile.jsx';
 // import Dashboard from './layouts/Dashboard.jsx';
 const router = createBrowserRouter([
   {
@@ -133,6 +134,10 @@ const router = createBrowserRouter([
       {
         path:"updateMed/:id",
         element:<ProtectedRoute><UpdateMed></UpdateMed></ProtectedRoute>
+      },
+      {
+        path:"userProfile/:mail",
+        element:<ProtectedRoute><UserProfile></UserProfile></ProtectedRoute>
       },
 
     ]

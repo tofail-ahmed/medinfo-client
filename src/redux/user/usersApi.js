@@ -55,7 +55,14 @@ const usersApi = baseApi.injectEndpoints({
       }),
       providesTags: ["users"],
     }),
+    getUserByMail:builder.query({
+      query:(mail)=>({
+        url:`/userDetails/${mail}`,
+        method:"GET",
+      }),
+      providesTags: ["users"],
+    })
   }),
 });
 
-export const {useUserRegisterMutation,useUserLoginMutation,useAllUserQuery,useDeleteUserMutation,useUpdateRoleMutation,usePurchaseMedicineMutation,useSingleUserQuery}=usersApi;
+export const {useUserRegisterMutation,useUserLoginMutation,useAllUserQuery,useDeleteUserMutation,useUpdateRoleMutation,usePurchaseMedicineMutation,useSingleUserQuery,useGetUserByMailQuery}=usersApi;

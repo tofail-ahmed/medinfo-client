@@ -18,8 +18,8 @@ import { useNavigate } from 'react-router';
 
 export default function Alluser() {
   const navigate = useNavigate();
-  const handleDetails=(id)=>{
-      navigate(`/medicine/${id}`)
+  const handleDetails=(email)=>{
+      navigate(`/dashboard/userProfile/${email}`)
   }
 
   // const userCred=getUserCred();
