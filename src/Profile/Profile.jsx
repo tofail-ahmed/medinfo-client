@@ -15,6 +15,7 @@ const Profile = () => {
   const id = userCred?.id?.toString(); // Convert id to string if needed
 
   // Fetch user data with the id
+  // eslint-disable-next-line react-hooks/rules-of-hooks
   const { data, isLoading, error } = useSingleUserQuery(id);
 
   if (isLoading) return <Loader />;

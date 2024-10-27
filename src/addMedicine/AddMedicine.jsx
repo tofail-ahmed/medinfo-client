@@ -80,7 +80,7 @@ const AddMedicine = () => {
       if(error&&error.status===409){
             alert(error.data.message)
       }
-    }, [data, isLoading,error]);
+    }, [data, isLoading,error,navigate]);
   
   return (
     <div className="my-10">
