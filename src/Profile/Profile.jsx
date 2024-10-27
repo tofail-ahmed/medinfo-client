@@ -22,16 +22,11 @@ const Profile = () => {
   if (error) return <div>Error loading user data...</div>;
 
   const userData = data?.data;
-  // console.log(data?.data?.purchaseList);
+  console.log(data?.data);
 
   return (
     <div className="flex justify-center items-center bg-lime-500/50 min-h-screen relative">
-             {/* <button
-          className="absolute top-2 right-2 bg-blue-500 text-white px-3 py-1 rounded hover:bg-blue-700 duration-200"
-          // onClick={() => navigate(`/edit-profile/${id}`)}
-        >
-          Edit
-        </button> */}
+             
       <div className="  my-10 p-5  shadow-lg rounded-3xl">
         {/* Edit button at top right */}
         <button

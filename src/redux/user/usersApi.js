@@ -40,6 +40,20 @@ const usersApi = baseApi.injectEndpoints({
       }),
       invalidatesTags: ["users"],
     }),
+    updateUser: builder.mutation({
+      query: ({ id, body }) => {
+        // Log body data here
+        console.log(body);
+        
+        return {
+          url: `/updateUser/${id}`,
+          method: "PUT",
+          body,
+        };
+      },
+      invalidatesTags: ["users"],
+    }),
+    
     purchaseMedicine: builder.mutation({
       query: ({ id, medicineDetails }) => ({
         url: `/userPurchaseList/${id}`,
@@ -65,4 +79,4 @@ const usersApi = baseApi.injectEndpoints({
   }),
 });
 
-export const {useUserRegisterMutation,useUserLoginMutation,useAllUserQuery,useDeleteUserMutation,useUpdateRoleMutation,usePurchaseMedicineMutation,useSingleUserQuery,useGetUserByMailQuery}=usersApi;
+export const {useUserRegisterMutation,useUserLoginMutation,useAllUserQuery,useDeleteUserMutation,useUpdateRoleMutation,usePurchaseMedicineMutation,useSingleUserQuery,useGetUserByMailQuery,useUpdateUserMutation}=usersApi;

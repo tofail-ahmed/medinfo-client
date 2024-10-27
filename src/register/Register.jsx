@@ -29,7 +29,8 @@ const Register = () => {
     password: "",
     contact:"",
     imgUrl:"",
-    address:""
+    address:"",
+    postalCode:""
   });
   const [showPassword, setShowPassword] = useState(false);
 
@@ -92,7 +93,7 @@ const Register = () => {
       </Typography>
       <form onSubmit={handleSubmit}>
         <Grid container spacing={3}>
-          {["name","imgUrl", "email", "password","contact","address"].map((field, idx) => (
+          {["name","imgUrl", "email", "password","contact","address","postalCode"].map((field, idx) => (
             <Grid item xs={12} key={field}>
               <TextField
                 label={field.charAt(0).toUpperCase() + field.slice(1)}

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { useSingleUserQuery } from '../redux/user/usersApi';
+import { useSingleUserQuery, useUpdateUserMutation } from '../redux/user/usersApi';
 import { useSelector } from 'react-redux';
 import { TextField, Button, CircularProgress, Box, Grid } from '@mui/material';
 // import CustomInput from '../components /CustomInput';
@@ -10,17 +10,21 @@ const UpdateProfile = () => {
   const id = userCred?.id?.toString();
   const { data, isLoading, error } = useSingleUserQuery(id);
 
+  const [userData,{isLoading:updateUserLoading}]=useUpdateUserMutation()
+
+
   // Initialize form data with empty fields
   const [formData, setFormData] = useState({
     name: '',
     email: '',
-    phone: '',
-    img: '',
-    city: '',
-    country: '',
-    postalCode: '',
-    occupation: '',
+    contact: '',
+    imgUrl: '',
+    address: '',
+   postalCode:""
   });
+
+console.log(data?.data)
+
 
   // Update form data once data is fetched
   useEffect(() => {
@@ -28,12 +32,12 @@ const UpdateProfile = () => {
       setFormData({
         name: data.data.name || '',
         email: data.data.email || '',
-        phone: data.data.phone || '',
-        img: data.data.img || '',
-        city: data.data.city || '',
-        country: data.data.country || '',
+        contact: data.data.contact || '',
+        imgUrl: data.data.imgUrl || '',
+        address: data.data.address || '',
+        
         postalCode: data.data.postalCode || '',
-        occupation: data.data.occupation || '',
+        
       });
     }
   }, [data]);
@@ -49,9 +53,10 @@ const UpdateProfile = () => {
     e.preventDefault();
     console.log("Updated data:", formData);
     // Add logic to update profile (API call or Redux action)
+    userData({id,body:formData})
   };
 
-  if (isLoading) return <CircularProgress />;
+  if (isLoading || updateUserLoading ) return <CircularProgress />;
   if (error) return <div>Error loading user data...</div>;
 
   return (
@@ -97,12 +102,12 @@ const UpdateProfile = () => {
           {[
             { label: "Name", name: "name" },
             { label: "Email", name: "email", type: "email" },
-            { label: "Phone", name: "phone", type: "tel" },
-            { label: "Img URL", name: "img" },
-            { label: "City", name: "city" },
-            { label: "Country", name: "country" },
+            { label: "Contact", name: "contact", type: "tel" },
+            { label: "Img URL", name: "imgUrl" },
+            { label: "Address", name: "address" },
+            
             { label: "Postal Code", name: "postalCode" },
-            { label: "Occupation", name: "occupation" },
+        
           ].map((field, index) => (
             <Grid item xs={12} sm={6} key={index}>
               <TextField
