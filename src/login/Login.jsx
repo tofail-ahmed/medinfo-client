@@ -5,14 +5,18 @@ import { NavLink, useNavigate } from "react-router-dom";
 import { useUserLoginMutation } from "../redux/user/usersApi";
 import { MdVisibility } from "react-icons/md";
 import { BiSolidHide } from "react-icons/bi";
-import { useDispatch } from 'react-redux';
+import { useDispatch,useSelector } from 'react-redux';
 import { setMedInfoUserCred } from '../redux/user/userSlice';
 
 
 const Login = () => {
+  const navigate = useNavigate();
+  const darkMode = useSelector((store) => store.theme.darkMode);
+
   // const userData=useSelector((state)=>state.medInfoUser.medInfoUserCred);
   // console.log(userData)
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
+  
   const dispatch=useDispatch()
   const [loginUser, { data, isLoading, error }] = useUserLoginMutation();
   const [formData, setFormData] = useState({
