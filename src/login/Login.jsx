@@ -16,7 +16,7 @@ const Login = () => {
   // const userData=useSelector((state)=>state.medInfoUser.medInfoUserCred);
   // console.log(userData)
   // const navigate = useNavigate();
-  
+
   const dispatch=useDispatch()
   const [loginUser, { data, isLoading, error }] = useUserLoginMutation();
   const [formData, setFormData] = useState({
@@ -61,6 +61,20 @@ const Login = () => {
     }
   }, [data, isLoading, error,dispatch,navigate]);
 
+ // Common style props for TextFields
+ const textFieldStyles = {
+  style: { color: darkMode ? "white" : "black" },
+  sx: {
+    "& .MuiOutlinedInput-root": {
+      "& fieldset": { borderColor: darkMode ? "yellow" : "black" },
+      "&:hover fieldset": { borderColor: darkMode ? "green" : "black" },
+      "&.Mui-focused fieldset": { borderColor: darkMode ? "white" : "black" },
+    },
+  },
+  InputLabelProps: { style: { color: darkMode ? "red" : "black" } },
+};
+
+
   return (
     <Container maxWidth="sm" className="min-h-screen">
       <Typography variant="h4" gutterBottom align="center">
@@ -78,6 +92,7 @@ const Login = () => {
               value={formData.email}
               onChange={handleChange}
               required
+              {...textFieldStyles}
             />
           </Grid>
           <Grid item xs={12}>
@@ -90,10 +105,14 @@ const Login = () => {
               value={formData.password}
               onChange={handleChange}
               required
+              {...textFieldStyles}
               InputProps={{
                 endAdornment: (
                   <InputAdornment position="end">
-                    <IconButton
+                    <IconButton style={{
+                            color: darkMode ? "white" : "black",
+                            background: "transparent",
+                          }}
                       onClick={() => setShowPassword(!showPassword)}
                       edge="end"
                     >

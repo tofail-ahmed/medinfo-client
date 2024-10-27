@@ -7,7 +7,7 @@ import { MdVisibility } from 'react-icons/md';
 import { useDispatch, useSelector } from 'react-redux';
 import { setMedInfoUserCred } from '../redux/user/userSlice';
 
-const Register = () => {
+const RegisterTemp = () => {
   const navigate = useNavigate();
   const darkMode = useSelector((store) => store.theme.darkMode);
 
@@ -197,4 +197,4 @@ const dispatch=useDispatch();
   );
 };
 
-export default Register;
+export default RegisterTemp;
