@@ -2,7 +2,7 @@ import { Button, Grid } from "@mui/material";
 import { useState } from "react";
 import { useMedCategoryQuery } from "../redux/medicine/medicinesApi";
 import { useNavigate } from "react-router";
-import Loader from "../components/Loader";
+import Loader from "../ComponentsTemp/Loader";
 
 const CategoryMed = () => {
   const navigate = useNavigate();

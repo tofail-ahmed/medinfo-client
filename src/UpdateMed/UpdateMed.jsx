@@ -1,9 +1,10 @@
 import  { useState, useEffect } from 'react';
 import { useNavigate, useParams } from 'react-router';
 import { useSingleMedicineQuery, useUpdateMedMutation } from '../redux/medicine/medicinesApi';
-import Loader from '../components/loader';
+
 import { TextField, Grid, Button } from '@mui/material';
 import { toast } from 'sonner';
+import Loader from "../ComponentsTemp/Loader";
 // import { useSelector } from 'react-redux';
 
 const UpdateMed = () => {

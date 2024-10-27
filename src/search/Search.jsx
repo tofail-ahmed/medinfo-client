@@ -3,8 +3,8 @@ import { IconButton, TextField, InputAdornment, Button, Grid, Typography, Paper,
 import { FaPlusSquare, FaSearch } from 'react-icons/fa';
 import { useSelector } from 'react-redux';
 import { useSearchMedicineQuery } from '../redux/medicine/medicinesApi';
-import Loader from '../components/Loader';
-import { NavLink, useNavigate } from 'react-router-dom';
+import Loader from "../ComponentsTemp/Loader";
+import { useNavigate } from "react-router-dom";
 
 const Search = () => {
   const navigate = useNavigate();

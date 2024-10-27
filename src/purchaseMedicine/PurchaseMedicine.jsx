@@ -2,8 +2,7 @@
 // import { useParams } from "react-router";
 // import { useSingleMedicineQuery } from "../redux/medicine/medicinesApi";
 // import { useEffect } from "react";
-// import Loader from "../components/Loader";
-
+// import Loader from "../components /Loader";
 
 // const PurchaseMedicine = () => {
 //       const userCred=useSelector((state)=>state.medInfoUser.medInfoUserCred);
@@ -17,8 +16,6 @@
 //      if(medicineLoading){
 //       return <Loader/>
 //      }
-
-
 
 //       return (
 //       <div className="min-h-screen">

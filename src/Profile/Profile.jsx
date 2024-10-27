@@ -1,7 +1,7 @@
 import { useSelector } from "react-redux";
 import { useSingleUserQuery } from "../redux/user/usersApi";
 import { useNavigate } from "react-router";
-import Loader from "../components/Loader";
+import Loader from "../ComponentsTemp/Loader";
 
 const Profile = () => {
   const navigate = useNavigate();

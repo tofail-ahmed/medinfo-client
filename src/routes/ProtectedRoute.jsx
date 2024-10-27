@@ -1,5 +1,5 @@
 // import { getUserCred } from '../utils/utils'
-import AccessDenied from '../components/AccessDenied';
+import AccessDenied from "../ComponentsTemp/AccessDenied";
 import { useSelector } from 'react-redux';
 
 const ProtectedRoute = ({children}) => {

@@ -1,17 +1,26 @@
-import { Button, Paper, Table, TableCell, TableContainer, TableHead, TableRow,TableBody } from '@mui/material';
- 
-import { FaUser, FaUserShield } from 'react-icons/fa';
-import { useSelector } from 'react-redux';
-import { useAllMedicinesQuery } from '../redux/medicine/medicinesApi';
-import Loader from '../components/Loader';
+import {
+  Button,
+  Paper,
+  Table,
+  TableCell,
+  TableContainer,
+  TableHead,
+  TableRow,
+  TableBody,
+} from "@mui/material";
+
+import { FaUser, FaUserShield } from "react-icons/fa";
+import { useSelector } from "react-redux";
+import { useAllMedicinesQuery } from "../redux/medicine/medicinesApi";
+import Loader from "../ComponentsTemp/Loader";
 import { useNavigate } from "react-router";
-import { NavLink } from 'react-router-dom';
+import { NavLink } from "react-router-dom";
 
 const AllMed = () => {
   const navigate = useNavigate();
-  const handleDetails=(id)=>{
-      navigate(`/medicine/${id}`)
-  }
+  const handleDetails = (id) => {
+    navigate(`/medicine/${id}`);
+  };
   const darkMode = useSelector((state) => state.theme.darkMode);
 
   const textColor = darkMode ? "#fff" : "#000";
@@ -21,9 +30,9 @@ const AllMed = () => {
   if (medLoading) {
     return <Loader />;
   }
-  const handleUpdate=(id)=>{
-    navigate(`/dashboard/updateMed/${id}`)
-  }
+  const handleUpdate = (id) => {
+    navigate(`/dashboard/updateMed/${id}`);
+  };
   return (
     <div className="lg:w-[1200px] w-full p-4 ">
       <TableContainer
@@ -58,7 +67,7 @@ const AllMed = () => {
                   color: textColor,
                 }}
               >
-               Image
+                Image
               </TableCell>
               <TableCell
                 align="left"
@@ -177,7 +186,7 @@ const AllMed = () => {
                     className="hover:font-bold flex justify-start items-start"
                     onClick={() => handleDetails(row._id)}
                   >
-                   <span> {idx + 1}.</span> <span>{row.medicine_name}</span>
+                    <span> {idx + 1}.</span> <span>{row.medicine_name}</span>
                   </button>
                 </TableCell>
                 <TableCell
@@ -188,8 +197,11 @@ const AllMed = () => {
                   }}
                   align="center"
                 >
-                <img className="w-[100px] h-[50px] " src={row.homeImg} alt="img" />
-
+                  <img
+                    className="w-[100px] h-[50px] "
+                    src={row.homeImg}
+                    alt="img"
+                  />
                 </TableCell>
                 <TableCell
                   sx={{
@@ -333,18 +345,17 @@ const AllMed = () => {
                     sx={{
                       color: "white",
                       borderColor: "green",
-                          background: row.status === "approved" ? "#11d875" : "#11a5c1", // Conditionally set background color
-    fontWeight: row.status === "approved" ? "bold" : "300", // "bold" for admin, "semibold" (600) for user
+                      background:
+                        row.status === "approved" ? "#11d875" : "#11a5c1", // Conditionally set background color
+                      fontWeight: row.status === "approved" ? "bold" : "300", // "bold" for admin, "semibold" (600) for user
                       "&:hover": {
                         backgroundColor: "lightgreen",
                         borderColor: "#387F39",
                       },
                     }}
                   >
-                    {
-                      row.status==="approved"?"approved":"pending"
-                    }
-                     {/* Make {row.status==="pending"?"approve":"approved"} */}
+                    {row.status === "approved" ? "approved" : "pending"}
+                    {/* Make {row.status==="pending"?"approve":"approved"} */}
                   </Button>
                 </TableCell>
                 {/* <TableCell
@@ -380,4 +391,4 @@ const AllMed = () => {
   );
 };
 
-export default AllMed
+export default AllMed;

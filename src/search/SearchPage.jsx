@@ -1,9 +1,8 @@
 // import { useState } from "react";
 // import { useSearchMedicineQuery } from "../redux/medicine/medicinesApi";
 // import Search from "./Search";
-// import Loader from "../components/Loader";
+// import Loader from "../components /Loader";
 // import SearchResult from "./SearchResult";
-
 
 // const SearchPage = () => {
 //   const [searchTerm, setSearchTerm] = useState(null);
@@ -19,7 +18,7 @@
 //   return (
 //     <div>
 //       {/* Pass handleSearch as the onSearch prop */}
-//       <Search onSearch={handleSearch} />  
+//       <Search onSearch={handleSearch} />
 
 //       <div>
 //         {isLoading && <Loader />}

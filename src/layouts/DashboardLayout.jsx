@@ -1,9 +1,9 @@
 
-import Sidebar from '../components/Sidebar'
-import { Outlet } from 'react-router'
-import { useSelector } from 'react-redux'
+import Sidebar from "../ComponentsTemp/Sidebar";
+import { Outlet } from "react-router";
+import { useSelector } from "react-redux";
 // import { getUserCred } from '../utils/utils';
-import AccessDenied from '../components/AccessDenied';
+import AccessDenied from "../ComponentsTemp/AccessDenied";
 
 const DashboardLayout = () => {
   const userCred=useSelector((state)=>state.medInfoUser.medInfoUserCred);

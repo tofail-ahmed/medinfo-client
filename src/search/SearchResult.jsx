@@ -2,7 +2,7 @@
 // import React from 'react';
 // import { Button, Grid, Typography } from '@mui/material';
 // import { useNavigate } from 'react-router-dom';
-// import Loader from '../components/Loader';
+// import Loader from '../components /Loader';
 
 // const SearchResult = ({ data, error, isLoading, searchTerm, query }) => {
 //   const navigate = useNavigate();
@@ -113,18 +113,19 @@
 
 // export default SearchResult;
 
-
-
-import { Button, Typography } from '@mui/material';
-import { useNavigate } from 'react-router-dom';
+import { Button, Typography } from "@mui/material";
+import { useNavigate } from "react-router-dom";
 
 const SearchResult = ({ results, searchTerm }) => {
   const navigate = useNavigate();
 
   const highlightMatch = (text, query) => {
     if (!text || !query) return text;
-    const regex = new RegExp(`(${query})`, 'gi');
-    return text.replace(regex, '<span class="text-red-500/70 font-bold">$1</span>');
+    const regex = new RegExp(`(${query})`, "gi");
+    return text.replace(
+      regex,
+      '<span class="text-red-500/70 font-bold">$1</span>'
+    );
   };
 
   if (!results || results.length === 0) {
@@ -146,10 +147,13 @@ const SearchResult = ({ results, searchTerm }) => {
             <div className="flex justify-between">
               <div>
                 <span className="text-2xl">
-                  {index + 1}.{' '}
+                  {index + 1}.{" "}
                   <span
                     dangerouslySetInnerHTML={{
-                      __html: highlightMatch(medicine.medicine_name, searchTerm),
+                      __html: highlightMatch(
+                        medicine.medicine_name,
+                        searchTerm
+                      ),
                     }}
                   />
                 </span>
@@ -172,4 +176,3 @@ const SearchResult = ({ results, searchTerm }) => {
 };
 
 export default SearchResult;
-

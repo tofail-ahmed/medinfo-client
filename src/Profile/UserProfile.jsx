@@ -1,7 +1,7 @@
 
 import { useNavigate, useParams } from 'react-router';
 import { useGetUserByMailQuery } from '../redux/user/usersApi';
-import Loader from '../components/Loader';
+import Loader from "../ComponentsTemp/Loader";
 
 const UserProfile = () => {
   const navigate = useNavigate();

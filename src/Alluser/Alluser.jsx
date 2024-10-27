@@ -6,14 +6,15 @@ import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 import { useAllUserQuery, useDeleteUserMutation, useUpdateRoleMutation } from "../redux/user/usersApi";
-import Loader from "../components/loader";
+
 
 import { useSelector } from "react-redux";
 import { Button } from "@mui/material";
 import { useEffect } from "react";
 import { FaUser, FaUserShield } from 'react-icons/fa';
-import { MdAdminPanelSettings } from 'react-icons/md';
+// import { MdAdminPanelSettings } from 'react-icons/md';
 import { useNavigate } from 'react-router';
+import Loader from '../ComponentsTemp/Loader';
 // import { getUserCred } from '../utils/utils';
 
 export default function Alluser() {
