@@ -63,15 +63,24 @@ const Login = () => {
 
  // Common style props for TextFields
  const textFieldStyles = {
-  style: { color: darkMode ? "white" : "black" },
+  InputProps: {
+    sx: {
+      color: darkMode ? "white" : "black", // Correctly apply text color inside the input
+    },
+  },
   sx: {
     "& .MuiOutlinedInput-root": {
       "& fieldset": { borderColor: darkMode ? "yellow" : "black" },
       "&:hover fieldset": { borderColor: darkMode ? "green" : "black" },
       "&.Mui-focused fieldset": { borderColor: darkMode ? "white" : "black" },
+      "& input": {
+        color: darkMode ? "white" : "black", // Ensures input text color is applied at the input level
+      },
     },
   },
-  InputLabelProps: { style: { color: darkMode ? "red" : "black" } },
+  InputLabelProps: {
+    style: { color: darkMode ? "red" : "black" }, // Label color
+  },
 };
 
 
