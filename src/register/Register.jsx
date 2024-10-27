@@ -27,6 +27,9 @@ const Register = () => {
     name: "",
     email: "",
     password: "",
+    contact:"",
+    imgUrl:"",
+    address:""
   });
   const [showPassword, setShowPassword] = useState(false);
 
@@ -37,6 +40,7 @@ const Register = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    console.log(formData)
     createUser(formData);
   };
 
@@ -88,7 +92,7 @@ const Register = () => {
       </Typography>
       <form onSubmit={handleSubmit}>
         <Grid container spacing={3}>
-          {["name", "email", "password"].map((field, idx) => (
+          {["name","imgUrl", "email", "password","contact","address"].map((field, idx) => (
             <Grid item xs={12} key={field}>
               <TextField
                 label={field.charAt(0).toUpperCase() + field.slice(1)}
