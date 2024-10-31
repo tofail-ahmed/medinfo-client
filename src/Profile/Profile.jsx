@@ -2,6 +2,8 @@ import { useSelector } from "react-redux";
 import { useSingleUserQuery } from "../redux/user/usersApi";
 import { useNavigate } from "react-router";
 import Loader from "../ComponentsTemp/Loader";
+import MyButton from "../ComponentsTemp/MyButton";
+import AddReview from "../AddReview/AddReview";
 
 const Profile = () => {
   const navigate = useNavigate();
@@ -25,45 +27,55 @@ const Profile = () => {
   console.log(data?.data);
 
   return (
-    <div className="flex justify-center items-center bg-lime-500/50 min-h-screen relative">
+    <div className="bg-lime-500/50 min-h-screen">
+      <div className="flex justify-center items-center  relative">
              
-      <div className="  my-10 p-5  shadow-lg rounded-3xl">
-        {/* Edit button at top right */}
-        <button
-          className="absolute top-2 right-2 bg-blue-500 text-white px-3 py-1 rounded hover:bg-blue-700 duration-200"
-          // onClick={() => navigate(`/edit-profile/${id}`)}
-          onClick={() => navigate(`/update-profile`)}
-        >
-          Edit
-        </button>
+             <div className="  my-10 p-5  shadow-lg rounded-3xl">
+               {/* Edit button at top right */}
+               <button
+                 className="absolute top-2 right-2 bg-blue-500 text-white px-3 py-1 rounded hover:bg-blue-700 duration-200"
+                 // onClick={() => navigate(`/edit-profile/${id}`)}
+                 onClick={() => navigate(`/update-profile`)}
+               >
+                 Edit
+               </button>
+       
+       
+       
+               <h1 className="text-center text-xl font-semibold">{userData?.name}</h1>
+               <p>Email: {userData?.email}</p>
+               <p>Role: {userData?.role}</p>
+       
+               {userData?.purchaseList && userData.purchaseList.length > 0 ? (
+                 <div>
+                   <h3>Purchased Medicines:</h3>
+                   {[...userData.purchaseList].reverse().map((med, idx) => (
+                     <div key={idx}>
+                       <p>
+                         {idx + 1}.{" "}
+                         <button
+                           className="text-xl font-bold text-blue-400 hover:text-blue-800 duration-200"
+                           onClick={() => navigate(`/medicine/${med.medicineId}`)}
+                         >
+                           {med.medicineName}
+                         </button>
+                       </p>
+                       <p>Quantity: {med.medicineAmount}</p>
+                       <p>Purchased At: {med.purchasedAt}</p>
+                     </div>
+                   ))}
+                 </div>
+               ) : (
+                 <p>No medicines purchased yet.</p>
+               )}
+       
+       
+             </div>
+           </div>
+<div>
+  <AddReview/>
+</div>
 
-        <h1 className="text-center text-xl font-semibold">{userData?.name}</h1>
-        <p>Email: {userData?.email}</p>
-        <p>Role: {userData?.role}</p>
-
-        {userData?.purchaseList && userData.purchaseList.length > 0 ? (
-          <div>
-            <h3>Purchased Medicines:</h3>
-            {[...userData.purchaseList].reverse().map((med, idx) => (
-              <div key={idx}>
-                <p>
-                  {idx + 1}.{" "}
-                  <button
-                    className="text-xl font-bold text-blue-400 hover:text-blue-800 duration-200"
-                    onClick={() => navigate(`/medicine/${med.medicineId}`)}
-                  >
-                    {med.medicineName}
-                  </button>
-                </p>
-                <p>Quantity: {med.medicineAmount}</p>
-                <p>Purchased At: {med.purchasedAt}</p>
-              </div>
-            ))}
-          </div>
-        ) : (
-          <p>No medicines purchased yet.</p>
-        )}
-      </div>
     </div>
   );
 };
