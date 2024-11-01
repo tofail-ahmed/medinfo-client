@@ -82,7 +82,7 @@ const usersApi = baseApi.injectEndpoints({
         method:"PUT",
         body
       }),
-      providesTags: ["users"],
+      invalidatesTags: ["users"],
     })
   }),
 });
