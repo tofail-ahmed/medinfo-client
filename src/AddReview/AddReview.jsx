@@ -1,4 +1,4 @@
-import React from 'react'
+import React from 'react';
 import {
   Container,
   Typography,
@@ -12,12 +12,11 @@ import {
 import MyButton from "../ComponentsTemp/MyButton";
 import { MdOutlineAddCircleOutline } from "react-icons/md";
 import { MdOutlineAddTask } from "react-icons/md";
-// import { TextField } from '@mui/material';
 import { useSelector } from "react-redux";
 import { BiSolidHide } from "react-icons/bi";
 import { MdVisibility } from "react-icons/md";
 import { NavLink } from "react-router-dom";
-import { useAddReviewMutation } from "../redux/user/usersApi";
+import { useAddReviewMutation, useSingleUserQuery } from "../redux/user/usersApi";
 
 const AddReview = () => {
   const darkMode = useSelector((store) => store.theme.darkMode);
@@ -27,7 +26,10 @@ const AddReview = () => {
 
   const [showTextField, setShowTextField] = React.useState(false);
   const userData = useSelector((state) => state.medInfoUser.medInfoUserCred);
-  // const [createUser, { data, isLoading, error }] = useUserRegisterMutation();
+
+  const { data, isLoading, error } = useSingleUserQuery(userData?.id);
+
+
 
   const [formData, setFormData] = React.useState({
     review: "",
@@ -47,7 +49,6 @@ const AddReview = () => {
     console.log(formData);
     reviewData({ id: userData.id, body: formData });
   };
-  // console.log(addReviewData)
 
   if (addReviewData?.success === true) {
     alert(addReviewData?.message);
@@ -58,7 +59,7 @@ const AddReview = () => {
   const textFieldStyles = {
     InputProps: {
       sx: {
-        color: darkMode ? "white" : "black", // Correctly apply text color inside the input
+        color: darkMode ? "white" : "black",
       },
     },
     sx: {
@@ -67,64 +68,83 @@ const AddReview = () => {
         "&:hover fieldset": { borderColor: darkMode ? "green" : "black" },
         "&.Mui-focused fieldset": { borderColor: darkMode ? "white" : "black" },
         "& input": {
-          color: darkMode ? "white" : "black", // Ensures input text color is applied at the input level
+          color: darkMode ? "white" : "black",
         },
       },
     },
     InputLabelProps: {
-      style: { color: darkMode ? "red" : "black" }, // Label color
+      style: { color: darkMode ? "red" : "black" },
     },
   };
 
-  if (reviewLoading) return <CircularProgress />;
+  if (reviewLoading || isLoading) return <CircularProgress />;
 
   return (
     <div className="lg:py-32 py-12 lg:px-32 px-8">
-      <div className={"flex justify-center items-center mx-auto p-8"}>
+      <div className="flex justify-center items-center mx-auto p-8">
         <MyButton
-          text={"Write review"}
+          text="Write review"
           startIcon={<MdOutlineAddCircleOutline />}
           endIcon={<MdOutlineAddTask />}
           onClick={handleButtonClick}
         />
       </div>
-      {showTextField && (
-        <form onSubmit={handleSubmit}>
-          <Grid container spacing={3}>
-            {["review"].map((field, idx) => (
-              <Grid item xs={12} key={field}>
-                <TextField
-                  label={field.charAt(0).toUpperCase() + field.slice(1)}
-                  name={field}
-                  type={"text"}
-                  fullWidth
-                  variant="outlined"
-                  value={formData[field]}
-                  onChange={handleChange}
-                  required
-                  multiline
-                  rows={5}
-                  {...textFieldStyles}
-                />
-                <Grid className="flex justify-end lg:m-0 my-2 ">
-                  <Button
-                    type="submit"
-                    variant="contained"
-                    color="primary"
-                    sx={{
-                      width: { xs: "100%", lg: "auto" },
-                    }}
-                  >
-                    Submit
-                  </Button>
+
+      {data?.data?.review ? (
+       <div
+       style={{
+         padding: "16px",
+         borderRadius: "8px",
+         border: `1px solid ${darkMode ? "yellow" : "gray"}`,
+         backgroundColor: darkMode ? "#333" : "#f5f5f5",
+         color: darkMode ? "white" : "black",
+         marginTop: "16px",
+         fontSize: "1.1rem",
+         lineHeight: "1.6",
+       }}
+     >
+       {data?.data?.review}
+     </div>
+     
+      ) : (
+        showTextField && (
+          <>
+            <form onSubmit={handleSubmit}>
+              <Grid container spacing={3}>
+                <Grid item xs={12}>
+                  <TextField
+                    label="Review"
+                    name="review"
+                    type="text"
+                    fullWidth
+                    variant="outlined"
+                    value={formData.review}
+                    onChange={handleChange}
+                    required
+                    multiline
+                    rows={5}
+                    {...textFieldStyles}
+                  />
+                  <Grid className="flex justify-end lg:m-0 my-2">
+                    <Button
+                      type="submit"
+                      variant="contained"
+                      color="primary"
+                      sx={{
+                        width: { xs: "100%", lg: "auto" },
+                      }}
+                    >
+                      Submit
+                    </Button>
+                  </Grid>
                 </Grid>
               </Grid>
-            ))}
-          </Grid>
-        </form>
+            </form>
+          </>
+        )
       )}
     </div>
   );
 };
 
-export default AddReview
+export default AddReview;
