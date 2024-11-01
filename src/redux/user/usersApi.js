@@ -75,8 +75,27 @@ const usersApi = baseApi.injectEndpoints({
         method:"GET",
       }),
       providesTags: ["users"],
+    }),
+    addReview:builder.mutation({
+      query:({id,body})=>({
+        url:`/api/v1/addreview/${id}`,
+        method:"PUT",
+        body
+      }),
+      providesTags: ["users"],
     })
   }),
 });
 
-export const {useUserRegisterMutation,useUserLoginMutation,useAllUserQuery,useDeleteUserMutation,useUpdateRoleMutation,usePurchaseMedicineMutation,useSingleUserQuery,useGetUserByMailQuery,useUpdateUserMutation}=usersApi;
+export const {
+  useUserRegisterMutation,
+  useUserLoginMutation,
+  useAllUserQuery,
+  useDeleteUserMutation,
+  useUpdateRoleMutation,
+  usePurchaseMedicineMutation,
+  useSingleUserQuery,
+  useGetUserByMailQuery,
+  useUpdateUserMutation,
+  useAddReviewMutation
+} = usersApi;
