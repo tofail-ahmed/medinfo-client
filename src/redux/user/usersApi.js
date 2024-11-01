@@ -78,7 +78,7 @@ const usersApi = baseApi.injectEndpoints({
     }),
     addReview:builder.mutation({
       query:({id,body})=>({
-        url:`/api/v1/addreview/${id}`,
+        url:`/addreview/${id}`,
         method:"PUT",
         body
       }),
