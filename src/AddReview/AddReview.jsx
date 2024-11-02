@@ -22,7 +22,9 @@ const [reviewData, { isLoading: reviewLoading, data: addReviewData }] = useAddRe
 
   const handleButtonClick = () => {
     console.log("Write Review clicked"); // Debugging log
-    setShowTextField(true);
+    if(!(data?.data?.review)){
+      setShowTextField(true);
+    }
     setIsEditMode(false);
     setFormData({ review: "" }); // Clear the form for new review
   };
