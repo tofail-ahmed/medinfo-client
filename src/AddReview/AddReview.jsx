@@ -34,6 +34,7 @@ const [reviewData, { isLoading: reviewLoading, data: addReviewData }] = useAddRe
     setFormData({ review: data?.data?.review || "" }); // Load the existing review
   };
 
+
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData((prev) => ({ ...prev, [name]: value }));
@@ -84,9 +85,11 @@ const [reviewData, { isLoading: reviewLoading, data: addReviewData }] = useAddRe
       {data?.data?.review && (
         <div style={{
           borderRadius: "8px",
-          border: `1px solid ${darkMode ? "yellow" : "gray"}`,
-          backgroundColor: darkMode ? "#333" : "#f5f5f5",
+          // border: `1px solid ${darkMode ? "yellow" : "gray"}`,
+          // backgroundColor: darkMode ? "#333" : "#f5f5f5",
+          backgroundColor:darkMode?"#6D28D9":'#94A3B8',
           color: darkMode ? "white" : "black",
+         
           marginTop: "16px",
           marginBottom: "16px",
           fontSize: "1.1rem",

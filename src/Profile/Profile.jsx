@@ -45,7 +45,7 @@ const Profile = () => {
                <h1 className="text-center text-xl font-semibold">{userData?.name}</h1>
                <p>Email: {userData?.email}</p>
                <p>Role: {userData?.role}</p>
-       
+       <img className="w-[200px] rounded-[100%]" src={data?.data?.imgUrl} alt="" />
                {userData?.purchaseList && userData.purchaseList.length > 0 ? (
                  <div>
                    <h3>Purchased Medicines:</h3>

@@ -43,7 +43,7 @@ const usersApi = baseApi.injectEndpoints({
     updateUser: builder.mutation({
       query: ({ id, body }) => {
         // Log body data here
-        console.log(body);
+        // console.log(body);
         
         return {
           url: `/updateUser/${id}`,

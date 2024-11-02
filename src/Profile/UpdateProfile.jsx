@@ -23,7 +23,7 @@ const UpdateProfile = () => {
    postalCode:""
   });
 
-console.log(data?.data)
+// console.log(data?.data)
 
 
   // Update form data once data is fetched
@@ -49,13 +49,31 @@ console.log(data?.data)
   };
 
   // Handle form submission
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log("Updated data:", formData);
-    // Add logic to update profile (API call or Redux action)
-    userData({id,body:formData})
-  };
+    // console.log("Updated data:", formData);
+  
+    try {
+      // Assuming userData is a function that takes an object with {id, body} and returns the API response
+      const response = await userData({ id, body: formData });
+  // console.log(response?.data)
+  // console.log(response)
 
+      if (response.data.success===true) {
+        // Display success alert
+        alert(response.message || "User updated successfully!");
+      }
+      else {
+        // Display alert for cases where the user was not updated (e.g., no changes made)
+        alert(response.data.message || "No changes made to user data.");
+      }
+    } catch (error) {
+      // Display error alert
+      console.error("Error updating user:", error);
+      alert("Failed to update user. Please try again.");
+    }
+  };
+  
   if (isLoading || updateUserLoading ) return <CircularProgress />;
   if (error) return <div>Error loading user data...</div>;
 
