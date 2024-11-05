@@ -1,41 +1,34 @@
 import React, { useEffect } from 'react';
-import { Container, Typography, Grid, TextField, Button, CircularProgress } from "@mui/material";
+import { Typography, Grid, TextField, Button, CircularProgress } from "@mui/material";
 import MyButton from "../ComponentsTemp/MyButton";
 import { MdOutlineAddCircleOutline, MdOutlineAddTask } from "react-icons/md";
 import { useSelector } from "react-redux";
 import { useAddReviewMutation, useSingleUserQuery } from "../redux/user/usersApi";
 
 const AddReview = () => {
-  const darkMode = useSelector((store) => store.theme.darkMode); // getting current mode
-
-const [reviewData, { isLoading: reviewLoading, data: addReviewData }] = useAddReviewMutation();//review mutatoion data
-
+  const darkMode = useSelector((store) => store.theme.darkMode);
+  const [reviewData, { isLoading: reviewLoading, data: addReviewData }] = useAddReviewMutation();
   const [showTextField, setShowTextField] = React.useState(false);
-
   const [isEditMode, setIsEditMode] = React.useState(false);
-
   const userData = useSelector((state) => state.medInfoUser.medInfoUserCred);
-
   const { data, isLoading, error, refetch } = useSingleUserQuery(userData?.id);
-
   const [formData, setFormData] = React.useState({ review: "" });
 
+  const CHARACTER_LIMIT = 250; // Define the character limit for reviews
+
   const handleButtonClick = () => {
-    console.log("Write Review clicked"); // Debugging log
-    if(!(data?.data?.review)){
+    if (!(data?.data?.review)) {
       setShowTextField(true);
     }
     setIsEditMode(false);
-    setFormData({ review: "" }); // Clear the form for new review
+    setFormData({ review: "" });
   };
 
   const handleEditClick = () => {
-    console.log("Edit button clicked"); // Debugging log
     setShowTextField(true);
     setIsEditMode(true);
-    setFormData({ review: data?.data?.review || "" }); // Load the existing review
+    setFormData({ review: data?.data?.review || "" });
   };
-
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -44,7 +37,6 @@ const [reviewData, { isLoading: reviewLoading, data: addReviewData }] = useAddRe
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log("Submitting review:", formData.review); // Debugging log
     reviewData({ id: userData.id, body: formData });
   };
 
@@ -87,11 +79,8 @@ const [reviewData, { isLoading: reviewLoading, data: addReviewData }] = useAddRe
       {data?.data?.review && (
         <div style={{
           borderRadius: "8px",
-          // border: `1px solid ${darkMode ? "yellow" : "gray"}`,
-          // backgroundColor: darkMode ? "#333" : "#f5f5f5",
-          backgroundColor:darkMode?"#6D28D9":'#94A3B8',
+          backgroundColor: darkMode ? "#6D28D9" : '#94A3B8',
           color: darkMode ? "white" : "black",
-         
           marginTop: "16px",
           marginBottom: "16px",
           fontSize: "1.1rem",
@@ -114,12 +103,8 @@ const [reviewData, { isLoading: reviewLoading, data: addReviewData }] = useAddRe
         </div>
       )}
 
-      {/* Form should display when showTextField is true */}
       {showTextField && (
-        <form onSubmit={handleSubmit} sx={{
-            marginTop:"10px",
-            marginBottom:"10px",
-        }}>
+        <form onSubmit={handleSubmit} sx={{ marginTop: "10px", marginBottom: "10px" }}>
           <Grid container spacing={3}>
             <Grid item xs={12}>
               <TextField
@@ -135,11 +120,18 @@ const [reviewData, { isLoading: reviewLoading, data: addReviewData }] = useAddRe
                 rows={5}
                 {...textFieldStyles}
               />
-              <Grid className="flex justify-end lg:m-0 my-2">
+              <Grid container justifyContent="space-between" alignItems="center" className="mt-2">
+                <Typography
+                  variant="body2"
+                  color={formData.review.length > CHARACTER_LIMIT ? "red" : "textSecondary"}
+                >
+                  {`${formData.review.length}/${CHARACTER_LIMIT} characters`}
+                </Typography>
                 <Button
                   type="submit"
                   variant="contained"
                   color="primary"
+                  disabled={formData.review.length > CHARACTER_LIMIT} // Disable if limit exceeded
                   sx={{ width: { xs: "100%", lg: "auto" } }}
                 >
                   {isEditMode ? "Update Review" : "Submit"}
