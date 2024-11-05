@@ -14,7 +14,7 @@ const AddReview = () => {
   const { data, isLoading, error, refetch } = useSingleUserQuery(userData?.id);
   const [formData, setFormData] = React.useState({ review: "" });
 
-  const CHARACTER_LIMIT = 250; // Define the character limit for reviews
+  const CHARACTER_LIMIT = 300; // Define the character limit for reviews
 
   const handleButtonClick = () => {
     if (!(data?.data?.review)) {
@@ -79,7 +79,7 @@ const AddReview = () => {
       {data?.data?.review && (
         <div style={{
           borderRadius: "8px",
-          backgroundColor: darkMode ? "#6D28D9" : '#94A3B8',
+          backgroundColor: darkMode ? "#A21CAF" : '#94A3B8',
           color: darkMode ? "white" : "black",
           marginTop: "16px",
           marginBottom: "16px",
@@ -123,7 +123,8 @@ const AddReview = () => {
               <Grid container justifyContent="space-between" alignItems="center" className="mt-2">
                 <Typography
                   variant="body2"
-                  color={formData.review.length > CHARACTER_LIMIT ? "red" : "textSecondary"}
+                  color={formData.review.length > CHARACTER_LIMIT ? "red" : (darkMode ? "#D9F99D" : "#65A30D")}
+
                 >
                   {`${formData.review.length}/${CHARACTER_LIMIT} characters`}
                 </Typography>
