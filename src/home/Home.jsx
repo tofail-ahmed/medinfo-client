@@ -1,159 +1,231 @@
 import { useNavigate } from "react-router";
 import { useAllMedicinesQuery } from "../redux/medicine/medicinesApi";
 import { NavLink } from "react-router-dom";
-// import { useSelector } from "react-redux";
-
-// import Search from "../Search/Search";
-import { Button, Grid } from "@mui/material";
-// import SearchResult from "../search/SearchResult";
+import { useState, useEffect } from "react";
+import {
+  Button,
+  Grid,
+  Typography,
+  Card,
+  CardContent,
+  CardMedia,
+  Box,
+} from "@mui/material";
 import Banner from "../Home/HomeBanner";
 import Loader from "../ComponentsTemp/Loader";
+import useMediaQuery from "@mui/material/useMediaQuery";
+import { useSelector } from "react-redux";
+import Reviews from "../Reviews/Reviews";
 
 const Home = () => {
-  // const userCred=useSelector((state)=>state.medInfoUser.medInfoUserCred);
+  const userCred = useSelector((state) => state.medInfoUser.medInfoUserCred);
+
+  const navigate = useNavigate();
+  const { data, isLoading } = useAllMedicinesQuery("");
+  const [displayCount, setDisplayCount] = useState(12); // Initial count for large screens
+  const [showAll, setShowAll] = useState(false); // Toggle between limited and full list
+
+  // Set up media query breakpoints
+  const isLargeScreen = useMediaQuery("(min-width:1200px)");
+  const isMediumScreen = useMediaQuery(
+    "(min-width:900px) and (max-width:1199px)"
+  );
+  const isSmallScreen = useMediaQuery(
+    "(min-width:600px) and (max-width:899px)"
+  );
+
+  useEffect(() => {
+    if (!showAll) {
+      if (isLargeScreen) setDisplayCount(12);
+      else if (isMediumScreen) setDisplayCount(9);
+      // else if (isSmallScreen) setDisplayCount(10);
+      else setDisplayCount(10); // Default for extra-small screens
+    }
+  }, [isLargeScreen, isMediumScreen, isSmallScreen, showAll]);
+
   const handleUpdate = (id) => {
     navigate(`/dashboard/updateMed/${id}`);
   };
-  const navigate = useNavigate();
-  const { data, isLoading } = useAllMedicinesQuery("");
+
   if (isLoading) {
     return <Loader />;
   }
-  // console.log(userCred)
-  // console.log(data?.data)
+
+  const displayedData = showAll
+    ? data?.data
+    : data?.data.slice(0, displayCount);
+
   return (
-    <div className="">
-      <div>
-        <Banner />
-        {/* <Search></Search> */}
-        {/* <SearchResult/> */}
-      </div>
-      <div className="mx-10 ">
-        <ul>
-          {data?.data
+    <div>
+      <Banner />
+      <Reviews/>
+      <div className="mx-10">
+        <Grid container spacing={3} sx={{ marginTop: 2 }}>
+          {displayedData
             .filter((medicine) => medicine.status === "approved")
             .map((medicine, index) => (
-              <div
-                className="bg-slate-400/30 rounded-md my-4 px-10 py-2"
-                key={index}
-              >
-                <li className="text-2xl">
-                  {index + 1}. {medicine.medicine_name}
-                </li>
-                <li className="text-sm">
-                  <span className="text-fuchsia-800 font-semibold">
-                    Genric:
-                  </span>{" "}
-                  {medicine.generic_name}
-                </li>
-                {medicine.homeImg && (
-                  <img
-                    className="lg:w-[500px] lg:h-[200px] w-[200px] h-[100px] border-[2px] rounded-md border-green-600 hover:border-green-900 hover:border-[5px] duration-500"
-                    src={medicine.homeImg}
-                    alt="img"
-                  />
-                )}
-                <p className="text-sm">
-                  <span className="text-fuchsia-800 font-semibold">
-                    Descriptions:
-                  </span>{" "}
-                  {medicine.description}
-                </p>
-                <p className="text-sm">
-                  <span className="text-fuchsia-800 font-semibold">
-                    Actions:
-                  </span>{" "}
-                  {medicine.actions}
-                </p>
-                <p className="text-sm">
-                  <span className="text-fuchsia-800 font-semibold">
-                    Total Sold:
-                  </span>{" "}
-                  {medicine.sold}
-                </p>
-                <p className="text-sm">
-                  <span className="text-fuchsia-800 font-semibold">
-                    Available:
-                  </span>{" "}
-                  {medicine.available}
-                </p>
-                <p className="text-sm">
-                  <span className="text-fuchsia-800 font-semibold">
-                    Status:
-                  </span>{" "}
-                  {medicine.status}
-                </p>
-                <div className="flex gap-4">
-                  <h1>Alternative Medicines</h1>
-                  <div>
-                    {medicine.alt_medicines.map((m, i) => (
-                      <li className="text-lg" key={i}>
-                        {i + 1}. {m}
-                      </li>
-                    ))}
-                  </div>
-                </div>
-                <div className="flex lg:flex-row flex-col gap-2 ">
-                  <Grid item xs={12} sm={6}>
-                    {/* Details button */}
-                    <Button
-                      onClick={() => navigate(`/medicine/${medicine._id}`)}
-                      variant="outlined"
-                      size="small"
-                      fullWidth
-                      sx={{
-                        color: "#6366F1",
-                        borderColor: "#6366F1",
-                        "&:hover": {
-                          backgroundColor: "#14919B",
-                          borderColor: "#6366F1",
-                          color: "#fff",
-                        },
-                      }}
-                    >
-                      Deatils
-                    </Button>
-                    <Button
-                      onClick={() => handleUpdate(medicine._id)}
-                      variant="outlined"
-                      size="small"
-                      sx={{
-                        color: "green",
-                        borderColor: "green",
-                        "&:hover": {
-                          backgroundColor: "lightgreen",
-                          borderColor: "#387F39",
-                        },
-                      }}
-                    >
-                      <NavLink> Update</NavLink>
-                    </Button>
-                  </Grid>
+              <Grid item xs={6}  md={4} lg={3} key={index}>
+                <Card
+                  sx={{
+                    display: "flex",
+                    flexDirection: "column",
+                    justifyContent: "space-between",
+                    height: "100%", // Ensures all cards are the same height
+                    backgroundColor: "rgba(9, 231, 235, 0.5)",
+                  }}
+                >
+                  <Box sx={{ flexGrow: 1 }}>
+                    {" "}
+                    {/* Fills remaining space */}
+                    <CardContent>
+                      <Typography variant="h6" component="div">
+                        {index + 1}. {medicine.medicine_name}
+                      </Typography>
+                      <Typography variant="subtitle2" color="text.secondary">
+                        <strong>Generic:</strong> {medicine.generic_name}
+                      </Typography>
 
-                  {/* Buy Now Button */}
-                  <Grid item xs={12} sm={6}>
-                    <Button
-                      onClick={() => navigate(`/buyMedicine/${medicine._id}`)}
-                      variant="outlined"
-                      size="small"
-                      fullWidth
-                      sx={{
-                        color: "#22C55E",
-                        borderColor: "#22C55E",
-                        "&:hover": {
-                          backgroundColor: "#059669",
-                          borderColor: "#22C55E",
-                          color: "#fff",
-                        },
-                      }}
-                    >
-                      Purchase Now
-                    </Button>
-                  </Grid>
-                </div>
-              </div>
+                      {medicine.homeImg && (
+                        <CardMedia
+                          component="img"
+                          sx={{
+                            width: "100%",
+                            height: 140,
+                            marginTop: 1,
+                            borderRadius: 1,
+                            borderColor: "green",
+                            "&:hover": {
+                              border: "3px solid #387F39",
+                            },
+                          }}
+                          image={medicine.homeImg}
+                          alt="medicine image"
+                        />
+                      )}
+
+                      {/* <Typography variant="body2" color="text.secondary" sx={{ marginTop: 1 }}>
+                        <strong>Descriptions:</strong> {medicine.description}
+                      </Typography> */}
+                      <Typography variant="body2" color="text.secondary">
+                        <strong>Actions:</strong> {medicine.actions}
+                      </Typography>
+                      <Typography variant="body2" color="text.secondary">
+                        <strong>Total Sold:</strong> {medicine.sold}
+                      </Typography>
+                      <Typography variant="body2" color="text.secondary">
+                        <strong>Available:</strong> {medicine.available}
+                      </Typography>
+                      <Typography variant="body2" color="text.secondary">
+                        <strong>Status:</strong> {medicine.status}
+                      </Typography>
+
+                      <div>
+                        <Typography variant="subtitle1" sx={{ marginTop: 1 }}>
+                          Alternative Medicines
+                        </Typography>
+                        <ul>
+                          {medicine.alt_medicines.map((m, i) => (
+                            <li key={i}>
+                              {i + 1}. {m}
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
+                    </CardContent>
+                  </Box>
+
+                  {/* Buttons at the end of the card */}
+                  <CardContent>
+                    <Grid container spacing={1}>
+                      <Grid item xs={12}>
+                        <Button
+                          onClick={() => navigate(`/medicine/${medicine._id}`)}
+                          variant="outlined"
+                          size="small"
+                          fullWidth
+                          sx={{
+                            color: "#6366F1",
+                            borderColor: "#6366F1",
+                            "&:hover": {
+                              backgroundColor: "#14919B",
+                              borderColor: "#6366F1",
+                              color: "#fff",
+                            },
+                          }}
+                        >
+                          Details
+                        </Button>
+                      </Grid>
+                      {userCred?.role === "admin" && (
+                        <Grid item xs={12}>
+                          <Button
+                            onClick={() => handleUpdate(medicine._id)}
+                            variant="outlined"
+                            size="small"
+                            fullWidth
+                            sx={{
+                              color: "green",
+                              borderColor: "green",
+                              "&:hover": {
+                                backgroundColor: "lightgreen",
+                                borderColor: "#387F39",
+                              },
+                            }}
+                          >
+                            Update
+                          </Button>
+                        </Grid>
+                      )}
+                      <Grid item xs={12}>
+                        <Button
+                          onClick={() =>
+                            navigate(`/buyMedicine/${medicine._id}`)
+                          }
+                          variant="outlined"
+                          size="small"
+                          fullWidth
+                          sx={{
+                            color: "#22C55E",
+                            borderColor: "#22C55E",
+                            "&:hover": {
+                              backgroundColor: "#059669",
+                              borderColor: "#22C55E",
+                              color: "#fff",
+                            },
+                          }}
+                        >
+                          Purchase Now
+                        </Button>
+                      </Grid>
+                    </Grid>
+                  </CardContent>
+                </Card>
+              </Grid>
             ))}
-        </ul>
+        </Grid>
+
+        {/* Toggle Button */}
+        <Box mx={"auto"} width="30%" my={3}>
+          <Button
+            variant="contained"
+            onClick={() => setShowAll((prev) => !prev)}
+            size="small"
+            fullWidth
+            sx={{
+              color: "#110ACAea",
+              borderColor: "#22C55E",
+              color: "#fff",
+              "&:hover": {
+                backgroundColor: "#059669",
+                borderColor: "#22C55E",
+
+                color: "#fff",
+              },
+            }}
+          >
+            {showAll ? "Show Less" : "See All"}
+          </Button>
+        </Box>
       </div>
     </div>
   );
