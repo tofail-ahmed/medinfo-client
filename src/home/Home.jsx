@@ -56,7 +56,7 @@ const Home = () => {
     : data?.data.slice(0, displayCount);
 
   return (
-    <div>
+    <div className="min-h-auto">
       <Banner />
       <Reviews/>
       <div className="mx-10">
@@ -207,9 +207,7 @@ const Home = () => {
                 </Card>
               </Grid>
             ))}
-        </Grid>
-
-        {/* Toggle Button */}
+            {/* Toggle Button */}
         <Box mx={"auto"} width="30%" my={3}>
           <Button
             variant="contained"
@@ -231,6 +229,9 @@ const Home = () => {
             {showAll ? "Show Less" : "See All"}
           </Button>
         </Box>
+        </Grid>
+
+        
       </div>
     </div>
   );
