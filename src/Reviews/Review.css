@@ -22,7 +22,7 @@ body {
       background: rgb(64, 175, 255);
       background: linear-gradient(
         128deg,
-        rgba(64, 175, 255, .8) 0%,
+        rgba(64, 175, 255, .9) 0%,
         rgba(63, 97, 255, 1) 100%
       );
     }
@@ -31,7 +31,7 @@ body {
       background: rgb(255, 75, 64);
       background: linear-gradient(
         128deg,
-        rgba(255, 154, 63, .8) 0%,
+        rgba(255, 154, 63, .9) 0%,
         rgba(255, 75, 64, 1) 100%
       );
     }
@@ -40,12 +40,12 @@ body {
       background: rgb(182, 255, 64);
       background: linear-gradient(
         128deg,
-        rgba(182, 255, 64, .8) 0%,
+        rgba(182, 255, 64, .9) 0%,
         rgba(63, 255, 71, 1) 100%
       );
       background: linear-gradient(
         128deg,
-        rgba(189, 255, 83, .8) 0%,
+        rgba(189, 255, 83, .9) 0%,
         rgba(43, 250, 82, 1) 100%
       );
     }
@@ -54,7 +54,7 @@ body {
       background: rgb(64, 255, 242);
       background: linear-gradient(
         128deg,
-        rgba(64, 255, 242, 0.8) 0%,
+        rgba(64, 255, 242, 0.9) 0%,
         rgba(63, 188, 255, 1) 100%
       );
     }
@@ -63,7 +63,7 @@ body {
       background: rgb(255, 64, 156);
       background: linear-gradient(
         128deg,
-        rgba(255, 64, 156, 0.8) 0%,
+        rgba(255, 64, 156, 0.9) 0%,
         rgba(255, 63, 63, 1) 100%
       );
     }
@@ -72,7 +72,7 @@ body {
       background: rgb(64, 77, 255);
       background: linear-gradient(
         128deg,
-        rgba(64, 77, 255, 0.8) 0%,
+        rgba(64, 77, 255, 0.9) 0%,
         rgba(174, 63, 255, 1) 100%
       );
     }
@@ -84,7 +84,9 @@ body {
       margin: auto;
     }
     .scene {
-      width: 200px;
+      margin-top: 50px;
+      margin-bottom: 100px;
+      width: 250px;
       height: 200px;
       perspective: 1000px;
       position: relative;
@@ -103,7 +105,41 @@ body {
       position: absolute;
       width: 300px;
       left: 10px;
-      height: 200px;
+      height: 350px;
       border: 1px solid rgba(0, 0, 0, 0.3);
     }
-    
+    /* new css added */
+
+    /* .review-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+  border-radius: 10px;
+  background-color: #fff;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  text-align: center;
+  /* height:400px; */
+
+
+/* .review-image {
+  border-radius: 50%;
+  object-fit: cover;
+  margin-bottom: 15px;
+} */
+
+/* .review-text {
+  font-size: 14px;
+  color: #333;
+  flex-grow: 1;
+  padding: 10px 0;
+}
+
+.review-footer {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  font-size: 12px;
+  color: #777;
+} */
