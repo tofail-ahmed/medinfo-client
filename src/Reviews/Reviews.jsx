@@ -2,8 +2,42 @@ import { Box, Grid, Typography, Paper, useMediaQuery } from "@mui/material";
 import React, { useEffect, useState } from "react";
 import { useAllUserQuery } from "../redux/user/usersApi";
 import Loader from "../ComponentsTemp/Loader";
+import 'keen-slider/keen-slider.min.css';
+import KeenSlider from 'keen-slider';
+import { useKeenSlider } from "keen-slider/react"
+import "../Reviews/Review.css"
+
+
+
+const carousel = (slider) => {
+      const z = 300
+      function rotate() {
+        const deg = 360 * slider.track.details.progress
+        slider.container.style.transform = `translateZ(-${z}px) rotateY(${-deg}deg)`
+      }
+      slider.on("created", () => {
+        const deg = 360 / slider.slides.length
+        slider.slides.forEach((element, idx) => {
+          element.style.transform = `rotateY(${deg * idx}deg) translateZ(${z}px)`
+        })
+        rotate()
+      })
+      slider.on("detailsChanged", rotate)
+    }
+
+    
 
 const Reviews = () => {
+      const [sliderRef] = useKeenSlider(
+            {
+              loop: true,
+              selector: ".carousel__cell",
+              renderMode: "custom",
+              mode: "free-snap",
+            },
+            [carousel]
+          )
+
       const [heightSet, setHeightSrt] = useState(); // Initial count for large screens
       const [fontSize, setFontSize] = useState(); // Initial count for large screens
       const [imgWidth,setImgWidth ] = useState(); // Initial count for large screens
@@ -13,6 +47,7 @@ const Reviews = () => {
 
   const { data, isLoading } = useAllUserQuery();
   const allUser = data?.data;
+  console.log(allUser&&allUser[0])
 
   const isLargeScreen = useMediaQuery("(min-width:1200px)");
   const isMediumScreen = useMediaQuery(
@@ -35,6 +70,9 @@ const Reviews = () => {
     return <Loader />;
   }
 
+
+
+
   return (
     <div>
       <Typography
@@ -52,85 +90,29 @@ const Reviews = () => {
         All Reviews
       </Typography>
 
-      <Box sx={{ padding: "0 20px" }}>
-        <Grid container spacing={3}>
-          {allUser?.map((user, index) => (
-            <Grid item xs={12} sm={6} md={4} key={index}>
-              <Paper
-                sx={{
-                  padding: "20px",
-                  borderRadius: "8px",
-                  boxShadow: "0 2px 10px rgba(0, 0, 0, 0.1)",
-                  backgroundColor: "#F3F4F6",
-                  height:heightSet,
-                  display: "flex",
-                  flexDirection: "column",
-                  justifyContent: "space-between", // Ensure content is spaced correctly
-                  transition: "all 0.3s ease",
-                  "&:hover": {
-                    boxShadow: "0 6px 20px rgba(0, 0, 0, 0.15)",
-                    transform: "scale(1.02)",
-                  },
-                }}
-              >
-                <Box sx={{ display: "flex", justifyContent: "center" }}>
-                  {user.imgUrl && (
-                    <img
-                      src={user.imgUrl}
-                      alt={user.name}
-                      style={{
-                        width: imgWidth,
-                        height: imgHeight,
-                        objectFit: "cover",
-                        borderRadius: "50%",
-                        marginBottom: "15px",
-                      }}
-                    />
-                  )}
-                </Box>
-                <Box
-                sx={{ flexGrow: 1, display: "flex", flexDirection: "column", justifyContent: "space-between" }}>
-                <Typography
-                  sx={{
-                        
-                    fontSize: fontSize,
-                    color: "#333",
-                    lineHeight: "1.5",
-                    textAlign: "center",
-                  }}
-                >
-                  "{user.review}"
-                </Typography>
-                </Box>
-             <Box sx={{ textAlign: "center" }}>
-             <Typography
-                  sx={{
-                    fontSize: fontSize,
-                    fontWeight: "bold",
-                    color: "#333",
-                    marginBottom: "5px",
-                    textAlign: "center",
-                  }}
-                >
-                  {user.name}
-                </Typography>
-                <Typography
-                  sx={{
-                    fontSize: fontSize,
-                    color: "#555",
-                    marginBottom: "10px",
-                    textAlign: "center",
-                  }}
-                >
-                  {user.email}
-                </Typography>
-             </Box>
-                
-              </Paper>
-            </Grid>
-          ))}
-        </Grid>
-      </Box>
+     
+      <div className="wrapper my-40">
+      <div className="scene">
+        <div className="carousel keen-slider" ref={sliderRef}>
+          <div className="carousel__cell   number-slide1 ">
+            
+            <div>
+            <img className="w-[50px] h-[50px] rounded-full mx-auto" src={allUser&&allUser[0].imgUrl} alt="" />
+            <span>{allUser&&allUser[0].review}</span>
+           <div className="flex flex-col justify-end items-end">
+           <span>--{allUser&&allUser[0].name}</span>
+           <span>--{allUser&&allUser[0].email}</span>
+           </div>
+            </div>
+          </div>
+          <div className="carousel__cell lg:w-[350px]  w-[300px] number-slide2">{allUser&&allUser[1].review}</div>
+          <div className="carousel__cell lg:w-[350px]  w-[300px] number-slide3">{allUser&&allUser[2].review}</div>
+          <div className="carousel__cell lg:w-[350px]  w-[300px] number-slide4">{allUser&&allUser[3].review}</div>
+          <div className="carousel__cell lg:w-[350px]  w-[300px] number-slide5">{allUser&&allUser[4].review}</div>
+          <div className="carousel__cell lg:w-[350px]  w-[300px] number-slide6">{allUser&&allUser[5].review}</div>
+        </div>
+      </div>
+    </div>
     </div>
   );
 };

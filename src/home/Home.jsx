@@ -106,31 +106,36 @@ const Home = () => {
                       {/* <Typography variant="body2" color="text.secondary" sx={{ marginTop: 1 }}>
                         <strong>Descriptions:</strong> {medicine.description}
                       </Typography> */}
-                      <Typography variant="body2" color="text.secondary">
-                        <strong>Actions:</strong> {medicine.actions}
+                      { (isLargeScreen || isMediumScreen) &&
+                        <Typography variant="body2" color="text.secondary">
+                        {/* <strong>Actions:</strong> {medicine.actions} */}
                       </Typography>
+                      }
                       <Typography variant="body2" color="text.secondary">
                         <strong>Total Sold:</strong> {medicine.sold}
                       </Typography>
                       <Typography variant="body2" color="text.secondary">
-                        <strong>Available:</strong> {medicine.available}
+                        {/* <strong>Available:</strong> {medicine.available} */}
                       </Typography>
-                      <Typography variant="body2" color="text.secondary">
+                      {/* <Typography variant="body2" color="text.secondary">
                         <strong>Status:</strong> {medicine.status}
-                      </Typography>
+                      </Typography> */}
 
-                      <div>
-                        <Typography variant="subtitle1" sx={{ marginTop: 1 }}>
+                      { (isLargeScreen || isMediumScreen) &&
+                        <div>
+                        
+                        {/* <Typography variant="subtitle1" sx={{ marginTop: 1 }}>
                           Alternative Medicines
-                        </Typography>
-                        <ul>
+                        </Typography> */}
+                        {/* <ul>
                           {medicine.alt_medicines.map((m, i) => (
                             <li key={i}>
                               {i + 1}. {m}
                             </li>
                           ))}
-                        </ul>
+                        </ul> */}
                       </div>
+                      }
                     </CardContent>
                   </Box>
 
