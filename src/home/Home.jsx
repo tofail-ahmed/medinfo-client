@@ -217,7 +217,7 @@ const Home = () => {
             sx={{
               color: "#110ACAea",
               borderColor: "#22C55E",
-              color: "#fff",
+              // color: "#fff",
               "&:hover": {
                 backgroundColor: "#059669",
                 borderColor: "#22C55E",

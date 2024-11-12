@@ -94,7 +94,11 @@ const Reviews = () => {
                className="rounded-full"
                src={user.imgUrl}
                alt=""
-               style={{ width: imgWidth, height: imgHeight }}
+               style={{
+                width: imgWidth,
+                height: imgHeight,
+                clipPath: "polygon(0% 0%, 100% 0%, 100% 75%, 75% 75%, 75% 100%, 50% 75%, 0% 75%)"
+              }}
              />
              
              {/* Review text takes up remaining space, pushing email and name to bottom */}
