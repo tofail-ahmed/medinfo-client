@@ -49,7 +49,7 @@ const Reviews = () => {
       setHeightSrt("600px");
       setImgWidth("100px");
       setImgHeight("100px");
-      setFontSize("16px");
+      setFontSize("15px");
     } else if (isMediumScreen) {
       setHeightSrt("400px");
       setImgWidth("80px");
@@ -66,6 +66,20 @@ const Reviews = () => {
   if (isLoading) {
     return <Loader />;
   }
+
+  // Function to generate a random color for each card
+  const getRandomColor = () => {
+    const colors = [
+      "linear-gradient(128deg, rgba(64, 175, 255, .9) 0%, rgba(63, 97, 255, 1) 100%)",
+      "linear-gradient(128deg, rgba(255, 154, 63, .9) 0%, rgba(255, 75, 64, 1) 100%)",
+      "linear-gradient(128deg, rgba(189, 255, 83, .9) 0%, rgba(43, 250, 82, 1) 100%)",
+      "linear-gradient(128deg, rgba(64, 255, 242, 0.9) 0%, rgba(63, 188, 255, 1) 100%)",
+      "linear-gradient(128deg, rgba(255, 64, 156, 0.9) 0%, rgba(255, 63, 63, 1) 100%)",
+      "linear-gradient(128deg, rgba(64, 77, 255, 0.9) 0%, rgba(174, 63, 255, 1) 100%)",
+      "linear-gradient(128deg, rgba(64, 177, 255, 0.9) 0%, rgba(174, 263, 255, 1) 100%)",
+    ];
+    return colors[Math.floor(Math.random() * colors.length)];
+  };
 
   return (
     <div className="my-20">
@@ -87,40 +101,41 @@ const Reviews = () => {
       <div className="wrapper my-40">
         <div className="scene">
           <div className="carousel keen-slider heightSet" ref={sliderRef} >
-            {allUser?.slice(0, 6).map((user, index) => (
-           <div key={index} className={`carousel__cell number-slide${index + 1} heightSet`}>
-           <div className="flex flex-col items-center h-full justify-between">
-             <img
-               className="rounded-full"
-               src={user.imgUrl}
-               alt=""
-               style={{
-                width: imgWidth,
-                height: imgHeight,
-                clipPath: "polygon(0% 0%, 100% 0%, 100% 75%, 75% 75%, 75% 100%, 50% 75%, 0% 75%)"
-              }}
-             />
-             
-             {/* Review text takes up remaining space, pushing email and name to bottom */}
-             <span
-               style={{ fontSize: fontSize }}
-               className="text-justify mt-2 flex-grow"
-             >
-               {user.review}
-             </span>
-             
-             {/* Email and Name section aligned at the bottom */}
-             <div
-               className="mt-2 flex flex-col absolute right-2 bottom-2 fontSize"
-               style={{ fontSize: fontSize }}
-             >
-               <span className="text-[12px]"> {user.name}</span>
-               <span className="text-[10px]"> {user.email}</span>
-             </div>
-           </div>
-         </div>
-         
-          
+            {allUser?.slice(0,7).map((user, index) => (
+              <div
+                key={index}
+                className={`carousel__cell heightSet`}
+                style={{ background: getRandomColor() }}
+              >
+                <div className="flex flex-col items-center h-full justify-between">
+                  <img
+                    className="absolute left-0 top-0 rounded-md"
+                    src={user.imgUrl}
+                    alt=""
+                    style={{
+                      width: imgWidth,
+                      height: imgHeight,
+                      clipPath: "polygon(0% 0%, 100% 0%, 100% 75%, 75% 75%, 75% 100%, 50% 75%, 0% 75%)"
+                    }}
+                  />
+                  <span
+                    style={{ fontSize: fontSize }}
+                    className="text-justify mt-2 flex-grow relative top-[25%]"
+                  >
+                    {user.review}
+                  </span>
+                  <div
+                    className="mt-2 p-2 bg-slate-800 flex flex-col absolute right-2 bottom-2 h-[100px] w-auto justify-center items-center"
+                    style={{
+                      fontSize: fontSize,
+                      clipPath: "polygon(40% 0%, 40% 20%, 100% 20%, 100% 80%, 40% 80%, 40% 100%, 0% 50%)"
+                    }}
+                  >
+                    <span className="text-[12px]">{user.name}</span>
+                    <span className="text-[10px]">{user.email}</span>
+                  </div>
+                </div>
+              </div>
             ))}
           </div>
         </div>

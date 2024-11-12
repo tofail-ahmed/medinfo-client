@@ -7,7 +7,7 @@ body {
     
     [class^="number-slide"],
     [class*=" number-slide"] {
-      background: grey;
+      background: rgba(128, 128, 128, 0);
       display: flex;
       align-items: center;
       justify-content: center;
@@ -103,7 +103,7 @@ body {
       font-size: small;
       padding: 10px;
       position: absolute;
-      width: 300px;
+      width: 250px;
       left: 10px;
       height: 350px;
       border-radius: 10px;
