@@ -7,12 +7,23 @@ import 'swiper/css/thumbs';
 import './banner.css';
 import { GrChapterNext, GrChapterPrevious } from 'react-icons/gr';
 import { useSelector } from 'react-redux';
+import { useGetAssetsQuery } from '../redux/user/usersApi';
 
 const Banner = () => {
   const [thumbsSwiper, setThumbsSwiper] = React.useState(null);
 
   const darkMode = useSelector((state) => state.theme.darkMode);
 
+
+  const {data,isLaoding}=useGetAssetsQuery();
+  // console.log(data?.data);
+  const banner1=data?.data.find(item => item.name === 'banner1')
+  const banner2=data?.data.find(item => item.name === 'banner2')
+  const banner3=data?.data.find(item => item.name === 'banner3')
+  const banner4=data?.data.find(item => item.name === 'banner4')
+  const banner5=data?.data.find(item => item.name === 'banner5')
+  const banner6=data?.data.find(item => item.name === 'banner6')
+  // console.log(logo)
 
     // Function to detect background color based on theme
     const updateBorderColor = () => {
@@ -47,12 +58,12 @@ const Banner = () => {
           thumbs={{ swiper: thumbsSwiper }}
           modules={[Navigation, Thumbs, Autoplay]}
         >
-          <SwiperSlide><img className="w-full h-full" src="/src/assets/banner/banner1.png" alt="Banner 1" /></SwiperSlide>
-          <SwiperSlide><img className="w-full h-full" src="/src/assets/banner/banner2.png" alt="Banner 2" /></SwiperSlide>
-          <SwiperSlide><img className="w-full h-full" src="/src/assets/banner/banner3.png" alt="Banner 3" /></SwiperSlide>
-          <SwiperSlide><img className="w-full h-full" src="/src/assets/banner/banner4.png" alt="Banner 4" /></SwiperSlide>
-          <SwiperSlide><img className="w-full h-full" src="/src/assets/banner/banner5.png" alt="Banner 5" /></SwiperSlide>
-          <SwiperSlide><img className="w-full h-full" src="/src/assets/banner/banner6.png" alt="Banner 6" /></SwiperSlide>
+          <SwiperSlide><img className="w-full h-full" src={banner1.imgUrl} alt="Banner 1" /></SwiperSlide>
+          <SwiperSlide><img className="w-full h-full" src={banner2.imgUrl} alt="Banner 2" /></SwiperSlide>
+          <SwiperSlide><img className="w-full h-full" src={banner3.imgUrl} alt="Banner 3" /></SwiperSlide>
+          <SwiperSlide><img className="w-full h-full" src={banner4.imgUrl} alt="Banner 4" /></SwiperSlide>
+          <SwiperSlide><img className="w-full h-full" src={banner5.imgUrl} alt="Banner 5" /></SwiperSlide>
+          <SwiperSlide><img className="w-full h-full" src={banner6.imgUrl} alt="Banner 6" /></SwiperSlide>
         </Swiper>
 
         {/* Custom Navigation Buttons */}
@@ -76,22 +87,22 @@ const Banner = () => {
           className="w-[70%]"
         >
           <SwiperSlide>
-            <img className="w-full h-full object-cover" src="/src/assets/banner/banner1.png" alt="Thumb 1" />
+            <img className="w-full h-full object-cover" src={banner1.imgUrl} alt="Thumb 1" />
           </SwiperSlide>
           <SwiperSlide>
-            <img className="w-full h-full object-cover" src="/src/assets/banner/banner2.png" alt="Thumb 2" />
+            <img className="w-full h-full object-cover" src={banner2.imgUrl} alt="Thumb 2" />
           </SwiperSlide>
           <SwiperSlide>
-            <img className="w-full h-full object-cover" src="/src/assets/banner/banner3.png" alt="Thumb 3" />
+            <img className="w-full h-full object-cover" src={banner3.imgUrl} alt="Thumb 3" />
           </SwiperSlide>
           <SwiperSlide>
-            <img className="w-full h-full object-cover" src="/src/assets/banner/banner4.png" alt="Thumb 4" />
+            <img className="w-full h-full object-cover" src={banner4.imgUrl} alt="Thumb 4" />
           </SwiperSlide>
           <SwiperSlide>
-            <img className="w-full h-full object-cover" src="/src/assets/banner/banner5.png" alt="Thumb 5" />
+            <img className="w-full h-full object-cover" src={banner5.imgUrl} alt="Thumb 5" />
           </SwiperSlide>
           <SwiperSlide>
-            <img className="w-full h-full object-cover" src="/src/assets/banner/banner6.png" alt="Thumb 6" />
+            <img className="w-full h-full object-cover" src={banner6.imgUrl} alt="Thumb 6" />
           </SwiperSlide>
         </Swiper>
       </div>

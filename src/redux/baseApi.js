@@ -5,5 +5,5 @@ export const baseApi=createApi({
       baseQuery:fetchBaseQuery({baseUrl:"http://localhost:3000/api/v1"}),
       // baseQuery:fetchBaseQuery({baseUrl:"https://medinfo-server.vercel.app/api/v1"}),
       endpoints:()=>({}),
-      tagTypes:["medicines","users"]
+      tagTypes:["medicines","users","assets"]
 })

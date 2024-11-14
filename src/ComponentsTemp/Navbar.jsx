@@ -7,6 +7,7 @@ import { toggleDarkMode } from "../redux/theme/themeslice";
 import { clearMedInfoUserCred } from "../redux/user/userSlice";
 import { CgMenuGridR } from "react-icons/cg";
 import { ImMenu3,ImMenu4  } from "react-icons/im";
+import { useGetAssetsQuery } from "../redux/user/usersApi";
 
 
 const Navbar = () => {
@@ -14,6 +15,13 @@ const Navbar = () => {
   const userData = useSelector((state) => state.medInfoUser.medInfoUserCred);
   const dispatch = useDispatch();
   const darkMode = useSelector((state) => state.theme.darkMode);
+
+
+const {data,isLoading}=useGetAssetsQuery();
+
+const logo=data?.data.find(item => item.name === 'logo')
+
+
 
   const darkModeHandler = () => {
     dispatch(toggleDarkMode());
@@ -27,12 +35,16 @@ const Navbar = () => {
     setIsDropdownOpen(!isDropdownOpen);
   };
 
+
+  if(isLoading){
+    return <h1>Loading...</h1>
+  }
   return (
     <div className="bg-green-600/30 mx-auto relative z-20">
       <div className="flex justify-between items-center mx-8">
         <span className="flex items-center justify-around gap-2">
           <NavLink to={"/"}>
-            <img className="w-[50px]" src="/src/assets/medInfo.png" alt="Logo" />
+            <img className="w-[50px]" src={logo.imgUrl} alt="Logo" />
           </NavLink>
           {/* <Button
             variant="contained"

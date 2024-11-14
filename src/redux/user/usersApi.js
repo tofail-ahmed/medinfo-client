@@ -83,6 +83,13 @@ const usersApi = baseApi.injectEndpoints({
         body
       }),
       invalidatesTags: ["users"],
+    }),
+    getAssets:builder.query({
+      query:()=>({
+        url:"/assets",
+        method:"GET"
+      }),
+      providesTags: ["assets"],
     })
   }),
 });
@@ -97,5 +104,6 @@ export const {
   useSingleUserQuery,
   useGetUserByMailQuery,
   useUpdateUserMutation,
-  useAddReviewMutation
+  useAddReviewMutation,
+  useGetAssetsQuery
 } = usersApi;
