@@ -2,6 +2,7 @@
 import { useDispatch, useSelector } from "react-redux";
 import { NavLink } from "react-router-dom";
 import { toggleDarkMode } from "../redux/theme/themeslice";
+import { useGetAssetsQuery } from "../redux/user/usersApi";
 
 
 const Sidebar = () => {
@@ -11,6 +12,11 @@ const Sidebar = () => {
     dispatch(toggleDarkMode());
   };
   const userCred=useSelector((state)=>state.medInfoUser.medInfoUserCred);
+
+  const {data,isLoading}=useGetAssetsQuery();
+
+  const logo=data?.data.find(item => item.name === 'logo')
+
 
   // console.log(userCred)
   return (
@@ -26,7 +32,7 @@ const Sidebar = () => {
        {
        userCred&&userCred.role==="user"? <div className="flex flex-col gap-10 justify-around">
           <NavLink className={"mx-auto"} to={"/"}>
-            <img className="w-[50px]" src="/src/assets/medInfo.png" alt="" />
+            <img className="w-[50px]" src={logo.imgUrl} alt="" />
           </NavLink>
           <NavLink
             className={"bg-green-400 rounded-md font-bold m-4 text-center p-2"}
