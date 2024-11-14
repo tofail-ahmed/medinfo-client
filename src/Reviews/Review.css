@@ -100,6 +100,7 @@ body {
       transform-style: preserve-3d;
     }
     .carousel__cell {
+      /* clip-path: polygon(20% 0%, 80% 0%, 100% 100%, 0% 100%); */
       font-size: small;
       padding: 10px;
       position: absolute;
@@ -107,13 +108,13 @@ body {
       left: 10px;
       height: 350px;
       border-radius: 10px;
-      border: 5px solid #d846efad; /* Initial border color and style */
+      border: 5px solid #d846ef54; 
       transition: transform 0.3s ease, border 0.3s ease; /* Smooth scaling and border transition */
   }
   
   .carousel__cell:hover {
       transform: scale(1.05); /* Scale up slightly on hover */
-      border: 5px dashed #d6ef4693; /* Change to dashed border and new color */
+      border: 5px solid #d6ef4633; 
   }
   
    
