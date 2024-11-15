@@ -16,6 +16,7 @@ import Loader from "../ComponentsTemp/Loader";
 import useMediaQuery from "@mui/material/useMediaQuery";
 import { useSelector } from "react-redux";
 import Reviews from "../Reviews/Reviews";
+import ReviewSwiper from "../Reviews/ReviewSwiper";
 
 const Home = () => {
   const userCred = useSelector((state) => state.medInfoUser.medInfoUserCred);
@@ -59,6 +60,7 @@ const Home = () => {
     <div className="min-h-auto">
       <Banner />
       <Reviews/>
+      <ReviewSwiper/>
       <div className="mx-10">
         <Grid container spacing={3} sx={{ marginTop: 2 }}>
           {displayedData
