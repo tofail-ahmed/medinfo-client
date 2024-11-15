@@ -1,0 +1,33 @@
+Add this to your CSS file
+.fade-effect {
+      position: relative;
+      width: 100%;
+      height: auto;
+      mask-image: radial-gradient(circle, rgba(236, 14, 14, 0) 80%, rgba(241, 14, 14, 0.63) 60%);
+      -webkit-mask-image: radial-gradient(circle, rgb(231, 18, 18) 60%, rgba(233, 12, 12, 0.692) 100%);
+    }
+
+
+    
+    .image-fade-container {
+      position: relative;
+      overflow: hidden; /* Prevents overflow of the image */
+    }
+    
+    .image-fade-container img {
+      display: block; /* Remove bottom space */
+      width: 100%; /* Full width */
+      height: auto; /* Maintain aspect ratio */
+    }
+    
+    .image-fade-container::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: radial-gradient(circle, rgba(255, 255, 255, 0) 0%, rgb(255, 255, 255) 30%);
+      pointer-events: none; /* Allows clicks to pass through */
+    }
+    
