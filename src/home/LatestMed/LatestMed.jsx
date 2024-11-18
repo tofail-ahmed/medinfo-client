@@ -3,9 +3,11 @@ import { useLatestMedQuery } from '../../redux/medicine/medicinesApi'
 import { Box, Button, Card, CardContent, CardMedia, Grid, Typography, useMediaQuery } from '@mui/material'
 import Loader from '../../ComponentsTemp/Loader'
 import { useSelector } from 'react-redux'
+import { useNavigate } from 'react-router'
 
 const LatestMed = () => {
       const userCred = useSelector((state) => state.medInfoUser.medInfoUserCred);
+      const navigate = useNavigate();
 
       const {data,isLoading}=useLatestMedQuery()
       console.log(data?.data)
