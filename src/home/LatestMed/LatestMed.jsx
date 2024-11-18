@@ -1,33 +1,17 @@
-import { useNavigate } from "react-router";
-import { useAllMedicinesQuery } from "../redux/medicine/medicinesApi";
-import { NavLink } from "react-router-dom";
-import { useState, useEffect } from "react";
-import {
-  Button,
-  Grid,
-  Typography,
-  Card,
-  CardContent,
-  CardMedia,
-  Box,
-} from "@mui/material";
-import Banner from "../Home/HomeBanner";
-import Loader from "../ComponentsTemp/Loader";
-import useMediaQuery from "@mui/material/useMediaQuery";
-import { useSelector } from "react-redux";
-import Reviews from "../Reviews/Reviews";
-import ReviewSwiper from "../Reviews/ReviewSwiper";
-import LatestMed from "./LatestMed/latestMed";
+import React from 'react'
+import { useLatestMedQuery } from '../../redux/medicine/medicinesApi'
+import { Box, Button, Card, CardContent, CardMedia, Grid, Typography, useMediaQuery } from '@mui/material'
+import Loader from '../../ComponentsTemp/Loader'
+import { useSelector } from 'react-redux'
 
-const Home = () => {
-  const userCred = useSelector((state) => state.medInfoUser.medInfoUserCred);
+const LatestMed = () => {
+      const userCred = useSelector((state) => state.medInfoUser.medInfoUserCred);
 
-  const navigate = useNavigate();
-  const { data, isLoading } = useAllMedicinesQuery("");
-  const [displayCount, setDisplayCount] = useState(12); // Initial count for large screens
-  const [showAll, setShowAll] = useState(false); // Toggle between limited and full list
+      const {data,isLoading}=useLatestMedQuery()
+      console.log(data?.data)
 
-  // Set up media query breakpoints
+
+      // Set up media query breakpoints
   const isLargeScreen = useMediaQuery("(min-width:1200px)");
   const isMediumScreen = useMediaQuery(
     "(min-width:900px) and (max-width:1199px)"
@@ -36,14 +20,7 @@ const Home = () => {
     "(min-width:600px) and (max-width:899px)"
   );
 
-  useEffect(() => {
-    if (!showAll) {
-      if (isLargeScreen) setDisplayCount(12);
-      else if (isMediumScreen) setDisplayCount(9);
-      // else if (isSmallScreen) setDisplayCount(10);
-      else setDisplayCount(10); // Default for extra-small screens
-    }
-  }, [isLargeScreen, isMediumScreen, isSmallScreen, showAll]);
+  
 
   const handleUpdate = (id) => {
     navigate(`/dashboard/updateMed/${id}`);
@@ -53,15 +30,9 @@ const Home = () => {
     return <Loader />;
   }
 
-  const displayedData = showAll
-    ? data?.data
-    : data?.data.slice(0, displayCount);
-
+  const displayedData =data?.data.slice(0,12)
   return (
-    <div className="min-h-auto">
-      <Banner />
-      <Reviews/>
-      <ReviewSwiper/>
+    <div>
       <div className="mx-10">
         <Grid container spacing={3} sx={{ marginTop: 2 }}>
           {displayedData
@@ -212,7 +183,7 @@ const Home = () => {
             ))}
             {/* Toggle Button */}
         <Box mx={"auto"} width="30%" my={3}>
-          <Button
+          {/* <Button
             variant="contained"
             onClick={() => setShowAll((prev) => !prev)}
             size="small"
@@ -230,15 +201,14 @@ const Home = () => {
             }}
           >
             {showAll ? "Show Less" : "See All"}
-          </Button>
+          </Button> */}
         </Box>
         </Grid>
 
         
       </div>
-      <LatestMed/>
     </div>
-  );
-};
+  )
+}
 
-export default Home;
+export default LatestMed
