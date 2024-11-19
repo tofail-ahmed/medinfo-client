@@ -55,7 +55,7 @@ const LatestMed = () => {
     alignItems: "center", // Vertical alignment
     justifyContent: "center", // Horizontal alignment
   }}
-  className="absolute -right-5 bg-red-500/90 text-xs text-white font-bold top-[30px]"
+  className="absolute -right-6 bg-red-500/90 text-xs text-white font-bold top-[17px]"
 >
   New
 </span>
