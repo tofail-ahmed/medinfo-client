@@ -40,14 +40,29 @@ const LatestMed = () => {
   console.log(displayedData.length)
   return (
     <div>
-      <div className=" relative mx-10">
-        <Grid container spacing={3} sx={{ marginTop: 2 }}>
+      <div className="   mx-10">
+        <Grid container spacing={6} sx={{ marginTop: 2 }}>
           {displayedData
            
             .map((medicine, index) => (
-              <Grid item xs={6}  md={4} lg={3} key={index}>
+                  <Grid sx={{position:"relative"}} item xs={6}  md={4} lg={3} key={index}>
+<span
+  style={{
+    clipPath: "polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%)",
+    width: "60px", // Adjust the width
+    height: "60px", // Adjust the height
+    display: "flex", // Ensures the text is centered
+    alignItems: "center", // Vertical alignment
+    justifyContent: "center", // Horizontal alignment
+  }}
+  className="absolute -right-5 bg-red-500/90 text-xs text-white font-bold top-[30px]"
+>
+  New
+</span>
+
                 <Card
                   sx={{
+                        // position:"relative",
                     display: "flex",
                     flexDirection: "column",
                     justifyContent: "space-between",
@@ -55,7 +70,7 @@ const LatestMed = () => {
                     backgroundColor: "rgba(9, 231, 235, 0.5)",
                   }}
                 >
-                  <span className="absolute top-[2px]">Latest</span>
+                  {/* <span className="absolute right-0  bg-red-500 z-50 -top-[10px]">Latest</span> */}
                   <Box sx={{ flexGrow: 1 }}>
                     {" "}
                     {/* Fills remaining space */}
