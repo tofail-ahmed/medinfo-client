@@ -10,9 +10,16 @@ const medicinesApi = baseApi.injectEndpoints({
       providesTags: ["medicines"],
       
     }),
-    latestMed:builder.query({
+    latestSoldMed:builder.query({
       query:()=>({
         url:"/medicines/latestSold",
+        method:"GET"
+      }),
+      providesTags: ["medicines"],
+    }),
+    latestAddedMed:builder.query({
+      query:()=>({
+        url:"/latest_medicines",
         method:"GET"
       }),
       providesTags: ["medicines"],
@@ -92,5 +99,6 @@ export const {
   useUpdateMedMutation,
   useMedCategoryQuery,
   useSuggestMedicineMutation,
-  useLatestMedQuery
+  useLatestSoldMedQuery,
+  useLatestAddedMedQuery
 } = medicinesApi;

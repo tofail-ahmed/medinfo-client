@@ -1,5 +1,5 @@
 import React from 'react'
-import { useLatestMedQuery } from '../../redux/medicine/medicinesApi'
+import { useLatestAddedMedQuery, useLatestSoldMedQuery } from '../../redux/medicine/medicinesApi'
 import { Box, Button, Card, CardContent, CardMedia, Grid, Typography, useMediaQuery } from '@mui/material'
 import Loader from '../../ComponentsTemp/Loader'
 import { useSelector } from 'react-redux'
@@ -9,8 +9,10 @@ const LatestMed = () => {
       const userCred = useSelector((state) => state.medInfoUser.medInfoUserCred);
       const navigate = useNavigate();
 
-      const {data,isLoading}=useLatestMedQuery()
+      // const {data,isLoading}=useLatestSoldMedQuery()
+      const {data,isLoading,error}=useLatestAddedMedQuery()
       console.log(data?.data)
+      console.log(error)
 
 
       // Set up media query breakpoints
@@ -32,13 +34,16 @@ const LatestMed = () => {
     return <Loader />;
   }
 
-  const displayedData =data?.data.slice(0,12)
+  const displayedData = data?.data
+  .filter((medicine) => medicine.status === "approved")
+  .slice(0, 12);
+  console.log(displayedData.length)
   return (
     <div>
-      <div className="mx-10">
+      <div className=" relative mx-10">
         <Grid container spacing={3} sx={{ marginTop: 2 }}>
           {displayedData
-            .filter((medicine) => medicine.status === "approved")
+           
             .map((medicine, index) => (
               <Grid item xs={6}  md={4} lg={3} key={index}>
                 <Card
@@ -50,6 +55,7 @@ const LatestMed = () => {
                     backgroundColor: "rgba(9, 231, 235, 0.5)",
                   }}
                 >
+                  <span className="absolute top-[2px]">Latest</span>
                   <Box sx={{ flexGrow: 1 }}>
                     {" "}
                     {/* Fills remaining space */}
@@ -91,7 +97,7 @@ const LatestMed = () => {
                         <strong>Total Sold:</strong> {medicine.sold}
                       </Typography>
                       <Typography variant="body2" color="text.secondary">
-                        {/* <strong>Available:</strong> {medicine.available} */}
+                        <strong>Date:</strong> {medicine.createdAt}
                       </Typography>
                       {/* <Typography variant="body2" color="text.secondary">
                         <strong>Status:</strong> {medicine.status}
