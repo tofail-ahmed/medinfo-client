@@ -61,7 +61,7 @@ const Home = () => {
     <div className="min-h-auto">
       <Banner />
       <Reviews/>
-      <ReviewSwiper/>
+     <ReviewSwiper/>
       <div className="mx-10">
         <Grid container spacing={3} sx={{ marginTop: 2 }}>
           {displayedData
