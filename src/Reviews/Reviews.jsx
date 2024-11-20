@@ -125,7 +125,7 @@ const Reviews = () => {
                     {user.review}
                   </span>
                   <div
-                    className="mt-2 p-2 bg-slate-100 flex flex-col absolute right-2 bottom-2 h-[100px] w-auto justify-center items-center"
+                    className="mt-2 p-2 bg-slate-100/50 flex flex-col absolute right-2 bottom-2 h-[100px] w-auto justify-center items-center"
                     style={{
                       fontSize: fontSize,
                       clipPath: "polygon(40% 0%, 40% 20%, 100% 20%, 100% 80%, 40% 80%, 40% 100%, 0% 50%)"
