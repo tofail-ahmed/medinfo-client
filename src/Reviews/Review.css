@@ -86,7 +86,7 @@ body {
     .scene {
       margin-top: 50px;
       margin-bottom: 100px;
-      width: 250px;
+      width: 350px;
       height: 200px;
       perspective: 1000px;
       position: relative;
@@ -111,7 +111,19 @@ body {
       border: 5px solid #d846ef54; 
       transition: transform 0.3s ease, border 0.3s ease; /* Smooth scaling and border transition */
   }
-  
+
+    /* Responsive adjustments */
+    @media (max-width: 768px) {
+      .carousel__cell {
+        width: 250px;
+        height: 250px;
+      }
+    }
+    @media (max-width: 768px) {
+      .scene {
+        perspective: 400px;
+    }
+    }
   .carousel__cell:hover {
       transform: scale(1.05); /* Scale up slightly on hover */
       border: 5px solid #d6ef4633; 

@@ -78,7 +78,7 @@ const ReviewSwiper = () => {
         slidesPerView="auto"
         coverflowEffect={{
           rotate: 50,
-          stretch: 5,
+          stretch: 1,
           depth: 100,
           modifier: 1,
           slideShadows: true,
