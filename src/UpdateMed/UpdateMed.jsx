@@ -32,6 +32,8 @@ if(updateMedLoading){
     interactions: '',
     uses: '',
     warnings: '',
+    discount: '',
+    note: '',
   });
 
   useEffect(() => {
@@ -77,6 +79,7 @@ if(updateMedLoading){
         type:medicineData.type,
         category:medicineData.category,
         available: Number(medicineData.available),
+        discount: Number(medicineData.discount),
         alt_medicines: typeof medicineData.alt_medicines === 'string' 
           ? medicineData.alt_medicines.split(',').map(item => item.trim()) 
           : medicineData.alt_medicines,  // Only split if it's a string
@@ -96,9 +99,12 @@ if(updateMedLoading){
           ? medicineData.warnings.split(',').map(item => item.trim()) 
           : medicineData.warnings,
           homeImg:medicineData.homeImg,
-          detailsImg:medicineData.detailsImg
+          detailsImg:medicineData.detailsImg,
+        
+        note: medicineData.note,
+
       };
-    
+    console.log(updatedDetails)
       const UpdateRes = await medicineDetails({ id, updatedMed: updatedDetails });
     
       if (UpdateRes?.data.success) {
@@ -135,6 +141,8 @@ if(updateMedLoading){
             { label: 'Home Image', name: 'homeImg' },
             { label: 'Details Image', name: 'detailsImg' },
             { label: 'Available Quantity', name: 'available', type: 'number' },
+            { label: 'Discount', name: 'discount', type: 'number' },
+            { label: 'Note', name: 'note', type: 'text' },
             { label: 'Alternative Medicines (comma-separated)', name: 'alt_medicines', multiline: true, rows: 4 },
             { label: 'Description', name: 'description', multiline: true, rows: 4 },
             { label: 'Doses', name: 'doses', multiline: true, rows: 4 },
