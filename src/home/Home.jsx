@@ -18,6 +18,7 @@ import { useSelector } from "react-redux";
 import Reviews from "../Reviews/Reviews";
 import ReviewSwiper from "../Reviews/ReviewSwiper";
 import LatestMed from "./LatestMed/latestMed";
+import TopMeds from "./TopMeds/TopMeds";
 
 const Home = () => {
   const userCred = useSelector((state) => state.medInfoUser.medInfoUserCred);
@@ -237,6 +238,7 @@ const Home = () => {
         
       </div>
       <LatestMed/>
+      <TopMeds/>
     </div>
   );
 };

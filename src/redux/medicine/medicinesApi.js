@@ -24,6 +24,13 @@ const medicinesApi = baseApi.injectEndpoints({
       }),
       providesTags: ["medicines"],
     }),
+    topDiscMeds:builder.query({
+      query:()=>({
+        url:"/topDiscount",
+        method:"GET"
+      }),
+      providesTags: ["medicines"],
+    }),
     medCategory: builder.query({
       query: ({ category, type }) => {
         const params = {};
@@ -100,5 +107,6 @@ export const {
   useMedCategoryQuery,
   useSuggestMedicineMutation,
   useLatestSoldMedQuery,
-  useLatestAddedMedQuery
+  useLatestAddedMedQuery,
+  useTopDiscMedsQuery
 } = medicinesApi;
