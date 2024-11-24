@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useTopDiscMedsQuery } from "../../redux/medicine/medicinesApi";
 import Loader from "../../ComponentsTemp/Loader";
-import "./TopMeds.css"
+
 import { useNavigate } from "react-router";
 import { useSelector } from "react-redux";
 import { CardContent, CardMedia, Grid, Typography, useMediaQuery,Card, Button } from "@mui/material";
@@ -42,7 +42,7 @@ useEffect(() => {
   }
   const displayedData =data?.data.slice(0, displayCount);
   return <div className="my-24">
-      <h1 className="hot-deals-header">Hot Deals</h1>
+      <h1 className="text-center text-3xl text-red-700">Hot Deals</h1>
       <div>
       <div className="   mx-10">
         <Grid container spacing={6} sx={{ marginTop: 2 }}>

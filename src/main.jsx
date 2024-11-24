@@ -6,9 +6,8 @@ import {
   createBrowserRouter,
   RouterProvider,
 } from "react-router-dom";
-import Home from "./Home/Home.jsx";
-import About from "./about/About.jsx";
-import Contact from "./contact/Contact.jsx";
+import About from "./About/About.jsx";
+import Contact from "./Contact/Contact.jsx";
 import { Provider } from "react-redux";
 import { persistor, store } from "./redux/store.js";
 import MainLayout from "./Layouts/MainLayout.jsx";
@@ -38,6 +37,7 @@ import AddMedicine from "./AddMedicine/AddMedicine.jsx";
 import Login from "./Login/Login.jsx";
 import Register from "./Register/Register.jsx";
 import MedicineDetails from "./MedicineDetails/MedicineDetails.jsx";
+import Home from './Home/Home.jsx';
 // import News from "./News/News.jsx";
 
 // import Dashboard from './layouts/Dashboard.jsx';

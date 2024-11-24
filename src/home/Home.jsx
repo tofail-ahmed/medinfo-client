@@ -11,13 +11,13 @@ import {
   CardMedia,
   Box,
 } from "@mui/material";
-import Banner from "../Home/HomeBanner";
+import Banner from "./HomeBanner";
 import Loader from "../ComponentsTemp/Loader";
 import useMediaQuery from "@mui/material/useMediaQuery";
 import { useSelector } from "react-redux";
 import Reviews from "../Reviews/Reviews";
 import ReviewSwiper from "../Reviews/ReviewSwiper";
-import LatestMed from "./LatestMed/latestMed";
+import LatestMed from "./LatestMed/LatestMed";
 import TopMeds from "./TopMeds/TopMeds";
 
 const Home = () => {
@@ -61,14 +61,14 @@ const Home = () => {
   return (
     <div className="min-h-auto">
       <Banner />
-      <Reviews/>
-     <ReviewSwiper/>
+      <Reviews />
+      <ReviewSwiper />
       <div className="mx-10">
         <Grid container spacing={3} sx={{ marginTop: 2 }}>
           {displayedData
             .filter((medicine) => medicine.status === "approved")
             .map((medicine, index) => (
-              <Grid item xs={6}  md={4} lg={3} key={index}>
+              <Grid item xs={6} md={4} lg={3} key={index}>
                 <Card
                   sx={{
                     display: "flex",
@@ -110,11 +110,11 @@ const Home = () => {
                       {/* <Typography variant="body2" color="text.secondary" sx={{ marginTop: 1 }}>
                         <strong>Descriptions:</strong> {medicine.description}
                       </Typography> */}
-                      { (isLargeScreen || isMediumScreen) &&
+                      {(isLargeScreen || isMediumScreen) && (
                         <Typography variant="body2" color="text.secondary">
-                        {/* <strong>Actions:</strong> {medicine.actions} */}
-                      </Typography>
-                      }
+                          {/* <strong>Actions:</strong> {medicine.actions} */}
+                        </Typography>
+                      )}
                       <Typography variant="body2" color="text.secondary">
                         <strong>Total Sold:</strong> {medicine.sold}
                       </Typography>
@@ -125,21 +125,20 @@ const Home = () => {
                         <strong>Status:</strong> {medicine.status}
                       </Typography> */}
 
-                      { (isLargeScreen || isMediumScreen) &&
+                      {(isLargeScreen || isMediumScreen) && (
                         <div>
-                        
-                        {/* <Typography variant="subtitle1" sx={{ marginTop: 1 }}>
+                          {/* <Typography variant="subtitle1" sx={{ marginTop: 1 }}>
                           Alternative Medicines
                         </Typography> */}
-                        {/* <ul>
+                          {/* <ul>
                           {medicine.alt_medicines.map((m, i) => (
                             <li key={i}>
                               {i + 1}. {m}
                             </li>
                           ))}
                         </ul> */}
-                      </div>
-                      }
+                        </div>
+                      )}
                     </CardContent>
                   </Box>
 
@@ -211,34 +210,32 @@ const Home = () => {
                 </Card>
               </Grid>
             ))}
-            {/* Toggle Button */}
-        <Box mx={"auto"} width="30%" my={3}>
-          <Button
-            variant="contained"
-            onClick={() => setShowAll((prev) => !prev)}
-            size="small"
-            fullWidth
-            sx={{
-              color: "#110ACAea",
-              borderColor: "#22C55E",
-              // color: "#fff",
-              "&:hover": {
-                backgroundColor: "#059669",
+          {/* Toggle Button */}
+          <Box mx={"auto"} width="30%" my={3}>
+            <Button
+              variant="contained"
+              onClick={() => setShowAll((prev) => !prev)}
+              size="small"
+              fullWidth
+              sx={{
+                color: "#110ACAea",
                 borderColor: "#22C55E",
+                // color: "#fff",
+                "&:hover": {
+                  backgroundColor: "#059669",
+                  borderColor: "#22C55E",
 
-                color: "#fff",
-              },
-            }}
-          >
-            {showAll ? "Show Less" : "See All"}
-          </Button>
-        </Box>
+                  color: "#fff",
+                },
+              }}
+            >
+              {showAll ? "Show Less" : "See All"}
+            </Button>
+          </Box>
         </Grid>
-
-        
       </div>
-      <LatestMed/>
-      <TopMeds/>
+      <LatestMed />
+      <TopMeds />
     </div>
   );
 };
