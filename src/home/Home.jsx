@@ -18,8 +18,9 @@ import { useSelector } from "react-redux";
 import Reviews from "../Reviews/Reviews";
 import ReviewSwiper from "../Reviews/ReviewSwiper";
 import LatestMed from "./LatestMed/LatestMed";
-import TopMeds from "./TopMeds/TopMeds";
 import Search from '../Search/Search';
+import TopDisMeds from "./TopDisMeds/TopDisMeds";
+import LessStoredMeds from "./LessStoredMeds/LessStoredMeds";
 
 
 const Home = () => {
@@ -238,7 +239,8 @@ const Home = () => {
         </Grid>
       </div>
       <LatestMed />
-      <TopMeds />
+      <TopDisMeds />
+      <LessStoredMeds/>
     </div>
   );
 };

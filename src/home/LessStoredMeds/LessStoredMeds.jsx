@@ -1,5 +1,6 @@
-import React, { useEffect, useState } from "react";
-import { useTopDiscMedsQuery } from "../../redux/medicine/medicinesApi";
+import React, { useEffect ,useState} from 'react'
+import { useLesStoredMedsQuery } from '../../redux/medicine/medicinesApi'
+import "./LessStoredMeds.css"
 import Loader from "../../ComponentsTemp/Loader";
 
 import { useNavigate } from "react-router";
@@ -7,42 +8,50 @@ import { useSelector } from "react-redux";
 import { CardContent, CardMedia, Grid, Typography, useMediaQuery,Card, Button } from "@mui/material";
 import { Box } from "@mui/system";
 
-const TopMeds = () => {
-  const { data, isLoading, isError } = useTopDiscMedsQuery();
-//   console.log(data?.data);
-const userCred = useSelector((state) => state.medInfoUser.medInfoUserCred);
+const LessStoredMeds = () => {
 
-const navigate = useNavigate();
+      const {data,isLoading}=useLesStoredMedsQuery();
+      console.log(data?.data)
 
-const [displayCount, setDisplayCount] = useState(12); // Initial count for large screens
-// const [showAll, setShowAll] = useState(false); // Toggle between limited and full list
 
-// Set up media query breakpoints
-const isLargeScreen = useMediaQuery("(min-width:1200px)");
-const isMediumScreen = useMediaQuery(
-  "(min-width:900px) and (max-width:1199px)"
-);
-const isSmallScreen = useMediaQuery(
-  "(min-width:600px) and (max-width:899px)"
-);
+      const userCred = useSelector((state) => state.medInfoUser.medInfoUserCred);
 
-useEffect(() => {
-  
-    if (isLargeScreen) setDisplayCount(12);
-    else if (isMediumScreen) setDisplayCount(9);
-    // else if (isSmallScreen) setDisplayCount(10);
-    else setDisplayCount(10); // Default for extra-small screens
-  
-}, [isLargeScreen, isMediumScreen, isSmallScreen]);
-  if (isLoading) {
-    return <Loader />;
-  }
-  if (isError) {
-    console.log("Error Occured");
-  }
-  const displayedData =data?.data.slice(0, displayCount);
-  return <div className="my-24">
-      <h1 className="text-center text-3xl text-red-700">Hot Deals</h1>
+      const navigate = useNavigate();
+      
+      const [displayCount, setDisplayCount] = useState(12); // Initial count for large screens
+      // const [showAll, setShowAll] = useState(false); // Toggle between limited and full list
+      
+      // Set up media query breakpoints
+      const isLargeScreen = useMediaQuery("(min-width:1200px)");
+      const isMediumScreen = useMediaQuery(
+        "(min-width:900px) and (max-width:1199px)"
+      );
+      const isSmallScreen = useMediaQuery(
+        "(min-width:600px) and (max-width:899px)"
+      );
+      
+      useEffect(() => {
+        
+          if (isLargeScreen) setDisplayCount(12);
+          else if (isMediumScreen) setDisplayCount(9);
+          // else if (isSmallScreen) setDisplayCount(10);
+          else setDisplayCount(10); // Default for extra-small screens
+        
+      }, [isLargeScreen, isMediumScreen, isSmallScreen]);
+        if (isLoading) {
+          return <Loader />;
+        }
+        
+        const displayedData =data?.data.slice(0, 6);
+
+
+
+
+
+
+  return (
+    <div>
+      <h1 className='text-xl lg:text-4xl low-storage'>Low Storage</h1>
       <div>
       <div className="   mx-10">
         <Grid container spacing={6} sx={{ marginTop: 2 }}>
@@ -55,7 +64,7 @@ useEffect(() => {
               lg={3}
               key={index}
             >
-              <span
+              {/* <span
                 style={{
                   clipPath:
                     "polygon(0% 15%, 24% 23%, 15% 0%, 85% 0%, 77% 24%, 100% 15%, 100% 85%, 77% 76%, 85% 100%, 14% 100%, 23% 78%, 0% 85%)",
@@ -68,7 +77,7 @@ useEffect(() => {
                 className="absolute left-8 bg-red-500/90 text-xs text-white font-bold top-[40px] text-center"
               >
                 {medicine.discount*100}% OFF
-              </span>
+              </span> */}
               {/* <span
                 style={{
                   clipPath:
@@ -91,7 +100,7 @@ useEffect(() => {
                   flexDirection: "column",
                   justifyContent: "space-between",
                   height: "100%", // Ensures all cards are the same height
-                  backgroundColor: "rgba(250, 100, 50, 0.5)",
+                  backgroundColor: "rgba(100, 200, 150, 0.5)",
                 }}
               >
                 {/* <span className="absolute right-0  bg-red-500 z-50 -top-[10px]">Latest</span> */}
@@ -100,7 +109,7 @@ useEffect(() => {
                   {/* Fills remaining space */}
                   <CardContent>
                     <Typography variant="h6" component="div">
-                      {index + 1}. {medicine.medicine_name}
+                     {medicine.medicine_name}
                     </Typography>
                     <Typography variant="subtitle2" color="text.secondary">
                       <strong>Generic:</strong> {medicine.generic_name}
@@ -133,7 +142,7 @@ useEffect(() => {
                       </Typography>
                     )}
                     <Typography variant="body2" color="text.secondary">
-                      <strong>Total Sold:</strong> {medicine.sold}
+                      <strong > Available:</strong> <span className="low-storage font-extrabold">{medicine.available}</span>
                     </Typography>
                     <Typography variant="body2" color="text.secondary">
                       <strong>Date:</strong> {medicine.createdAt}
@@ -250,7 +259,8 @@ useEffect(() => {
         </Grid>
       </div>
     </div>
-  </div>;
-};
+    </div>
+  )
+}
 
-export default TopMeds;
+export default LessStoredMeds

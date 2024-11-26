@@ -31,6 +31,17 @@ const medicinesApi = baseApi.injectEndpoints({
       }),
       providesTags: ["medicines"],
     }),
+    lesStoredMeds:builder.query({
+      query:()=>({
+        url:"/lessStoredMeds",
+        method:"GET"
+      }),
+      providesTags: ["medicines"],
+    }),
+
+
+
+
     medCategory: builder.query({
       query: ({ category, type }) => {
         const params = {};
@@ -45,6 +56,7 @@ const medicinesApi = baseApi.injectEndpoints({
       },
       providesTags: ["medicines"],
     }),
+    
     
     
     singleMedicine: builder.query({
@@ -108,5 +120,6 @@ export const {
   useSuggestMedicineMutation,
   useLatestSoldMedQuery,
   useLatestAddedMedQuery,
-  useTopDiscMedsQuery
+  useTopDiscMedsQuery,
+  useLesStoredMedsQuery
 } = medicinesApi;

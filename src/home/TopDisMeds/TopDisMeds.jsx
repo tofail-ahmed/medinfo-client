@@ -1,54 +1,50 @@
-import React from "react";
-import {
-  useLatestAddedMedQuery,
-  useLatestSoldMedQuery,
-} from "../../redux/medicine/medicinesApi";
-import {
-  Box,
-  Button,
-  Card,
-  CardContent,
-  CardMedia,
-  Grid,
-  Typography,
-  useMediaQuery,
-} from "@mui/material";
+import React, { useEffect, useState } from "react";
+import { useTopDiscMedsQuery } from "../../redux/medicine/medicinesApi";
 import Loader from "../../ComponentsTemp/Loader";
-import { useSelector } from "react-redux";
+
 import { useNavigate } from "react-router";
+import { useSelector } from "react-redux";
+import { CardContent, CardMedia, Grid, Typography, useMediaQuery,Card, Button } from "@mui/material";
+import { Box } from "@mui/system";
 
-const LatestMed = () => {
-  const userCred = useSelector((state) => state.medInfoUser.medInfoUserCred);
-  const navigate = useNavigate();
+const TopDisMeds = () => {
+  const { data, isLoading, isError } = useTopDiscMedsQuery();
+//   console.log(data?.data);
+const userCred = useSelector((state) => state.medInfoUser.medInfoUserCred);
 
-  // const {data,isLoading}=useLatestSoldMedQuery()
-  const { data, isLoading, error } = useLatestAddedMedQuery();
-  // console.log(data?.data);
-  console.log(error);
+const navigate = useNavigate();
 
-  // Set up media query breakpoints
-  const isLargeScreen = useMediaQuery("(min-width:1200px)");
-  const isMediumScreen = useMediaQuery(
-    "(min-width:900px) and (max-width:1199px)"
-  );
-  const isSmallScreen = useMediaQuery(
-    "(min-width:600px) and (max-width:899px)"
-  );
+const [displayCount, setDisplayCount] = useState(12); // Initial count for large screens
+// const [showAll, setShowAll] = useState(false); // Toggle between limited and full list
 
-  const handleUpdate = (id) => {
-    navigate(`/dashboard/updateMed/${id}`);
-  };
+// Set up media query breakpoints
+const isLargeScreen = useMediaQuery("(min-width:1200px)");
+const isMediumScreen = useMediaQuery(
+  "(min-width:900px) and (max-width:1199px)"
+);
+const isSmallScreen = useMediaQuery(
+  "(min-width:600px) and (max-width:899px)"
+);
 
+useEffect(() => {
+  
+    if (isLargeScreen) setDisplayCount(12);
+    else if (isMediumScreen) setDisplayCount(9);
+    // else if (isSmallScreen) setDisplayCount(10);
+    else setDisplayCount(10); // Default for extra-small screens
+  
+}, [isLargeScreen, isMediumScreen, isSmallScreen]);
   if (isLoading) {
     return <Loader />;
   }
-
-  const displayedData = data?.data
-    .filter((medicine) => medicine.status === "approved")
-    .slice(0, 12);
-  // console.log(displayedData.length);
-  return (
-    <div>
+  if (isError) {
+    console.log("Error Occured");
+  }
+  const displayedData =data?.data.slice(0, displayCount);
+  return 
+  <div className="my-24">
+      <h1 className="text-center text-3xl text-red-700">Hot Deals</h1>
+      <div>
       <div className="   mx-10">
         <Grid container spacing={6} sx={{ marginTop: 2 }}>
           {displayedData.map((medicine, index) => (
@@ -63,18 +59,18 @@ const LatestMed = () => {
               <span
                 style={{
                   clipPath:
-                    "polygon(0% 0%, 100% 0%, 100% 75%, 75% 75%, 75% 100%, 50% 75%, 0% 75%)",
-                  width: "60px", // Adjust the width
-                  height: "30px", // Adjust the height
+                    "polygon(0% 15%, 24% 23%, 15% 0%, 85% 0%, 77% 24%, 100% 15%, 100% 85%, 77% 76%, 85% 100%, 14% 100%, 23% 78%, 0% 85%)",
+                  width: "40px", // Adjust the width
+                  height: "40px", // Adjust the height
                   display: "flex", // Ensures the text is centered
                   alignItems: "center", // Vertical alignment
                   justifyContent: "center", // Horizontal alignment
                 }}
-                className="absolute left-8 bg-orange-500/90 text-xs text-white font-bold top-[40px]"
+                className="absolute left-8 bg-red-500/90 text-xs text-white font-bold top-[40px] text-center"
               >
                 {medicine.discount*100}% OFF
               </span>
-              <span
+              {/* <span
                 style={{
                   clipPath:
                     "polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%)",
@@ -87,7 +83,7 @@ const LatestMed = () => {
                 className="absolute -right-6 bg-red-500/90 text-xs text-white font-bold top-[17px]"
               >
                 New
-              </span>
+              </span> */}
 
               <Card
                 sx={{
@@ -96,7 +92,7 @@ const LatestMed = () => {
                   flexDirection: "column",
                   justifyContent: "space-between",
                   height: "100%", // Ensures all cards are the same height
-                  backgroundColor: "rgba(9, 231, 235, 0.5)",
+                  backgroundColor: "rgba(250, 100, 50, 0.5)",
                 }}
               >
                 {/* <span className="absolute right-0  bg-red-500 z-50 -top-[10px]">Latest</span> */}
@@ -141,7 +137,7 @@ const LatestMed = () => {
                       <strong>Total Sold:</strong> {medicine.sold}
                     </Typography>
                     <Typography variant="body2" color="text.secondary">
-                      <strong>Date:</strong> {medicine.createdAt.split("T")[0]}
+                      <strong>Date:</strong> {medicine.createdAt}
                     </Typography>
                     {/* <Typography variant="body2" color="text.secondary">
                         <strong>Status:</strong> {medicine.status}
@@ -255,7 +251,7 @@ const LatestMed = () => {
         </Grid>
       </div>
     </div>
-  );
+  </div>;
 };
 
-export default LatestMed;
+export default TopDisMeds;

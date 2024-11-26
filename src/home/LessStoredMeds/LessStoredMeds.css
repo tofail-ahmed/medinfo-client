@@ -1,0 +1,25 @@
+@keyframes blink {
+      0% {
+        opacity: 1;
+      }
+      25%{
+            opacity:.5
+      }
+      50% {
+        opacity: 0;
+      } 
+      75%{
+            opacity:.5
+      }
+      100%{
+            opacity:.1
+      }
+    }
+    
+    .low-storage {
+      animation: blink 3s infinite;
+      color: #fd4800; /* Tailwind's orange-600 */
+      /* background-color: rgb(101, 95, 160); */
+      text-align: center;
+    }
+    
