@@ -2,7 +2,6 @@
 import Navbar from '../ComponentsTemp/Navbar';
 import { Outlet } from 'react-router';
 import { useSelector } from 'react-redux';
-import Search from '../Search/Search';
 
 import Container from "../ComponentsTemp/Container"
 
@@ -28,7 +27,7 @@ const MainLayout = () => {
       {/* <Banner />
        <SearchResult/> */}
       <Container>
-      <Search />
+      
         <Outlet />
       </Container>
     </div>

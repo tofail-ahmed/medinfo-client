@@ -19,6 +19,8 @@ import Reviews from "../Reviews/Reviews";
 import ReviewSwiper from "../Reviews/ReviewSwiper";
 import LatestMed from "./LatestMed/LatestMed";
 import TopMeds from "./TopMeds/TopMeds";
+import Search from '../Search/Search';
+
 
 const Home = () => {
   const userCred = useSelector((state) => state.medInfoUser.medInfoUserCred);
@@ -59,7 +61,8 @@ const Home = () => {
     : data?.data.slice(0, displayCount);
 
   return (
-    <div className="min-h-auto">
+    <div className="min-h- my-16">
+      <Search />
       <Banner />
       <Reviews />
       <ReviewSwiper />

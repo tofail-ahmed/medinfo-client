@@ -53,8 +53,8 @@ const CategoryMed = () => {
   };
 
   return (
-    <div>
-      <div className="grid lg:grid-cols-4 grid-cols-2 gap-2 py- lg:p-0 p-2 mx-auto">
+    <div className=" bg-white-300/50 h-screen">
+      <div className=" my-16  grid lg:grid-cols-4 grid-cols-2 gap-2  p-4 mx-auto">
         {/* Type buttons */}
         <Button
           variant="outlined"

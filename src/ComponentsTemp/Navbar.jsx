@@ -40,7 +40,8 @@ const logo=data?.data.find(item => item.name === 'logo')
     return <h1>Loading...</h1>
   }
   return (
-    <div className="bg-green-600/30 mx-auto relative z-20">
+    <div className="relative">
+      <div className="bg-green-600/30 mx-auto fixed top-0 z-20 w-full">
       <div className="flex justify-between items-center mx-8">
         <span className="flex items-center justify-around gap-2">
           <NavLink to={"/"}>
@@ -226,6 +227,7 @@ const logo=data?.data.find(item => item.name === 'logo')
           </Button>
         </div>
       )}
+    </div>
     </div>
   );
 };
