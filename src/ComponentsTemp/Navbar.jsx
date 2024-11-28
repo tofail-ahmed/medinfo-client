@@ -40,8 +40,8 @@ const logo=data?.data.find(item => item.name === 'logo')
     return <h1>Loading...</h1>
   }
   return (
-    <div className="relative">
-      <div className="bg-green-600/30 mx-auto fixed top-0 z-20 w-full">
+    <div className="relative ">
+      <div className="bg-green-600/30 backdrop-blur-sm mx-auto fixed top-0 z-20 w-full">
       <div className="flex justify-between items-center mx-8">
         <span className="flex items-center justify-around gap-2">
           <NavLink to={"/"}>
@@ -136,8 +136,11 @@ const logo=data?.data.find(item => item.name === 'logo')
       </div>
 
       {/* Dropdown Menu for Mobile */}
-      {isDropdownOpen && (
-        <div className="md:hidden bg-green-500/10 backdrop-blur-sm  text-white p-4 w-[30%] absolute right-0 top-16 z-50 border-[1px] border-green-500 rounded-md" >
+     <div>
+     {isDropdownOpen && (
+        
+          <div className="md:hidden bg-lime-200/50 backdrop-blur-lg   text-white p-4 w-[30%] absolute  right-0 top-13 z-50 border-[1px] border-green-500 rounded-md" >
+  <div className="">
   <Button
   variant="contained"
   color="success"
@@ -149,9 +152,11 @@ const logo=data?.data.find(item => item.name === 'logo')
     borderTop: "2px solid transparent", // Transparent border to reserve space
     borderTopLeftRadius: "4px",
     borderTopRightRadius: "4px",
+    opacity: 0.9, // Add opacity
+    backdropFilter: "blur(5px)", // Add blur effect
     "&:hover": {
       borderTopColor: "red", // Changes the border color on hover
-      backdropFilter: "blur(5px)", // Adds blur effect on hover
+      backdropFilter: "blur(10px)", // Adds blur effect on hover
     },
   }}
 >
@@ -225,8 +230,11 @@ const logo=data?.data.find(item => item.name === 'logo')
           >
             {darkMode ? "Light" : "Dark"}
           </Button>
+  </div>
         </div>
+       
       )}
+     </div>
     </div>
     </div>
   );
