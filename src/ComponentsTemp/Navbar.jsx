@@ -152,12 +152,12 @@ const logo=data?.data.find(item => item.name === 'logo')
     borderTop: "2px solid transparent", // Transparent border to reserve space
     borderTopLeftRadius: "4px",
     borderTopRightRadius: "4px",
-    opacity: 1, // Add opacity
+    opacity: .6, // Add opacity
     backdropFilter: "blur(5px)", // Add blur effect
     "&:hover": {
       // borderTopColor: "red", // Changes the border color on hover
       backdropFilter: "blur(10px)", // Adds blur effect on hover
-      opacity:.5,
+      opacity:.9,
       // borderColor:"red",
       // borderTop:"2px solid red",
       // borderBottom:"2px solid red",

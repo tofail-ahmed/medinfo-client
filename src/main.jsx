@@ -38,6 +38,8 @@ import Login from "./Login/Login.jsx";
 import Register from "./Register/Register.jsx";
 import MedicineDetails from "./MedicineDetails/MedicineDetails.jsx";
 import Home from './Home/Home.jsx';
+import Covid from './Home/AdvancedServices/Covid/Covid.jsx';
+import Tests from './Home/AdvancedServices/Tests/Tests.jsx';
 // import News from "./News/News.jsx";
 
 // import Dashboard from './layouts/Dashboard.jsx';
@@ -114,6 +116,22 @@ const router = createBrowserRouter([
         path: "/update-profile",
         element: <UpdateProfile />,
       },
+      {
+        path: "/covid",
+        element: <Covid />,
+      },
+      {
+        path: "/flutest",
+        element: <Tests />,
+      },
+      // {
+      //   path: "/",
+      //   element: <UpdateProfile />,
+      // },
+      // {
+      //   path: "/update-profile",
+      //   element: <UpdateProfile />,
+      // },
     ],
   },
   {
