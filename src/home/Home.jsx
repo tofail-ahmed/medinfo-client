@@ -21,6 +21,7 @@ import LatestMed from "./LatestMed/LatestMed";
 import Search from '../Search/Search';
 import TopDisMeds from "./TopDisMeds/TopDisMeds";
 import LessStoredMeds from "./LessStoredMeds/LessStoredMeds";
+import AdvancedServices from "./AdvancedServices/AdvancedServices";
 
 
 const Home = () => {
@@ -64,6 +65,7 @@ const Home = () => {
   return (
     <div className="min-h- my-16">
       <Search />
+      <AdvancedServices/>
       <Banner />
       <Reviews />
       <ReviewSwiper />

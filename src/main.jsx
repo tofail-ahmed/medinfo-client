@@ -40,6 +40,8 @@ import MedicineDetails from "./MedicineDetails/MedicineDetails.jsx";
 import Home from './Home/Home.jsx';
 import Covid from './Home/AdvancedServices/Covid/Covid.jsx';
 import Tests from './Home/AdvancedServices/Tests/Tests.jsx';
+import Prescriptions from './Home/AdvancedServices/Prescriptions/Prescriptions.jsx';
+import FluCoughCold from './Home/AdvancedServices/FluCoughCold/FluCoughCold.jsx';
 // import News from "./News/News.jsx";
 
 // import Dashboard from './layouts/Dashboard.jsx';
@@ -124,14 +126,14 @@ const router = createBrowserRouter([
         path: "/flutest",
         element: <Tests />,
       },
-      // {
-      //   path: "/",
-      //   element: <UpdateProfile />,
-      // },
-      // {
-      //   path: "/update-profile",
-      //   element: <UpdateProfile />,
-      // },
+      {
+        path: "/prescription",
+        element: <Prescriptions />,
+      },
+      {
+        path: "/flucoughcold",
+        element: <FluCoughCold />,
+      },
     ],
   },
   {
