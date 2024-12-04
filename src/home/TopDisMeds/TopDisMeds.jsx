@@ -41,7 +41,7 @@ useEffect(() => {
     console.log("Error Occured");
   }
   const displayedData =data?.data.slice(0, displayCount);
-  return 
+  return (
   <div className="my-24">
       <h1 className="text-center text-3xl text-red-700">Hot Deals</h1>
       <div>
@@ -251,7 +251,8 @@ useEffect(() => {
         </Grid>
       </div>
     </div>
-  </div>;
+  </div>
+  )
 };
 
 export default TopDisMeds;

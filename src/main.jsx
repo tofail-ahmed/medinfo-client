@@ -42,6 +42,7 @@ import Covid from './Home/AdvancedServices/Covid/Covid.jsx';
 import Tests from './Home/AdvancedServices/Tests/Tests.jsx';
 import Prescriptions from './Home/AdvancedServices/Prescriptions/Prescriptions.jsx';
 import FluCoughCold from './Home/AdvancedServices/FluCoughCold/FluCoughCold.jsx';
+import Vaccines from './Home/AdvancedServices/Covid/Vaccines.jsx';
 // import News from "./News/News.jsx";
 
 // import Dashboard from './layouts/Dashboard.jsx';
@@ -133,6 +134,10 @@ const router = createBrowserRouter([
       {
         path: "/flucoughcold",
         element: <FluCoughCold />,
+      },
+      {
+        path: "/vaccination",
+        element: <Vaccines />,
       },
     ],
   },

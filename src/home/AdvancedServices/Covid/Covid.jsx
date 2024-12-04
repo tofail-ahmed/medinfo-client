@@ -2,8 +2,15 @@ import React, { useState } from "react";
 import vaccine_img from "../../../../public/assets/vaccine_nurse.png";
 import logo from "../../../../public/assets/medinfo.png";
 import { GiLoveInjection } from "react-icons/gi";
+import { TextField, Checkbox, FormControlLabel, Button, Select, MenuItem, InputLabel, FormControl, Typography, Box, Alert } from "@mui/material";
+import { useNavigate } from "react-router";
+
 
 const Covid = () => {
+      const navigate=useNavigate();
+      const handleNavigation=()=>{
+            navigate("/vaccination")
+      }
   const [formData, setFormData] = useState({
     location: "",
     option: "",
@@ -106,7 +113,7 @@ const Covid = () => {
             <span className="text-2xl font-bold " >
 <GiLoveInjection/>
             </span>
-            <button className="text-lg hover:text-blue-600 font-bold hover:underline">
+            <button className="text-md lg:text-lg hover:text-blue-600 font-bold hover:underline">
             Get vaccination information, including records and appointments
             </button>
       </span>
@@ -119,147 +126,112 @@ const Covid = () => {
             alt=""
           />
         </span>
-        <h1 className=" text-slate-900 lg:text-lg text-sm font-bold w-[60%]">
+        <h1 className=" text-slate-900 lg:text-lg text-xs font-bold w-[60%]">
         Get your flu shot or any vaccine and get a coupon for 20% off your next purchase of $20 or more up to $100 as a myWalgreens member2
         </h1>
       </div>
       <div className="my-8 w-[70%] mx-auto">
 
 
-        <form onSubmit={handleSubmit} className="flex flex-col gap-4">
-          {/* Location Field */}
-          <div>
-            <label className="font-bold">Location:</label>
-            <input
-              type="text"
-              name="location"
-              value={formData.location}
-              onChange={handleChange}
-              className="w-full border border-gray-400 rounded px-2 py-1"
-            />
-            {errors.location && <p className="text-red-600 text-sm">{errors.location}</p>}
-          </div>
+        <form onSubmit={handleSubmit}>
+        {/* Location Field */}
+        <TextField
+          label="Location"
+          name="location"
+          value={formData.location}
+          onChange={handleChange}
+          fullWidth
+          margin="normal"
+          error={!!errors.location}
+          helperText={errors.location}
+        />
 
-          {/* Select Option */}
-          <div>
-            <label className="font-bold">Select an Option:</label>
-            <select
-              name="option"
-              value={formData.option}
-              onChange={handleChange}
-              className="w-full border border-gray-400 rounded px-2 py-1"
-            >
-              <option value="">-- Select --</option>
-              <option value="first">An Individual(All Options)</option>
-              <option value="second">A group of upto 4 peoples(flu and COVID-19 vaccine only) </option>
-            </select>
-            {errors.option && <p className="text-red-600 text-sm">{errors.option}</p>}
-          </div>
-
-          {/* Additional Fields for First Option */}
-          {formData.option === "first" && (
-            <>
-              <div>
-                <label className="font-bold">Name:</label>
-                <input
-                  type="text"
-                  name="name"
-                  value={formData.name}
-                  onChange={handleChange}
-                  className="w-full border border-gray-400 rounded px-2 py-1"
-                />
-                {errors.name && <p className="text-red-600 text-sm">{errors.name}</p>}
-              </div>
-              <div>
-                <label className="font-bold">Email:</label>
-                <input
-                  type="email"
-                  name="email"
-                  value={formData.email}
-                  onChange={handleChange}
-                  className="w-full border border-gray-400 rounded px-2 py-1"
-                />
-                {errors.email && <p className="text-red-600 text-sm">{errors.email}</p>}
-              </div>
-              <div>
-                <label className="font-bold">Phone:</label>
-                <input
-                  type="text"
-                  name="phone"
-                  value={formData.phone}
-                  onChange={handleChange}
-                  className="w-full border border-gray-400 rounded px-2 py-1"
-                />
-                {errors.phone && <p className="text-red-600 text-sm">{errors.phone}</p>}
-              </div>
-              <div>
-                <label className="flex items-center gap-2">
-                  <input
-                    type="checkbox"
-                    name="terms"
-                    checked={formData.terms}
-                    onChange={handleChange}
-                  />
-                  Accept Terms and Conditions
-                </label>
-                {errors.terms && <p className="text-red-600 text-sm">{errors.terms}</p>}
-              </div>
-            </>
-          )}
-
-          {/* Message Field for Second Option */}
-          {formData.option === "second" && (
-            <div>
-              {/* <label className="font-bold">Message:</label> */}
-              {/* <textarea
-                name="message"
-                value={formData.message}
-                onChange={handleChange}
-                className="w-full border border-gray-400 rounded px-2 py-1"
-              />
-              {errors.message && <p className="text-red-600 text-sm">{errors.message}</p>} */}
-              <div className="my-8">
-     
-      <div className="bg-green-100 p-4 rounded-lg">
-      <h2 className="text-2xl font-semibold mb-4">Scheduling for a Group</h2>
-        <p className="mb-2">
-          <strong>Flu Shot:</strong> Anyone aged <strong>3 years or older</strong> can be scheduled for the flu shot.
-        </p>
-        <p>
-          <strong>COVID-19 Vaccine:</strong>
-          <ul className="list-disc pl-5">
-            <li>Patients must be aged <strong>5 years or older</strong> to be scheduled for the COVID-19 vaccine as part of a group.</li>
-            <li>To schedule the COVID-19 vaccine for patients aged <strong>3-4 years</strong>, select the <strong>individual option</strong>.</li>
-          </ul>
-        </p>
-      </div>
-      <div>
-                <label className="flex items-center gap-2">
-                  <input
-                    type="checkbox"
-                    name="terms"
-                    checked={formData.terms}
-                    onChange={handleChange}
-                  />
-                  Accept Terms and Conditions
-                </label>
-                {errors.terms && <p className="text-red-600 text-sm">{errors.terms}</p>}
-              </div>
-    </div>
-            </div>
-          )}
-
-          {/* Submit Button */}
-          <button
-            type="submit"
-            disabled={isSubmitDisabled()}
-            className={`px-4 py-2 font-bold rounded ${
-              isSubmitDisabled() ? "bg-gray-400 cursor-not-allowed" : "bg-green-600 text-white"
-            }`}
+        {/* Select Option */}
+        <FormControl fullWidth margin="normal" error={!!errors.option}>
+          <InputLabel>Select an Option</InputLabel>
+          <Select
+            name="option"
+            value={formData.option}
+            onChange={handleChange}
           >
-            Submit
-          </button>
-        </form>
+            <MenuItem value="">-- Select --</MenuItem>
+            <MenuItem value="first">An Individual (All Options)</MenuItem>
+            <MenuItem value="second">A Group (Flu & COVID-19 Only)</MenuItem>
+          </Select>
+          {errors.option && <Typography color="error">{errors.option}</Typography>}
+        </FormControl>
+
+        {/* Fields for First Option */}
+        {formData.option === "first" && (
+          <>
+            <TextField
+              label="Name"
+              name="name"
+              value={formData.name}
+              onChange={handleChange}
+              fullWidth
+              margin="normal"
+              error={!!errors.name}
+              helperText={errors.name}
+            />
+            <TextField
+              label="Email"
+              name="email"
+              value={formData.email}
+              onChange={handleChange}
+              fullWidth
+              margin="normal"
+              error={!!errors.email}
+              helperText={errors.email}
+            />
+            <TextField
+              label="Phone"
+              name="phone"
+              value={formData.phone}
+              onChange={handleChange}
+              fullWidth
+              margin="normal"
+              error={!!errors.phone}
+              helperText={errors.phone}
+            />
+          </>
+        )}
+
+        {/* Terms Checkbox */}
+        <FormControlLabel
+          control={
+            <Checkbox
+              name="terms"
+              checked={formData.terms}
+              onChange={handleChange}
+            />
+          }
+          label="Accept Terms and Conditions"
+        />
+        {errors.terms && <Typography color="error">{errors.terms}</Typography>}
+
+        {/* Information for Second Option */}
+        {formData.option === "second" && (
+          <Alert severity="info" sx={{ my: 2 }}>
+            <strong>Flu Shot:</strong> For ages 3+. <br />
+            <strong>COVID-19 Vaccine:</strong> For ages 5+. 
+            <br /> Patients aged 3-4 must be scheduled individually.
+          </Alert>
+        )}
+
+        {/* Submit Button */}
+        <Button
+        onClick={handleNavigation}
+          type="submit"
+          variant="contained"
+          color="primary"
+          fullWidth
+          disabled={isSubmitDisabled()}
+        >
+          Submit
+        </Button>
+      </form>
+
       </div>
     </div>
   );
