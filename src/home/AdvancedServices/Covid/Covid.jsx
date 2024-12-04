@@ -11,15 +11,21 @@ const Covid = () => {
       const handleNavigation=()=>{
             navigate("/vaccination")
       }
-  const [formData, setFormData] = useState({
-    location: "",
-    option: "",
-    name: "",
-    email: "",
-    phone: "",
-   
-    terms: false,
-  });
+      const [formData, setFormData] = useState(() => {
+            // Load data from localStorage if not expired
+            // const savedData = JSON.parse(localStorage.getItem("formData"));
+            // if (savedData && savedData.expiration > Date.now()) {
+            //   return savedData.data;
+            // }
+            return {
+              location: "",
+              option: "",
+              name: "",
+              email: "",
+              phone: "",
+              terms: false,
+            };
+          });
 
   const [errors, setErrors] = useState({
     location: "Location is required.",
@@ -88,9 +94,29 @@ const Covid = () => {
   };
 
   const handleSubmit = (e) => {
-    e.preventDefault();
-    console.log("Form submitted:", formData);
-  };
+      e.preventDefault();
+    
+      const expiration = Date.now() + .25 * 60 * 1000; // 30 minutes in milliseconds
+      const dataToSave = { data: formData, expiration };
+      
+      try {
+        localStorage.setItem("formData", JSON.stringify(dataToSave));
+    
+        // Verify the data was saved successfully
+        const savedData = localStorage.getItem("formData");
+        if (savedData && JSON.stringify(dataToSave) === savedData) {
+          console.log("Form data saved successfully!");
+          handleNavigation(); // Navigate only after successful save
+        } else {
+          console.error("Failed to save form data to localStorage.");
+          alert("There was an error saving your data. Please try again.");
+        }
+      } catch (error) {
+        console.error("Error accessing localStorage:", error);
+        alert("An error occurred while saving your data. Please ensure your browser allows localStorage.");
+      }
+    };
+    
 
   return (
     <div className="mt-20">
@@ -221,7 +247,7 @@ const Covid = () => {
 
         {/* Submit Button */}
         <Button
-        onClick={handleNavigation}
+      //   onClick={handleNavigation}
           type="submit"
           variant="contained"
           color="primary"
