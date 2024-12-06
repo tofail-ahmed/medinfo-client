@@ -128,12 +128,23 @@ const Vaccines = () => {
           vaccines above and then speak to the pharmacist prior to the
           appointment about the additional vaccinations needed.
         </div>
+        <div className="relative w-full">
+  <hr 
+    className="border-4 border-gradient-to-r from-purple-500 via-pink-500 to-red-500 shadow-md" 
+    style={{
+      height: '5px',
+      borderRadius: '5px',
+      boxShadow: '0px 4px 6px rgba(123, 0, 231, 0.1)',
+    }} 
+  />
+</div>
+
         <button
           type="submit"
           disabled={selectedVaccines.length === 0}
-          className={`mt-8 py-2 px-4 rounded transition ${
+          className={`mt-8 py-2 px-4 flex justify-end rounded transition ml-auto ${
             selectedVaccines.length === 0
-              ? "bg-gray-300 text-gray-600 cursor-not-allowed"
+              ? "bg-gray-600 text-gray-300 cursor-not-allowed"
               : "bg-blue-500 text-white hover:bg-blue-600"
           }`}
         >
