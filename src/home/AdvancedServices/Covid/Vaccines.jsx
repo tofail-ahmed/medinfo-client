@@ -2,7 +2,7 @@ import React, { useState } from "react";
 
 const Vaccines = () => {
   const [selectedVaccines, setSelectedVaccines] = useState([]);
-//   const [submitDisable, setSubmitDisble] = useState(true);
+  //   const [submitDisable, setSubmitDisble] = useState(true);
 
   const handleCheckboxChange = (event) => {
     const { value, checked } = event.target;
@@ -12,7 +12,9 @@ const Vaccines = () => {
       setSelectedVaccines((prev) => [...prev, value]);
     } else {
       // Remove vaccine from selected list
-      setSelectedVaccines((prev) => prev.filter((vaccine) => vaccine !== value));
+      setSelectedVaccines((prev) =>
+        prev.filter((vaccine) => vaccine !== value)
+      );
     }
   };
 
@@ -36,7 +38,8 @@ const Vaccines = () => {
     {
       name: "Hepatitis B",
       note: "Prevents hepatitis B infection, which affects the liver.",
-      caution: "Ensure you're not allergic to yeast, commonly used in the vaccine.",
+      caution:
+        "Ensure you're not allergic to yeast, commonly used in the vaccine.",
     },
     {
       name: "Measles, Mumps, Rubella (MMR)",
@@ -46,7 +49,8 @@ const Vaccines = () => {
     {
       name: "Tetanus, Diphtheria, Pertussis (Tdap)",
       note: "Protects against bacterial infections causing severe symptoms.",
-      caution: "May cause localized redness and swelling at the injection site.",
+      caution:
+        "May cause localized redness and swelling at the injection site.",
     },
     {
       name: "Polio Vaccine",
@@ -56,7 +60,8 @@ const Vaccines = () => {
     {
       name: "Varicella (Chickenpox)",
       note: "Protects against chickenpox and its complications.",
-      caution: "Not suitable for pregnant individuals or those with weakened immune systems.",
+      caution:
+        "Not suitable for pregnant individuals or those with weakened immune systems.",
     },
     {
       name: "HPV Vaccine",
@@ -66,12 +71,14 @@ const Vaccines = () => {
     {
       name: "Meningococcal Vaccine",
       note: "Protects against meningitis and bloodstream infections.",
-      caution: "Mild side effects such as soreness at the injection site are possible.",
+      caution:
+        "Mild side effects such as soreness at the injection site are possible.",
     },
     {
       name: "Pneumococcal Vaccine",
       note: "Prevents pneumonia and related infections.",
-      caution: "Recommended for older adults and those with chronic conditions.",
+      caution:
+        "Recommended for older adults and those with chronic conditions.",
     },
   ];
 
@@ -110,6 +117,17 @@ const Vaccines = () => {
             </label>
           ))}
         </div>
+        <div className="my-8">
+          Don't see the vaccine the patient needs? Based on their age and
+          restrictions in their state, Walgreens can't administer some
+          vaccines.Contact their health care provider with questions.
+        </div>
+        <div className="mb-2">
+        
+          If more than 4 vaccines are needed, please begin by selecting 4
+          vaccines above and then speak to the pharmacist prior to the
+          appointment about the additional vaccinations needed.
+        </div>
         <button
           type="submit"
           disabled={selectedVaccines.length === 0}
@@ -117,7 +135,8 @@ const Vaccines = () => {
             selectedVaccines.length === 0
               ? "bg-gray-300 text-gray-600 cursor-not-allowed"
               : "bg-blue-500 text-white hover:bg-blue-600"
-          }`}        >
+          }`}
+        >
           Submit
         </button>
       </form>
