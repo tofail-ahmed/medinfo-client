@@ -1,8 +1,13 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router";
 
 const Vaccines = () => {
   const [selectedVaccines, setSelectedVaccines] = useState([]);
   //   const [submitDisable, setSubmitDisble] = useState(true);
+
+const navogate=useNavigate()
+
+
 
   const handleCheckboxChange = (event) => {
     const { value, checked } = event.target;
@@ -22,6 +27,7 @@ const Vaccines = () => {
     event.preventDefault(); // Prevent default form submission
     console.log("Selected Vaccines:", selectedVaccines);
     alert(`You have selected: ${selectedVaccines.join(", ")}`);
+    navigate("/vac-appointment")
   };
 
   const vaccines = [

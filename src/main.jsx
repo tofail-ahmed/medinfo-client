@@ -43,6 +43,7 @@ import Tests from './Home/AdvancedServices/Tests/Tests.jsx';
 import Prescriptions from './Home/AdvancedServices/Prescriptions/Prescriptions.jsx';
 import FluCoughCold from './Home/AdvancedServices/FluCoughCold/FluCoughCold.jsx';
 import Vaccines from './Home/AdvancedServices/Covid/Vaccines.jsx';
+import Appointment from './Home/AdvancedServices/Covid/Appointment.jsx';
 // import News from "./News/News.jsx";
 
 // import Dashboard from './layouts/Dashboard.jsx';
@@ -138,6 +139,10 @@ const router = createBrowserRouter([
       {
         path: "/vaccination",
         element: <Vaccines />,
+      },
+      {
+        path: "/vac-appointment",
+        element: <Appointment />,
       },
     ],
   },

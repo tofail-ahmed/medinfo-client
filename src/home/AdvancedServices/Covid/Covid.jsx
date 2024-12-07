@@ -107,14 +107,14 @@ const Covid = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    const expiration = Date.now() + 0.25 * 60 * 1000; // 30 minutes in milliseconds
+    const expiration = Date.now() + 1 * 60 * 1000; // 30 minutes in milliseconds
     const dataToSave = { data: formData, expiration };
 
     try {
-      localStorage.setItem("formData", JSON.stringify(dataToSave));
+      localStorage.setItem("Vac-data", JSON.stringify(dataToSave));
 
       // Verify the data was saved successfully
-      const savedData = localStorage.getItem("formData");
+      const savedData = localStorage.getItem("Vac-data");
       if (savedData && JSON.stringify(dataToSave) === savedData) {
         console.log("Form data saved successfully!");
         handleNavigation(); // Navigate only after successful save
@@ -191,8 +191,8 @@ const Covid = () => {
               onChange={handleChange}
             >
               <MenuItem value="">-- Select --</MenuItem>
-              <MenuItem value="first">An Individual (All Options)</MenuItem>
-              <MenuItem value="second">A Group (Flu & COVID-19 Only)</MenuItem>
+              <MenuItem value="individual">An Individual (All Options)</MenuItem>
+              <MenuItem value="group">A Group (Flu & COVID-19 Only)</MenuItem>
             </Select>
             {errors.option && (
               <Typography color="error">{errors.option}</Typography>
@@ -200,7 +200,7 @@ const Covid = () => {
           </FormControl>
 
           {/* Fields for First Option */}
-          {formData.option === "first" && (
+          {formData.option === "individual" && (
             <>
               <TextField
                 label="Name"
@@ -251,7 +251,7 @@ const Covid = () => {
           )}
 
           {/* Information for Second Option */}
-          {formData.option === "second" && (
+          {formData.option === "group" && (
             <Alert severity="info" sx={{ my: 2 }}>
               <strong>Flu Shot:</strong> For ages 3+. <br />
               <strong>COVID-19 Vaccine:</strong> For ages 5+.
