@@ -1,5 +1,16 @@
 import React, { useState } from 'react';
-import { Button, FormControl, FormLabel, RadioGroup, FormControlLabel, Radio } from '@mui/material';
+import {
+  Button,
+  FormControl,
+  FormLabel,
+  RadioGroup,
+  FormControlLabel,
+  Radio,
+  Grid,
+  Paper,
+  Typography,
+  Box,
+} from '@mui/material';
 
 const Appointment = () => {
   const vaccineData = JSON.parse(localStorage.getItem("Vac-data"));
@@ -42,54 +53,73 @@ const Appointment = () => {
   const dates = getNextSevenDays();
 
   return (
-    <div className="mt-20">
-      <h1 className="text-center text-4xl text-green-500 font-bold">This is Appointment Page</h1>
-      <h1 className="text-3xl">Name: {vaccineData?.data?.name}</h1>
-      <h1 className="text-3xl">Email: {vaccineData?.data?.email}</h1>
-      <h1 className="text-3xl">Location: {vaccineData?.data?.location}</h1>
-      <h1 className="text-3xl">Phone: {vaccineData?.data?.phone}</h1>
-      <h1 className="text-3xl">Option: {vaccineData?.data?.option}</h1>
+    <Box sx={{ mt: 5, p: 2 }}>
+      <Typography variant="h4" align="center" color="primary" fontWeight="bold" gutterBottom>
+        Appointment Scheduling
+      </Typography>
 
-      <div className="mt-8">
-        <FormControl component="fieldset">
-          <FormLabel component="legend">Select a Date</FormLabel>
-          <RadioGroup value={selectedDate} onChange={handleDateChange}>
-            {dates.map((date) => (
-              <FormControlLabel
-                key={date}
-                value={date}
-                control={<Radio />}
-                label={date}
-              />
-            ))}
-          </RadioGroup>
-        </FormControl>
+      <Grid container spacing={4} justifyContent="center">
+        <Grid item xs={12} sm={6} md={5}>
+          <Paper elevation={3} sx={{ p: 3 }}>
+            <Typography variant="h6" color="secondary" gutterBottom>
+              User Information
+            </Typography>
+            <Typography>Name: {vaccineData?.data?.name}</Typography>
+            <Typography>Email: {vaccineData?.data?.email}</Typography>
+            <Typography>Location: {vaccineData?.data?.location}</Typography>
+            <Typography>Phone: {vaccineData?.data?.phone}</Typography>
+            <Typography>Option: {vaccineData?.data?.option}</Typography>
+          </Paper>
+        </Grid>
 
-        <FormControl component="fieldset" className="mt-4">
-          <FormLabel component="legend">Select a Time</FormLabel>
-          <RadioGroup value={selectedTime} onChange={handleTimeChange}>
-            {workingHours.map((time) => (
-              <FormControlLabel
-                key={time}
-                value={time}
-                control={<Radio />}
-                label={time}
-              />
-            ))}
-          </RadioGroup>
-        </FormControl>
+        <Grid item xs={12} sm={6} md={5}>
+          <Paper elevation={3} sx={{ p: 3 }}>
+            <FormControl component="fieldset" sx={{ mb: 3 }}>
+              <FormLabel component="legend" sx={{ fontWeight: 'bold', mb: 1 }}>
+                Select a Date
+              </FormLabel>
+              <RadioGroup value={selectedDate} onChange={handleDateChange}>
+                {dates.map((date) => (
+                  <FormControlLabel
+                    key={date}
+                    value={date}
+                    control={<Radio />}
+                    label={date}
+                  />
+                ))}
+              </RadioGroup>
+            </FormControl>
 
-        <Button
-          variant="contained"
-          color="primary"
-          className="mt-8"
-          disabled={!selectedDate || !selectedTime}
-          onClick={handleSubmit}
-        >
-          Submit
-        </Button>
-      </div>
-    </div>
+            <FormControl component="fieldset">
+              <FormLabel component="legend" sx={{ fontWeight: 'bold', mb: 1 }}>
+                Select a Time
+              </FormLabel>
+              <RadioGroup value={selectedTime} onChange={handleTimeChange}>
+                {workingHours.map((time) => (
+                  <FormControlLabel
+                    key={time}
+                    value={time}
+                    control={<Radio />}
+                    label={time}
+                  />
+                ))}
+              </RadioGroup>
+            </FormControl>
+
+            <Button
+              variant="contained"
+              color="primary"
+              fullWidth
+              sx={{ mt: 3 }}
+              disabled={!selectedDate || !selectedTime}
+              onClick={handleSubmit}
+            >
+              Submit Appointment
+            </Button>
+          </Paper>
+        </Grid>
+      </Grid>
+    </Box>
   );
 };
 
