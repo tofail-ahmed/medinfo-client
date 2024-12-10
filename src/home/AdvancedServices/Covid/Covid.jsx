@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import vaccine_img from "../../../../public/assets/vaccine_nurse.png";
-import logo from "../../../../public/assets/medinfo.png";
+// import logo from "../../../../public/assets/medinfo.png";
+
 import { GiLoveInjection } from "react-icons/gi";
 import {
   TextField,
@@ -16,12 +17,19 @@ import {
   Alert,
 } from "@mui/material";
 import { useNavigate } from "react-router";
+import { useGetAssetsQuery } from "../../../redux/user/usersApi";
 
 const Covid = () => {
   const navigate = useNavigate();
   const handleNavigation = () => {
     navigate("/vaccination");
   };
+
+
+  
+  const {data,isLoading}=useGetAssetsQuery()
+//   console.log(data?.data[6].imgUrl)
+const logo=data?.data[6].imgUrl
   const [formData, setFormData] = useState(() => {
     // Load data from localStorage if not expired
     // const savedData = JSON.parse(localStorage.getItem("formData"));
