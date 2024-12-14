@@ -1,4 +1,4 @@
-import { Box, Typography, Grid, Paper, RadioGroup, FormControlLabel, Radio } from "@mui/material";
+import { Box, Typography, Grid, Paper, RadioGroup, FormControlLabel, Radio, Button } from "@mui/material";
 import React, { useState } from "react";
 
 const AppointmentTemp = () => {
@@ -25,6 +25,27 @@ const AppointmentTemp = () => {
     return dates;
   };
   const dates = getNextSevenDays();
+
+
+  const workingHours = [
+      "9:00 AM",
+      "10:00 AM",
+      "11:00 AM",
+      "1:00 PM",
+      "2:00 PM",
+      "3:00 PM",
+      "4:00 PM",
+    ];
+
+    const handleTimeChange = (event) => {
+      setSelectedTime(event.target.value);
+    };
+
+const handleSubmit=()=>{
+      console.log("selectedDate",selectedDate)
+      console.log("selectedTime",selectedTime)
+}
+
   return (
     <Box sx={{ mt: 5, p: 2 }}>
       <Typography variant="h4" align="center" color="red" fontWeight={"bold"}>
@@ -97,10 +118,38 @@ const AppointmentTemp = () => {
               </RadioGroup>
               {
                   selectedDate&&
-                  <Typography slign="center" fontWeight={"bold "} variant="h5">
+               <>   <Typography slign="center" fontWeight={"bold "} variant="h5">
             Select A Time For <span className="text-green-600 font-extrabold">{selectedDate}</span>
           </Typography>
+          <RadioGroup 
+          value={selectedTime} 
+          onChange={handleTimeChange}
+      row
+      sx={{ justifyContent: "center", marginTop: 2 }}
+
+          >
+                {workingHours.map((time) => (
+                  <FormControlLabel
+                    key={time}
+                    value={time}
+                    control={<Radio />}
+                    label={time}
+                  />
+                ))}
+              </RadioGroup>
+                 </>
+          
               }
+                <Button
+              variant="contained"
+              color="primary"
+              fullWidth
+              sx={{ mt: 3 }}
+              disabled={!selectedDate || !selectedTime}
+              onClick={handleSubmit}
+            >
+              Submit Appointment
+            </Button>
         </Paper>
       </Grid>
     </Box>
