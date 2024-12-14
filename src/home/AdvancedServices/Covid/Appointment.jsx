@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState } from "react";
 import {
   Button,
   FormControl,
@@ -10,12 +10,12 @@ import {
   Paper,
   Typography,
   Box,
-} from '@mui/material';
+} from "@mui/material";
 
 const Appointment = () => {
   const vaccineData = JSON.parse(localStorage.getItem("Vac-data"));
-  const [selectedDate, setSelectedDate] = useState('');
-  const [selectedTime, setSelectedTime] = useState('');
+  const [selectedDate, setSelectedDate] = useState("");
+  const [selectedTime, setSelectedTime] = useState("");
 
   // Generate the next 7 days
   const getNextSevenDays = () => {
@@ -23,7 +23,7 @@ const Appointment = () => {
     for (let i = 0; i < 7; i++) {
       const date = new Date();
       date.setDate(date.getDate() + i);
-      dates.push(date.toISOString().split('T')[0]); // Format as YYYY-MM-DD
+      dates.push(date.toISOString().split("T")[0]); // Format as YYYY-MM-DD
     }
     return dates;
   };
@@ -54,7 +54,13 @@ const Appointment = () => {
 
   return (
     <Box sx={{ mt: 5, p: 2 }}>
-      <Typography variant="h4" align="center" color="primary" fontWeight="bold" gutterBottom>
+      <Typography
+        variant="h4"
+        align="center"
+        color="primary"
+        fontWeight="bold"
+        gutterBottom
+      >
         Appointment Scheduling
       </Typography>
 
@@ -75,7 +81,7 @@ const Appointment = () => {
         <Grid item xs={12} sm={6} md={5}>
           <Paper elevation={3} sx={{ p: 3 }}>
             <FormControl component="fieldset" sx={{ mb: 3 }}>
-              <FormLabel component="legend" sx={{ fontWeight: 'bold', mb: 1 }}>
+              <FormLabel component="legend" sx={{ fontWeight: "bold", mb: 1 }}>
                 Select a Date
               </FormLabel>
               <RadioGroup value={selectedDate} onChange={handleDateChange}>
@@ -91,7 +97,7 @@ const Appointment = () => {
             </FormControl>
 
             <FormControl component="fieldset">
-              <FormLabel component="legend" sx={{ fontWeight: 'bold', mb: 1 }}>
+              <FormLabel component="legend" sx={{ fontWeight: "bold", mb: 1 }}>
                 Select a Time
               </FormLabel>
               <RadioGroup value={selectedTime} onChange={handleTimeChange}>
