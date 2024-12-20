@@ -1,7 +1,10 @@
-import { Button, Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle } from '@mui/material';
+import { Button, Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle, Grid, Paper, Typography } from '@mui/material';
 import React from 'react'
 
 const AppointmentModal = ({open,onClose}) => {
+
+      const vaccineData = JSON.parse(localStorage.getItem("Vac-data"));
+
 
       // const [open, setOpen] = React.useState(false);
 
@@ -12,6 +15,8 @@ const AppointmentModal = ({open,onClose}) => {
       // const handleClose = () => {
       //   setOpen(false);
       // };
+
+
   return (
       <React.Fragment>
       {/* <Button variant="outlined" onClick={handleClickOpen}>
@@ -23,6 +28,23 @@ const AppointmentModal = ({open,onClose}) => {
         aria-labelledby="alert-dialog-title"
         aria-describedby="alert-dialog-description"
       >
+
+<Grid  item xs={12} sm={6} md={5}
+// sx={{
+//       p:"10px"
+// }}
+>
+          <Grid elevation={3} sx={{ p: 3 }}>
+            <Typography variant="h6" color="secondary" gutterBottom>
+              User Information
+            </Typography>
+            <Typography>Name: {vaccineData?.data?.name}</Typography>
+            <Typography>Email: {vaccineData?.data?.email}</Typography>
+            <Typography>Location: {vaccineData?.data?.location}</Typography>
+            <Typography>Phone: {vaccineData?.data?.phone}</Typography>
+            <Typography>Option: {vaccineData?.data?.option}</Typography>
+          </Grid>
+        </Grid>
         <DialogTitle id="alert-dialog-title">
           {"Use Google's location service?"}
         </DialogTitle>
