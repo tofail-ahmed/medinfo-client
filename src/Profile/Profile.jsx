@@ -28,7 +28,7 @@ const Profile = () => {
 
   return (
     <div className="bg-lime-500/50 min-h-screen">
-      <div className="flex justify-center items-center  relative">
+      <div className="flex justify-center items-center  relative mt-16">
              
              <div className="  my-10 p-5  shadow-lg rounded-3xl">
                {/* Edit button at top right */}
