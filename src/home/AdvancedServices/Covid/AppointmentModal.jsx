@@ -34,7 +34,7 @@ const AppointmentModal = ({open,onClose}) => {
 //       p:"10px"
 // }}
 >
-          <Grid elevation={3} sx={{ p: 3 }}>
+          <Grid justifyItems={"center"} elevation={3} sx={{ p: 3 }}>
             <Typography variant="h6" color="secondary" gutterBottom>
               User Information
             </Typography>
