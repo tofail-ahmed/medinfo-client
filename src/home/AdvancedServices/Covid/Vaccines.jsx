@@ -5,7 +5,7 @@ const Vaccines = () => {
   const [selectedVaccines, setSelectedVaccines] = useState([]);
   //   const [submitDisable, setSubmitDisble] = useState(true);
 
-const navogate=useNavigate()
+const navigate=useNavigate()
 
 
 
@@ -25,8 +25,16 @@ const navogate=useNavigate()
 
   const handleSubmit = (event) => {
     event.preventDefault(); // Prevent default form submission
-    console.log("Selected Vaccines:", selectedVaccines);
+
+    const existingData = JSON.parse(localStorage.getItem("Vac-data"));
+
+    // console.log("Selected Vaccines:", selectedVaccines);
+    // console.log("existingData:", existingData);
     alert(`You have selected: ${selectedVaccines.join(", ")}`);
+    const updatedData = { ...existingData, ...selectedVaccines };
+    console.log(updatedData)
+    localStorage.setItem("Vac-data", JSON.stringify(updatedData));
+
     navigate("/vac-appointment")
   };
 

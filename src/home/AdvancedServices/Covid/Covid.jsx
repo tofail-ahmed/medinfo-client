@@ -95,7 +95,7 @@ const logo=data?.data[6].imgUrl
 
   const isSubmitDisabled = () => {
     if (!formData.location || !formData.option) return true;
-    if (formData.option === "first") {
+    if (formData.option === "individual") {
       return (
         !formData.name ||
         !formData.email ||
@@ -109,7 +109,7 @@ const logo=data?.data[6].imgUrl
     } else if (formData.option === "second") {
       return !formData.terms || errors.terms;
     }
-    return false;
+    return true;
   };
 
   const handleSubmit = (e) => {
@@ -200,7 +200,7 @@ const logo=data?.data[6].imgUrl
             >
               <MenuItem value="">-- Select --</MenuItem>
               <MenuItem value="individual">An Individual (All Options)</MenuItem>
-              <MenuItem value="group">A Group (Flu & COVID-19 Only)</MenuItem>
+              {/* <MenuItem value="group">A Group (Flu & COVID-19 Only)</MenuItem> */}
             </Select>
             {errors.option && (
               <Typography color="error">{errors.option}</Typography>
