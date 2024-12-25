@@ -1,68 +1,67 @@
-import { Button, Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle, Grid, Paper, Typography } from '@mui/material';
-import React from 'react'
+import {
+  Button,
+  Dialog,
+  DialogActions,
+  DialogContent,
+  DialogTitle,
+  Grid,
+  Typography,
+} from "@mui/material";
+import React from "react";
 
-const AppointmentModal = ({open,onClose}) => {
-
-      const vaccineData = JSON.parse(localStorage.getItem("Vac-data"));
-
-
-      // const [open, setOpen] = React.useState(false);
-
-      // const handleClickOpen = () => {
-      //   setOpen(true);
-      // };
-    
-      // const handleClose = () => {
-      //   setOpen(false);
-      // };
-
+const AppointmentModal = ({ open, onClose }) => {
+  const vaccineData = JSON.parse(localStorage.getItem("Vac-data"));
 
   return (
-      <React.Fragment>
-      {/* <Button variant="outlined" onClick={handleClickOpen}>
-        Open alert dialog
-      </Button> */}
-      <Dialog
-        open={open}
-        onClose={onClose}
-        aria-labelledby="alert-dialog-title"
-        aria-describedby="alert-dialog-description"
-      >
+    <Dialog
+      open={open}
+      onClose={onClose}
+      aria-labelledby="alert-dialog-title"
+      aria-describedby="alert-dialog-description"
+    >
+      {/* Dialog Title */}
+      <DialogTitle id="alert-dialog-title">Appointment Details</DialogTitle>
 
-<Grid  item xs={12} sm={6} md={5}
-// sx={{
-//       p:"10px"
-// }}
->
-          <Grid justifyItems={"center"} elevation={3} sx={{ p: 3 }}>
-            <Typography variant="h6" color="secondary" gutterBottom>
+      {/* Dialog Content */}
+      <DialogContent>
+        {/* User Information Section */}
+        <Grid container spacing={2} sx={{ p: 2 }}>
+          <Grid item xs={12}>
+            <Typography variant="h6" gutterBottom>
               User Information
             </Typography>
-            <Typography>Name: {vaccineData?.data?.name}</Typography>
-            <Typography>Email: {vaccineData?.data?.email}</Typography>
-            <Typography>Location: {vaccineData?.data?.location}</Typography>
-            <Typography>Phone: {vaccineData?.data?.phone}</Typography>
-            <Typography>Option: {vaccineData?.data?.option}</Typography>
+          </Grid>
+          <Grid item xs={12}>
+            <Typography>Name: {vaccineData?.data?.name || "N/A"}</Typography>
+            <Typography>Email: {vaccineData?.data?.email || "N/A"}</Typography>
+            <Typography>Location: {vaccineData?.data?.location || "N/A"}</Typography>
+            <Typography>Phone: {vaccineData?.data?.phone || "N/A"}</Typography>
+            <Typography>Option: {vaccineData?.data?.option || "N/A"}</Typography>
+          </Grid>
+
+          {/* Vaccines List Section */}
+          <Grid item xs={12}>
+            <Typography variant="h6" gutterBottom>
+              Selected Vaccines
+            </Typography>
+            {Object.keys(vaccineData)
+              .filter((key) => !isNaN(key)) // Filter numeric keys for vaccines
+              .map((key) => (
+                <Typography key={key}>- {vaccineData[key]}</Typography>
+              ))}
           </Grid>
         </Grid>
-        <DialogTitle id="alert-dialog-title">
-          {"Use Google's location service?"}
-        </DialogTitle>
-        <DialogContent>
-          <DialogContentText id="alert-dialog-description">
-            Let Google help apps determine location. This means sending anonymous
-            location data to Google, even when no apps are running.
-          </DialogContentText>
-        </DialogContent>
-        <DialogActions>
-          <Button onClick={onClose}>Disagree</Button>
-          <Button onClick={onClose} autoFocus>
-            Agree
-          </Button>
-        </DialogActions>
-      </Dialog>
-    </React.Fragment>
-  )
-}
+      </DialogContent>
 
-export default AppointmentModal
+      {/* Dialog Actions */}
+      <DialogActions>
+        <Button onClick={onClose}>Disagree</Button>
+        <Button onClick={onClose} autoFocus>
+          Agree
+        </Button>
+      </DialogActions>
+    </Dialog>
+  );
+};
+
+export default AppointmentModal;

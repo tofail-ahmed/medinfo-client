@@ -141,12 +141,12 @@ const router = createBrowserRouter([
         path: "/vaccination",
         element: <Vaccines />,
       },
+      // {
+      //   path: "/vac-appointment",
+      //   element: <Appointment />,
+      // },
       {
         path: "/vac-appointment",
-        element: <Appointment />,
-      },
-      {
-        path: "/vac-appointment-temp",
         element: <AppointmentTemp />,
       },
     ],
