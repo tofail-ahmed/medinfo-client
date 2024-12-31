@@ -11,7 +11,7 @@ import React from "react";
 
 const AppointmentModal = ({ open, onClose }) => {
   const vaccineData = JSON.parse(localStorage.getItem("Vac-data"));
-
+// console.log(vaccineData)
   return (
     <Dialog
       open={open}
@@ -37,6 +37,8 @@ const AppointmentModal = ({ open, onClose }) => {
             <Typography>Location: {vaccineData?.data?.location || "N/A"}</Typography>
             <Typography>Phone: {vaccineData?.data?.phone || "N/A"}</Typography>
             <Typography>Option: {vaccineData?.data?.option || "N/A"}</Typography>
+            <Typography>Date: {vaccineData?.selectedDate || "N/A"}</Typography>
+            <Typography>Time: {vaccineData?.time || "N/A"}</Typography>
           </Grid>
 
           {/* Vaccines List Section */}
@@ -55,9 +57,9 @@ const AppointmentModal = ({ open, onClose }) => {
 
       {/* Dialog Actions */}
       <DialogActions>
-        <Button onClick={onClose}>Disagree</Button>
-        <Button onClick={onClose} autoFocus>
-          Agree
+        <Button sx={{color:"green",fontWeight:"bold"}} onClick={onClose}>Confirm Schedule?</Button>
+        <Button sx={{color:"red",fontWeight:"bold"}} onClick={onClose} autoFocus>
+          Discard?
         </Button>
       </DialogActions>
     </Dialog>

@@ -12,17 +12,18 @@ import React, { useState } from "react";
 import AppointmentModal from "./AppointmentModal";
 
 const AppointmentTemp = () => {
-  const vaccineData = JSON.parse(localStorage.getItem("Vac-data"));
-  console.log(vaccineData);
+  // const vaccineData = JSON.parse(localStorage.getItem("Vac-data"));
+  // console.log(vaccineData);
+  const existingData = JSON.parse(localStorage.getItem("Vac-data"));
 
   const [selectedDate, setSelectedDate] = useState();
   const [selectedTime, setSelectedTime] = useState();
 
   const [openModal, setOpenModal] = useState();
+  console.log({selectedDate},{selectedTime})
 
   const handleDateChange = (event) => {
     setSelectedDate(event.target.value);
-    console.log(selectedDate);
   };
 
   const getNextSevenDays = () => {
@@ -53,6 +54,11 @@ const AppointmentTemp = () => {
   const handleSubmit = () => {
     // Assuming selectedDate and selectedTime hold the selected values
     // alert(`Date: ${selectedDate} | Time: ${selectedTime}`);
+
+    const updatedData = { ...existingData, date:selectedDate,time:selectedTime };
+    console.log(updatedData)
+    localStorage.setItem("Vac-data", JSON.stringify(updatedData));
+
     setOpenModal(true);
   };
   const handleCloseModal=()=>{
@@ -87,18 +93,18 @@ const AppointmentTemp = () => {
               {" "}
               User info
             </Typography>
-            <Typography align="left">Name:{vaccineData?.data?.name}</Typography>
+            <Typography align="left">Name:{existingData?.data?.name}</Typography>
             <Typography align="left">
-              Email:{vaccineData?.data?.email}
+              Email:{existingData?.data?.email}
             </Typography>
             <Typography align="left">
-              Location:{vaccineData?.data?.location}
+              Location:{existingData?.data?.location}
             </Typography>
             <Typography align="left">
-              Phone:{vaccineData?.data?.phone}
+              Phone:{existingData?.data?.phone}
             </Typography>
             <Typography align="left">
-              Type:{vaccineData?.data?.option}
+              Type:{existingData?.data?.option}
             </Typography>
           </Paper>
         </Grid>

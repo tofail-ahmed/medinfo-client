@@ -14,6 +14,7 @@ import {
 
 const Appointment = () => {
   const vaccineData = JSON.parse(localStorage.getItem("Vac-data"));
+  const existingData = JSON.parse(localStorage.getItem("Vac-data"));
   const [selectedDate, setSelectedDate] = useState("");
   const [selectedTime, setSelectedTime] = useState("");
 
@@ -48,6 +49,10 @@ const Appointment = () => {
 
   const handleSubmit = () => {
     alert(`Appointment scheduled for ${selectedDate} at ${selectedTime}`);
+    console.log(selectedDate,selectedTime);
+    // const updatedData = { ...existingData,  };
+    // console.log(updatedData)
+    // localStorage.setItem("Vac-data", JSON.stringify(updatedData));
   };
 
   const dates = getNextSevenDays();
