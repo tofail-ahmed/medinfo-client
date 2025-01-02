@@ -250,9 +250,26 @@ const logo=data?.data[6].imgUrl
                 name="terms"
                 checked={formData.terms}
                 onChange={handleChange}
+               
               />
             }
-            label="Accept Terms and Conditions"
+            label={
+              <>
+              Accept{" "}
+              <Typography
+                component="span"
+                onClick={() => navigate("/terms")}
+                sx={{
+                 
+                  color: "blue",
+                  cursor: "pointer",
+                  "&:hover": { color: "darkblue" },
+                }}
+              >
+                Terms and Conditions
+              </Typography>
+            </>
+            }
           />
           {errors.terms && (
             <Typography color="error">{errors.terms}</Typography>

@@ -20,7 +20,7 @@ const AppointmentTemp = () => {
   const [selectedTime, setSelectedTime] = useState();
 
   const [openModal, setOpenModal] = useState();
-  console.log({selectedDate},{selectedTime})
+  // console.log({selectedDate},{selectedTime})
 
   const handleDateChange = (event) => {
     setSelectedDate(event.target.value);
