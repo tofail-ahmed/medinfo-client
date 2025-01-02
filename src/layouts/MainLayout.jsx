@@ -26,7 +26,7 @@ const MainLayout = () => {
      
       {/* <Banner />
        <SearchResult/> */}
-      <Container>
+      <Container className={"mt-10"}>
       
         <Outlet />
       </Container>
