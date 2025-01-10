@@ -1,0 +1,9 @@
+ol {
+      list-style-type: square;
+      padding-left: 20px;
+    }
+    
+    ol li::marker {
+      color: red; /* Change this to your desired color */
+    }
+    

@@ -1,8 +1,9 @@
 import React from "react";
+import "./terms.css"
 
 const TermsPolicies = () => {
   return (
-    <div className="lg:mx-[20%] mx-[5%] my-14 text-justify">
+    <div className="lg:mx-[20%] mx-[5%] my-14 text-justify text-slate-600">
       <h1 className="mt-16  lg:text-6xl text-2xl text-green-300 mb-10 font-extrabold text-center py-10 uppercase">
         Terms of Service
       </h1>
@@ -174,6 +175,90 @@ const TermsPolicies = () => {
         will indemnify the Company or its affiliates for all claims resulting
         from any content that you supply.
       </h1>
+      <h1 className="my-6 lg:text-3xl text-xl text-blue-950 font-semibold">
+        Restrictions on Use of Online Services
+      </h1>
+      <h1 className="my-6">
+        Subject to these Terms, the Company grants you a personal,
+        noncommercial, non‐transferable, non‐exclusive, revocable, limited
+        license to view the Content on our Online Services for the sole purpose
+        of obtaining information regarding our products. All rights, title, and
+        interest in and to the Online Services, including the Content, and all
+        intellectual property rights, including all copyright, trademark,
+        patent, and trade secret rights will remain with the Company and our
+        licensors and vendors. No ownership interest is transferred to you or
+        any other entity by virtue of making the Content available on the Online
+        Services, granting you a license to use Online Service, or your entering
+        into this Agreement.
+      </h1>
+      <h1 className="my-6">
+        We may terminate this license at any time for any reason. If you breach
+        any of these Terms, your license to the Online Services and its Content
+        terminates immediately. Upon the termination of this license, you must
+        stop using the Online Services, including all Content, and return or
+        destroy all copies, including electronic copies, of the Content in your
+        possession or control.
+      </h1>
+      <h1 className="my-6 lg:text-3xl text-xl text-blue-950 font-semibold">
+        Copyright Infringement ‐ DMCA Notice
+      </h1>
+      <h1 className="my-6">
+        The Digital Millennium Copyright Act of 1998 (the “DMCA”) provides
+        recourse for copyright owners who believe that material appearing on the
+        Internet infringes their rights under US copyright law. If you believe,
+        in good faith, that content or material on our Online Services infringes
+        a copyright owned by you, you (or your agent) may send the Company a
+        notice requesting that the material be removed or access to it blocked.
+      </h1>
+      <h1 className="my-6">
+        Notices and counternotices with respect to the Online Services should be
+        sent to the applicable address below:
+      </h1>
+      <h1 className="my-6">
+        Mark Cuban Cost Plus Drug Company, PBC <br />
+        2909 Taylor Street, Suite A <br />
+        Dallas, Texas 75226 <br />
+        legal@costplusdrugs.com
+      </h1>
+      <h1 className="my-6">
+        The notice must include the following information: (a) a physical
+        signature of a person authorized to act on behalf of the owner of an
+        exclusive right that is allegedly infringed; (b) identification of the
+        copyrighted work claimed to have been infringed; (c) identification of
+        the material that is claimed to be infringing or the subject of
+        infringing activity; (d) the name, address, telephone number, and email
+        address of the complaining party; (e) a statement that the complaining
+        party has a good faith belief that use of the material in the manner
+        complained of is not authorized by the copyright owner, its agent or the
+        law; and (f) a statement that the information in the notification is
+        accurate and, under penalty of perjury, that the complaining party is
+        authorized to act on behalf of the owner of an exclusive right that is
+        allegedly infringed. If you believe in good faith that a notice of
+        copyright infringement has been wrongly filed against you, the DMCA
+        permits you to send us a counternotice. Notices and counter‐notices must
+        meet the then‐current statutory requirements imposed by the DMCA.
+      </h1>
+      <h1 className="my-6 lg:text-xl text-md text-blue-950 font-bold">
+        Unsolicited Idea Submission Policy
+      </h1>
+      <h1 className="my-6">It is our policy not to accept or consider unsolicited ideas or offers to sell intellectual property. We ask that you please do not submit any such ideas or offers to us or our employees or contractors.
+
+      </h1>
+      <h1 className="my-6"> This policy is intended to avoid potential misunderstandings if our technology, products, or services may seem similar to a submission made to the company. If you still choose to make any submission to us, you agree as follows, regardless of any statements made in your submission:
+
+      </h1>
+      <ol style={{ listStyleType: "square", paddingLeft: "20px" }}>
+        <li>We owe you no compensation;
+        </li>
+        <li>There is no duty of confidentiality between us and you;
+        </li>
+        <li>Your submission automatically becomes our property, and we may use or redistribute the contents of that submission in any way for any purpose;
+        </li>
+        <li>We are free to acquire, develop, and sell services and products that may be competitive to those you offer or suggest; and
+        </li>
+        <li>it is your responsibility to protect your own intellectual property; you should not make a submission to us if you have concerns about intellectual property.
+        </li>
+      </ol>
     </div>
   );
 };
