@@ -3,6 +3,7 @@ import { Outlet } from "react-router";
 import { useSelector } from "react-redux";
 
 import Container from "../ComponentsTemp/Container";
+import Footer from "../ComponentsTemp/Footer/Footer";
 
 // import Banner from '../home/Banner';
 // import SearchResult from '../search/SearchResult';
@@ -27,6 +28,7 @@ const MainLayout = () => {
       <Container className={"mt-10"}>
         <Outlet />
       </Container>
+    <Footer/>
     </div>
   );
 };

@@ -1,19 +1,23 @@
 import React from "react";
 import "./terms.css";
+import { useSelector } from "react-redux";
 
 const TermsPolicies = () => {
+  const darkMode = useSelector((store) => store.theme.darkMode);
+
   return (
-    <div className="lg:mx-[20%] mx-[5%] my-14 text-justify text-slate-600">
+    <div>
+      <div className="lg:mx-[20%] mx-[5%] my-14 text-justify text-slate-400">
       <h1 className="mt-16  lg:text-6xl text-2xl text-green-300 mb-10 font-extrabold text-center py-10 uppercase">
         Terms of Service
       </h1>
-      <h1 className="text-md text-slate-600 ">
+      <h1 className="text-md texts-slate-600 ">
         THIS DOCUMENT CONTAINS A MANDATORY ARBITRATION AGREEMENT AND CLASS
         ACTION WAIVER, WHICH AFFECT YOUR LEGAL RIGHTS. YOU SHOULD REVIEW THIS
         DOCUMENT IN ITS ENTIRETY BEFORE ACCESSING OR USING THE ONLINE SERVICES.
       </h1>
 
-      <h1 className="my-6 lg:text-3xl text-xl text-blue-950 font-semibold">
+      <h1 className="my-6 lg:text-3xl text-xl text-blue-600 font-semibold">
         Disclosures
       </h1>
       <h1 className="my-6 text-lg">
@@ -27,7 +31,7 @@ const TermsPolicies = () => {
         website.
       </h1>
 
-      <h1 className="my-6 lg:text-3xl text-xl text-blue-950 font-semibold">
+      <h1 className="my-6 lg:text-3xl text-xl text-blue-600 font-semibold">
         Agreement and Terms
       </h1>
       <h1 className="my-6 text-lg">
@@ -51,7 +55,7 @@ const TermsPolicies = () => {
         and (ii) either a printer or storage space on such device.
       </h1>
 
-      <h1 className="my-6 lg:text-3xl text-xl text-blue-950 font-semibold">
+      <h1 className="my-6 lg:text-3xl text-xl text-blue-600 font-semibold">
         Important Note Regarding Content of Online Services
       </h1>
       <h1 className="my-6 text-lg">
@@ -71,7 +75,7 @@ const TermsPolicies = () => {
         agree to change your username and password and immediately contact us.
       </h1>
 
-      <h1 className="my-6 lg:text-3xl text-xl text-blue-950 font-semibold">
+      <h1 className="my-6 lg:text-3xl text-xl text-blue-600 font-semibold">
         Restrictions on Use of Online Services
       </h1>
       <h1 className="my-4">You will not-</h1>
@@ -133,7 +137,7 @@ const TermsPolicies = () => {
         permitted by law, to enforce these Terms.
       </h1>
 
-      <h1 className="my-6 lg:text-3xl text-xl text-blue-950 font-semibold">
+      <h1 className="my-6 lg:text-3xl text-xl text-blue-600 font-semibold">
         Posting Messages, Comments or Content
       </h1>
       <h1 className="my-4">You will not-</h1>
@@ -175,7 +179,7 @@ const TermsPolicies = () => {
         will indemnify the Company or its affiliates for all claims resulting
         from any content that you supply.
       </h1>
-      <h1 className="my-6 lg:text-3xl text-xl text-blue-950 font-semibold">
+      <h1 className="my-6 lg:text-3xl text-xl text-blue-600 font-semibold">
         Restrictions on Use of Online Services
       </h1>
       <h1 className="my-6">
@@ -199,7 +203,7 @@ const TermsPolicies = () => {
         destroy all copies, including electronic copies, of the Content in your
         possession or control.
       </h1>
-      <h1 className="my-6 lg:text-3xl text-xl text-blue-950 font-semibold">
+      <h1 className="my-6 lg:text-3xl text-xl text-blue-600 font-semibold">
         Copyright Infringement ‐ DMCA Notice
       </h1>
       <h1 className="my-6">
@@ -238,7 +242,7 @@ const TermsPolicies = () => {
         permits you to send us a counternotice. Notices and counter‐notices must
         meet the then‐current statutory requirements imposed by the DMCA.
       </h1>
-      <h1 className="my-6 lg:text-xl text-md text-blue-950 font-bold">
+      <h1 className="my-6 lg:text-xl text-md text-blue-600 font-bold">
         Unsolicited Idea Submission Policy
       </h1>
       <h1 className="my-6">
@@ -276,132 +280,254 @@ const TermsPolicies = () => {
         ramifications of submitting materials to us, you should consult with
         your attorney before making a submission.
       </h1>
-      <h1 className="my-6 lg:text-3xl text-xl text-blue-950 font-semibold">
+      <h1 className="my-6 lg:text-3xl text-xl text-blue-600 font-semibold">
         Links
       </h1>
-      <h1>While visiting our Online Services, you may go to a link to other online websites, mobile websites, platforms, services, and applications (“Weblinks”) and leave our Online Services. For your convenience, we provide Weblinks to other online content or sites that may contain information that may be useful or interesting to you. We do not endorse, nor are responsible for, the content, accuracy or accessibility of the content of Weblinks operated by third parties. You are solely responsible for your dealings with such third parties and should review the Terms and privacy policies of such third parties.
-
-</h1>
-      <h1 className="my-6 lg:text-3xl text-xl text-blue-950 font-semibold">
-      No Warranty
+      <h1>
+        While visiting our Online Services, you may go to a link to other online
+        websites, mobile websites, platforms, services, and applications
+        (“Weblinks”) and leave our Online Services. For your convenience, we
+        provide Weblinks to other online content or sites that may contain
+        information that may be useful or interesting to you. We do not endorse,
+        nor are responsible for, the content, accuracy or accessibility of the
+        content of Weblinks operated by third parties. You are solely
+        responsible for your dealings with such third parties and should review
+        the Terms and privacy policies of such third parties.
       </h1>
-      <h1>Nothing within these Terms should be meant or implied to be a warranty. You use the Online Services at your own risk. We do not guarantee the accuracy, completeness, timeliness, correctness or reliability of any content available through the Online Services. Online Services are provided to you when available and are provided on an “as is” basis. We make no representation that use of our Online Services will be uninterrupted or error free, or free of viruses or other harmful components.
-
-</h1>
-<h1 className="mt-6">Some states do not allow a Terms of Use to have a “no warranties” provision, and even though these Terms make no warranty, if your state does not allow this type of limitation, this paragraph will not apply to you.
-
-</h1>
-      <h1 className="my-6 lg:text-3xl text-xl text-blue-950 font-semibold">
-      Limitation of Liability
+      <h1 className="my-6 lg:text-3xl text-xl text-blue-600 font-semibold">
+        No Warranty
       </h1>
-      <h1 className="mb-6">You agree that we, HealthDyne and each of our affiliates (the “Released Parties”) have no liability for any loss arising out of, or relating to: these Online Services; any third party site or program accessed through the Online Services; Any acts or omissions by us or any third party; and/or your access or use of the Online Services. This limitation of liability includes any claim based on warranty, contract, tort, strict liability, or any other legal theory.
-
-</h1>
-<h1 className="mb-6">This limitation of liability does not apply if you are a New Jersey resident. With respect to residents of New Jersey, any Released Parties are not liable for any damages unless such damages are the result of our negligent or reckless acts or omissions; and any Released Parties are not, in any case, liable for indirect, incidental, special, consequential or punitive damages.
-
-</h1>
-<h1 >Other states may also limit liability. If your state does not allow this type of limitation, one or more of the limitations above may not apply to you.
-
-</h1>
-      <h1 className="my-6 lg:text-3xl text-xl text-blue-950 font-semibold">
-      Indemnification
+      <h1>
+        Nothing within these Terms should be meant or implied to be a warranty.
+        You use the Online Services at your own risk. We do not guarantee the
+        accuracy, completeness, timeliness, correctness or reliability of any
+        content available through the Online Services. Online Services are
+        provided to you when available and are provided on an “as is” basis. We
+        make no representation that use of our Online Services will be
+        uninterrupted or error free, or free of viruses or other harmful
+        components.
       </h1>
-      <h1>You agree to defend, indemnify, and hold harmless any Released Parties from any claim by third parties, including reasonable attorneys' fees for counsel of our own choosing, arising out of or related to your breach of the Terms or any copyright infringement, misappropriation, misuse, gross negligence, intentional misconduct, or violation of applicable law relating to your use of the Online Services or Content. You may not transfer or assign any rights or obligations under this Agreement. In any litigation, you will cooperate with us in asserting any available defenses.
-
-</h1>
-      <h1 className="my-6 lg:text-3xl text-xl text-blue-950 font-semibold">
-      Export Controls
+      <h1 className="mt-6">
+        Some states do not allow a Terms of Use to have a “no warranties”
+        provision, and even though these Terms make no warranty, if your state
+        does not allow this type of limitation, this paragraph will not apply to
+        you.
       </h1>
-      <h1 className="mb-6">You may not use, export, reexport, import, sell, transfer, or proxy our Online Services or Content unless such activity is permitted by these Terms and such activity is not prohibited by United States law, the laws of the jurisdiction in which you receive our Online Services, or any other applicable laws and regulations. In particular, but without limitation, the Online Services and/or Content may not be exported, re‐exported or made available in any manner (a) into any U.S. embargoed countries or (b) to anyone on the U.S. Treasury Department's list of Specially Designated Nationals or the U.S. Department of Commerce Denied Person's List or Entity List.
-
-</h1>
-<h1>By using our Online Services, you represent and warrant that you and any ultimate beneficiary of our Online Services are not located in any such country or on any such list. You also agree that you will not use our Online Service for any purposes prohibited by U.S. law, including, without limitation, the development, design, manufacture or production of nuclear missiles or chemical or biological weapons.
-
-</h1>
-      <h1 className="my-6 lg:text-3xl text-xl text-blue-950 font-semibold">
-      Resolving Disputes
+      <h1 className="my-6 lg:text-3xl text-xl text-blue-600 font-semibold">
+        Limitation of Liability
       </h1>
-      <h1>PLEASE READ THIS SECTION CAREFULLY IT MAY SIGNIFICANTLY AFFECT YOUR LEGAL RIGHTS, INCLUDING YOUR RIGHT TO FILE A LAWSUIT IN COURT
-
-</h1>
-<h1 className="my-6">Informal Resolution. Before filing a claim in connection with these Terms or the Online Services, you agree to try to resolve the dispute informally. Contact Mark Cuban Cost Plus Drug Company, PBC Attention: Legal Department, 2909 Taylor Street, Suite A, Dallas, Texas 75226 If the dispute is not resolved within 30 days of contact, you or we may bring a formal arbitration proceeding as described below.
-
-</h1>
-<h1>Agreement to Arbitrate. You and we agree to resolve any claims relating to these Terms, or the Online Services, through final and binding arbitration, except as indicated below under “Exceptions to Agreement to Arbitrate” or where prohibited by law. The arbitration will be held in Texas. For residents outside the United States, arbitration will be initiated in Dallas, Texas, or a location agreed to by the parties. You and we agree to submit to the personal jurisdiction of any state or federal court in the state of Texas to compel arbitration, stay proceedings pending arbitration, or to confirm, modify, vacate, or enter judgment on the award entered by the arbitrator.
-
-</h1>
-<h1 className="my-6">Exceptions to Agreement to Arbitrate. Either you (or we) may assert claims in the small claims court in Dallas County, Texas or any other U.S. county in which we have a principal business address, provided that the informal dispute resolution described above was unsuccessful and the claim is eligible to be filed. Either party may bring a lawsuit solely for injunctive relief to stop unauthorized use or abuse of the Online Services or intellectual property infringement (for example, trademark, trade secret, copyright, or patent rights) without first engaging in arbitration or the informal‐resolution process described above. The agreement to arbitrate does not apply to claims that may not be arbitrated as a matter of law. Arbitration does apply to all other claims relating to these Terms or the Online Services including (1) the interpretation, formation, performance, or breach of the Terms, (2) whether any part of the Terms is void or voidable, (3) whether a claim is subject to arbitration, and/or (4) whether arbitration has been waived due to litigation conduct.
-
-</h1>
-<h1>Arbitration Procedures. The arbitration will be conducted by a single arbitrator, governed by the Consumer Arbitration Rules of the American Arbitration Association (“AAA”), (www.adr.org/rules), unless otherwise agreed to by the parties. You may also obtain the Consumer Arbitration Rules by calling AAA at 1‐800‐778‐7879, TTY 711.
-
-</h1>
-<h1 className="my-6">
-Arbitration and Attorney's Fees. Payment of all filing, administration, and arbitrator costs and expenses imposed by AAA will be governed by the Consumer Arbitration Rules, provided that if you are initiating an arbitration against us and the value of the relief sought is $10,000 or less, then we will advance all filing, administrative and arbitration costs and expenses imposed by AAA (subject to reimbursement if the arbitrator finds the arbitration to be frivolous or asserted for an improper purpose). You are responsible for all other additional costs that you may incur in the arbitration, including attorney's fees and expert witness costs, unless we are otherwise specifically required to pay such fees under applicable law. The decision of the arbitrator will be in writing and binding and conclusive on us and you, and judgment to enforce the decision may be entered by any court of competent jurisdiction. You agree that dispositive motions, including without limitation, motions to dismiss and motions for summary judgment, will be allowed in the arbitration. The arbitrator must follow these rules and can award the same damages and relief as a court, including injunctive or other equitable relief and attorneys’ fees. You and we agree not to seek any attorneys’ fees and expert witness costs unless the arbitrator finds that a claim or defense was frivolous or asserted for an improper purpose. Applicable law may allow the arbitrator to award attorneys’ fees and costs to the prevailing party.
-
-
-</h1>
-<h1>Except as explicitly provided in these Terms, if any clause within these arbitration provisions is found to be illegal or unenforceable, that clause will be severed from these arbitration provisions, and the remainder of the arbitration provisions will be given full force and effect. The terms of these arbitration provisions will also apply to any claims asserted by you against any present or future parent or affiliated company of ours arising out of your use of the Online Services.
-
-</h1>
-<h1 className="my-6">No Class Actions. PLEASE READ THIS SECTION CAREFULLY – IT MAY SIGNIFICANTLY AFFECT YOUR LEGAL RIGHTS
-
-</h1>
-<h1>BY AGREEING TO THIS ARBITRATION AGREEMENT, YOU ARE GIVING UP YOUR RIGHT TO GO TO COURT, INCLUDING YOUR RIGHT TO A JURY TRIAL AND TO PARTICIPATE IN A CLASS ACTION. YOU UNDERSTAND THAT BY AGREEING TO THIS ARBITRATION AGREEMENT AND CLASS ACTION WAIVER, YOU MAY ONLY BRING CLAIMS AGAINST US AND OUR RELATED PARTIES IN AN INDIVIDUAL CAPACITY AND NOT AS A PLAINTIFF OR CLASS MEMBER IN ANY PURPORTED CLASS ACTION OR REPRESENTATIVE PROCEEDING. IF YOU DO NOT AGREE TO ARBITRATION, YOU ARE NOT AUTHORIZED TO USE THE ONLINE SERVICES IN ANY WAY.
-
-</h1>
-<h1 className="my-6">If any court or arbitrator determines that this “No Class Actions” section is void or unenforceable for any reason, or that an arbitration can proceed on a class basis, then the arbitration provisions set forth above will be deemed null and void in their entirety, and the parties will be deemed to have not agreed to arbitrate disputes.
-
-</h1>
-<h1>Changes to this Section
-
-</h1>
-<h1>We will provide 30 days’ notice of any changes to this section. Amendments will become effective thirty days after we provide such notice. If a court or arbitrator decides that this subsection on “Changes to this Section” is not enforceable or valid, then this subsection will be severed from the section entitled “Resolving Disputes,” and the court or arbitrator will apply the first “Resolving Disputes” section in existence after you began using the Online Services.
-
-</h1>
-<h1 className="my-6">Survival</h1>
-<h1>This “Resolving Disputes” section will survive any termination of your account, enrollment in any program, eligibility for coverage, or the Online Services.
-
-</h1>
-<h1 className="my-6 lg:text-3xl text-xl text-blue-950 font-semibold">Survival and Assignment
-</h1>
-<h1 className="mb-6">Your obligations under the following sections survive termination of this Agreement:
-
-</h1>
-<ol>
-  <li>Agreement and Terms;
-  </li>
-  <li>Important Note Regarding Content;
-
-  </li>
-  <li>User IDs;
-  </li>
-  <li>License to Use the Online Services and Content Ownership;
-  </li>
-  <li>Restrictions on Use of Online Services;
-  </li>
-  <li>Posting Messages, Comments or Content;
-  </li>
-  <li>Copyright Infringement – DMCA Notice;
-  </li>
-  <li>NO WARRANTY;
-  </li>
-  <li>LIMITATION OF LIABILITY;
-  </li>
-  <li>Export Controls;
-  </li>
-  <li>Governing Law and Statute of Limitations;
-  </li>
-  <li>Severability;
-  </li>
-  <li>Miscellaneous; and
-  </li>
-  <li>Additional Product Information
-  </li>
-</ol>
-<h1 className="mt-6">You may not transfer or assign any rights or obligations under this Agreement. The Company may transfer or assign its rights and obligations under this Agreement.
-
-</h1>
+      <h1 className="mb-6">
+        You agree that we, HealthDyne and each of our affiliates (the “Released
+        Parties”) have no liability for any loss arising out of, or relating to:
+        these Online Services; any third party site or program accessed through
+        the Online Services; Any acts or omissions by us or any third party;
+        and/or your access or use of the Online Services. This limitation of
+        liability includes any claim based on warranty, contract, tort, strict
+        liability, or any other legal theory.
+      </h1>
+      <h1 className="mb-6">
+        This limitation of liability does not apply if you are a New Jersey
+        resident. With respect to residents of New Jersey, any Released Parties
+        are not liable for any damages unless such damages are the result of our
+        negligent or reckless acts or omissions; and any Released Parties are
+        not, in any case, liable for indirect, incidental, special,
+        consequential or punitive damages.
+      </h1>
+      <h1>
+        Other states may also limit liability. If your state does not allow this
+        type of limitation, one or more of the limitations above may not apply
+        to you.
+      </h1>
+      <h1 className="my-6 lg:text-3xl text-xl text-blue-600 font-semibold">
+        Indemnification
+      </h1>
+      <h1>
+        You agree to defend, indemnify, and hold harmless any Released Parties
+        from any claim by third parties, including reasonable attorneys' fees
+        for counsel of our own choosing, arising out of or related to your
+        breach of the Terms or any copyright infringement, misappropriation,
+        misuse, gross negligence, intentional misconduct, or violation of
+        applicable law relating to your use of the Online Services or Content.
+        You may not transfer or assign any rights or obligations under this
+        Agreement. In any litigation, you will cooperate with us in asserting
+        any available defenses.
+      </h1>
+      <h1 className="my-6 lg:text-3xl text-xl text-blue-600 font-semibold">
+        Export Controls
+      </h1>
+      <h1 className="mb-6">
+        You may not use, export, reexport, import, sell, transfer, or proxy our
+        Online Services or Content unless such activity is permitted by these
+        Terms and such activity is not prohibited by United States law, the laws
+        of the jurisdiction in which you receive our Online Services, or any
+        other applicable laws and regulations. In particular, but without
+        limitation, the Online Services and/or Content may not be exported,
+        re‐exported or made available in any manner (a) into any U.S. embargoed
+        countries or (b) to anyone on the U.S. Treasury Department's list of
+        Specially Designated Nationals or the U.S. Department of Commerce Denied
+        Person's List or Entity List.
+      </h1>
+      <h1>
+        By using our Online Services, you represent and warrant that you and any
+        ultimate beneficiary of our Online Services are not located in any such
+        country or on any such list. You also agree that you will not use our
+        Online Service for any purposes prohibited by U.S. law, including,
+        without limitation, the development, design, manufacture or production
+        of nuclear missiles or chemical or biological weapons.
+      </h1>
+      <h1 className="my-6 lg:text-3xl text-xl text-blue-600 font-semibold">
+        Resolving Disputes
+      </h1>
+      <h1>
+        PLEASE READ THIS SECTION CAREFULLY IT MAY SIGNIFICANTLY AFFECT YOUR
+        LEGAL RIGHTS, INCLUDING YOUR RIGHT TO FILE A LAWSUIT IN COURT
+      </h1>
+      <h1 className="my-6">
+        Informal Resolution. Before filing a claim in connection with these
+        Terms or the Online Services, you agree to try to resolve the dispute
+        informally. Contact Mark Cuban Cost Plus Drug Company, PBC Attention:
+        Legal Department, 2909 Taylor Street, Suite A, Dallas, Texas 75226 If
+        the dispute is not resolved within 30 days of contact, you or we may
+        bring a formal arbitration proceeding as described below.
+      </h1>
+      <h1>
+        Agreement to Arbitrate. You and we agree to resolve any claims relating
+        to these Terms, or the Online Services, through final and binding
+        arbitration, except as indicated below under “Exceptions to Agreement to
+        Arbitrate” or where prohibited by law. The arbitration will be held in
+        Texas. For residents outside the United States, arbitration will be
+        initiated in Dallas, Texas, or a location agreed to by the parties. You
+        and we agree to submit to the personal jurisdiction of any state or
+        federal court in the state of Texas to compel arbitration, stay
+        proceedings pending arbitration, or to confirm, modify, vacate, or enter
+        judgment on the award entered by the arbitrator.
+      </h1>
+      <h1 className="my-6">
+        Exceptions to Agreement to Arbitrate. Either you (or we) may assert
+        claims in the small claims court in Dallas County, Texas or any other
+        U.S. county in which we have a principal business address, provided that
+        the informal dispute resolution described above was unsuccessful and the
+        claim is eligible to be filed. Either party may bring a lawsuit solely
+        for injunctive relief to stop unauthorized use or abuse of the Online
+        Services or intellectual property infringement (for example, trademark,
+        trade secret, copyright, or patent rights) without first engaging in
+        arbitration or the informal‐resolution process described above. The
+        agreement to arbitrate does not apply to claims that may not be
+        arbitrated as a matter of law. Arbitration does apply to all other
+        claims relating to these Terms or the Online Services including (1) the
+        interpretation, formation, performance, or breach of the Terms, (2)
+        whether any part of the Terms is void or voidable, (3) whether a claim
+        is subject to arbitration, and/or (4) whether arbitration has been
+        waived due to litigation conduct.
+      </h1>
+      <h1>
+        Arbitration Procedures. The arbitration will be conducted by a single
+        arbitrator, governed by the Consumer Arbitration Rules of the American
+        Arbitration Association (“AAA”), (www.adr.org/rules), unless otherwise
+        agreed to by the parties. You may also obtain the Consumer Arbitration
+        Rules by calling AAA at 1‐800‐778‐7879, TTY 711.
+      </h1>
+      <h1 className="my-6">
+        Arbitration and Attorney's Fees. Payment of all filing, administration,
+        and arbitrator costs and expenses imposed by AAA will be governed by the
+        Consumer Arbitration Rules, provided that if you are initiating an
+        arbitration against us and the value of the relief sought is $10,000 or
+        less, then we will advance all filing, administrative and arbitration
+        costs and expenses imposed by AAA (subject to reimbursement if the
+        arbitrator finds the arbitration to be frivolous or asserted for an
+        improper purpose). You are responsible for all other additional costs
+        that you may incur in the arbitration, including attorney's fees and
+        expert witness costs, unless we are otherwise specifically required to
+        pay such fees under applicable law. The decision of the arbitrator will
+        be in writing and binding and conclusive on us and you, and judgment to
+        enforce the decision may be entered by any court of competent
+        jurisdiction. You agree that dispositive motions, including without
+        limitation, motions to dismiss and motions for summary judgment, will be
+        allowed in the arbitration. The arbitrator must follow these rules and
+        can award the same damages and relief as a court, including injunctive
+        or other equitable relief and attorneys’ fees. You and we agree not to
+        seek any attorneys’ fees and expert witness costs unless the arbitrator
+        finds that a claim or defense was frivolous or asserted for an improper
+        purpose. Applicable law may allow the arbitrator to award attorneys’
+        fees and costs to the prevailing party.
+      </h1>
+      <h1>
+        Except as explicitly provided in these Terms, if any clause within these
+        arbitration provisions is found to be illegal or unenforceable, that
+        clause will be severed from these arbitration provisions, and the
+        remainder of the arbitration provisions will be given full force and
+        effect. The terms of these arbitration provisions will also apply to any
+        claims asserted by you against any present or future parent or
+        affiliated company of ours arising out of your use of the Online
+        Services.
+      </h1>
+      <h1 className="my-6">
+        No Class Actions. PLEASE READ THIS SECTION CAREFULLY – IT MAY
+        SIGNIFICANTLY AFFECT YOUR LEGAL RIGHTS
+      </h1>
+      <h1>
+        BY AGREEING TO THIS ARBITRATION AGREEMENT, YOU ARE GIVING UP YOUR RIGHT
+        TO GO TO COURT, INCLUDING YOUR RIGHT TO A JURY TRIAL AND TO PARTICIPATE
+        IN A CLASS ACTION. YOU UNDERSTAND THAT BY AGREEING TO THIS ARBITRATION
+        AGREEMENT AND CLASS ACTION WAIVER, YOU MAY ONLY BRING CLAIMS AGAINST US
+        AND OUR RELATED PARTIES IN AN INDIVIDUAL CAPACITY AND NOT AS A PLAINTIFF
+        OR CLASS MEMBER IN ANY PURPORTED CLASS ACTION OR REPRESENTATIVE
+        PROCEEDING. IF YOU DO NOT AGREE TO ARBITRATION, YOU ARE NOT AUTHORIZED
+        TO USE THE ONLINE SERVICES IN ANY WAY.
+      </h1>
+      <h1 className="my-6">
+        If any court or arbitrator determines that this “No Class Actions”
+        section is void or unenforceable for any reason, or that an arbitration
+        can proceed on a class basis, then the arbitration provisions set forth
+        above will be deemed null and void in their entirety, and the parties
+        will be deemed to have not agreed to arbitrate disputes.
+      </h1>
+      <h1>Changes to this Section</h1>
+      <h1>
+        We will provide 30 days’ notice of any changes to this section.
+        Amendments will become effective thirty days after we provide such
+        notice. If a court or arbitrator decides that this subsection on
+        “Changes to this Section” is not enforceable or valid, then this
+        subsection will be severed from the section entitled “Resolving
+        Disputes,” and the court or arbitrator will apply the first “Resolving
+        Disputes” section in existence after you began using the Online
+        Services.
+      </h1>
+      <h1 className="my-6">Survival</h1>
+      <h1>
+        This “Resolving Disputes” section will survive any termination of your
+        account, enrollment in any program, eligibility for coverage, or the
+        Online Services.
+      </h1>
+      <h1 className="my-6 lg:text-3xl text-xl text-blue-600 font-semibold">
+        Survival and Assignment
+      </h1>
+      <h1 className="mb-6">
+        Your obligations under the following sections survive termination of
+        this Agreement:
+      </h1>
+      <ol>
+        <li>Agreement and Terms;</li>
+        <li>Important Note Regarding Content;</li>
+        <li>User IDs;</li>
+        <li>License to Use the Online Services and Content Ownership;</li>
+        <li>Restrictions on Use of Online Services;</li>
+        <li>Posting Messages, Comments or Content;</li>
+        <li>Copyright Infringement – DMCA Notice;</li>
+        <li>NO WARRANTY;</li>
+        <li>LIMITATION OF LIABILITY;</li>
+        <li>Export Controls;</li>
+        <li>Governing Law and Statute of Limitations;</li>
+        <li>Severability;</li>
+        <li>Miscellaneous; and</li>
+        <li>Additional Product Information</li>
+      </ol>
+      <h1 className="mt-6">
+        You may not transfer or assign any rights or obligations under this
+        Agreement. The Company may transfer or assign its rights and obligations
+        under this Agreement.
+      </h1>
+    </div>
     </div>
   );
 };
