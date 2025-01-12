@@ -25,7 +25,10 @@ const Footer = () => {
           <span className='text-xl font-medium'>COST PLUS DRUGS™</span> offers hundreds of common (and often life-saving) medications at the lowest possible prices.</div>
         </div>
         <hr className='text-3xl font-extrabold py-6'/>
+        <hr className='text-3xl font-extrabold py-6'/>
       </div>
+      <hr className='text-3xl w-full font-extrabold py-6'/>
+
     </div>
   );
 };
