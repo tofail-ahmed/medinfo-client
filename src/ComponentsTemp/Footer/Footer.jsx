@@ -8,7 +8,7 @@ const Footer = () => {
   const logo = data?.data.find((item) => item.name === "logo");
   console.log(logo);
   return (
-    <div className="bg-green-500 text-green-100">
+    <div className="bg-green-500 text-green-100 py-6">
       <div className="w-[80%] mx-auto">
         <div className='flex justify-between items-center'>
           <div className="flex  items-center">
@@ -26,8 +26,27 @@ const Footer = () => {
         </div>
        
         
-      </div>
       <hr className='text-3xl   font-extrabold py-6'/>
+      <div className='grid lg:grid-cols-2 grid-cols-1'>
+      <div>
+        <h1>Saty up to date</h1>
+        <h3>Subscribe to our newsletter to receive special offers, notifications of new products, and company updates.</h3>
+        <input type="email" />
+      </div>
+      <div className='grid lg:grid-cols-3 grid-cols-1'>
+       <h1>Browse Medications</h1>
+       <h1>CA Policy</h1>
+       <h1>Service of Policy</h1>
+       <h1>HIPAA Policy</h1>
+       <h1>Terms of Services</h1>
+       <h1>Contact Doctors</h1>
+       <h1>Privacy Policy</h1>
+       <h1>For Providers </h1>
+       <h1>FAQs </h1>
+       <h1>Contact US </h1>
+      </div>
+      </div>
+      </div>
 
     </div>
   );
