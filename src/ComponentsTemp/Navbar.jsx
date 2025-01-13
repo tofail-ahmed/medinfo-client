@@ -139,7 +139,7 @@ const logo=data?.data.find(item => item.name === 'logo')
      <div>
      {isDropdownOpen && (
         
-          <div className="md:hidden bg-green-700/50 backdrop-blur-sm   text-white p-4 w-[30%] absolute  right-0 top-13 z-50 border-[1px] border-green-500 rounded-md" >
+          <div className="md:hidden bg-slate-900/50 backdrop-blur-lg   text-white p-4 w-[30%] absolute  right-0 top-13 z-50 border-[1px] border-green-500 rounded-md" >
   <div className="">
   <Button
   variant="contained"

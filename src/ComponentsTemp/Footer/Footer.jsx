@@ -1,14 +1,17 @@
 import React from 'react'
 import { useGetAssetsQuery } from "../../redux/user/usersApi";
 import { NavLink } from "react-router-dom";
+import { useSelector } from 'react-redux';
 
 const Footer = () => {
+  const darkMode = useSelector((state) => state.theme.darkMode);
+
   const { data, isLoading } = useGetAssetsQuery();
   // console.log(data?.data[6])
   const logo = data?.data.find((item) => item.name === "logo");
   console.log(logo);
   return (
-    <div className="bg-green-500 text-green-100 py-6">
+    <div  className={`${darkMode ? "bg-green-900 text-white" : "bg-green-500 text-red-600 "} py-12`}>
       <div className="w-[80%] mx-auto">
         <div className='flex justify-between items-center'>
           <div className="flex  items-center">
