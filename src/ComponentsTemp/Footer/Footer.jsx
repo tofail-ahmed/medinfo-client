@@ -11,7 +11,7 @@ const Footer = () => {
   const logo = data?.data.find((item) => item.name === "logo");
   console.log(logo);
   return (
-    <div  className={`${darkMode ? "bg-green-900 text-white" : "bg-green-500 text-red-600 "} py-12`}>
+    <div  className={`${darkMode ? "bg-green-900 text-white" : "bg-green-500 text-red-900 "} py-12`}>
       <div className="w-[80%] mx-auto">
         <div className='flex justify-between items-center'>
           <div className="flex  items-center">
@@ -34,7 +34,10 @@ const Footer = () => {
       <div>
         <h1>Saty up to date</h1>
         <h3>Subscribe to our newsletter to receive special offers, notifications of new products, and company updates.</h3>
-        <input type="email" />
+       <div>
+       <input className="rounded-s-lg text-md p-1" type="email" />
+       <button className="bg-green-950 p-1 rounded-e-lg hover:bg-green-800 duration-300">Submit</button>
+       </div>
       </div>
       <div className='grid lg:grid-cols-3 grid-cols-1'>
        <h1>Browse Medications</h1>
