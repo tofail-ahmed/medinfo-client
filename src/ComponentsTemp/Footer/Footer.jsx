@@ -2,6 +2,16 @@ import React from 'react'
 import { useGetAssetsQuery } from "../../redux/user/usersApi";
 import { NavLink } from "react-router-dom";
 import { useSelector } from 'react-redux';
+import { FaXTwitter } from "react-icons/fa6";
+import { FiLinkedin } from "react-icons/fi";
+import { LuYoutube } from "react-icons/lu";
+import { FiFacebook } from "react-icons/fi";
+import { FaInstagram } from "react-icons/fa6";
+
+
+
+
+
 
 const Footer = () => {
   const darkMode = useSelector((state) => state.theme.darkMode);
@@ -29,17 +39,17 @@ const Footer = () => {
         </div>
        
         
-      <hr className='text-3xl   font-extrabold py-6'/>
-      <div className='grid lg:grid-cols-2 grid-cols-1'>
+      <hr className='text-3xl   font-extrabold py-6 mt-6'/>
+      <div className='grid lg:grid-cols-2 grid-cols-1 '>
       <div>
-        <h1>Saty up to date</h1>
-        <h3>Subscribe to our newsletter to receive special offers, notifications of new products, and company updates.</h3>
+        <h1 className="py-2">Saty up to date</h1>
+        <h3 className="py-2">Subscribe to our newsletter to receive special offers, notifications of new products, and company updates.</h3>
        <div>
-       <input className="rounded-s-lg text-md p-1" type="email" />
-       <button className="bg-green-950 p-1 rounded-e-lg hover:bg-green-800 duration-300">Submit</button>
+       <input className="rounded-s-lg text-md p-1 py-2" type="email" />
+       <button className="bg-green-950 p-1 py-2 rounded-e-lg hover:bg-green-800 duration-300">Submit</button>
        </div>
       </div>
-      <div className='grid lg:grid-cols-3 grid-cols-1'>
+      <div className='grid lg:grid-cols-3 grid-cols-1 gap-4'>
        <h1>Browse Medications</h1>
        <h1>CA Policy</h1>
        <h1>Service of Policy</h1>
@@ -52,6 +62,22 @@ const Footer = () => {
        <h1>Contact US </h1>
       </div>
       </div>
+      <hr className='text-3xl   font-extrabold py-6 mt-6'/>
+      <div className='grid lg:grid-cols-2 grid-cols-1 gap-6'>
+<div className="grid grid-cols-5 ">
+  <span className="text-4xl lg:text-5xl"><FaXTwitter  /></span>
+  <span className="text-4xl lg:text-5xl"><FiLinkedin/></span>
+  <span className="text-4xl lg:text-5xl"><LuYoutube/></span>
+  <span className="text-4xl lg:text-5xl"><FiFacebook/></span>
+  <span className="text-4xl lg:text-5xl"><FaInstagram/></span>
+
+</div>
+<div>
+  <h1 className="text-center">
+  © 2025 Mark BD Cost Plus Drug Company, PBC. All rights reserved.
+  </h1>
+</div>
+</div>
       </div>
 
     </div>
