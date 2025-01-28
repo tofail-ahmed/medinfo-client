@@ -45,7 +45,7 @@ const Footer = () => {
         <h1 className="py-2">Saty up to date</h1>
         <h3 className="py-2">Subscribe to our newsletter to receive special offers, notifications of new products, and company updates.</h3>
        <div>
-       <input className="rounded-s-lg text-md p-1 py-2" type="email" />
+       <input className="rounded-s-lg text-md p-2 py-2" placeholder="Your Email" type="email" />
        <button className="bg-green-950 p-1 py-2 rounded-e-lg hover:bg-green-800 duration-300">Submit</button>
        </div>
       </div>
