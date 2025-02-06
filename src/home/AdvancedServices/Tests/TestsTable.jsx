@@ -82,7 +82,8 @@ const rows = [
         </Typography>
         <Typography variant="body2" color="primary">
           <a href="#">Schedule now</a>
-        </Typography>      </>
+        </Typography>      
+        </>
     ),
     cost: (
       <>
