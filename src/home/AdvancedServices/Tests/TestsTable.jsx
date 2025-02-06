@@ -71,6 +71,7 @@ const StyledTableRow = styled(TableRow)(({ theme }) => ({
 const rows = [
   {
     testType: "COVID-19 & FLU COMBINATION",
+
     description: (
       <>
         <Typography variant="subtitle2" fontWeight="bold">
@@ -82,8 +83,8 @@ const rows = [
         </Typography>
         <Typography variant="body2" color="primary">
           <a href="#">Schedule now</a>
-        </Typography>      
-        </>
+        </Typography>
+      </>
     ),
     cost: (
       <>
@@ -288,8 +289,26 @@ export default function TestsTable() {
             {rows.map((row, index) => (
               <StyledTableRow key={index}>
                 <StyledTableCell component="th" scope="row">
-                  {row.testType}
-                  <div>{row.description}</div>
+                  {/* {row.testType}
+                   */}
+                  <Typography
+                    
+                    sx={{
+                      color: "#991B1B",
+                      textTransform: "uppercase",
+                      letterSpacing: 1,
+                      // backgroundColor: "#f0f0f0",
+                      paddingTop: "8px",
+                      paddingBottom: "8px",
+                      borderRadius: "4px",
+                      fontSize:"15px",
+                      fontWeight:"bold"
+                    }}
+                  >
+                    {row.testType}
+                  </Typography>
+
+                  <div className="bold text-green-500">{row.description}</div>
                 </StyledTableCell>
                 <StyledTableCell>{row.cost}</StyledTableCell>
                 <StyledTableCell>{row.resultTime}</StyledTableCell>
