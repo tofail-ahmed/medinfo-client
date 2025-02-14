@@ -43,7 +43,7 @@ import Tests from './Home/AdvancedServices/Tests/Tests.jsx';
 import Prescriptions from './Home/AdvancedServices/Prescriptions/Prescriptions.jsx';
 import FluCoughCold from './Home/AdvancedServices/FluCoughCold/FluCoughCold.jsx';
 import Vaccines from './Home/AdvancedServices/Covid/Vaccines.jsx';
-import Appointment from './Home/AdvancedServices/Covid/Appointment.jsx';
+// import Appointment from './Home/AdvancedServices/Covid/Appointment.jsx';
 import AppointmentTemp from './Home/AdvancedServices/Covid/AppointmentTemp.jsx';
 import TermsPolicies from './Home/TermsPolicies.jsx';
 // import News from "./News/News.jsx";
