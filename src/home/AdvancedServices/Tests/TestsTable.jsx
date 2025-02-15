@@ -8,6 +8,7 @@ import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
 import Typography from "@mui/material/Typography";
+import "./TestTable.css"
 
 import { Button } from "@mui/material";
 // import { styled } from "@mui/material/styles";
@@ -148,11 +149,13 @@ const rows = [
           Antigen on-site testing that quickly detects COVID-19 and/or influenza
           A/B with a single swab sample.
         </Typography>
-        <Typography variant="body2" color="primary" sx={{
+        <Typography variant="body2" color="primary"  sx={{
           paddingTop:"10px",
           paddingBottom:"10px",
-        }}>
-          <a href="#">Schedule now</a>
+          textDecoration:"underline"
+        }}
+        className="btn">
+          <a className="button-text" href="#">Schedule now</a>
         </Typography>
       </>
     ),
@@ -265,7 +268,7 @@ const rows = [
           paddingTop:"10px",
           paddingBottom:"10px",
         }}>
-          <a href="#">Schedule now</a>
+          <a href="#" className="btn">Schedule now</a>
         </Typography>
       </>
     ),
