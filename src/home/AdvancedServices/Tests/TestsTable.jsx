@@ -74,14 +74,24 @@ const rows = [
 
     description: (
       <>
-        <Typography variant="subtitle2" fontWeight="bold">
+        <Typography variant="subtitle2" fontWeight="bold" sx={{
+          paddingTop:"10px",
+          paddingBottom:"10px",
+          color:"#292524",
+          fontSize:"14px",
+          fontWeight:900,
+         
+        }} >
           Rapid Test
         </Typography>
-        <Typography variant="body2">
+        <Typography variant="body2" color="black">
           Antigen on-site testing that quickly detects COVID-19 and/or influenza
           A/B with a single swab sample.
         </Typography>
-        <Typography variant="body2" color="primary">
+        <Typography variant="body2" color="primary" sx={{
+          paddingTop:"10px",
+          paddingBottom:"10px",
+        }}>
           <a href="#">Schedule now</a>
         </Typography>
       </>
@@ -124,14 +134,24 @@ const rows = [
     testType: "COVID-19 & FLU COMBINATION",
     description: (
       <>
-        <Typography variant="subtitle2" fontWeight="bold">
+        <Typography variant="subtitle2" fontWeight="bold"  sx={{
+          paddingTop:"10px",
+          paddingBottom:"10px",
+          color:"#292524",
+          fontSize:"14px",
+          fontWeight:900,
+         
+        }}>
           Rapid Test
         </Typography>
         <Typography variant="body2">
           Antigen on-site testing that quickly detects COVID-19 and/or influenza
           A/B with a single swab sample.
         </Typography>
-        <Typography variant="body2" color="primary">
+        <Typography variant="body2" color="primary" sx={{
+          paddingTop:"10px",
+          paddingBottom:"10px",
+        }}>
           <a href="#">Schedule now</a>
         </Typography>
       </>
@@ -171,17 +191,27 @@ const rows = [
     ),
   },
   {
-    testType: "COVID-19 & FLU COMBINATION",
+    testType: "COVID-19",
     description: (
       <>
-        <Typography variant="subtitle2" fontWeight="bold">
+        <Typography variant="subtitle2" fontWeight="bold" sx={{
+          paddingTop:"10px",
+          paddingBottom:"10px",
+          color:"#292524",
+          fontSize:"14px",
+          fontWeight:900,
+         
+        }}>
           Rapid Test
         </Typography>
         <Typography variant="body2">
           Antigen on-site testing that quickly detects COVID-19 and/or influenza
           A/B with a single swab sample.
         </Typography>
-        <Typography variant="body2" color="primary">
+        <Typography variant="body2" color="primary" sx={{
+          paddingTop:"10px",
+          paddingBottom:"10px",
+        }}>
           <a href="#">Schedule now</a>
         </Typography>
       </>
@@ -221,7 +251,7 @@ const rows = [
     ),
   },
   {
-    testType: "COVID-19 & FLU COMBINATION",
+    testType: "COVID-19",
     description: (
       <>
         <Typography variant="subtitle2" fontWeight="bold">
@@ -231,14 +261,24 @@ const rows = [
           Antigen on-site testing that quickly detects COVID-19 and/or influenza
           A/B with a single swab sample.
         </Typography>
-        <Typography variant="body2" color="primary">
+        <Typography variant="body2" color="primary" sx={{
+          paddingTop:"10px",
+          paddingBottom:"10px",
+        }}>
           <a href="#">Schedule now</a>
         </Typography>
       </>
     ),
     cost: (
       <>
-        <Typography variant="body2" fontWeight="bold">
+        <Typography variant="body2" fontWeight="bold"  sx={{
+          paddingTop:"10px",
+          paddingBottom:"10px",
+          color:"#292524",
+          fontSize:"14px",
+          fontWeight:900,
+         
+        }}>
           Uninsured patients and Veterans:
         </Typography>
         <Typography variant="body2">
@@ -301,14 +341,14 @@ export default function TestsTable() {
                       paddingTop: "8px",
                       paddingBottom: "8px",
                       borderRadius: "4px",
-                      fontSize:"15px",
-                      fontWeight:"bold"
+                      fontSize:"17px",
+                      fontWeight:600
                     }}
                   >
                     {row.testType}
                   </Typography>
 
-                  <div className="bold text-green-500">{row.description}</div>
+                  <div className="bold text-black ">{row.description}</div>
                 </StyledTableCell>
                 <StyledTableCell>{row.cost}</StyledTableCell>
                 <StyledTableCell>{row.resultTime}</StyledTableCell>

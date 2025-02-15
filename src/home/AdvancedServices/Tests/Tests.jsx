@@ -54,7 +54,7 @@ const Tests = () => {
       </div>
       <div>
         <h1 className="text-center my-4 lg:text-4xl text-lg">Testing services and at-home tests</h1>
-        <h1 className="text-center my-1 mb-4 text-lg font-bold">You may use your available and eligible funds for treatments and tests </h1>
+        <h1 className="text-center my-1 mb-4 lg:mb-14 text-lg font-bold">You may use your available and eligible funds for treatments and tests </h1>
       </div>
       <TestsTable></TestsTable>
     </div>
