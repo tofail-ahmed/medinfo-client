@@ -89,12 +89,15 @@ const rows = [
           Antigen on-site testing that quickly detects COVID-19 and/or influenza
           A/B with a single swab sample.
         </Typography>
-        <Typography variant="body2" color="primary" sx={{
-          paddingTop:"10px",
-          paddingBottom:"10px",
-        }}>
-          <a href="#">Schedule now</a>
-        </Typography>
+        <Typography
+  variant="body2"
+  sx={{
+    textDecoration: "underline",
+  }}
+  className="btn"
+>
+  <span className="button-text">Schedule now</span>
+</Typography>
       </>
     ),
     cost: (
@@ -213,12 +216,15 @@ const rows = [
           Antigen on-site testing that quickly detects COVID-19 and/or influenza
           A/B with a single swab sample.
         </Typography>
-        <Typography variant="body2" color="primary" sx={{
-          paddingTop:"10px",
-          paddingBottom:"10px",
-        }}>
-          <a href="#">Schedule now</a>
-        </Typography>
+        <Typography
+  variant="body2"
+  sx={{
+    textDecoration: "underline",
+  }}
+  className="btn"
+>
+  <span className="button-text">Schedule now</span>
+</Typography>
       </>
     ),
     cost: (
@@ -272,12 +278,15 @@ const rows = [
           Antigen on-site testing that quickly detects COVID-19 and/or influenza
           A/B with a single swab sample.
         </Typography>
-        <Typography variant="body2" color="primary" sx={{
-          paddingTop:"10px",
-          paddingBottom:"10px",
-        }}>
-          <a href="#" >Schedule now</a>
-        </Typography>
+        <Typography
+  variant="body2"
+  sx={{
+    textDecoration: "underline",
+  }}
+  className="btn"
+>
+  <span className="button-text">Schedule now</span>
+</Typography>
       </>
     ),
     cost: (
