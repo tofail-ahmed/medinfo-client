@@ -1,13 +1,20 @@
-import { useEffect, useState } from 'react';
-import { TextField, Button, Grid, Typography, Container, InputAdornment, IconButton } from '@mui/material';
+import { useEffect, useState } from "react";
+import {
+  TextField,
+  Button,
+  Grid,
+  Typography,
+  Container,
+  InputAdornment,
+  IconButton,
+} from "@mui/material";
 // import { Visibility, VisibilityOff } from '@mui/icons-material';
 import { NavLink, useNavigate } from "react-router-dom";
 import { useUserLoginMutation } from "../redux/user/usersApi";
 import { MdVisibility } from "react-icons/md";
 import { BiSolidHide } from "react-icons/bi";
-import { useDispatch,useSelector } from 'react-redux';
-import { setMedInfoUserCred } from '../redux/user/userSlice';
-
+import { useDispatch, useSelector } from "react-redux";
+import { setMedInfoUserCred } from "../redux/user/userSlice";
 
 const Login = () => {
   const navigate = useNavigate();
@@ -17,7 +24,7 @@ const Login = () => {
   // console.log(userData)
   // const navigate = useNavigate();
 
-  const dispatch=useDispatch()
+  const dispatch = useDispatch();
   const [loginUser, { data, isLoading, error }] = useUserLoginMutation();
   const [formData, setFormData] = useState({
     email: "",
@@ -44,48 +51,46 @@ const Login = () => {
     }
     if (data && data.success) {
       const userCred = {
-        id:data?.data._id,
+        id: data?.data._id,
         name: data?.data.name,
         email: data?.data.email,
-        role: data?.data.role
+        role: data?.data.role,
       };
       alert("User login successfully");
       // localStorage.setItem('user', JSON.stringify(userCred));
-      dispatch(setMedInfoUserCred(userCred));  // Update the user state in Redux
+      dispatch(setMedInfoUserCred(userCred)); // Update the user state in Redux
 
       navigate("/");
-      
     }
     if (error && error.status === 409) {
       alert(error.data.message);
     }
-  }, [data, isLoading, error,dispatch,navigate]);
+  }, [data, isLoading, error, dispatch, navigate]);
 
- // Common style props for TextFields
- const textFieldStyles = {
-  InputProps: {
-    sx: {
-      color: darkMode ? "white" : "black", // Correctly apply text color inside the input
-    },
-  },
-  sx: {
-    "& .MuiOutlinedInput-root": {
-      "& fieldset": { borderColor: darkMode ? "yellow" : "black" },
-      "&:hover fieldset": { borderColor: darkMode ? "green" : "black" },
-      "&.Mui-focused fieldset": { borderColor: darkMode ? "white" : "black" },
-      "& input": {
-        color: darkMode ? "white" : "black", // Ensures input text color is applied at the input level
+  // Common style props for TextFields
+  const textFieldStyles = {
+    InputProps: {
+      sx: {
+        color: darkMode ? "white" : "black", // Correctly apply text color inside the input
       },
     },
-  },
-  InputLabelProps: {
-    style: { color: darkMode ? "red" : "black" }, // Label color
-  },
-};
-
+    sx: {
+      "& .MuiOutlinedInput-root": {
+        "& fieldset": { borderColor: darkMode ? "yellow" : "black" },
+        "&:hover fieldset": { borderColor: darkMode ? "green" : "black" },
+        "&.Mui-focused fieldset": { borderColor: darkMode ? "white" : "black" },
+        "& input": {
+          color: darkMode ? "white" : "black", // Ensures input text color is applied at the input level
+        },
+      },
+    },
+    InputLabelProps: {
+      style: { color: darkMode ? "red" : "black" }, // Label color
+    },
+  };
 
   return (
-    <Container maxWidth="sm" className="min-h-screen">
+    <Container maxWidth="sm" className=" my-10 min-h-screen">
       <Typography variant="h4" gutterBottom align="center">
         Login
       </Typography>
@@ -118,17 +123,18 @@ const Login = () => {
               InputProps={{
                 endAdornment: (
                   <InputAdornment position="end">
-                    <IconButton style={{
-                            color: darkMode ? "white" : "black",
-                            background: "transparent",
-                          }}
+                    <IconButton
+                      style={{
+                        color: darkMode ? "white" : "black",
+                        background: "transparent",
+                      }}
                       onClick={() => setShowPassword(!showPassword)}
                       edge="end"
                     >
                       {showPassword ? <BiSolidHide /> : <MdVisibility />}
                     </IconButton>
                   </InputAdornment>
-                )
+                ),
               }}
             />
           </Grid>

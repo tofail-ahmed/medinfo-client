@@ -12,7 +12,7 @@
       border-radius: 20px;
     }
     .btn::before{
-      content:"Click";
+      /* content:"Click"; */
     margin-left: 40%;
     /* margin-bottom: "-100px"; */
       
@@ -61,8 +61,8 @@
       top: 50%; 
        left: 38%; 
       transform: translate(-50%, -50%);
-      padding-left: 15%;
-      padding-Top: 55%;
+      /* padding-left: 15%;
+      padding-Top: 55%; */
       z-index: 2;
       transition: transform 500ms ease; /* Add transition for smooth animation */
     }
