@@ -2,6 +2,7 @@
 .btn {
   border: 1px solid rgba(0, 255, 255, 0.904);
   color: rgb(233, 15, 15); /* Text color */
+  font-weight: 700;
   background-color: transparent;
   position: relative;
   overflow: hidden;
@@ -22,7 +23,7 @@
   position: absolute;
   left: 0;
   top: 100%; /* Initially hidden below the button */
-  background-color: rgba(9, 241, 9, 0.6); /* Animated background color */
+  background-color: rgb(14, 192, 247); /* Animated background color */
   transition: top 0.5s ease-in-out; /* Smooth slide-in effect */
   z-index: 1;
 }
@@ -36,11 +37,13 @@
 .button-text {
   position: absolute;
   color: rgb(250, 11, 11); /* Default text color */
+  font-weight: 700;
   z-index: 2; /* Ensure text stays above the background */
-  transition: color 2s ease-in-out;
+  transition: color 0.5s ease-in-out;
 }
 
 /* Text color change on hover */
 .btn:hover .button-text {
-  color: black; /* Change text color when hovered */
+  color: rgb(226, 219, 219); /* Change text color when hovered */
+  font-weight: 900;
 }
