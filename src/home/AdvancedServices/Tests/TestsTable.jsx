@@ -149,14 +149,16 @@ const rows = [
           Antigen on-site testing that quickly detects COVID-19 and/or influenza
           A/B with a single swab sample.
         </Typography>
-        <Typography variant="body2" color="primary"  sx={{
-          paddingTop:"10px",
-          paddingBottom:"10px",
-          textDecoration:"underline"
-        }}
-        className="btn">
-          <a className="button-text" href="#">Schedule now</a>
-        </Typography>
+        <Typography
+  variant="body2"
+  sx={{
+    textDecoration: "underline",
+  }}
+  className="btn"
+>
+  <span className="button-text">Schedule now</span>
+</Typography>
+
       </>
     ),
     cost: (
@@ -254,11 +256,17 @@ const rows = [
     ),
   },
   {
-    testType: "COVID-19",
+    testType: "COVID-25",
     description: (
       <>
-        <Typography variant="subtitle2" fontWeight="bold">
-          Rapid Test
+        <Typography variant="subtitle2"  fontSize={"20px"} sx={{
+          paddingBottom:"20px",
+          paddingTop:"20px",
+          fontWeight:"600",
+          color:"#44403C"
+        }}>
+        Rapid Molecular Test (ID NOW™)
+
         </Typography>
         <Typography variant="body2">
           Antigen on-site testing that quickly detects COVID-19 and/or influenza
@@ -268,7 +276,7 @@ const rows = [
           paddingTop:"10px",
           paddingBottom:"10px",
         }}>
-          <a href="#" className="btn">Schedule now</a>
+          <a href="#" >Schedule now</a>
         </Typography>
       </>
     ),

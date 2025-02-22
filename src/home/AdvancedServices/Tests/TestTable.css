@@ -1,72 +1,46 @@
-/* button css------------ */
-/* button css------------ */
+/* Button Styling */
 .btn {
-      border: 1px solid rgba(0, 255, 255, 0.904);
-      color: transparent;
-      /* padding: 10px 20px; */
-      background-color: rgba(81, 81, 240, 0);
-      position: relative;
-      overflow: hidden;
-      height: 30px;
-      width:150px ;
-      border-radius: 20px;
-    }
-    .btn::before{
-      /* content:"Click"; */
-    margin-left: 40%;
-    /* margin-bottom: "-100px"; */
-      
+  border: 1px solid rgba(0, 255, 255, 0.904);
+  color: rgb(233, 15, 15); /* Text color */
+  background-color: transparent;
+  position: relative;
+  overflow: hidden;
+  height: 30px;
+  width: 150px;
+  border-radius: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: color 0.5s ease-in-out;
+}
 
+/* Background animation effect */
+.btn::after {
+  content: "";
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  left: 0;
+  top: 100%; /* Initially hidden below the button */
+  background-color: rgba(9, 241, 9, 0.6); /* Animated background color */
+  transition: top 0.5s ease-in-out; /* Smooth slide-in effect */
+  z-index: 1;
+}
 
-    }
-    
-    .btn::after {
-      content: "Schedule Now";
-      /* padding-top: 100px; */
-      height: 100%;
-      width: 100%;
-      padding-left: 20px;
-      
-      background-color: rgb(9, 241, 9);
-      position: absolute;
-      left: 0;
-      top: 0;
-      /* transform: translate(-100%, -100%); */
-        /* transform: rotate(120deg);  */
-       transform: scaleY(0.00001); 
-      transform: translateY(100%);
-    
-      transition-duration: 500ms;
-      transition-timing-function: ease;
-      z-index: 1;
-    }
-    
-    .btn:hover {
-      color: rgb(236, 101, 23);
-    }
-    
-    .btn:hover::after {
-      transform: translate(0) scale(1.1);
-       transform: rotate(0) scale(1.1);
-      transform: scaleY(1.5);
-    
-    } 
-    /* .img{
-      height: 200px;
-      width: 200px;
-      z-index: -2;
-    } */
-    .button-text {
-       position: absolute;
-      top: 50%; 
-       left: 38%; 
-      transform: translate(-50%, -50%);
-      /* padding-left: 15%;
-      padding-Top: 55%; */
-      z-index: 2;
-      transition: transform 500ms ease; /* Add transition for smooth animation */
-    }
-    
-    .btn:hover .button-text {
-      transform: translate(-50%, -50%) scale(1.1); /* Scale the text on hover */
-    }
+/* Button hover effect */
+.btn:hover::after {
+  top: 0; /* Background moves up to cover the button */
+}
+
+/* Button text */
+.button-text {
+  position: absolute;
+  color: rgb(250, 11, 11); /* Default text color */
+  z-index: 2; /* Ensure text stays above the background */
+  transition: color 2s ease-in-out;
+}
+
+/* Text color change on hover */
+.btn:hover .button-text {
+  color: black; /* Change text color when hovered */
+}
