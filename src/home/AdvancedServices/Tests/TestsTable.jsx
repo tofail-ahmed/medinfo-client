@@ -93,6 +93,7 @@ const rows = [
   variant="body2"
   sx={{
     textDecoration: "underline",
+       marginTop:"20px"
   }}
   className="btn"
 >
@@ -156,6 +157,7 @@ const rows = [
   variant="body2"
   sx={{
     textDecoration: "underline",
+       marginTop:"20px"
   }}
   className="btn"
 >
@@ -220,6 +222,7 @@ const rows = [
   variant="body2"
   sx={{
     textDecoration: "underline",
+       marginTop:"20px"
   }}
   className="btn"
 >
@@ -280,10 +283,13 @@ const rows = [
         </Typography>
         <Typography
   variant="body2"
+  
   sx={{
     textDecoration: "underline",
+       marginTop:"20px"
+ 
   }}
-  className="btn"
+  className="btn "
 >
   <span className="button-text">Schedule now</span>
 </Typography>
