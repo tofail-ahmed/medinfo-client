@@ -11,6 +11,7 @@ import Typography from "@mui/material/Typography";
 import "./TestTable.css"
 
 import { Button } from "@mui/material";
+import { Link } from "react-router-dom";
 // import { styled } from "@mui/material/styles";
 
 // const HoverEffectButton = styled(Button)(({ theme }) => ({
@@ -97,7 +98,7 @@ const rows = [
   }}
   className="btn"
 >
-  <span className="button-text">Schedule now</span>
+  <Link to={"/tests-schedule"} className="button-text">Schedule now</Link>
 </Typography>
       </>
     ),
@@ -161,7 +162,7 @@ const rows = [
   }}
   className="btn"
 >
-  <span className="button-text">Schedule now</span>
+  <Link to="/tests-schedule" className="button-text">Schedule now</Link>
 </Typography>
 
       </>
@@ -226,7 +227,7 @@ const rows = [
   }}
   className="btn"
 >
-  <span className="button-text">Schedule now</span>
+  <Link to="/tests-schedule" className="button-text">Schedule now</Link>
 </Typography>
       </>
     ),
@@ -291,7 +292,7 @@ const rows = [
   }}
   className="btn "
 >
-  <span className="button-text">Schedule now</span>
+  <Link to="/tests-schedule" className="button-text">Schedule now</Link>
 </Typography>
       </>
     ),

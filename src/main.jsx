@@ -46,6 +46,7 @@ import Vaccines from './Home/AdvancedServices/Covid/Vaccines.jsx';
 // import Appointment from './Home/AdvancedServices/Covid/Appointment.jsx';
 import AppointmentTemp from './Home/AdvancedServices/Covid/AppointmentTemp.jsx';
 import TermsPolicies from './Home/TermsPolicies.jsx';
+import TestsSchedule from './Home/AdvancedServices/Tests/TestsSchedule.jsx';
 // import News from "./News/News.jsx";
 
 // import Dashboard from './layouts/Dashboard.jsx';
@@ -153,6 +154,10 @@ const router = createBrowserRouter([
       {
         path: "/terms",
         element: <TermsPolicies />,
+      },
+      {
+        path: "/tests-schedule",
+        element: <TestsSchedule />,
       },
     ],
   },
