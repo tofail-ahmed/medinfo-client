@@ -140,15 +140,13 @@ const rows = [
     testType: "COVID-19 & FLU COMBINATION",
     description: (
       <>
-        <Typography variant="subtitle2" fontWeight="bold"  sx={{
-          paddingTop:"10px",
-          paddingBottom:"10px",
-          color:"#292524",
-          fontSize:"14px",
-          fontWeight:900,
-         
+        <Typography variant="subtitle2" fontWeight="bold" fontSize={"20px"} sx={{
+          paddingBottom:"20px",
+          paddingTop:"20px",
+          fontWeight:"600",
+          color:"#44403C"
         }}>
-          Rapid Test
+       At-home Rapid Antigen Test
         </Typography>
         <Typography variant="body2">
           Antigen on-site testing that quickly detects COVID-19 and/or influenza
