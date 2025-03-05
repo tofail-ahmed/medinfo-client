@@ -8,10 +8,24 @@ import {
   Typography,
 } from "@mui/material";
 import React from "react";
+import { useNavigate } from "react-router";
 
 const AppointmentModal = ({ open, onClose }) => {
+  const navigate=useNavigate()
   const vaccineData = JSON.parse(localStorage.getItem("Vac-data"));
-// console.log(vaccineData)
+
+  const handleConfirm = () => {
+    alert("Your appointment has been confirmed! A detailed message will be sent to you soon...");
+    onClose();
+    navigate("/")
+  };
+
+  const handleDiscard = () => {
+    alert("Your appointment has been discarded. Navigating to home page... ");
+    onClose();
+    navigate("/")
+  };
+
   return (
     <Dialog
       open={open}
@@ -19,12 +33,9 @@ const AppointmentModal = ({ open, onClose }) => {
       aria-labelledby="alert-dialog-title"
       aria-describedby="alert-dialog-description"
     >
-      {/* Dialog Title */}
       <DialogTitle id="alert-dialog-title">Appointment Details</DialogTitle>
 
-      {/* Dialog Content */}
       <DialogContent>
-        {/* User Information Section */}
         <Grid container spacing={2} sx={{ p: 2 }}>
           <Grid item xs={12}>
             <Typography variant="h6" gutterBottom>
@@ -34,31 +45,24 @@ const AppointmentModal = ({ open, onClose }) => {
           <Grid item xs={12}>
             <Typography>Name: {vaccineData?.data?.name || "N/A"}</Typography>
             <Typography>Email: {vaccineData?.data?.email || "N/A"}</Typography>
-            <Typography>Location: {vaccineData?.data?.location || "N/A"}</Typography>
-            <Typography>Phone: {vaccineData?.data?.phone || "N/A"}</Typography>
-            <Typography>Option: {vaccineData?.data?.option || "N/A"}</Typography>
-            <Typography>Date: {vaccineData?.selectedDate || "N/A"}</Typography>
-            <Typography>Time: {vaccineData?.time || "N/A"}</Typography>
-          </Grid>
-
-          {/* Vaccines List Section */}
-          <Grid item xs={12}>
-            <Typography variant="h6" gutterBottom>
-              Selected Vaccines
+            <Typography>
+              Location: {vaccineData?.data?.location || "N/A"}
             </Typography>
-            {Object.keys(vaccineData)
-              .filter((key) => !isNaN(key)) // Filter numeric keys for vaccines
-              .map((key) => (
-                <Typography key={key}>- {vaccineData[key]}</Typography>
-              ))}
+            <Typography>Phone: {vaccineData?.data?.phone || "N/A"}</Typography>
+            <Typography>
+              Option: {vaccineData?.data?.option || "N/A"}
+            </Typography>
+            <Typography>Date: {vaccineData?.date || "N/A"}</Typography>
+            <Typography>Time: {vaccineData?.time || "N/A"}</Typography>
           </Grid>
         </Grid>
       </DialogContent>
 
-      {/* Dialog Actions */}
       <DialogActions>
-        <Button sx={{color:"green",fontWeight:"bold"}} onClick={onClose}>Confirm Schedule?</Button>
-        <Button sx={{color:"red",fontWeight:"bold"}} onClick={onClose} autoFocus>
+        <Button sx={{ color: "green", fontWeight: "bold" }} onClick={handleConfirm}>
+          Confirm Schedule?
+        </Button>
+        <Button sx={{ color: "red", fontWeight: "bold" }} onClick={handleDiscard} autoFocus>
           Discard?
         </Button>
       </DialogActions>

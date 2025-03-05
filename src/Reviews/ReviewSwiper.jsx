@@ -12,8 +12,20 @@ import { useMediaQuery } from '@mui/material';
 
 const ReviewSwiper = () => {
       const { data, isLoading } = useAllUserQuery();
-      const allUser = data?.data;
+      let allUser = data?.data || [];
 
+
+       // If there are fewer than 5 users, add placeholders
+  const minCards = 20;
+  const placeholderUsers = Array.from({ length: Math.max(0, minCards - allUser.length) }, () => ({
+    name: "Anonymous Participant",
+    email: "N/A",
+    review: "No Review Provided",
+    imgUrl: "https://via.placeholder.com/100",
+  }));
+
+  // Merge real users with placeholders
+  allUser = [...allUser, ...placeholderUsers];
 
       const [heightSet, setHeightSrt] = useState();
       const [fontSize, setFontSize] = useState();
@@ -71,11 +83,11 @@ const ReviewSwiper = () => {
         Review Swiper
       </h1>
       <Swiper
-        className="border-2 border-red-300 mySwiper"
+        className=" mySwiper"
         effect="coverflow"
         grabCursor={true}
         centeredSlides={true}
-        slidesPerView="auto"
+        slidesPerView={Math.min(5, allUser.length)} // Ensures at least 5 slides are visible
         coverflowEffect={{
           rotate: 50,
           stretch: 1,
