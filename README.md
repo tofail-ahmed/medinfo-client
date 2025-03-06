@@ -6,3 +6,10 @@
 
 ## sites:https://www.costplusdrugs.com/
 ## sites:https://www.walgreens.com/
+## sites:https://pharmeasy.in/
+## sites:https://www.netmeds.com/
+## sites:https://www.goodrx.com/
+## sites:https://pharmacy.amazon.com/
+## sites:https://www.riteaid.com/
+## sites:https://osudpotro.com/
+## sites:https://medeasy.health/
