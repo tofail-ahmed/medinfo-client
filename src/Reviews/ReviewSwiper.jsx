@@ -16,7 +16,7 @@ const ReviewSwiper = () => {
 
 
        // If there are fewer than 5 users, add placeholders
-  const minCards = 20;
+  const minCards = 10;
   const placeholderUsers = Array.from({ length: Math.max(0, minCards - allUser.length) }, () => ({
     name: "Anonymous Participant",
     email: "N/A",
