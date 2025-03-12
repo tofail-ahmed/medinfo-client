@@ -13,6 +13,21 @@
 ## sites:https://www.riteaid.com/
 ## sites:https://osudpotro.com/
 ## sites:https://medeasy.health/
+## BanglaMeds: https://www.banglameds.com.bd/
+## 
+## dPharma by Daraz: https://www.daraz.com.bd/dpharma/
+## 
+## Oshudhwala.com: https://www.oshudhwala.com/
+## 
+## Khidmat Drug Outlet: https://www.khidmatdrugoutlet.com/
+## 
+## Emedi.com.bd: https://www.emedi.com.bd/
+## 
+## BMA Bazar: https://www.bmabazar.com/
+## 
+## Aleef Surgical: https://www.aleefsurgical.com/
+## 
+## Techno Health: https://www.technohealth.com.bd/
 
 
 task: MUI  acordion to be implemented
