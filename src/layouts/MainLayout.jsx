@@ -13,6 +13,7 @@ import Footer from "../ComponentsTemp/Footer/Footer";
 
 const MainLayout = () => {
   const darkMode = useSelector((store) => store.theme.darkMode);
+  const { data, isLoading } = useAllMedicinesQuery("");
 
   // const [searchTerm, setSearchTerm] = useState(null);
   // const { data, error, isLoading } = useSearchMedicineQuery(searchTerm, {
