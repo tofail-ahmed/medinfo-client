@@ -22,6 +22,7 @@ import Search from '../Search/Search';
 import TopDisMeds from "./TopDisMeds/TopDisMeds";
 import LessStoredMeds from "./LessStoredMeds/LessStoredMeds";
 import AdvancedServices from "./AdvancedServices/AdvancedServices";
+import AccordionMed from "../ComponentsTemp/Accordian/AccordionMed";
 
 
 const Home = () => {
@@ -243,6 +244,7 @@ const Home = () => {
       <LatestMed />
       <TopDisMeds />
       <LessStoredMeds/>
+      <AccordionMed/>
     </div>
   );
 };
