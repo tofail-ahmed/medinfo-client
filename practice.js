@@ -44,6 +44,35 @@ const sonAgeNumber=parseInt(sonAge)
 //  console.log( 10 != 10 )
 // console.log(10!=="10")
 
-console.log("apple"=="APPLE")
-console.log("orange"=="ORANGE")
+// console.log("apple"=="APPLE")
+// console.log("orange"=="ORANGE")
 
+if("apple"=="Apple"){
+      // console.log("apple and Appleare not same")
+}
+
+let muttonBiriyani=250;
+if(muttonBiriyani>300){
+      // console.log("Mutton biriyani costs too high and its BDT",muttonBiriyani)
+}
+
+if(muttonBiriyani>350){
+      // console.log("Mutton Biriyani costs too high and its BDT",muttonBiriyani)
+}else{
+      // console.log("Mutton Biriyani costs reasonable price and its less than 350")
+}
+
+const eidToday=true;
+if(eidToday){
+      // console.log("Today is eid day")
+}else{
+      // console.log("Today is not eid day")
+}
+
+
+const cost=50;
+if(cost<30){
+      console.log("Riksha mama cholo DC park")
+}else{
+      console.log("Walking is a good exercise")
+}
