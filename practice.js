@@ -42,4 +42,8 @@ const sonAgeNumber=parseInt(sonAge)
       // console.log("j--->",++j);
 //  }
 //  console.log( 10 != 10 )
-console.log(10!="10")
+// console.log(10!=="10")
+
+console.log("apple"=="APPLE")
+console.log("orange"=="ORANGE")
+
