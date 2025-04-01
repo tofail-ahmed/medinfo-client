@@ -71,8 +71,61 @@ if(eidToday){
 
 
 const cost=50;
-if(cost<30){
-      console.log("Riksha mama cholo DC park")
-}else{
-      console.log("Walking is a good exercise")
+if (cost < 30) {
+  // console.log("Riksha mama cholo DC park")
+} else {
+  // console.log("Walking is a good exercise")
+}
+
+const salary = 62000;
+const BCS = false;
+const height = 5.8;
+if (salary > 50000 && BCS) {
+  // console.log("Osthir pola...")
+} else {
+  // console.log("dhure jaya mor beta...")
+}
+
+if ((salary > 40000 && BCS) || (salary > 50000 && height > 5.5)) {
+  // console.log("Sei sei pola... agun...")
+} else {
+  // console.log("balish er niche matha diya ghumaw ...")
+}
+
+const price = 462;
+const discount10 = 0.1;
+const discount15 = 0.15;
+if (price >= 5000) {
+  if (price >= 10000) {
+    const pay = price - price * discount15;
+    //     console.log("You got 15% discount, Please pay", pay);
+  } else {
+    const pay = price - price * discount10;
+    //     console.log("You got 10% discount, Please pay", pay);
+  }
+} else {
+  //   console.log("You rae not eligible for discount .Please pay", price);
+}
+
+{
+  const bill = 5000;
+  const age = 8;
+  const disc50 = 0.5;
+  const disc100 = 0;
+  if (age <= 12) {
+    const pay = bill - bill * disc100;
+    console.log("Enjoy 100% discount😁");
+  } else if (age >= 60) {
+    const pay = bill - bill * disc50;
+    console.log("enjoy 50% discount, net payable", pay);
+  } else {
+    const pay = bill;
+
+    console.log(" net payable", pay);
+  }
+}
+
+
+{
+      
 }
