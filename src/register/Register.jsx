@@ -103,7 +103,7 @@ const Register = () => {
      <Box
     
     component="img"
-    src="/public/assets/register.png" // Replace with your actual image path
+    src="/src/assets/register.png" // Replace with your actual image path
     alt="Register"
     sx={{ height: 150, width: "auto" }} // Adjust the size
   />   </Grid> 

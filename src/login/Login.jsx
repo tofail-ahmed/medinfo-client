@@ -107,7 +107,7 @@ const Login = () => {
       >
         <Box 
         component="img"
-        src="/public/assets/login.png"
+        src="/src/assets/login.png"
         sx={{height:150}}
         />
       </Grid>
