@@ -7,6 +7,7 @@ import {
   Container,
   InputAdornment,
   IconButton,
+  Box
 } from "@mui/material";
 // import { Visibility, VisibilityOff } from '@mui/icons-material';
 import { NavLink, useNavigate } from "react-router-dom";
@@ -90,10 +91,26 @@ const Login = () => {
   };
 
   return (
-    <Container maxWidth="sm" className=" my-10 min-h-screen">
-      <Typography variant="h4" gutterBottom align="center">
+    <Container maxWidth="sm" className=" mb-12 min-h-screen">
+      {/* <Typography variant="h4" gutterBottom align="center">
         Login
-      </Typography>
+      </Typography> */}
+      
+      <Grid
+      sx={{
+        display:"flex",
+        justifyContent:"center",
+        alignItems:"center",
+        height:"300"
+
+      }}
+      >
+        <Box 
+        component="img"
+        src="/public/assets/login.png"
+        sx={{height:150}}
+        />
+      </Grid>
       <form onSubmit={handleSubmit}>
         <Grid container spacing={3}>
           <Grid item xs={12}>

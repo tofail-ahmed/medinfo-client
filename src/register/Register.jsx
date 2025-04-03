@@ -7,6 +7,7 @@ import {
   Button,
   InputAdornment,
   IconButton,
+  Box
 } from "@mui/material";
 import { NavLink, useNavigate } from "react-router-dom";
 import { useUserRegisterMutation } from "../redux/user/usersApi";
@@ -87,14 +88,29 @@ const Register = () => {
   
 
   return (
-    <Container maxWidth="sm" className="min-h-screen">
-      <Typography variant="h4" gutterBottom align="center">
+    <Container maxWidth="md"  className="min-h-screen mb-12">
+      {/* <Typography variant="h4" gutterBottom align="center">
         Register
-      </Typography>
-      <form onSubmit={handleSubmit}>
+      </Typography> */}
+     <Grid
+      sx={{
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center",
+        height: "300", // Adjust button height as needed
+      }}
+     >
+     <Box
+    
+    component="img"
+    src="/public/assets/register.png" // Replace with your actual image path
+    alt="Register"
+    sx={{ height: 150, width: "auto" }} // Adjust the size
+  />   </Grid> 
+    <form onSubmit={handleSubmit}>
         <Grid container spacing={3}>
           {["name","imgUrl", "email", "password","contact","address","postalCode"].map((field, idx) => (
-            <Grid item xs={12} key={field}>
+            <Grid  item xs={12} md={6} key={field}>
               <TextField
                 label={field.charAt(0).toUpperCase() + field.slice(1)}
                 name={field}
@@ -129,6 +145,7 @@ const Register = () => {
                   }
                 }
               />
+              
             </Grid>
           ))}
           <Grid item xs={12}>
@@ -138,7 +155,7 @@ const Register = () => {
             <p className="text-center text-sm font-semibold">
               Already registered?{" "}
               <NavLink to="/login" className="text-blue-600 font-bold">
-                Login
+                LOGIN
               </NavLink>
             </p>
           </Grid>

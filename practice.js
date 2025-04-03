@@ -114,18 +114,26 @@ if (price >= 5000) {
   const disc100 = 0;
   if (age <= 12) {
     const pay = bill - bill * disc100;
-    console.log("Enjoy 100% discount😁");
+    // console.log("Enjoy 100% discount😁");
   } else if (age >= 60) {
     const pay = bill - bill * disc50;
-    console.log("enjoy 50% discount, net payable", pay);
+    // console.log("enjoy 50% discount, net payable", pay);
   } else {
     const pay = bill;
 
-    console.log(" net payable", pay);
+    // console.log(" net payable", pay);
   }
 }
 
 
 {
-      
+ 
+let isLeader=false;
+if(!isLeader){
+  console.log("yay desh amar baper...")
+}
+
+
+  
+
 }
