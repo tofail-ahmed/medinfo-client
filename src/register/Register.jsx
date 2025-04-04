@@ -10,7 +10,7 @@ import {
   Box
 } from "@mui/material";
 import { NavLink, useNavigate } from "react-router-dom";
-import { useUserRegisterMutation } from "../redux/user/usersApi";
+import { useGetAssetsQuery, useUserRegisterMutation } from "../redux/user/usersApi";
 // import { BiSolidHide, MdVisibility } from 'react-icons/all';
 import { useDispatch, useSelector } from "react-redux";
 import { setMedInfoUserCred } from "../redux/user/userSlice";
@@ -22,6 +22,13 @@ const Register = () => {
   const dispatch = useDispatch();
   const darkMode = useSelector((store) => store.theme.darkMode);
   const userData = useSelector((state) => state.medInfoUser.medInfoUserCred);
+
+  const {data:assetData,isLoading:assetsLoading}=useGetAssetsQuery();
+const register=assetData?.data.find(item => item.name === 'register')
+console.log(register)
+const registerImg=register?.imgUrl;
+
+
   const [createUser, { data, isLoading, error }] = useUserRegisterMutation();
 
   const [formData, setFormData] = useState({
@@ -100,13 +107,32 @@ const Register = () => {
         height: "300", // Adjust button height as needed
       }}
      >
-     <Box
-    
+    {assetsLoading ? (
+  <Box
+    sx={{
+      height: 150,
+      width: "auto",
+      display: "flex",
+      alignItems: "center",
+      justifyContent: "center",
+      fontSize: "20px",
+      fontWeight: "bold",
+    }}
+  >
+    Loading...
+  </Box>
+) : (
+  <Box
     component="img"
-    src="/src/assets/register.png" // Replace with your actual image path
+    src={register?.imgUrl} // Use image URL when data is available
     alt="Register"
-    sx={{ height: 150, width: "auto" }} // Adjust the size
-  />   </Grid> 
+    sx={{ height: 150, width: "auto" }}
+  />
+)}
+
+    
+    
+     </Grid> 
     <form onSubmit={handleSubmit}>
         <Grid container spacing={3}>
           {["name","imgUrl", "email", "password","contact","address","postalCode"].map((field, idx) => (

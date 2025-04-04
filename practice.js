@@ -130,10 +130,9 @@ if (price >= 5000) {
  
 let isLeader=false;
 if(!isLeader){
-  console.log("yay desh amar baper...")
+  // console.log("yay desh amar baper...")
+}
 }
 
 
-  
-
-}
+ 

@@ -11,7 +11,7 @@ import {
 } from "@mui/material";
 // import { Visibility, VisibilityOff } from '@mui/icons-material';
 import { NavLink, useNavigate } from "react-router-dom";
-import { useUserLoginMutation } from "../redux/user/usersApi";
+import { useUserLoginMutation,useGetAssetsQuery } from "../redux/user/usersApi";
 import { MdVisibility } from "react-icons/md";
 import { BiSolidHide } from "react-icons/bi";
 import { useDispatch, useSelector } from "react-redux";
@@ -26,6 +26,13 @@ const Login = () => {
   // const navigate = useNavigate();
 
   const dispatch = useDispatch();
+
+const {data:assetData,isLoading:assetsLoading}=useGetAssetsQuery();
+const login=assetData?.data.find(item => item.name === 'login')
+// console.log(login)
+const loginImg=login?.imgUrl;
+
+
   const [loginUser, { data, isLoading, error }] = useUserLoginMutation();
   const [formData, setFormData] = useState({
     email: "",
@@ -105,11 +112,29 @@ const Login = () => {
 
       }}
       >
-        <Box 
-        component="img"
-        src="/src/assets/login.png"
-        sx={{height:150}}
-        />
+       {assetsLoading ? (
+  <Box
+    sx={{
+      height: 150,
+      width: "auto",
+      display: "flex",
+      alignItems: "center",
+      justifyContent: "center",
+      fontSize: "20px",
+      fontWeight: "bold",
+    }}
+  >
+    Loading...
+  </Box>
+) : (
+  <Box
+    component="img"
+    src={login?.imgUrl} // Use image URL when data is available
+    alt="login"
+    sx={{ height: 150, width: "auto" }}
+  />
+)}
+
       </Grid>
       <form onSubmit={handleSubmit}>
         <Grid container spacing={3}>
