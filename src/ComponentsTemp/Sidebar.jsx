@@ -32,7 +32,7 @@ const Sidebar = () => {
        {
        userCred&&userCred.role==="user"? <div className="flex flex-col gap-10 justify-around">
           <NavLink className={"mx-auto"} to={"/"}>
-            <img className="w-[50px]" src={logo.imgUrl} alt="" />
+            <img className="w-[50px]" src={logo?.imgUrl} alt="" />
           </NavLink>
           <NavLink
             className={"bg-green-400 rounded-md font-bold m-4 text-center p-2"}

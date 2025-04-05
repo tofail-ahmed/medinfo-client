@@ -45,7 +45,7 @@ const logo=data?.data.find(item => item.name === 'logo')
       <div className="flex justify-between items-center mx-8">
         <span className="flex items-center justify-around gap-2">
           <NavLink to={"/"}>
-            <img className="w-[50px]" src={logo.imgUrl} alt="Logo" />
+            <img className="w-[50px]" src={logo?.imgUrl} alt="Logo" />
           </NavLink>
           {/* <Button
             variant="contained"

@@ -58,12 +58,12 @@ const Banner = () => {
           thumbs={{ swiper: thumbsSwiper }}
           modules={[Navigation, Thumbs, Autoplay]}
         >
-          <SwiperSlide><img className="w-full h-full" src={banner1.imgUrl} alt="Banner 1" /></SwiperSlide>
-          <SwiperSlide><img className="w-full h-full" src={banner2.imgUrl} alt="Banner 2" /></SwiperSlide>
-          <SwiperSlide><img className="w-full h-full" src={banner3.imgUrl} alt="Banner 3" /></SwiperSlide>
-          <SwiperSlide><img className="w-full h-full" src={banner4.imgUrl} alt="Banner 4" /></SwiperSlide>
-          <SwiperSlide><img className="w-full h-full" src={banner5.imgUrl} alt="Banner 5" /></SwiperSlide>
-          <SwiperSlide><img className="w-full h-full" src={banner6.imgUrl} alt="Banner 6" /></SwiperSlide>
+          <SwiperSlide><img className="w-full h-full" src={banner1?.imgUrl} alt="Banner 1" /></SwiperSlide>
+          <SwiperSlide><img className="w-full h-full" src={banner2?.imgUrl} alt="Banner 2" /></SwiperSlide>
+          <SwiperSlide><img className="w-full h-full" src={banner3?.imgUrl} alt="Banner 3" /></SwiperSlide>
+          <SwiperSlide><img className="w-full h-full" src={banner4?.imgUrl} alt="Banner 4" /></SwiperSlide>
+          <SwiperSlide><img className="w-full h-full" src={banner5?.imgUrl} alt="Banner 5" /></SwiperSlide>
+          <SwiperSlide><img className="w-full h-full" src={banner6?.imgUrl} alt="Banner 6" /></SwiperSlide>
         </Swiper>
 
         {/* Custom Navigation Buttons */}
@@ -87,22 +87,22 @@ const Banner = () => {
           className="w-[70%]"
         >
           <SwiperSlide>
-            <img className="w-full h-full object-cover" src={banner1.imgUrl} alt="Thumb 1" />
+            <img className="w-full h-full object-cover" src={banner1?.imgUrl} alt="Thumb 1" />
           </SwiperSlide>
           <SwiperSlide>
-            <img className="w-full h-full object-cover" src={banner2.imgUrl} alt="Thumb 2" />
+            <img className="w-full h-full object-cover" src={banner2?.imgUrl} alt="Thumb 2" />
           </SwiperSlide>
           <SwiperSlide>
-            <img className="w-full h-full object-cover" src={banner3.imgUrl} alt="Thumb 3" />
+            <img className="w-full h-full object-cover" src={banner3?.imgUrl} alt="Thumb 3" />
           </SwiperSlide>
           <SwiperSlide>
-            <img className="w-full h-full object-cover" src={banner4.imgUrl} alt="Thumb 4" />
+            <img className="w-full h-full object-cover" src={banner4?.imgUrl} alt="Thumb 4" />
           </SwiperSlide>
           <SwiperSlide>
-            <img className="w-full h-full object-cover" src={banner5.imgUrl} alt="Thumb 5" />
+            <img className="w-full h-full object-cover" src={banner5?.imgUrl} alt="Thumb 5" />
           </SwiperSlide>
           <SwiperSlide>
-            <img className="w-full h-full object-cover" src={banner6.imgUrl} alt="Thumb 6" />
+            <img className="w-full h-full object-cover" src={banner6?.imgUrl} alt="Thumb 6" />
           </SwiperSlide>
         </Swiper>
       </div>
