@@ -135,4 +135,12 @@ if(!isLeader){
 }
 
 
- 
+ {
+   const numbers = [1, 2, 3, 4, 5, 6, 7, 8];
+  //  console.log(numbers[9]);
+  const friends=["rahim","karim","hasan","ikram"]
+  // console.log(friends[1])   //karim
+  numbers[0]=100;
+  // console.log(numbers)
+  // console.log(friends[7])
+ }
